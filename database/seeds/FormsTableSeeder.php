@@ -21,7 +21,7 @@ class FormsTableSeeder extends Seeder
     private function seedTestForms($faker)
     {
 
-        foreach(range(1, 100) as $index) {
+        foreach(range(1, 5) as $index) {
             Form::create([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
@@ -30,7 +30,7 @@ class FormsTableSeeder extends Seeder
                 'mobile' => $faker->phonenumber,
                 'gender' => ($index %2 == 0) ? 'male' : 'female',
                 'is_paid' => ($index %2 == 0) ? true : false,
-                'payment_ref' => ($index %2 == 0) ? $faker->text : null
+                'payment_ref' => ($index %2 == 0) ? 'ch_' . str_random(24) : null
             ]);
         }
     }

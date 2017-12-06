@@ -20,10 +20,11 @@ Route::get('/dashboard/password-edit', 'HomeController@index')->name('password.e
 Route::get('/user/profile','ProfileController@fetchUser')->middleware('auth');
 Route::post('/user/profile/update','ProfileController@update')->middleware('auth');
 Route::post('/user/password/update','PasswordController@update')->middleware('auth');
+Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
+Route::get('/users/list','ProfileController@show')->middleware('auth');
 
 
 Route::get('/form', 'HomeController@index')->name('form')->middleware('auth');
-//Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
 Route::get('/booking', 'HomeController@index')->name('booking')->middleware('auth');
 Route::get('/calendar', 'HomeController@index')->name('calendar')->middleware('auth');
 Route::get('/message', 'HomeController@index')->name('message')->middleware('auth');

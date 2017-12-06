@@ -1,8 +1,16 @@
 <template>
     <div>
-        <button class="btn btn-outline-info" @click.prevent="refresh">Refresh</button>
+        <button class="btn btn-outline-info" @click.prevent="refresh"><em class="fa fa-refresh"></em></button>
         <button class="btn btn-outline-info" @click.prevent="download">Download</button>
         <button class="btn btn-outline-danger" @click.prevent="close" disabled>Close Registration</button>
+        <div class="dropdown" style="display: inline-block">
+            <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose a form
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" @click.prevent="filter" href="#">Summit 2018</a>
+            </div>
+        </div>
         <br><br>
         <div>
             <div class="row">
@@ -74,6 +82,10 @@
             },
 
             close(){
+
+            },
+
+            filter() {
 
             }
         },

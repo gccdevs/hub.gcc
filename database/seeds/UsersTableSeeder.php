@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
             'email'	 => 'admin@admin.com',
             'role' => 1,
             'invited_by' => 1,
+            'mobile' => 11111111,
             'is_active' => 1,
             'password' => bcrypt('123123')
         ]);
@@ -38,6 +39,7 @@ class UsersTableSeeder extends Seeder
             'name'	 => 'Tony',
             'email'	 => 'tony@elegantmedia.com.au',
             'role' => 3,
+            'mobile' => 2222222,
             'invited_by' => 1,
             'is_active' => 1,
             'password' => bcrypt('123123')
@@ -46,6 +48,7 @@ class UsersTableSeeder extends Seeder
             'name'	 => 'TG One',
             'email'	 => 'tony@glorycitychurch.com',
             'role' => 2,
+            'mobile' => 3333333,
             'invited_by' => 1,
             'is_active' => 1,
             'password' => bcrypt('123123')

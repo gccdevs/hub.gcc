@@ -27,9 +27,10 @@ class ProfileController extends Controller
 
             array_push($response, [
                 $name = $user->name,
-                $createdBy = $user->invited_by,
+                $name = $user->email,
+                $name = $user->mobile,
                 $role = $user->role,
-                $email = $user->email,
+                $createdBy = $user->invited_by,
                 $time = date('Y/m/d h:i:s',strtotime($user->created_at))
             ]);
         }

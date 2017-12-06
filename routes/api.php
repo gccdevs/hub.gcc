@@ -6,11 +6,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/user/list','ProfileController@show');
 Route::get('/form/result', 'FormController@show');
+
 Route::post('/form/purchase','FormController@purchase');
 Route::post('/form/validate','FormController@validateEmail');
 
-Route::get('/user/list','ProfileController@show');
 //Route::post('/user/profile/update','ProfileController@update');
 //Route::post('/user/password/update','PasswordController@update');
 
