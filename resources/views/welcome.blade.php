@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-
+    <link rel="icon" href="{!! asset('images/small-logo.png') !!}"/>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <style>
         html, body {
@@ -65,16 +64,18 @@
     </style>
 </head>
 <body>
+
 <div class="flex-center position-ref full-height">
     <div class="content">
+        <img class="logo" style="height:300px !important;display: block;margin: 0 auto;" src="{{ asset('images/large-logo.png') }}" />
         <div class="title m-b-md">
-            GCC Summit 2018
             <hr>
-            Coming soon
+            2018, Coming soon
         </div>
 
         <div class="links">
-            <a href="/signup">报名</a>
+            <a href="/summit-2018/signup">了解更多</a>
+            <a href="/summit-2018/signup">报名</a>
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}">Dashboard</a>

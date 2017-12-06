@@ -27,24 +27,19 @@ This project is to create a Vue.js based single page application, which is built
     ```
     php artisan key:generate
     ```
-
-4. Install Passport for OAuth2 requirement:
-    ```
-    php artisan passport:install
-    ```
     
-5.  Migrate the database:
+4.  Migrate the database:
     ```
     php artisan migrate
     ```
     
-6. Seeding:
+5. Seeding:
     ```
     php artisan db:seed
     ```    
     A use with email: `admin@admin.com` and password: `123123` will be created for development.
         
-7. Queue, for sending email
+6. Queue, for sending email
     
     1. Remember to change the `QUEUE_DRIVE` setting in **.env** file
     ```
