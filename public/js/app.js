@@ -54967,7 +54967,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -55006,8 +55005,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "col-md-9" },
     [
-      _c("h1", [_vm._v("个人信息")]),
+      _vm._m(0, false, false),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -55037,21 +55037,19 @@ var render = function() {
         [_vm._v("修改密码")]
       ),
       _vm._v(" "),
-      _vm._m(0, false, false),
-      _vm._v(" "),
       _c("br"),
       _c("br"),
       _vm._v(" "),
       _c("ul", { staticClass: "list-group" }, [
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v("\n            用户名\n            "),
+          _vm._v("\n                用户名\n                "),
           _c("br"),
           _vm._v(" "),
           _c("h4", { domProps: { textContent: _vm._s(this.person.name) } })
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v("\n            邮箱\n            "),
+          _vm._v("\n                邮箱\n                "),
           _c("br"),
           _vm._v(" "),
           _c("h4", { domProps: { textContent: _vm._s(this.person.email) } })
@@ -55066,14 +55064,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-outline-info",
-        attrs: { href: "javascript:window.location.reload();" }
-      },
-      [_c("em", { staticClass: "fa fa-refresh" })]
-    )
+    return _c("h1", [
+      _vm._v("个人信息 "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-info",
+          attrs: { href: "javascript:window.location.reload();" }
+        },
+        [_c("em", { staticClass: "fa fa-refresh" })]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -56309,6 +56310,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "col-md-9" },
     [
       _c(
         "router-link",
@@ -56697,6 +56699,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "col-md-9" },
     [
       _c(
         "router-link",
