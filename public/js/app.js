@@ -45520,6 +45520,16 @@ var routes = [{
         name: 'message',
         component: __webpack_require__(76),
         meta: {}
+    }, {
+        path: '/dashboard/profile-edit',
+        name: 'profile.edit',
+        component: __webpack_require__(94),
+        meta: {}
+    }, {
+        path: '/dashboard/password-edit',
+        name: 'password.edit',
+        component: __webpack_require__(100),
+        meta: {}
     }],
     meta: {}
 }];
@@ -46507,7 +46517,7 @@ var index_esm = {
         updateProfileRequest: function updateProfileRequest(_ref, formData) {
             var dispatch = _ref.dispatch;
 
-            return axios.post('/api/user/profile/update', formData).then(function (response) {
+            return axios.post('/user/profile/update', formData).then(function (response) {
                 dispatch('showNotification', { level: 'success', msg: '资料更新成功' });
             }).catch(function (errors) {
                 dispatch('showNotification', { level: 'error', msg: '资料更新失败' });
@@ -46527,7 +46537,7 @@ var index_esm = {
         updatePasswordRequest: function updatePasswordRequest(_ref, formData) {
             var dispatch = _ref.dispatch;
 
-            return axios.post('/api/user/password/update', formData).then(function (response) {
+            return axios.post('/user/password/update', formData).then(function (response) {
                 // r
                 dispatch('showNotification', { level: 'success', msg: '更新密码成功' });
             }).catch(function (errors) {
@@ -48166,8 +48176,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            person: {
+                name: '',
+                email: ''
+            }
+        };
+    },
+    created: function created() {
+        this.person = this.loadPerson();
+    },
+
+
+    methods: {
+        loadPerson: function loadPerson() {
+            var _this = this;
+
+            return axios.get('/user/profile').then(function (response) {
+                _this.person = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
 
 /***/ }),
 /* 63 */
@@ -48188,7 +48224,11 @@ var render = function() {
         "router-link",
         {
           staticClass: "btn btn-outline-info",
-          attrs: { to: "#", activeClass: "active", exact: "" }
+          attrs: {
+            to: { name: "profile.edit" },
+            activeClass: "active",
+            exact: ""
+          }
         },
         [_vm._v("修改信息")]
       ),
@@ -48197,15 +48237,35 @@ var render = function() {
         "router-link",
         {
           staticClass: "btn btn-outline-info",
-          attrs: { to: "#", activeClass: "active", exact: "" }
+          attrs: {
+            to: { name: "password.edit" },
+            activeClass: "active",
+            exact: ""
+          }
         },
         [_vm._v("修改密码")]
       ),
       _vm._v(" "),
+      _vm._m(0, false, false),
+      _vm._v(" "),
       _c("br"),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0, false, false)
+      _c("ul", { staticClass: "list-group" }, [
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v("\n            用户名\n            "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h4", { domProps: { textContent: _vm._s(this.person.name) } })
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v("\n            邮箱\n            "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h4", { domProps: { textContent: _vm._s(this.person.email) } })
+        ])
+      ])
     ],
     1
   )
@@ -48215,21 +48275,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("\n            用户名\n            "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h4", [_vm._v(" user.name ")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("\n            邮箱\n            "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h4", [_vm._v(" user.email ")])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-outline-info",
+        attrs: { href: "javascript:window.location.reload();" }
+      },
+      [_c("em", { staticClass: "fa fa-refresh" })]
+    )
   }
 ]
 render._withStripped = true
@@ -48368,7 +48421,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         close: function close() {}
     },
 
-    mounted: function mounted() {
+    created: function created() {
         this.allEntries = this.loadData();
     }
 });
@@ -55921,6 +55974,820 @@ var index_esm = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(95)
+/* template */
+var __vue_template__ = __webpack_require__(99)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/EditProfile.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5ccbc71c", Component.options)
+  } else {
+    hotAPI.reload("data-v-5ccbc71c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'edit-profile',
+    components: {
+        EditProfileForm: __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue___default.a
+    }
+});
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(97)
+/* template */
+var __vue_template__ = __webpack_require__(98)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/EditProfileForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4bac0e56", Component.options)
+  } else {
+    hotAPI.reload("data-v-4bac0e56", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_mutation_type__ = __webpack_require__(13);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+//    import jwtToken from './../../helpers/jwt'
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: '',
+
+            person: {
+                name: '',
+                email: ''
+            }
+        };
+    },
+    created: function created() {
+        this.person = this.loadPerson();
+    },
+
+
+    methods: {
+        loadPerson: function loadPerson() {
+            var _this = this;
+
+            return axios.get('/user/profile').then(function (response) {
+                _this.person = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        updateProfile: function updateProfile() {
+            var _this2 = this;
+
+            var formData = {
+                name: this.name
+            };
+            this.$store.dispatch('updateProfileRequest', formData).then(function (response) {
+                _this2.$router.push({ name: 'profile' });
+            }).catch(function (error) {});
+        }
+    }
+});
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          _vm.updateProfile($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "form-group",
+          class: { "has-error": _vm.errors.has("name") }
+        },
+        [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "name" } },
+            [_vm._v("用户名")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              },
+              { name: "validate", rawName: "v-validate" }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              "data-vv-rules": "required",
+              "data-vv-as": "邮箱",
+              id: "name",
+              type: "text",
+              name: "name",
+              required: ""
+            },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("name"),
+                  expression: "errors.has('name')"
+                }
+              ],
+              staticClass: "help-block",
+              staticStyle: { color: "red" }
+            },
+            [_vm._v(_vm._s(_vm.errors.first("name")))]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "form-group",
+          class: { "has-error": _vm.errors.has("email") }
+        },
+        [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "email" } },
+            [_vm._v("邮箱")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: this.person.email,
+                expression: "this.person.email"
+              },
+              { name: "validate", rawName: "v-validate" }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              "data-vv-rules": "required|email",
+              "data-vv-as": "邮箱",
+              id: "email",
+              type: "email",
+              name: "email",
+              required: "",
+              disabled: ""
+            },
+            domProps: { value: this.person.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(this.person, "email", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("email"),
+                  expression: "errors.has('email')"
+                }
+              ],
+              staticClass: "help-block",
+              staticStyle: { color: "red" }
+            },
+            [_vm._v(_vm._s(_vm.errors.first("email")))]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0, false, false)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+          [_vm._v("\n                更新用户资料\n            ")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4bac0e56", module.exports)
+  }
+}
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-outline-info",
+          attrs: { to: { name: "profile" }, activeClass: "active", exact: "" }
+        },
+        [_vm._v("返回")]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-body" }, [_c("edit-profile-form")], 1)
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5ccbc71c", module.exports)
+  }
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(101)
+/* template */
+var __vue_template__ = __webpack_require__(105)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/password/EditPassword.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3ae7476c", Component.options)
+  } else {
+    hotAPI.reload("data-v-3ae7476c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'edit-profile',
+    components: {
+        EditPasswordForm: __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue___default.a
+    }
+});
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(103)
+/* template */
+var __vue_template__ = __webpack_require__(104)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/password/EditPasswordForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b7d1a760", Component.options)
+  } else {
+    hotAPI.reload("data-v-b7d1a760", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            password: '',
+            password_confirmation: ''
+        };
+    },
+
+    methods: {
+        updatePassword: function updatePassword() {
+            var _this = this;
+
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    var formData = {
+                        password: _this.password
+                    };
+                    _this.$store.dispatch('updatePasswordRequest', formData).then(function (response) {
+                        _this.$router.push({ name: 'profile' });
+                        console.log('Success!');
+                    }).catch(function (error) {
+                        //
+                    });
+                }
+                //
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          _vm.updatePassword($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "form-group",
+          class: { "has-error": _vm.errors.has("password") }
+        },
+        [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "password" } },
+            [_vm._v("密码")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              },
+              { name: "validate", rawName: "v-validate" }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              "data-vv-rules": "required|min:6",
+              "data-vv-as": "密码",
+              id: "password",
+              type: "password",
+              name: "password",
+              required: ""
+            },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("password"),
+                  expression: "errors.has('password')"
+                }
+              ],
+              staticClass: "help-block",
+              staticStyle: { color: "red" }
+            },
+            [_vm._v(_vm._s(_vm.errors.first("password")))]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "form-group",
+          class: { "has-error": _vm.errors.has("password_confirmation") }
+        },
+        [
+          _c(
+            "label",
+            {
+              staticClass: "control-label",
+              attrs: { for: "password-confirm" }
+            },
+            [_vm._v("确认密码")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [{ name: "validate", rawName: "v-validate" }],
+            staticClass: "form-control",
+            attrs: {
+              id: "password-confirm",
+              "data-vv-rules": "required|min:6|confirmed:password",
+              "data-vv-as": "确认密码",
+              type: "password",
+              name: "password_confirmation",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("password_confirmation"),
+                  expression: "errors.has('password_confirmation')"
+                }
+              ],
+              staticClass: "help-block",
+              staticStyle: { color: "red" }
+            },
+            [_vm._v(_vm._s(_vm.errors.first("password_confirmation")))]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0, false, false)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-md-6 col-md-offset-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+          [_vm._v("\n                更新密码\n            ")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b7d1a760", module.exports)
+  }
+}
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-outline-info",
+          attrs: { to: { name: "profile" }, activeClass: "active", exact: "" }
+        },
+        [_vm._v("返回")]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-body" }, [_c("edit-password-form")], 1)
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3ae7476c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

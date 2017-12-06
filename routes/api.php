@@ -11,8 +11,8 @@ Route::post('/form/purchase','FormController@purchase');
 Route::post('/form/validate','FormController@validateEmail');
 
 Route::get('/user/list','ProfileController@show');
-Route::post('/user/profile/update','ProfileController@update');
-Route::post('/user/password/update','PasswordController@update');
+//Route::post('/user/profile/update','ProfileController@update');
+//Route::post('/user/password/update','PasswordController@update');
 
 //Route::post('/register','Auth\RegisterController@register');
 //Route::post('/register/validate','Auth\RegisterController@validateEmail');

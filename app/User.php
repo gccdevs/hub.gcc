@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function invitedBy($invitedBy)
+    {
+        $this->invited_by = $invitedBy;
+        $this->save();
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+        $this->save();
+    }
+
 }

@@ -62,7 +62,19 @@ let routes = [
                 name: 'message',
                 component: require('./components/message/Message'),
                 meta: {}
-            }
+            },
+            {
+                path: '/dashboard/profile-edit',
+                name: 'profile.edit',
+                component: require('./components/user/EditProfile'),
+                meta: {}
+            },
+            {
+                path: '/dashboard/password-edit',
+                name: 'password.edit',
+                component: require('./components/user/password/EditPassword'),
+                meta: {}
+            },
         ],
         meta: {}
     }

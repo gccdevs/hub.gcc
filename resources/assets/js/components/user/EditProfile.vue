@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link :to="{name: 'dashboard'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
+        <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
         <br><br>
         <div class="card card-default">
             <div class="card-body">

@@ -78,7 +78,7 @@
             }
         },
 
-        mounted(){
+        created(){
             this.allEntries = this.loadData();
         }
 
