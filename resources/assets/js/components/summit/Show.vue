@@ -1,0 +1,86 @@
+<template>
+    <div>
+        <button class="btn btn-outline-info" @click.prevent="refresh">Refresh</button>
+        <button class="btn btn-outline-info" @click.prevent="download">Download</button>
+        <button class="btn btn-outline-danger" @click.prevent="close" disabled>Close Registration</button>
+        <br><br>
+        <div>
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-responsive-sg">
+                        <thead class="thead">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>  <!--[0] -->
+                            <th>Gender</th> <!--[1] -->
+                            <th>Mobile</th> <!--[2] -->
+                            <th>Email</th> <!--[3] -->
+                            <th>Address</th> <!--[4] -->
+                            <th>Paid</th> <!--[6] -->
+                            <th>Ref</th> <!--[6] -->
+                            <th>Paid Time</th> <!--[7] -->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(entry, index) in allEntries">
+                            <td v-text="allEntries.length - index"></td>
+                            <td v-text="entry[0]"></td>
+                            <td v-text="entry[1]"></td>
+                            <td v-text="entry[2]"></td>
+                            <td v-text="entry[3]"></td>
+                            <td v-text="entry[4]"></td>
+
+                            <td v-if="entry[5]"><em class="fa fa-check" style="color: lightseagreen"> Yes</em></td>
+                            <td v-else><em class="fa fa-times" style="color: darkred"> No</em></td>
+                            <td v-text="entry[6]"></td>
+                            <td v-if="entry[5]" v-text="entry[7]"></td>
+                            <td v-else></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+
+    export default{
+
+        data(){
+            return{
+                allEntries: {}
+            }
+        },
+
+        methods:{
+            loadData(){
+                return axios.get('/api/form/result').then(response => {
+                    this.allEntries = response.data;
+                }).catch(error => {
+
+                })
+            },
+
+            refresh(){
+                return this.loadData();
+            },
+
+            download(){
+
+            },
+
+            close(){
+
+            }
+        },
+
+        mounted(){
+            this.allEntries = this.loadData();
+        }
+
+    }
+</script>
