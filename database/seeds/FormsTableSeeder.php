@@ -23,12 +23,12 @@ class FormsTableSeeder extends Seeder
 
         foreach(range(1, 5) as $index) {
             Form::create([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
+                'name' => $faker->name,
                 'email' => $faker->email,
                 'address' => $faker->address,
                 'mobile' => $faker->phonenumber,
                 'gender' => ($index %2 == 0) ? 'male' : 'female',
+                'first_time' => ($index %2 == 0) ? 'yes' : 'no',
                 'is_paid' => ($index %2 == 0) ? true : false,
                 'payment_ref' => ($index %2 == 0) ? 'ch_' . str_random(24) : null
             ]);

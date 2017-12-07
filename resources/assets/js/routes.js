@@ -10,14 +10,6 @@ let routes = [
         meta: {}
     },
     {
-        path: '/summit-2018/checkout',
-        name:'summit.checkout',
-        props: true,
-        component: require('./components/summit/PayWithStripe'),
-        meta: {}
-        // meta: { requiresForm: true }
-    },
-    {
         path: '/summit-2018/success',
         name:'summit.success',
         props: true,

@@ -24,7 +24,8 @@
                             <th>Mobile</th> <!--[2] -->
                             <th>Email</th> <!--[3] -->
                             <th>Address</th> <!--[4] -->
-                            <th>Paid</th> <!--[6] -->
+                            <th>First Time</th> <!--[8] -->
+                            <th>Paid</th> <!--[5] -->
                             <th>Ref</th> <!--[6] -->
                             <th>Paid Time</th> <!--[7] -->
                         </tr>
@@ -37,6 +38,7 @@
                             <td v-text="entry[2]"></td>
                             <td v-text="entry[3]"></td>
                             <td v-text="entry[4]"></td>
+                            <td v-text="entry[8]"></td>
 
                             <td v-if="entry[5]"><em class="fa fa-check" style="color: lightseagreen"> Yes</em></td>
                             <td v-else><em class="fa fa-times" style="color: darkred"> No</em></td>

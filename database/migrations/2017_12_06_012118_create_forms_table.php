@@ -15,12 +15,12 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('last_name');
-            $table->string('first_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('address');
             $table->string('mobile');
             $table->string('gender');
+            $table->string('first_time');
             $table->boolean('is_paid')->default(false);
             $table->string('payment_ref')->nullable()->unique();
             $table->timestamps();
