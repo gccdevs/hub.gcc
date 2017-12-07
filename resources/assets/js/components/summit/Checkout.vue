@@ -2,6 +2,7 @@
 <template>
     <div class="container">
         <h1>确认支付</h1>
+        <loading :show="show" :label="label"></loading>
         <button class="btn btn-outline-warning btn-block" @click="redirectBack"><em class="fa fa-chevron-circle-left"></em> 返回</button>
         <br>
         <img src="../../../image/small-logo.png" style="display: block;margin: 0 auto;">
@@ -27,12 +28,20 @@
 
 <script>
 
+    import Loading from 'vue-full-loading'
+
     export default{
         data(){
             return{
                 stripeEmail:'',
-                stripeToken :''
+                stripeToken :'',
+                show: false,
+                label: 'Processing, please wait...'
             }
+        },
+
+        components:{
+            Loading
         },
 
         props:['email','first_name','last_name','address','mobile','gender'],
@@ -46,6 +55,14 @@
                 image: "https://irp-cdn.multiscreensite.com/af471d46/dms3rep/multi/thumbnail/SUMMIT-LOGO-768x739.png",
                 locale: 'au',
                 email: this.email,
+
+                closed: function () {
+                    vm.show = false;
+                },
+
+                opened: function () {
+                    vm.show = true;
+                },
 
                 token: function(token) {
 
@@ -71,7 +88,7 @@
 
                             vm.$store.dispatch('paymentRequest').then(response => {
 
-                                console.log(vm.first_name, vm.last_name, vm.email, vm.address, ref);
+//                                console.log(vm.first_name, vm.last_name, vm.email, vm.address, ref);
 
                                 vm.$router.push({name: 'summit.success', params:{
                                     first_name: vm.first_name,
@@ -104,7 +121,10 @@
         methods: {
 
             buy() {
-                this.handler.open({
+
+                let vm = this;
+
+                vm.handler.open({
                     name: 'GCC 2018 Summit',
                     description: 'The official purchase channel',
                     currency: 'AUD',
@@ -122,6 +142,14 @@
 
             redirectForward(){
                 this.$router.push({name:'summit.success'})
+            },
+
+            loading(){
+                this.show = true;
+            },
+
+            stop(){
+                this.show = false;
             }
         }
     }

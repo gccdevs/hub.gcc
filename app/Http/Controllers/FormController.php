@@ -21,6 +21,31 @@ class FormController extends Controller
     {
         $this->validator($request->all())->validate(); // validate requested inputs
 
+        try { // process payment
+            $customer = Customer::create([
+                'email' =>request('email'),
+                'source' => request('stripeToken'),
+            ]);
+
+            $charge = Charge::create([
+                'amount' => 5000,
+                'customer' => $customer->id,
+                'currency' => 'AUD'
+            ]);
+        }
+        catch (\Exception $e) { // if failed to charge
+            return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
+        }
+
+        return response()->json(['message' => 'paid success', 'customer' => $customer, 'charge' => $charge]);
+
+    }
+
+
+    public function purchase1(Request $request)
+    {
+        $this->validator($request->all())->validate(); // validate requested inputs
+
         $form = new Form([
             'email' => request('email'),
             'gender' => request('gender'),
@@ -56,6 +81,16 @@ class FormController extends Controller
     }
 
     private function validator(array $data)
+    {
+
+        return Validator::make($data, [
+            'stripeToken' => 'required',
+            'email' => 'required|string|email|max:255|unique:forms'
+        ]);
+
+    }
+
+    private function validator1(array $data)
     {
 
         return Validator::make($data, [

@@ -1,10 +1,11 @@
 <template>
     <div class="col-md-9">
-        <h1>个人信息 <a href="javascript:window.location.reload();" class="btn btn-outline-info"><em class="fa fa-refresh"></em></a></h1>
-        <br>
-            <router-link :to="{ name: 'profile.edit' }" class="btn btn-outline-info" activeClass="active" exact>修改信息</router-link>
-            <router-link :to="{ name: 'password.edit' }" class="btn btn-outline-info" activeClass="active" exact>修改密码</router-link>
-            <br><br>
+        <h1>个人信息
+            <a href="javascript:window.location.reload();" class="btn btn-outline-info"><em class="fa fa-refresh"></em></a>
+            <router-link :to="{ name: 'profile.edit' }" class="btn btn-outline-info" activeClass="active" exact tag="a">修改信息</router-link>
+            <router-link :to="{ name: 'password.edit' }" class="btn btn-outline-info" activeClass="active" exact tag="a">修改密码</router-link>
+        </h1>
+            <br>
             <ul class="list-group">
                 <li class="list-group-item">
                     用户名
@@ -44,7 +45,7 @@
                 }).catch(error => {
                     console.log(error)
                 })
-            },
+            }
         }
     }
 </script>

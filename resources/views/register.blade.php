@@ -27,7 +27,6 @@
 <div id="app"></div>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-{{--<script src="/js/app.js"></script>--}}
+<script src="/js/app.js"></script>
 </body>
 </html>
