@@ -109,17 +109,13 @@ This project is to create a Vue.js based single page application, which is built
 
 ![screen shot 2017-12-06 at 5 02 26 pm](https://user-images.githubusercontent.com/9074571/33647172-a69123a2-daa7-11e7-87df-8f2fd808665c.png)
 
-### Summit Register
+### Summit Register and Pay
 
-![screen shot 2017-12-06 at 5 02 33 pm](https://user-images.githubusercontent.com/9074571/33647173-a6c217c8-daa7-11e7-90fc-dcc84d7f2025.png)
+![](https://user-images.githubusercontent.com/9074571/33714867-b25e4d10-dba4-11e7-8dce-819c45843101.png)
 
-### Confirmation Registration
+### Loading
 
-![screen shot 2017-12-06 at 5 03 08 pm](https://user-images.githubusercontent.com/9074571/33647175-a6f1f2d6-daa7-11e7-8810-e5a2d46863fb.png)
-
-### Stripe Pay
-
-![screen shot 2017-12-06 at 5 03 12 pm](https://user-images.githubusercontent.com/9074571/33647176-a72aae8c-daa7-11e7-987c-7fa317e31ef3.png)
+![](https://user-images.githubusercontent.com/9074571/33714870-b2b87ea2-dba4-11e7-89ae-ad159a16e178.png)
 
 ### Admin Login
 
