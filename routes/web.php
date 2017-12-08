@@ -4,7 +4,7 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-})->name('summit');
+})->name('home');
 
 //Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 
