@@ -9,6 +9,7 @@ Route::get('/', function () {
 //Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 
 Route::get('/summit-2018/signup', 'FormController@index')->name('summit.signup');
+Route::get('/summit-2018/terms-and-conditions', 'FormController@termsAndConditions')->name('summit.terms');
 Route::get('/summit-2018/checkout', 'FormController@index')->name('summit.checkout');
 Route::get('/summit-2018/success', 'FormController@index')->name('summit.checkout');
 

@@ -5,9 +5,7 @@
             <p class="is-size-1">Summit 2018</p>
             <div class="box">
                 <p class="is-size-3">基本信息</p>
-
                 <hr>
-
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('name') }">
                         <label class="label" for="name">姓名 *</label>
@@ -78,29 +76,38 @@
                 </div>
 
                 <div class="columns">
-                    <div class="column" :class="{'has-error' : errors.has('mobile') }">
-                        <label class="label" for="mobile">电话 *</label>
-                        <div >
-                            <input style="width:80%" class="is-size-6" v-model="mobile" type="text" name="mobile"
-                                   v-validate data-vv-rules="required|min:8" data-vv-as="电话"
-                                   id="mobile" placeholder="mobile" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
-                        </div>
-                    </div>
-                    <div class="column" :class="{'has-error' : errors.has('address') }">
-                        <label class="label" for="address">地址 *</label>
+                    <div class="column" :class="{ 'has-error': errors.has('path') }">
+                        <label class="label">从什么途径了解到我们？ *</label>
                         <div class="field">
-                            <input style="width:80%" class="is-size-6" v-model="address"
-                                   v-validate data-vv-rules="required|min:5" data-vv-as="地址"
-                                   id="address" placeholder="address" type="text" name="address" required>
+                            <label class="radio" for="path">
+                                <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="where" data-vv-as="途径"
+                                       name="path" value="friend" id="path" type="radio"> 朋友
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同学
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="web" type="radio"> GCC 网页
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络社交平台
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
+                            </label>
+                            <label class="radio" for="gender">
+                                <input class="is-size-5" v-model="path" name="path" value="other" type="radio"> 其他
+                            </label>
                             <br>
-                            <span class="help-block" v-show="errors.has('address')" style="color: red !important;">{{errors.first('address')}}</span>
+                            <span class="help-block" v-show="errors.has('path')" style="color: red !important;">{{ errors.first('path') }}</span>
                         </div>
                     </div>
                 </div>
 
-                <p class="is-size-3" style="display:inline">支付信息 <p class="is-size-5" style="display:inline"> Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em></p></p>
+                <p class="is-size-3" style="display:inline">支付信息 <p class="is-size-5" style="display:inline"> -- Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em> <em class="fa fa-cc-visa"></em> <em style="color:#c50000;" class="fa fa-cc-mastercard"></em> <em style="color:#4785d9;" class="fa fa-cc-amex"></em></p></p>
                 <hr>
 
                 <div class="columns">
@@ -134,13 +141,25 @@
                     </div>
                 </div>
 
-                <div class="field">
-                    <button class="button is-primary" style="width:100%" @click.prevent="nextStep" :disabled="!complete">
-                        Pay A$ 50.00
-                    </button>
+                <p class="is-size-3">同意条款</p>
+
+                <br>
+
+                <div class="columns">
+                    <div class="column">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            I agree to the <a style="color:#474fdb;" href="/summit-2018/terms-and-conditions">terms and conditions</a>
+                        </label>
+                    </div>
                 </div>
-                <loader :show="show" :label="label"></loader>
             </div>
+            <div class="field">
+                <button class="button is-primary" style="width:100%" @click.prevent="nextStep" :disabled="!complete">
+                    Pay A$ 50.00
+                </button>
+            </div>
+            <loader :show="show" :label="label"></loader>
         </div>
 
     </div>
@@ -164,6 +183,7 @@
                 gender: '',
                 email: '',
                 email_confirm: '',
+                path: '',
                 show: false,
                 label: 'Processing, please wait...',
                 key: GCC.stripeKey,
@@ -327,9 +347,9 @@
     }
 
     /*input:focus {*/
-        /*outline: 0 !important;*/
-        /*border-width: 0 0 2px 0 !important;*/
-        /*border-color: #1598af !important;*/
+    /*outline: 0 !important;*/
+    /*border-width: 0 0 2px 0 !important;*/
+    /*border-color: #1598af !important;*/
     /*}*/
 
     .stripe-element {

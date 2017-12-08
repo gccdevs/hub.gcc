@@ -53830,7 +53830,7 @@ exports = module.exports = __webpack_require__(14)(undefined);
 
 
 // module
-exports.push([module.i, "\ninput {\n    outline: 0 !important;\n    border-width: 0 0 2px 0 !important;\n    border-color: darkgray !important;\n}\n\n/*input:focus {*/\n    /*outline: 0 !important;*/\n    /*border-width: 0 0 2px 0 !important;*/\n    /*border-color: #1598af !important;*/\n/*}*/\n.stripe-element {\n    outline: 0 !important;\n    border-bottom: 2px solid !important;\n    border-color: darkgray !important;\n}\n\n", ""]);
+exports.push([module.i, "\ninput {\n    outline: 0 !important;\n    border-width: 0 0 2px 0 !important;\n    border-color: darkgray !important;\n}\n\n/*input:focus {*/\n/*outline: 0 !important;*/\n/*border-width: 0 0 2px 0 !important;*/\n/*border-color: #1598af !important;*/\n/*}*/\n.stripe-element {\n    outline: 0 !important;\n    border-bottom: 2px solid !important;\n    border-color: darkgray !important;\n}\n\n", ""]);
 
 // exports
 
@@ -54029,6 +54029,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54046,6 +54065,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             gender: '',
             email: '',
             email_confirm: '',
+            path: '',
             show: false,
             label: 'Processing, please wait...',
             key: GCC.stripeKey,
@@ -54586,13 +54606,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "box" }, [
-      _c("p", { staticClass: "is-size-1" }, [_vm._v("Summit 2018")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "box" },
-        [
+    _c(
+      "div",
+      { staticClass: "box" },
+      [
+        _c("p", { staticClass: "is-size-1" }, [_vm._v("Summit 2018")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "box" }, [
           _c("p", { staticClass: "is-size-3" }, [_vm._v("基本信息")]),
           _vm._v(" "),
           _c("hr"),
@@ -55028,115 +55048,213 @@ var render = function() {
               "div",
               {
                 staticClass: "column",
-                class: { "has-error": _vm.errors.has("mobile") }
+                class: { "has-error": _vm.errors.has("path") }
               },
               [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "mobile" } },
-                  [_vm._v("电话 *")]
-                ),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.mobile,
-                        expression: "mobile"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      type: "text",
-                      name: "mobile",
-                      "data-vv-rules": "required|min:8",
-                      "data-vv-as": "电话",
-                      id: "mobile",
-                      placeholder: "mobile",
-                      required: ""
-                    },
-                    domProps: { value: _vm.mobile },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.mobile = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("mobile"),
-                          expression: "errors.has('mobile')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("mobile")))]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("address") }
-              },
-              [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "address" } },
-                  [_vm._v("地址 *")]
-                ),
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("从什么途径了解到我们？ *")
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "field" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.address,
-                        expression: "address"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      "data-vv-rules": "required|min:5",
-                      "data-vv-as": "地址",
-                      id: "address",
-                      placeholder: "address",
-                      type: "text",
-                      name: "address",
-                      required: ""
-                    },
-                    domProps: { value: _vm.address },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "path" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          },
+                          { name: "validate", rawName: "v-validate" }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: {
+                          "data-vv-rules":
+                            "required|in:friend,classmate,colleague,web,social,family,other",
+                          "data--vv-args": "where",
+                          "data-vv-as": "途径",
+                          name: "path",
+                          value: "friend",
+                          id: "path",
+                          type: "radio"
+                        },
+                        domProps: { checked: _vm._q(_vm.path, "friend") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "friend"
+                          }
                         }
-                        _vm.address = $event.target.value
-                      }
-                    }
-                  }),
+                      }),
+                      _vm._v(" 朋友\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: {
+                          name: "path",
+                          value: "classmate",
+                          type: "radio"
+                        },
+                        domProps: { checked: _vm._q(_vm.path, "classmate") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "classmate"
+                          }
+                        }
+                      }),
+                      _vm._v(" 同学\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: {
+                          name: "path",
+                          value: "colleague",
+                          type: "radio"
+                        },
+                        domProps: { checked: _vm._q(_vm.path, "colleague") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "colleague"
+                          }
+                        }
+                      }),
+                      _vm._v(" 同事\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: { name: "path", value: "web", type: "radio" },
+                        domProps: { checked: _vm._q(_vm.path, "web") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "web"
+                          }
+                        }
+                      }),
+                      _vm._v(" GCC 网页\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: { name: "path", value: "social", type: "radio" },
+                        domProps: { checked: _vm._q(_vm.path, "social") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "social"
+                          }
+                        }
+                      }),
+                      _vm._v(" 网络社交平台\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: { name: "path", value: "family", type: "radio" },
+                        domProps: { checked: _vm._q(_vm.path, "family") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "family"
+                          }
+                        }
+                      }),
+                      _vm._v(" 家人\n                        ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "radio", attrs: { for: "gender" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.path,
+                            expression: "path"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: { name: "path", value: "other", type: "radio" },
+                        domProps: { checked: _vm._q(_vm.path, "other") },
+                        on: {
+                          change: function($event) {
+                            _vm.path = "other"
+                          }
+                        }
+                      }),
+                      _vm._v(" 其他\n                        ")
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
@@ -55147,14 +55265,14 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("address"),
-                          expression: "errors.has('address')"
+                          value: _vm.errors.has("path"),
+                          expression: "errors.has('path')"
                         }
                       ],
                       staticClass: "help-block",
                       staticStyle: { color: "red !important" }
                     },
-                    [_vm._v(_vm._s(_vm.errors.first("address")))]
+                    [_vm._v(_vm._s(_vm.errors.first("path")))]
                   )
                 ])
               ]
@@ -55259,29 +55377,35 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c(
-              "button",
-              {
-                staticClass: "button is-primary",
-                staticStyle: { width: "100%" },
-                attrs: { disabled: !_vm.complete },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.nextStep($event)
-                  }
-                }
-              },
-              [_vm._v("\n                    Pay A$ 50.00\n                ")]
-            )
-          ]),
+          _c("p", { staticClass: "is-size-3" }, [_vm._v("同意条款")]),
           _vm._v(" "),
-          _c("loader", { attrs: { show: _vm.show, label: _vm.label } })
-        ],
-        1
-      )
-    ])
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(1, false, false)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-primary",
+              staticStyle: { width: "100%" },
+              attrs: { disabled: !_vm.complete },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.nextStep($event)
+                }
+              }
+            },
+            [_vm._v("\n                Pay A$ 50.00\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("loader", { attrs: { show: _vm.show, label: _vm.label } })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -55293,13 +55417,46 @@ var staticRenderFns = [
       "p",
       { staticClass: "is-size-5", staticStyle: { display: "inline" } },
       [
-        _vm._v(" Pay with "),
+        _vm._v(" -- Pay with "),
         _c("em", {
           staticClass: "fa fa-cc-stripe",
           staticStyle: { color: "#474fdb" }
+        }),
+        _vm._v(" "),
+        _c("em", { staticClass: "fa fa-cc-visa" }),
+        _vm._v(" "),
+        _c("em", {
+          staticClass: "fa fa-cc-mastercard",
+          staticStyle: { color: "#c50000" }
+        }),
+        _vm._v(" "),
+        _c("em", {
+          staticClass: "fa fa-cc-amex",
+          staticStyle: { color: "#4785d9" }
         })
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("label", { staticClass: "checkbox" }, [
+          _c("input", { attrs: { type: "checkbox" } }),
+          _vm._v("\n                        I agree to the "),
+          _c(
+            "a",
+            {
+              staticStyle: { color: "#474fdb" },
+              attrs: { href: "/summit-2018/terms-and-conditions" }
+            },
+            [_vm._v("terms and conditions")]
+          )
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

@@ -25,7 +25,6 @@
     <app></app>
 </div>
 
-<div id="app"></div>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="/js/app.js"></script>

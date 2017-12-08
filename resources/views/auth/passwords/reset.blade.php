@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
     <div class="container">
         <div class="box">
             <p class="is-size-1">Reset Password</p>

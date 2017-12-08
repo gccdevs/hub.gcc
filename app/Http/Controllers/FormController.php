@@ -14,7 +14,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        return view('register');
+        return view('forms.register');
     }
 
     public function purchase(Request $request)
@@ -105,4 +105,9 @@ class FormController extends Controller
         $response = Form::where('email',request('email'))->first() ? true : false;
         return response()->json(['status' => $response]);
     }
+
+    public function termsAndConditions(){
+        return view('forms.terms');
+    }
+
 }
