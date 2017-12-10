@@ -13,8 +13,9 @@ You have successfully purchased the 2018 Glory City Church Summit ticket!
 |   ||
 | ------------- |:--------------------------------------------------:|
 | Receipt   | **{{ $form->payment_ref }}**   |
-| Name  |**{{ $form->last_name }}, {{ $form->first_name }}** |
+| Name  |**{{ $form->name }}** |
 | Gender|  **{{ $form->gender }}**   |
+| First Time |  **{{ $form->first_time }}**   |
 | Mobile|  **{{ $form->mobile }}**   |
 | Email |   **{{ $form->email }}**   |
 | Address   |   **{{ $form->address }}** |

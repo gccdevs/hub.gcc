@@ -10,11 +10,10 @@ let routes = [
         meta: {}
     },
     {
-        path: '/summit-2018/checkout',
-        name:'summit.checkout',
-        props: true,
-        component: require('./components/summit/Checkout'),
-        meta: { requiresForm: true }
+        path: '/summit-2018/terms-and-conditions',
+        name:'summit.terms',
+        component: require('./components/summit/Terms'),
+        meta: {}
     },
     {
         path: '/summit-2018/success',
