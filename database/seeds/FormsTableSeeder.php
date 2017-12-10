@@ -31,6 +31,7 @@ class FormsTableSeeder extends Seeder
                 'gender' => ($index %2 == 0) ? 'male' : 'female',
                 'first_time' => ($index %2 == 0) ? 'yes' : 'no',
                 'is_paid' =>  true,
+                'is_agreed' =>  true,
                 'payment_ref' => 'ch_' . str_random(24)
             ]);
         }

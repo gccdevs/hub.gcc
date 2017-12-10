@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
-    protected $fillable = ['name','email','address', 'mobile','gender','first_time'];
+    protected $fillable = ['name','email','address', 'mobile','gender','first_time','path'];
 
     protected $table ='forms';
 
@@ -16,4 +16,11 @@ class Form extends Model
         $this->payment_ref = $payRef;
         $this->save();
     }
+
+    public function setAgree()
+    {
+        $this->is_agreed = true;
+        $this->save();
+    }
+
 }

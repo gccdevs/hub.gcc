@@ -6,6 +6,7 @@
             <div class="box">
                 <p class="is-size-3">基本信息</p>
                 <br>
+
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('name') }">
                         <label class="label" for="name">姓名 *</label>
@@ -51,13 +52,37 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="columns">
+                    <div class="column" :class="{'has-error' : errors.has('address') }">
+                        <label class="label" for="address">地址 *</label>
+                        <div>
+                            <input style="width:80%" class="is-size-6" v-model="address"
+                                   v-validate data-vv-rules="required|min:5" data-vv-as="地址"
+                                   id="address" placeholder="Address" type="text" name="address" required>
+                            <br>
+                            <span class="help-block" v-show="errors.has('address')" style="color: red !important;">{{errors.first('address')}}</span>
+                        </div>
+                    </div>
+                    <div class="column" :class="{'has-error' : errors.has('mobile') }">
+                        <label class="label" for="mobile">电话 *</label>
+                        <div>
+                            <input style="width:80%" class="is-size-6" v-model="mobile"
+                                   v-validate data-vv-rules="required|min:5" data-vv-as="电话"
+                                   id="mobile" placeholder="Mobile" type="text" name="mobile" required>
+                            <br>
+                            <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('email') }">
                         <label class="label" for="email">邮箱 *</label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email"
                                    v-validate data-vv-rules="required|email" data-vv-as="邮箱"
-                                   id="email" placeholder="email" type="email" name="email" required>
+                                   id="email" placeholder="Email" type="email" name="email" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
                         </div>
@@ -66,7 +91,7 @@
                         <label class="label" for="email-confirm">确认邮箱 *</label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email_confirm"
-                                   id="email-confirm" placeholder="email again" v-validate data-vv-rules="required|email|confirmed:email" data-vv-as="确认邮箱"
+                                   id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email" data-vv-as="确认邮箱"
                                    type="email" name="email-confirm" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
@@ -89,10 +114,7 @@
                                 <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
                             </label>
                             <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="web" type="radio"> GCC 网页
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络社交平台
+                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络平台
                             </label>
                             <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
@@ -146,14 +168,14 @@
                 <div class="columns">
                     <div class="column">
                         <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" v-model="termChecker" @click="toggleChecker()" required>
                             I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
                         </label>
                     </div>
                 </div>
             </div>
             <div class="field">
-                <button class="button is-primary" style="width:100%" @click.prevent="nextStep" :disabled="!complete">
+                <button class="button is-primary" style="width:100%" @click.prevent="nextStep" :disabled="!(complete && this.termChecker)">
                     Pay A$ 50.00
                 </button>
             </div>
@@ -189,6 +211,7 @@
                 number: false,
                 expiry: false,
                 cvc: false,
+                termChecker: false,
                 style:{
                     base: {
                         color: '#1598af',
@@ -221,30 +244,33 @@
 
             nextStep() {
                 if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
-                    this.$validator.validateAll().then(result => {
+                    if (this.termChecker){
+                        this.$validator.validateAll().then(result => {
 
-                        let formData = {
-                            email: this.email
-                        };
+                            let formData = {
+                                email: this.email
+                            };
 
-                        axios.post('/api/form/validate', formData).then(response => {
-                            console.log('alert: ', response.data.status);
-                            if (response.data.status) {
-                                alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                                this.$router.push({name: 'summit'});
-                            } else {
-                                this.pay();
-                            }
+                            axios.post('/api/form/validate', formData).then(response => {
+                                console.log('alert: ', response.data.status);
+                                if (response.data.status) {
+                                    alert("此邮箱已被成功注册. 请使用其他邮箱.");
+                                    this.$router.push({name: 'summit'});
+                                } else {
+                                    this.pay();
+                                }
+                            })
                         })
-                    })
+                    }
                 }else{
-                    alert('Please follow the instruction to finish the registration first!');
+                    console.log(this.complete , this.gender , this.firstTime , this.name, this.email, this.address, this.mobile.length, this.email_confirm , this.path);
+                    alert('请检查所填写信息是否有误或未填写!');
 //                    this.$router.push({name:'summit'})
                 }
             },
 
             update () {
-                this.complete = this.number && this.expiry && this.cvc
+                this.complete = this.number && this.expiry && this.cvc;
 
                 // field completed, find field to focus next
                 if (this.number) {
@@ -277,6 +303,7 @@
                         mobile: vm.mobile,
                         email: vm.email,
                         path: vm.path,
+                        isAgreed: vm.termChecker,
                         stripeToken: data.token.id
                     };
 
@@ -332,7 +359,12 @@
                     console.log('creating token failed: ', err);
                     vm.show = false;
                 })
+            },
+
+            toggleChecker(){
+                this.termChecker = !this.termChecker;
             }
+
         }
     }
 </script>

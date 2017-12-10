@@ -22,17 +22,20 @@ class FormController extends Controller
     {
         $this->validator($request->all())->validate(); // validate requested inputs
 
-        $form = new Form([
-            'name' => request('name'),
-            'first_time' => request('first_time'),
-            'email' => request('email'),
-            'gender' => request('gender'),
-            'mobile' => request('mobile'),
-            'address' => request('address'),
-            'path' => request('path'),
-        ]); // create an entry
-
         try { // process payment
+
+            $form = new Form([
+                'name' => request('name'),
+                'first_time' => request('first_time'),
+                'email' => request('email'),
+                'gender' => request('gender'),
+                'mobile' => request('mobile'),
+                'address' => request('address'),
+                'path' => request('path'),
+            ]); // create an entry
+
+            $form->setAgree();
+
             $customer = Customer::create([
                 'email' =>request('email'),
                 'source' => request('stripeToken'),
@@ -48,8 +51,7 @@ class FormController extends Controller
             return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
         }
 
-        $form->confirmPayment($charge->id); // mark as paid
-        $form->save(); // save into database
+        $form->confirmPayment($charge->id);
 
         try{
             Mail::to($form)->queue(new PurchaseConfirmation($form)); // send confirmation email
@@ -66,6 +68,7 @@ class FormController extends Controller
     {
 
         return Validator::make($data, [
+            'isAgreed' => 'required|boolean:true',
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255|unique:forms',
             'stripeToken' => 'required',

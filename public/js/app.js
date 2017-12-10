@@ -54203,6 +54203,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54228,6 +54250,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             number: false,
             expiry: false,
             cvc: false,
+            termChecker: false,
             style: {
                 base: (_base = {
                     color: '#1598af',
@@ -54265,24 +54288,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this = this;
 
             if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
-                this.$validator.validateAll().then(function (result) {
+                if (this.termChecker) {
+                    this.$validator.validateAll().then(function (result) {
 
-                    var formData = {
-                        email: _this.email
-                    };
+                        var formData = {
+                            email: _this.email
+                        };
 
-                    axios.post('/api/form/validate', formData).then(function (response) {
-                        console.log('alert: ', response.data.status);
-                        if (response.data.status) {
-                            alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                            _this.$router.push({ name: 'summit' });
-                        } else {
-                            _this.pay();
-                        }
+                        axios.post('/api/form/validate', formData).then(function (response) {
+                            console.log('alert: ', response.data.status);
+                            if (response.data.status) {
+                                alert("此邮箱已被成功注册. 请使用其他邮箱.");
+                                _this.$router.push({ name: 'summit' });
+                            } else {
+                                _this.pay();
+                            }
+                        });
                     });
-                });
+                }
             } else {
-                alert('Please follow the instruction to finish the registration first!');
+                console.log(this.complete, this.gender, this.firstTime, this.name, this.email, this.address, this.mobile.length, this.email_confirm, this.path);
+                alert('请检查所填写信息是否有误或未填写!');
                 //                    this.$router.push({name:'summit'})
             }
         },
@@ -54319,6 +54345,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     mobile: vm.mobile,
                     email: vm.email,
                     path: vm.path,
+                    isAgreed: vm.termChecker,
                     stripeToken: data.token.id
                 };
 
@@ -54370,6 +54397,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 console.log('creating token failed: ', err);
                 vm.show = false;
             });
+        },
+        toggleChecker: function toggleChecker() {
+            this.termChecker = !this.termChecker;
         }
     }
 });
@@ -55069,6 +55099,144 @@ var render = function() {
               "div",
               {
                 staticClass: "column",
+                class: { "has-error": _vm.errors.has("address") }
+              },
+              [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "address" } },
+                  [_vm._v("地址 *")]
+                ),
+                _vm._v(" "),
+                _c("div", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.address,
+                        expression: "address"
+                      },
+                      { name: "validate", rawName: "v-validate" }
+                    ],
+                    staticClass: "is-size-6",
+                    staticStyle: { width: "80%" },
+                    attrs: {
+                      "data-vv-rules": "required|min:5",
+                      "data-vv-as": "地址",
+                      id: "address",
+                      placeholder: "Address",
+                      type: "text",
+                      name: "address",
+                      required: ""
+                    },
+                    domProps: { value: _vm.address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.address = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("address"),
+                          expression: "errors.has('address')"
+                        }
+                      ],
+                      staticClass: "help-block",
+                      staticStyle: { color: "red !important" }
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("address")))]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "column",
+                class: { "has-error": _vm.errors.has("mobile") }
+              },
+              [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "mobile" } },
+                  [_vm._v("电话 *")]
+                ),
+                _vm._v(" "),
+                _c("div", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.mobile,
+                        expression: "mobile"
+                      },
+                      { name: "validate", rawName: "v-validate" }
+                    ],
+                    staticClass: "is-size-6",
+                    staticStyle: { width: "80%" },
+                    attrs: {
+                      "data-vv-rules": "required|min:5",
+                      "data-vv-as": "电话",
+                      id: "mobile",
+                      placeholder: "Mobile",
+                      type: "text",
+                      name: "mobile",
+                      required: ""
+                    },
+                    domProps: { value: _vm.mobile },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.mobile = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("mobile"),
+                          expression: "errors.has('mobile')"
+                        }
+                      ],
+                      staticClass: "help-block",
+                      staticStyle: { color: "red !important" }
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("mobile")))]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c(
+              "div",
+              {
+                staticClass: "column",
                 class: { "has-error": _vm.errors.has("email") }
               },
               [
@@ -55093,7 +55261,7 @@ var render = function() {
                       "data-vv-rules": "required|email",
                       "data-vv-as": "邮箱",
                       id: "email",
-                      placeholder: "email",
+                      placeholder: "Email",
                       type: "email",
                       name: "email",
                       required: ""
@@ -55159,7 +55327,7 @@ var render = function() {
                     staticStyle: { width: "80%" },
                     attrs: {
                       id: "email-confirm",
-                      placeholder: "email again",
+                      placeholder: "Email again",
                       "data-vv-rules": "required|email|confirmed:email",
                       "data-vv-as": "确认邮箱",
                       type: "email",
@@ -55323,32 +55491,6 @@ var render = function() {
                           }
                         ],
                         staticClass: "is-size-5",
-                        attrs: { name: "path", value: "web", type: "radio" },
-                        domProps: { checked: _vm._q(_vm.path, "web") },
-                        on: {
-                          change: function($event) {
-                            _vm.path = "web"
-                          }
-                        }
-                      }),
-                      _vm._v(" GCC 网页\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
-                          }
-                        ],
-                        staticClass: "is-size-5",
                         attrs: { name: "path", value: "social", type: "radio" },
                         domProps: { checked: _vm._q(_vm.path, "social") },
                         on: {
@@ -55357,7 +55499,7 @@ var render = function() {
                           }
                         }
                       }),
-                      _vm._v(" 网络社交平台\n                        ")
+                      _vm._v(" 网络平台\n                        ")
                     ]
                   ),
                   _vm._v(" "),
@@ -55544,7 +55686,46 @@ var render = function() {
                 "label",
                 { staticClass: "checkbox" },
                 [
-                  _c("input", { attrs: { type: "checkbox" } }),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.termChecker,
+                        expression: "termChecker"
+                      }
+                    ],
+                    attrs: { type: "checkbox", required: "" },
+                    domProps: {
+                      checked: Array.isArray(_vm.termChecker)
+                        ? _vm._i(_vm.termChecker, null) > -1
+                        : _vm.termChecker
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.toggleChecker()
+                      },
+                      change: function($event) {
+                        var $$a = _vm.termChecker,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.termChecker = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.termChecker = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.termChecker = $$c
+                        }
+                      }
+                    }
+                  }),
                   _vm._v("\n                        I agree to the "),
                   _c(
                     "router-link",
@@ -55567,7 +55748,7 @@ var render = function() {
             {
               staticClass: "button is-primary",
               staticStyle: { width: "100%" },
-              attrs: { disabled: !_vm.complete },
+              attrs: { disabled: !(_vm.complete && this.termChecker) },
               on: {
                 click: function($event) {
                   $event.preventDefault()
