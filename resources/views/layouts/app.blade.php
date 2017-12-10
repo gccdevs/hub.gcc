@@ -10,7 +10,7 @@
     <link rel="icon" href="{!! asset('images/small-logo.png') !!}"/>
     <title>Summit 2018 - Glory City Church of Melbourne</title>
     <link rel="stylesheet" href="{{ asset('css/bulma.css') }}">
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script>
         var GCC = {
