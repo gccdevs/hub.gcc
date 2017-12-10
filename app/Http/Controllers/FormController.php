@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 use Stripe\{Charge, Customer};
 
 
@@ -28,6 +29,7 @@ class FormController extends Controller
             'gender' => request('gender'),
             'mobile' => request('mobile'),
             'address' => request('address'),
+            'path' => request('path'),
         ]); // create an entry
 
         try { // process payment
@@ -70,7 +72,8 @@ class FormController extends Controller
             'address' => 'required|string|max:255',
             'mobile' => 'required|min:8',
             'gender' => 'required|in:male,female',
-            'first_time' => 'required|in:yes,no'
+            'first_time' => 'required|in:yes,no',
+            'path' => 'required|in:friend,classmate,colleague,web,social,family,other'
         ]);
 
     }
@@ -94,6 +97,7 @@ class FormController extends Controller
                 $ref = $form->payment_ref,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
                 $firstTime = $form->first_time,
+                $path = $form->path
             ]);
         }
 
@@ -110,4 +114,37 @@ class FormController extends Controller
         return view('forms.terms');
     }
 
+    public function download()
+    {
+
+        $data = Form::all();
+
+        $cellData = [];
+
+        array_push($cellData, ['name', 'gender', 'mobile','email','address','is_paid','payment_ref','time','first_time','where to know']);
+
+        foreach ($data as $form){
+
+            array_push($cellData, [
+                $name = $form->name,
+                $gender = $form->gender,
+                $mobile = $form->mobile,
+                $email = $form->email,
+                $address = $form->address,
+                $is_paid = $form->is_paid,
+                $ref = $form->payment_ref,
+                $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
+                $firstTime = $form->first_time,
+                $path = $form->path
+            ]);
+        }
+
+        array_reverse($cellData);
+
+        Excel::create('Registered-users', function ($excel) use ($cellData) {
+            $excel->sheet('list1', function ($sheet) use ($cellData) {
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
+    }
 }

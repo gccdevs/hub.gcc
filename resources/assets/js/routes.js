@@ -10,6 +10,12 @@ let routes = [
         meta: {}
     },
     {
+        path: '/summit-2018/terms-and-conditions',
+        name:'summit.terms',
+        component: require('./components/summit/Terms'),
+        meta: {}
+    },
+    {
         path: '/summit-2018/success',
         name:'summit.success',
         props: true,

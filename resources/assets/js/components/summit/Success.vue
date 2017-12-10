@@ -12,6 +12,7 @@
         <h4 v-text="'First Time: ' + this.firstTime"></h4>
         <h4 v-text="'Gender: ' + this.mobile"></h4>
         <h4 v-text="'Address: ' + this.address"></h4>
+        <h4 v-text="'Where hear us: ' + this.path"></h4>
     </div>
 </template>
 
@@ -20,7 +21,7 @@
 
     export default {
 
-        props:['email','name','address','mobile','gender', 'paymentRef', 'firstTime'],
+        props:['email','name','address','mobile','gender', 'paymentRef', 'firstTime','path'],
 
     }
 

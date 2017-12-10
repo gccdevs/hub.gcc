@@ -5,7 +5,7 @@
             <p class="is-size-1">Summit 2018</p>
             <div class="box">
                 <p class="is-size-3">基本信息</p>
-                <hr>
+                <br>
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('name') }">
                         <label class="label" for="name">姓名 *</label>
@@ -51,7 +51,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('email') }">
                         <label class="label" for="email">邮箱 *</label>
@@ -80,25 +79,25 @@
                         <label class="label">从什么途径了解到我们？ *</label>
                         <div class="field">
                             <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="where" data-vv-as="途径"
+                                <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="path" data-vv-as="途径"
                                        name="path" value="friend" id="path" type="radio"> 朋友
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同学
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="web" type="radio"> GCC 网页
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络社交平台
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
                             </label>
-                            <label class="radio" for="gender">
+                            <label class="radio" for="path">
                                 <input class="is-size-5" v-model="path" name="path" value="other" type="radio"> 其他
                             </label>
                             <br>
@@ -108,8 +107,7 @@
                 </div>
 
                 <p class="is-size-3" style="display:inline">支付信息 <p class="is-size-5" style="display:inline"> -- Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em> <em class="fa fa-cc-visa"></em> <em style="color:#c50000;" class="fa fa-cc-mastercard"></em> <em style="color:#4785d9;" class="fa fa-cc-amex"></em></p></p>
-                <hr>
-
+                <br>
                 <div class="columns">
                     <div class="column">
                         <label class="control-label" style="margin-right:20px;">卡号 *</label>
@@ -149,7 +147,7 @@
                     <div class="column">
                         <label class="checkbox">
                             <input type="checkbox">
-                            I agree to the <a style="color:#474fdb;" href="/summit-2018/terms-and-conditions">terms and conditions</a>
+                            I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
                         </label>
                     </div>
                 </div>
@@ -222,7 +220,7 @@
         methods:{
 
             nextStep() {
-                if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm) {
+                if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
                     this.$validator.validateAll().then(result => {
 
                         let formData = {
@@ -278,6 +276,7 @@
                         gender: vm.gender,
                         mobile: vm.mobile,
                         email: vm.email,
+                        path: vm.path,
                         stripeToken: data.token.id
                     };
 
@@ -301,6 +300,7 @@
                                         address: vm.address,
                                         gender: vm.gender,
                                         mobile: vm.mobile,
+                                        path:vm.path,
                                         paymentRef: ref
                                     }
                                 });

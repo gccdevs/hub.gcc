@@ -20,6 +20,7 @@ class CreateFormsTable extends Migration
             $table->string('address');
             $table->string('mobile');
             $table->string('gender');
+            $table->string('path');
             $table->string('first_time');
             $table->boolean('is_paid')->default(false);
             $table->string('payment_ref')->nullable()->unique();

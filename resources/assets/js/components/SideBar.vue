@@ -1,0 +1,78 @@
+<template>
+    <div class="container">
+        <aside class="menu">
+            <p class="menu-label">General</p>
+            <ul class="menu-list">
+                <li>
+                    <router-link :to="{ name: 'booking' }" v-bind:class="classObject">
+                        <span class="icon"><i class="fa fa-clipboard"></i></span> Booking
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'calendar' }" v-bind:class="classObject">
+                        <span class="icon"><i class="fa fa-calendar-o"></i></span> Calendar
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'user.list' }" v-bind:class="classObject">
+                        <span class="icon"><i class="fa fa-home"></i></span> 用户列表
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'form.show' }" v-bind:class="classObject">
+                        <span class="icon"><i class="fa fa-table"></i></span> 表单
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name:'profile' }" v-bind:class="classObject">
+                        <span class="icon"><i class="fa fa-user-md"></i></span> 个人资料
+                    </router-link>
+
+                    <ul>
+                        <li>
+                            <router-link :to="{name: 'profile.edit'}">
+                                <span class="icon is-small"><i class="fa fa-info"></i></span> 更改信息
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'password.edit' }">
+                                <span class="icon is-small"><i class="fa fa-key"></i></span> 更改密码
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</template>
+
+
+<script>
+
+    import Expanding from 'vue-bulma-expanding'
+
+    export default{
+
+        data() {
+            return{
+                isActive: true,
+                error: null
+            }
+        },
+
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        },
+
+        components:{
+            Expanding
+        }
+
+    }
+
+</script>

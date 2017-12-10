@@ -9,9 +9,12 @@ Route::get('/', function () {
 //Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 
 Route::get('/summit-2018/signup', 'FormController@index')->name('summit.signup');
-Route::get('/summit-2018/terms-and-conditions', 'FormController@termsAndConditions')->name('summit.terms');
+Route::get('/summit-2018/terms-and-conditions', 'FormController@index')->name('summit.terms');
 Route::get('/summit-2018/checkout', 'FormController@index')->name('summit.checkout');
 Route::get('/summit-2018/success', 'FormController@index')->name('summit.checkout');
+
+Route::get('/summit-2018/registered-users', 'FormController@show')->name('summit.result')->middleware('auth');
+
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 Route::get('/dashboard/profile-edit', 'HomeController@index')->name('profile.edit')->middleware('auth');
@@ -24,7 +27,11 @@ Route::post('/user/password/update','PasswordController@update')->middleware('au
 Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
 Route::get('/users/list','ProfileController@show')->middleware('auth');
 
+Route::get('/form/download-registered-users', function () {
+    return view('forms.download');
+})->middleware('auth');
 
+Route::get('/form/download-users', 'FormController@download')->middleware('auth');
 Route::get('/form', 'HomeController@index')->name('form')->middleware('auth');
 Route::get('/booking', 'HomeController@index')->name('booking')->middleware('auth');
 Route::get('/calendar', 'HomeController@index')->name('calendar')->middleware('auth');

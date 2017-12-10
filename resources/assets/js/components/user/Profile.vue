@@ -1,23 +1,22 @@
 <template>
-    <div class="col-md-9">
-        <h1>个人信息
-            <a href="javascript:window.location.reload();" class="btn btn-outline-info"><em class="fa fa-refresh"></em></a>
-            <router-link :to="{ name: 'profile.edit' }" class="btn btn-outline-info" activeClass="active" exact tag="a">修改信息</router-link>
-            <router-link :to="{ name: 'password.edit' }" class="btn btn-outline-info" activeClass="active" exact tag="a">修改密码</router-link>
-        </h1>
-            <br>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    用户名
-                    <br>
-                    <h4 v-text="this.person.name"></h4>
-                </li>
-                <li class="list-group-item">
-                    邮箱
-                    <br>
-                    <h4 v-text="this.person.email"></h4>
-                </li>
-            </ul>
+    <div class="container">
+        <p class="is-size-1">个人信息</p>
+        <br>
+        <ul class="box">
+            <li class="column is-12">
+                <a href="javascript:window.location.reload();" class="button is-primary"><em class="fa fa-refresh"> 刷新</em></a>
+            </li>
+            <li class="column is-12">
+                用户名
+                <br>
+                <h4 class="label" v-text="this.person.name"></h4>
+            </li>
+            <li class="column is-12">
+                邮箱
+                <br>
+                <h4 class="label" v-text="this.person.email"></h4>
+            </li>
+        </ul>
     </div>
 </template>
 
