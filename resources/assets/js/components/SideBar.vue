@@ -48,9 +48,7 @@
 
 
 <script>
-
-    import Expanding from 'vue-bulma-expanding'
-
+    
     export default{
 
         data() {
@@ -67,10 +65,6 @@
                     'text-danger': this.error && this.error.type === 'fatal'
                 }
             }
-        },
-
-        components:{
-            Expanding
         }
 
     }
