@@ -13,11 +13,6 @@
 
     <div id="nav" class="navbar-menu">
         <div class="navbar-start">
-            <div>
-                <a class="navbar-item" href="{{ route('home') }}">
-                    Home
-                </a>
-            </div>
             <span id="nav-toggle" class="nav-toggle">
                 <span></span>
                 <span></span>

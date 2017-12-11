@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,8 @@ class ProfileController extends Controller
                 $name = $user->name,
                 $name = $user->email,
                 $name = $user->mobile,
-                $role = $user->role,
-                $createdBy = $user->invited_by,
+                $role = Role::find($user->role)->role_title,
+                $createdBy =User::find($user->invited_by)->name,
                 $time = date('Y/m/d h:i:s',strtotime($user->created_at))
             ]);
         }

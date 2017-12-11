@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Expr\Cast\Object_;
 use Stripe\{Charge, Customer};
 
 
@@ -55,6 +56,7 @@ class FormController extends Controller
 
         try{
             Mail::to($form)->queue(new PurchaseConfirmation($form)); // send confirmation email
+
         } catch(\Exception $e) {
             return response()->json(['message' => 'failed to send email', 'reason' => $e->getMessage(), 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
         }
@@ -90,18 +92,19 @@ class FormController extends Controller
 
         foreach ($data as $form){
 
-            array_push($response, [
-                $name = $form->name,
-                $gender = $form->gender,
-                $mobile = $form->mobile,
-                $email = $form->email,
-                $address = $form->address,
-                $is_paid = $form->is_paid,
-                $ref = $form->payment_ref,
-                $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
-                $firstTime = $form->first_time,
-                $path = $form->path
-            ]);
+            $object = (object) [];
+            $object->name = $form->name;
+            $object->gender = $form->gender;
+            $object->mobile = $form->mobile;
+            $object->email = $form->email;
+            $object->address = $form->address;
+            $object->isPaid = $form->is_paid;
+            $object->ref = $form->payment_ref;
+            $object->time = date('Y/m/d h:i:s',strtotime($form->updated_at));
+            $object->firstTime = $form->first_time;
+            $object->path = $form->path;
+
+            array_push($response, $object);
         }
 
         return array_reverse($response);
@@ -145,7 +148,7 @@ class FormController extends Controller
         array_reverse($cellData);
 
         Excel::create('Registered-users', function ($excel) use ($cellData) {
-            $excel->sheet('list1', function ($sheet) use ($cellData) {
+            $excel->sheet('sheet1', function ($sheet) use ($cellData) {
                 $sheet->rows($cellData);
             });
         })->export('xls');

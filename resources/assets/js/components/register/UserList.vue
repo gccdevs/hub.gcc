@@ -1,19 +1,18 @@
 <template>
     <div>
-        <h1 class="is-size-1">用户列表</h1>
+        <h1 class="is-size-1">User List</h1>
         <div class="box">
             <a href="javascript:window.location.reload();" class="button is-primary"><em class="fa fa-refresh"></em></a>
             <div class="col-md-10">
                 <table class="table table-responsive-sg">
                     <thead class="thead">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>Role</th>
-                        <th>Invited by</th>
-                        <th>Created at</th>
-                        <th></th>
+                        <th>姓名</th>
+                        <th>邮件</th>
+                        <th>电话</th>
+                        <th>权限</th>
+                        <th>邀请人</th>
+                        <th>邀请时间</th>
                     </tr>
                     </thead>
 
@@ -24,7 +23,8 @@
                         <td v-text="user[2]"></td>
                         <td v-text="user[3]"></td>
                         <td v-text="user[4]"></td>
-                        <td><button class="button is-primary" @click="chat"><em class="fa fa-commenting"> 发送信息</em></button></td>
+                        <td v-text="user[5]"></td>
+                        <!--<td><button class="button is-primary" @click="chat"><em class="fa fa-commenting"> 发送信息</em></button></td>-->
                     </tr>
                     </tbody>
                 </table>

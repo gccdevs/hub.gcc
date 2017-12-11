@@ -57,6 +57,12 @@ let routes = [
                 meta: {}
             },
             {
+                path: '/user/create',
+                name: 'user.create',
+                component: require('./components/register/Register'),
+                meta: {}
+            },
+            {
                 path: '/message',
                 name: 'message',
                 component: require('./components/message/Message'),

@@ -1,44 +1,44 @@
 <template>
-    <form class="form-horizontal" @submit.prevent="register">
-        <div class="form-group" :class="{'has-error' : errors.has('name') }">
-            <label for="name" class="col-md-6 control-label">姓名</label>
-            <div class="col-md-12">
+    <form class="form" @submit.prevent="register">
+        <div class="field" :class="{'has-error' : errors.has('name') }">
+            <label for="name" class="label">姓名</label>
+            <div class="control">
                 <input v-model="name"
                        v-validate data-vv-rules="required|min:4" data-vv-as="姓名"
-                       id="name" type="text" class="form-control" name="name" required>
+                       id="name" type="text" class="input" name="name" required>
                 <span class="help-block" v-show="errors.has('name')" style="color: red">{{errors.first('name')}}</span>
             </div>
         </div>
-        <div class="form-group" :class="{'has-error' : errors.has('email') }">
-            <label for="email" class="col-md-6 control-label">邮箱</label>
-            <div class="col-md-12">
+        <div class="field" :class="{'has-error' : errors.has('email') }">
+            <label for="email" class="label">邮箱</label>
+            <div class="control">
                 <input v-model="email"
                        v-validate data-vv-rules="required|email" data-vv-as="邮箱"
-                       id="email" type="email" class="form-control" name="email" required>
+                       id="email" type="email" class="input" name="email" required>
                 <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>
             </div>
         </div>
-        <div class="form-group" :class="{'has-error' : errors.has('password') }">
-            <label for="password" class="col-md-6 control-label">密码</label>
-            <div class="col-md-12">
+        <div class="field" :class="{'has-error' : errors.has('password') }">
+            <label for="password" class="label">密码</label>
+            <div class="control">
                 <input v-model="password"
                        v-validate data-vv-rules="required|min:6" data-vv-as="密码"
-                       id="password" type="password" class="form-control" name="password" required>
+                       id="password" type="password" class="input" name="password" required>
                 <span class="help-block" v-show="errors.has('password')" style="color: red">{{errors.first('password')}}</span>
             </div>
         </div>
-        <div class="form-group" :class="{'has-error' : errors.has('password_confirmation') }">
-            <label for="password-confirm" class="col-md-6 control-label">确认密码</label>
-            <div class="col-md-12">
+        <div class="field" :class="{'has-error' : errors.has('password_confirmation') }">
+            <label for="password-confirm" class="label">确认密码</label>
+            <div class="control">
                 <input id="password-confirm"
                        v-validate data-vv-rules="required|min:6|confirmed:password" data-vv-as="确认密码"
-                       type="password" class="form-control" name="password_confirmation" required>
+                       type="password" class="input" name="password_confirmation" required>
                 <span class="help-block" v-show="errors.has('password_confirmation')" style="color: red">{{errors.first('password_confirmation')}}</span>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-12 offset-md-5">
-                <button type="submit" class="btn btn-outline-secondary">
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary" style="width:100% ;">
                     创建
                 </button>
             </div>

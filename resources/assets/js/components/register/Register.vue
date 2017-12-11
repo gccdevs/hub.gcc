@@ -1,10 +1,8 @@
 <template>
     <div class="container">
-        <h1>创建用户</h1>
-        <div class="row">
-            <div class="col-md-8 offset-md-1">
-                <register-form></register-form>
-            </div>
+        <h1 class="is-size-1">Invite New Users</h1>
+        <div class="box">
+            <register-form></register-form>
         </div>
     </div>
 </template>

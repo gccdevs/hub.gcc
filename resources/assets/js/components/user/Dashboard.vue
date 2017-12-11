@@ -1,7 +1,7 @@
 <template>
     <section class="container columns">
-        <side-bar class="column is-2"></side-bar>
-        <div class="column is-10">
+        <side-bar class="column is-3"></side-bar>
+        <div class="column is-9">
             <br>
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
