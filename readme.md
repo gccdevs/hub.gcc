@@ -123,4 +123,4 @@ This project is to create a Vue.js based single page application, which is built
 
 ### Admin Panel
 
-![screen shot 2017-12-06 at 5 03 38 pm](https://user-images.githubusercontent.com/9074571/33647178-a78b4184-daa7-11e7-80af-7adbbb636ef2.png)
+![screen shot 2017-12-06 at 5 03 38 pm](https://user-images.githubusercontent.com/9074571/33857561-5161f2bc-df20-11e7-95b0-feb3fc4b37ed.png)
