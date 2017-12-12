@@ -20,7 +20,11 @@ class FormController extends Controller
 
     public function purchase(Request $request)
     {
-        $this->validator($request->all())->validate(); // validate requested inputs
+        try{
+            $this->validator($request->all())->validate(); // validate requested inputs
+        } catch( \Exception $e){
+            return response()->json(['message' => 'input cannot pass validation', 'reason' => $e->getMessage()]);
+        }
 
         try { // process payment
 
@@ -71,11 +75,11 @@ class FormController extends Controller
 
         return Validator::make($data, [
             'isAgreed' => 'required|boolean:true',
-            'name' => 'required|string|max:255|min:2',
-            'email' => 'required|string|email|max:255|unique:forms',
+            'name' => 'required|string|max:50|min:2',
+            'email' => 'required|string|email|max:50|unique:forms',
             'stripeToken' => 'required',
-            'address' => 'required|string|max:255',
-            'mobile' => 'required|min:8',
+            'address' => 'required|string|max:100',
+            'mobile' => 'required|min:10|max:25',
             'gender' => 'required|in:male,female',
             'first_time' => 'required|in:yes,no',
             'path' => 'required|in:friend,classmate,colleague,web,social,family,other'

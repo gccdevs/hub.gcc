@@ -54240,6 +54240,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -54300,40 +54301,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
 
     methods: {
-        nextStep: function nextStep() {
+        validateAndPay: function validateAndPay() {
             var _this = this;
 
-            if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
-                if (this.termChecker) {
+            if (this.validatesInputLength()) {
+                this.$validator.validateAll().then(function (result) {
+                    axios.post('/api/form/validate', { email: _this.email }).then(function (response) {
+                        //                                console.log('alert: ', response.data.status);
+                        if (response.data.status) {
 
-                    //                        this.isLoading = true;
-                    //                        this.show = true;
+                            _this.dismissLoader();
 
-                    this.$validator.validateAll().then(function (result) {
-                        axios.post('/api/form/validate', { email: _this.email }).then(function (response) {
-                            //                                console.log('alert: ', response.data.status);
-                            if (response.data.status) {
-                                _this.show = false;
-                                _this.isLoading = false;
-                                alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                                _this.$router.push({ name: 'summit' });
-                            } else {
+                            alert("此邮箱已被成功注册. 请使用其他邮箱.");
+                            _this.$router.push({ name: 'summit' });
+                        } else {
 
-                                _this.isLoading = true;
-                                _this.show = true;
+                            _this.isLoading = true;
+                            _this.show = true;
 
-                                _this.pay();
-                            }
-                        });
+                            _this.pay();
+                        }
                     });
-                }
+                });
             } else {
-                //                    this.isLoading = false;
-                //                    this.show = false;
-                //                    console.log(this.complete , this.gender , this.firstTime , this.name.length >= 2 , this.email.length > 0 , this.address.length >= 5 , this.mobile.length >= 8 , this.email === this.email_confirm , this.path);
                 alert('请检查所填写信息是否有误或未填写!');
-                //                    this.$router.push({name:'summit'})
             }
+        },
+        validatesInputLength: function validatesInputLength() {
+            return this.termChecker && this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 10 && this.email === this.email_confirm && this.path && this.name.length <= 50 && this.email.length <= 50 && this.address.length <= 100 && this.mobile.length <= 25;
         },
         update: function update() {
             this.complete = this.number && this.expiry && this.cvc;
@@ -54401,33 +54396,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         });
                     } else if (response.data.message === 'failed to send email') {
                         alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工 customerservice@glorycitychurch.com' + '\n' + 'Failed reason: ' + response.data.reason);
-                        vm.isLoading = false;
-                        vm.show = false;
+                        vm.dismissLoader();
                     } else if (response.data.message === 'failed to charge the card') {
                         alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
-                        vm.isLoading = false;
-                        vm.show = false;
+                        vm.dismissLoader();
                         //                            vm.$router.push({name: 'summit'});
+                    } else if (response.data.message === 'input cannot pass validation') {
+                        alert('所填写的信息有误，请检查修改。');
+                        vm.dismissLoader();
                     } else {
                         alert('Unknown error, please contact us： customerservice@glorycitychurch.com');
-                        vm.isLoading = false;
-                        vm.show = false;
+                        vm.dismissLoader();
                         vm.$router.push({ name: 'summit' });
                     }
                 }).catch(function (error) {
                     //                        console.log("errrrrr: ", error);
-                    vm.isLoading = false;
-                    vm.show = false;
+                    vm.dismissLoader();
                 });
             }).catch(function (err) {
                 alert('网络中断！请检查是否收到成功支付邮件,或联系我们的同工 customerservice@glorycitychurch.com');
                 //                    console.log('creating token failed: ', err);
-                vm.isLoading = false;
-                vm.show = false;
+                vm.dismissLoader();
             });
         },
         toggleChecker: function toggleChecker() {
             this.termChecker = !this.termChecker;
+        },
+        dismissLoader: function dismissLoader() {
+            this.isLoading = false;
+            this.show = false;
         }
     }
 });
@@ -54859,7 +54856,7 @@ var render = function() {
                   staticClass: "is-size-6",
                   staticStyle: { width: "80%" },
                   attrs: {
-                    "data-vv-rules": "required|min:2",
+                    "data-vv-rules": "required|min:2|max:50",
                     "data-vv-as": "姓名",
                     id: "name",
                     placeholder: "Name",
@@ -54921,12 +54918,15 @@ var render = function() {
                             value: _vm.gender,
                             expression: "gender"
                           },
-                          { name: "validate", rawName: "v-validate" }
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|in:male,female",
+                            expression: "'required|in:male,female'"
+                          }
                         ],
                         staticClass: "is-size-5",
                         attrs: {
-                          "data-vv-rules": "required|in:male,female",
-                          "data--vv-args": "gender",
                           "data-vv-as": "性别",
                           name: "gender",
                           value: "male",
@@ -55020,13 +55020,16 @@ var render = function() {
                             value: _vm.firstTime,
                             expression: "firstTime"
                           },
-                          { name: "validate", rawName: "v-validate" }
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|in:yes,no",
+                            expression: "'required|in:yes,no'"
+                          }
                         ],
                         staticClass: "is-size-5",
                         attrs: {
-                          "data-vv-rules": "required|in:yes,no",
-                          "data--vv-args": "firstTime",
-                          "data-vv-as": "第一次参加",
+                          "data-vv-as": "是否第一次参加",
                           name: "firstTime",
                           value: "yes",
                           id: "firstTime",
@@ -55127,7 +55130,7 @@ var render = function() {
                   staticClass: "is-size-6",
                   staticStyle: { width: "80%" },
                   attrs: {
-                    "data-vv-rules": "required|min:5",
+                    "data-vv-rules": "required|min:5|max:100",
                     "data-vv-as": "地址",
                     id: "address",
                     placeholder: "Address",
@@ -55193,10 +55196,10 @@ var render = function() {
                   staticClass: "is-size-6",
                   staticStyle: { width: "80%" },
                   attrs: {
-                    "data-vv-rules": "required|min:8",
+                    "data-vv-rules": "required|numeric|min:10|max:25",
                     "data-vv-as": "电话",
                     id: "mobile",
-                    placeholder: "Mobile",
+                    placeholder: "Mobile, eg: 00610123456789",
                     type: "text",
                     name: "mobile",
                     required: ""
@@ -55259,7 +55262,7 @@ var render = function() {
                   staticClass: "is-size-6",
                   staticStyle: { width: "80%" },
                   attrs: {
-                    "data-vv-rules": "required|email",
+                    "data-vv-rules": "required|email|max:50",
                     "data-vv-as": "邮箱",
                     id: "email",
                     placeholder: "Email",
@@ -55329,7 +55332,7 @@ var render = function() {
                   attrs: {
                     id: "email-confirm",
                     placeholder: "Email again",
-                    "data-vv-rules": "required|email|confirmed:email",
+                    "data-vv-rules": "required|email|confirmed:email|max:50",
                     "data-vv-as": "确认邮箱",
                     type: "email",
                     name: "email-confirm",
@@ -55391,13 +55394,20 @@ var render = function() {
                         value: _vm.path,
                         expression: "path"
                       },
-                      { name: "validate", rawName: "v-validate" }
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: {
+                          rules:
+                            "required|in:friend,classmate,colleague,web,social,family,other",
+                          args: "path"
+                        },
+                        expression:
+                          "{ rules: 'required|in:friend,classmate,colleague,web,social,family,other', args: 'path' }"
+                      }
                     ],
                     staticClass: "is-size-5",
                     attrs: {
-                      "data-vv-rules":
-                        "required|in:friend,classmate,colleague,web,social,family,other",
-                      "data--vv-args": "path",
                       "data-vv-as": "途径",
                       name: "path",
                       value: "friend",
@@ -55661,13 +55671,25 @@ var render = function() {
                 _c("input", {
                   directives: [
                     {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required",
+                      expression: "'required'"
+                    },
+                    {
                       name: "model",
                       rawName: "v-model",
                       value: _vm.termChecker,
                       expression: "termChecker"
                     }
                   ],
-                  attrs: { type: "checkbox", required: "" },
+                  attrs: {
+                    type: "checkbox",
+                    name: "terms",
+                    id: "terms",
+                    "data-vv-as": "同意条款",
+                    required: ""
+                  },
                   domProps: {
                     checked: Array.isArray(_vm.termChecker)
                       ? _vm._i(_vm.termChecker, null) > -1
@@ -55709,6 +55731,23 @@ var render = function() {
                 )
               ],
               1
+            ),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("terms"),
+                    expression: "errors.has('terms')"
+                  }
+                ],
+                staticClass: "help-block",
+                staticStyle: { color: "red !important" }
+              },
+              [_vm._v(_vm._s(_vm.errors.first("terms")))]
             )
           ])
         ])
@@ -55723,12 +55762,15 @@ var render = function() {
               : "button is-primary",
             staticStyle: { width: "100%" },
             attrs: {
-              disabled: _vm.isLoading || !(_vm.complete && this.termChecker)
+              disabled:
+                _vm.errors.any() ||
+                _vm.isLoading ||
+                !(_vm.complete && this.termChecker)
             },
             on: {
               click: function($event) {
                 $event.preventDefault()
-                _vm.nextStep($event)
+                _vm.validateAndPay($event)
               }
             }
           },

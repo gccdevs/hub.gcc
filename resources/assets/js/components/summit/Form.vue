@@ -22,7 +22,7 @@
                     <label class="label" for="name">姓名 *</label>
                     <div>
                         <input style="width:80%" class="is-size-6" v-model="name"
-                               v-validate data-vv-rules="required|min:2" data-vv-as="姓名"
+                               v-validate data-vv-rules="required|min:2|max:50" data-vv-as="姓名"
                                id="name" placeholder="Name" type="text" name="name" required>
                         <br>
                         <span class="help-block" v-show="errors.has('name')" style="color: red !important;">{{errors.first('name')}}</span>
@@ -34,7 +34,7 @@
                             <label class="label">性别 *</label>
                             <div class="field">
                                 <label style="margin-right:20px;">
-                                    <input class="is-size-5" v-model="gender" v-validate data-vv-rules="required|in:male,female" data--vv-args="gender" data-vv-as="性别"
+                                    <input class="is-size-5" v-model="gender" v-validate="'required|in:male,female'" data-vv-as="性别"
                                            name="gender" value="male" id="gender" type="radio"> 男 <em class="fa fa-male" style="color: cornflowerblue"></em>
                                 </label>
                                 <label class="radio">
@@ -48,7 +48,7 @@
                             <label class="label">第一次参加 *</label>
                             <div class="field">
                                 <label style="margin-right:20px;">
-                                    <input class="is-size-5" v-model="firstTime" v-validate data-vv-rules="required|in:yes,no" data--vv-args="firstTime" data-vv-as="第一次参加"
+                                    <input class="is-size-5" v-model="firstTime" v-validate="'required|in:yes,no'" data-vv-as="是否第一次参加"
                                            name="firstTime" value="yes" id="firstTime" type="radio"> 是 <em class="fa fa-check" style="color: cornflowerblue"></em>
                                 </label>
                                 <label class="radio">
@@ -68,7 +68,7 @@
                     <label class="label" for="address">地址 *</label>
                     <div>
                         <input style="width:80%" class="is-size-6" v-model="address"
-                               v-validate data-vv-rules="required|min:5" data-vv-as="地址"
+                               v-validate data-vv-rules="required|min:5|max:100" data-vv-as="地址"
                                id="address" placeholder="Address" type="text" name="address" required>
                         <br>
                         <span class="help-block" v-show="errors.has('address')" style="color: red !important;">{{errors.first('address')}}</span>
@@ -78,8 +78,8 @@
                     <label class="label" for="mobile">电话 *</label>
                     <div>
                         <input style="width:80%" class="is-size-6" v-model="mobile"
-                               v-validate data-vv-rules="required|min:8" data-vv-as="电话"
-                               id="mobile" placeholder="Mobile" type="text" name="mobile" required>
+                               v-validate data-vv-rules="required|numeric|min:10|max:25" data-vv-as="电话"
+                               id="mobile" placeholder="Mobile, eg: 00610123456789" type="text" name="mobile" required>
                         <br>
                         <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
                     </div>
@@ -91,7 +91,7 @@
                     <label class="label" for="email">邮箱 *   <p class="is-size-7" style="display:inline;color:red">请填写正确Email地址，支付凭证将会发到所填写的Email地址</p></label>
                     <div class="field">
                         <input style="width:80%" class="is-size-6" v-model="email"
-                               v-validate data-vv-rules="required|email" data-vv-as="邮箱"
+                               v-validate data-vv-rules="required|email|max:50" data-vv-as="邮箱"
                                id="email" placeholder="Email" type="email" name="email" required>
                         <br>
                         <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
@@ -101,7 +101,7 @@
                     <label class="label" for="email-confirm">确认邮箱 *</label>
                     <div class="field">
                         <input style="width:80%" class="is-size-6" v-model="email_confirm"
-                               id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email" data-vv-as="确认邮箱"
+                               id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email|max:50" data-vv-as="确认邮箱"
                                type="email" name="email-confirm" required>
                         <br>
                         <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
@@ -114,7 +114,7 @@
                     <label class="label">从什么途径了解到我们 *</label>
                     <div class="control">
                         <label class="radio">
-                            <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="path" data-vv-as="途径"
+                            <input class="is-size-5" v-model="path" v-validate="{ rules: 'required|in:friend,classmate,colleague,web,social,family,other', args: 'path' }" data-vv-as="途径"
                                    name="path" value="friend" id="path" type="radio"> 朋友
                         </label>
                         <label class="radio">
@@ -180,14 +180,15 @@
             <div class="columns">
                 <div class="column">
                     <label class="checkbox">
-                        <input type="checkbox" v-model="termChecker" @click="toggleChecker()" required>
+                        <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意条款" v-model="termChecker" @click="toggleChecker()" required>
                         I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
                     </label>
+                    <span class="help-block" v-show="errors.has('terms')" style="color: red !important;">{{ errors.first('terms') }}</span>
                 </div>
             </div>
         </div>
         <div class="field">
-            <button :class="(isLoading ? 'button is-primary is-loading' : 'button is-primary')" style="width:100%" @click.prevent="nextStep" :disabled="isLoading || (!(complete && this.termChecker))">
+            <button :class="(isLoading ? 'button is-primary is-loading' : 'button is-primary')" style="width:100%" @click.prevent="validateAndPay" :disabled=" errors.any() || isLoading || (!(complete && this.termChecker))">
                 Pay A$ 50.00
             </button>
             <br><br>
@@ -253,39 +254,36 @@
 
         methods:{
 
-            nextStep() {
-
-                if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
-                    if (this.termChecker){
-
-//                        this.isLoading = true;
-//                        this.show = true;
-
-                        this.$validator.validateAll().then(result => {
-                            axios.post('/api/form/validate', {email: this.email}).then(response => {
+            validateAndPay() {
+                if (this.validatesInputLength()) {
+                    this.$validator.validateAll().then(result => {
+                        axios.post('/api/form/validate', {email: this.email}).then(response => {
 //                                console.log('alert: ', response.data.status);
-                                if (response.data.status) {
-                                    this.show = false;
-                                    this.isLoading = false;
-                                    alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                                    this.$router.push({name: 'summit'});
-                                } else {
+                            if (response.data.status) {
 
-                                    this.isLoading = true;
-                                    this.show = true;
+                                this.dismissLoader();
 
-                                    this.pay();
-                                }
-                            })
+                                alert("此邮箱已被成功注册. 请使用其他邮箱.");
+                                this.$router.push({name: 'summit'});
+                            } else {
+
+                                this.isLoading = true;
+                                this.show = true;
+
+                                this.pay();
+                            }
                         })
-                    }
-                }else{
-//                    this.isLoading = false;
-//                    this.show = false;
-//                    console.log(this.complete , this.gender , this.firstTime , this.name.length >= 2 , this.email.length > 0 , this.address.length >= 5 , this.mobile.length >= 8 , this.email === this.email_confirm , this.path);
+                    })
+                } else{
                     alert('请检查所填写信息是否有误或未填写!');
-//                    this.$router.push({name:'summit'})
                 }
+            },
+
+            validatesInputLength(){
+                return this.termChecker && this.complete && this.gender && this.firstTime && this.name.length >= 2 &&
+                    this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 10 &&
+                    this.email === this.email_confirm && this.path && this.name.length <= 50 &&
+                    this.email.length <= 50 && this.address.length <= 100 && this.mobile.length <= 25;
             },
 
             update () {
@@ -357,36 +355,40 @@
                         }
                         else if(response.data.message === 'failed to send email'){
                             alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工 customerservice@glorycitychurch.com' + '\n' +'Failed reason: ' + response.data.reason);
-                            vm.isLoading = false;
-                            vm.show = false;
+                            vm.dismissLoader();
                         }
                         else if(response.data.message === 'failed to charge the card'){
                             alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
-                            vm.isLoading = false;
-                            vm.show = false;
+                            vm.dismissLoader();
 //                            vm.$router.push({name: 'summit'});
+                        }
+                        else if (response.data.message === 'input cannot pass validation'){
+                            alert('所填写的信息有误，请检查修改。');
+                            vm.dismissLoader();
                         }
                         else{
                             alert('Unknown error, please contact us： customerservice@glorycitychurch.com');
-                            vm.isLoading = false;
-                            vm.show = false;
+                            vm.dismissLoader();
                             vm.$router.push({name: 'summit'});
                         }
                     }).catch(error => {
 //                        console.log("errrrrr: ", error);
-                        vm.isLoading = false;
-                        vm.show = false;
+                        vm.dismissLoader();
                     })
                 }).catch(err => {
                     alert('网络中断！请检查是否收到成功支付邮件,或联系我们的同工 customerservice@glorycitychurch.com');
 //                    console.log('creating token failed: ', err);
-                    vm.isLoading = false;
-                    vm.show = false;
+                    vm.dismissLoader();
                 })
             },
 
             toggleChecker(){
                 this.termChecker = !this.termChecker;
+            },
+
+            dismissLoader(){
+                this.isLoading = false;
+                this.show = false;
             }
 
         }
