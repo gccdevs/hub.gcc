@@ -1,6 +1,6 @@
 # About
 
-This project is to create a Vue.js based single page application, which is built for __anonymous form sign up__, __payment__, __email__, __admin panel__, __download__ and basic __login__ and __register__.
+This project is to create a sign up and pay form for users can register for the GCC summit 2018 Limitless event. 
   
 # Installation
 
