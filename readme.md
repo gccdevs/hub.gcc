@@ -66,7 +66,8 @@ This project is to create a Vue.js based single page application, which is built
 # Selected APIs
 
   ### 1. Sign up and pay with Stripe
-    __Payment and Sign up__ are integrate altogether with custom vue-strpe-elment.js
+  
+  - __Payment and Sign up__ are integrate altogether with custom vue-strpe-elment.js
   
   ### 2. Email Service
   
