@@ -8,7 +8,7 @@ This project is to create a Vue.js based single page application, which is built
 
    * Copy from the __.env.sample__ 
    
-   * Modify the database config.
+   * Modify the database config and stripe information.
 
 2. Install packages:
     ```
@@ -22,7 +22,7 @@ This project is to create a Vue.js based single page application, which is built
     
     and then execute the above two commands. 
 
-3. Create API_KEY by running:
+3. Create API_KEY by running if there isn't a key:
     ```
     php artisan key:generate
     ```
@@ -32,11 +32,10 @@ This project is to create a Vue.js based single page application, which is built
     php artisan migrate
     ```
     
-5. Seeding:
+5. Seeding to get dummy data:
     ```
     php artisan db:seed
     ```    
-    A use with email: `admin@admin.com` and password: `123123` will be created for development.
         
 6. Queue, for sending email
     
@@ -51,7 +50,7 @@ This project is to create a Vue.js based single page application, which is built
     php artisan work --tries=4 // with max attempts of four 
     ```
     
-# Run
+# Virtual Environment
 
 - If has [valet](https://laravel.com/docs/5.5/valet) installed,
   then use it is recommended to use valet to run in __dev__ mode.
@@ -67,31 +66,13 @@ This project is to create a Vue.js based single page application, which is built
 # Selected APIs
 
   ### 1. Sign up and pay with Stripe
-  
-  - AJAX __Sign up__ form
-  
-  - Data will be saved into database with payment reference when stripe processed successfully.
-  
+      - Payment and Sign up are integrate altogether with custom vue-strpe-elment.js
   
   ### 2. Email Service
   
   - __Order Confirmation__: When use purchase or pay for something, an email will be sent from server.
   
-  - __Account Registration Confirmation__: When new user or admin account is created, a invitation email will sent to their email and their account will be activiated only if they clicked on the link being sent to.
-  
-  
-  ### 3. Admin Panel
-  
-  - `/login` to login.
-  
-  - `/dashboard` to check all options that admin page has. 
-  
-  - `/message` to chat with other colleagues
-  
-  - `booking` to allow user to book for a specific time
- 
-  - `calendar` to provide admin with a convenient tool to arrange upcoming events
-  
+  - __Account Registration Confirmation__: Users are invited by existing users and a confirmation email will sent to the new user. By clicking the link in the email, users will be able to set their password and login the the admin system. 
   
 # Packages Version
 
@@ -111,15 +92,19 @@ This project is to create a Vue.js based single page application, which is built
 
 ### Summit Register and Pay
 
-![](https://user-images.githubusercontent.com/9074571/33714867-b25e4d10-dba4-11e7-8dce-819c45843101.png)
+![](https://user-images.githubusercontent.com/9074571/33864983-9d786050-df43-11e7-904c-36dfaff3c196.png)
 
-### Loading
+### Processing payment
 
 ![](https://user-images.githubusercontent.com/9074571/33714870-b2b87ea2-dba4-11e7-89ae-ad159a16e178.png)
 
+### Payment success
+
+![](https://user-images.githubusercontent.com/9074571/33865145-7d1ded42-df44-11e7-91da-76207a539c7e.png)
+
 ### Admin Login
 
-![screen shot 2017-12-06 at 5 03 24 pm](https://user-images.githubusercontent.com/9074571/33647177-a75af7f4-daa7-11e7-934d-0d6c7413b2fd.png)
+![screen shot 2017-12-06 at 5 03 24 pm](https://user-images.githubusercontent.com/9074571/33865057-100e2eb0-df44-11e7-8b10-2e7233a5d480.png)
 
 ### Admin Panel
 
