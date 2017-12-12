@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'name'	 => 'Admin',
-            'email'	 => 'admin@admin.com',
+            'email'	 => 'customerservice@glorycitychurch.com',
             'role' => 1,
             'invited_by' => 1,
             'mobile' => 11111111,

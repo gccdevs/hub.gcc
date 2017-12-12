@@ -1,5 +1,5 @@
 <template>
-    <form class="form" @submit.prevent="register">
+    <form class="form" @submit.prevent="invite">
         <div class="field" :class="{'has-error' : errors.has('name') }">
             <label for="name" class="label">姓名</label>
             <div class="control">
@@ -18,28 +18,11 @@
                 <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>
             </div>
         </div>
-        <div class="field" :class="{'has-error' : errors.has('password') }">
-            <label for="password" class="label">密码</label>
-            <div class="control">
-                <input v-model="password"
-                       v-validate data-vv-rules="required|min:6" data-vv-as="密码"
-                       id="password" type="password" class="input" name="password" required>
-                <span class="help-block" v-show="errors.has('password')" style="color: red">{{errors.first('password')}}</span>
-            </div>
-        </div>
-        <div class="field" :class="{'has-error' : errors.has('password_confirmation') }">
-            <label for="password-confirm" class="label">确认密码</label>
-            <div class="control">
-                <input id="password-confirm"
-                       v-validate data-vv-rules="required|min:6|confirmed:password" data-vv-as="确认密码"
-                       type="password" class="input" name="password_confirmation" required>
-                <span class="help-block" v-show="errors.has('password_confirmation')" style="color: red">{{errors.first('password_confirmation')}}</span>
-            </div>
-        </div>
+
         <div class="field">
             <div class="control">
                 <button type="submit" class="button is-primary" style="width:100% ;">
-                    创建
+                    邀请
                 </button>
             </div>
         </div>
@@ -52,15 +35,14 @@
             return {
                 name : '',
                 email : '',
-                roles: '',
-                password : ''
+                roles: ''
             }
         },
 
         props: ['id'],
 
         methods:{
-            register() {
+            invite() {
 
                 let formData = {
                     name: this.name,

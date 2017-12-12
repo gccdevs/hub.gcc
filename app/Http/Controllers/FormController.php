@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use PhpParser\Node\Expr\Cast\Object_;
 use Stripe\{Charge, Customer};
 
 
@@ -33,19 +32,20 @@ class FormController extends Controller
                 'mobile' => request('mobile'),
                 'address' => request('address'),
                 'path' => request('path'),
+                'is_agreed' => true
             ]); // create an entry
-
-            $form->setAgree();
 
             $customer = Customer::create([
                 'email' =>request('email'),
-                'source' => request('stripeToken'),
+                'source' => request('stripeToken')
             ]);
 
             $charge = Charge::create([
-                'amount' => 10000,
+                'amount' => env('STRIPE_AMOUNT'),
+                "description" => "Summit2018",
+                "statement_descriptor" => "GCC Summit 2018",
                 'customer' => $customer->id,
-                'currency' => 'AUD'
+                'currency' => 'aud'
             ]);
         }
         catch (\Exception $e) { // if failed to charge
@@ -98,7 +98,6 @@ class FormController extends Controller
             $object->mobile = $form->mobile;
             $object->email = $form->email;
             $object->address = $form->address;
-            $object->isPaid = $form->is_paid;
             $object->ref = $form->payment_ref;
             $object->time = date('Y/m/d h:i:s',strtotime($form->updated_at));
             $object->firstTime = $form->first_time;
@@ -127,7 +126,7 @@ class FormController extends Controller
 
         $cellData = [];
 
-        array_push($cellData, ['name', 'gender', 'mobile','email','address','is_paid','payment_ref','time','first_time','where to know']);
+        array_push($cellData, ['name', 'gender', 'mobile','email','address','payment_ref','time','first_time','where to know']);
 
         foreach ($data as $form){
 
@@ -137,7 +136,6 @@ class FormController extends Controller
                 $mobile = $form->mobile,
                 $email = $form->email,
                 $address = $form->address,
-                $is_paid = $form->is_paid,
                 $ref = $form->payment_ref,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
                 $firstTime = $form->first_time,

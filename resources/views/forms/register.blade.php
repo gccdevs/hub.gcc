@@ -19,8 +19,6 @@
 </head>
 <body>
 
-<br>
-
 <div id="app">
     <app></app>
 </div>

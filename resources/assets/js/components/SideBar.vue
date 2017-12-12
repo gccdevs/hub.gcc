@@ -9,14 +9,14 @@
                     </router-link>
                 </li>
                 <!--<li>-->
-                    <!--<router-link :to="{ name: 'calendar' }" v-bind:class="classObject">-->
-                        <!--<span class="icon"><i class="fa fa-calendar-o"></i></span> Calendar-->
-                    <!--</router-link>-->
+                <!--<router-link :to="{ name: 'calendar' }" v-bind:class="classObject">-->
+                <!--<span class="icon"><i class="fa fa-calendar-o"></i></span> Calendar-->
+                <!--</router-link>-->
                 <!--</li>-->
                 <!--<li>-->
-                    <!--<router-link :to="{ name: 'message' }" v-bind:class="classObject">-->
-                        <!--<span class="icon"><i class="fa fa-comment"></i></span> Message-->
-                    <!--</router-link>-->
+                <!--<router-link :to="{ name: 'message' }" v-bind:class="classObject">-->
+                <!--<span class="icon"><i class="fa fa-comment"></i></span> Message-->
+                <!--</router-link>-->
                 <!--</li>-->
                 <li>
                     <router-link :to="{ name: 'form.show' }" v-bind:class="classObject">
@@ -24,16 +24,16 @@
                     </router-link>
                 </li>
                 <!--<li>-->
-                    <!--<router-link :to="{ name: 'user.list' }" v-bind:class="classObject">-->
-                        <!--<span class="icon"><i class="fa fa-home"></i></span> User List-->
-                    <!--</router-link>-->
-                    <!--<ul>-->
-                        <!--<li>-->
-                            <!--<router-link :to="{name: 'user.create'}">-->
-                                <!--<span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users-->
-                            <!--</router-link>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                <!--<router-link :to="{ name: 'user.list' }" v-bind:class="classObject">-->
+                <!--<span class="icon"><i class="fa fa-home"></i></span> User List-->
+                <!--</router-link>-->
+                <!--<ul>-->
+                <!--<li>-->
+                <!--<router-link :to="{name: 'user.create'}">-->
+                <!--<span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users-->
+                <!--</router-link>-->
+                <!--</li>-->
+                <!--</ul>-->
                 <!--</li>-->
                 <li>
                     <router-link :to="{ name:'profile' }" v-bind:class="classObject">
@@ -49,6 +49,11 @@
                         <li>
                             <router-link :to="{ name: 'password.edit' }">
                                 <span class="icon is-small"><i class="fa fa-key"></i></span> Change Password
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'user.create'}">
+                                <span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users
                             </router-link>
                         </li>
                     </ul>

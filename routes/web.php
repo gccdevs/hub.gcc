@@ -25,6 +25,7 @@ Route::get('/user/profile','ProfileController@fetchUser')->middleware('auth');
 Route::post('/user/profile/update','ProfileController@update')->middleware('auth');
 Route::post('/user/password/update','PasswordController@update')->middleware('auth');
 Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
+Route::get('/user/create', 'HomeController@index')->name('user.create')->middleware('auth');
 Route::get('/users/list','ProfileController@show')->middleware('auth');
 
 Route::get('/form/download-registered-users', function () {

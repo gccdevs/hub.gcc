@@ -22,7 +22,6 @@ class CreateFormsTable extends Migration
             $table->string('gender');
             $table->string('path');
             $table->string('first_time');
-            $table->boolean('is_paid')->default(false);
             $table->boolean('is_agreed')->default(false);
             $table->string('payment_ref')->nullable()->unique();
             $table->timestamps();

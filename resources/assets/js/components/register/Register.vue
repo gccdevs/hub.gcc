@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <h1 class="is-size-1">Invite New Users</h1>
+        <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
+        <br><br>
         <div class="box">
             <register-form></register-form>
         </div>

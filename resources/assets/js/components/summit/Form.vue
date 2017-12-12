@@ -1,189 +1,199 @@
 <template>
-
     <div class="container">
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title has-text-left" >
+                        无可限量 Limitless 2018
+                    </h1>
+                    <h2 class="subtitle has-text-left">
+                        墨尔本荣耀城高峰会
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <br>
         <div class="box">
-            <p class="is-size-1">Summit 2018</p>
-            <div class="box">
-                <p class="is-size-3">基本信息</p>
-                <br>
+            <p class="is-size-3">基本信息</p>
+            <br>
 
-                <div class="columns">
-                    <div class="column" :class="{'has-error' : errors.has('name') }">
-                        <label class="label" for="name">姓名 *</label>
-                        <div>
-                            <input style="width:80%" class="is-size-6" v-model="name"
-                                   v-validate data-vv-rules="required|min:2" data-vv-as="姓名"
-                                   id="name" placeholder="Name" type="text" name="name" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('name')" style="color: red !important;">{{errors.first('name')}}</span>
-                        </div>
+            <div class="columns">
+                <div class="column" :class="{'has-error' : errors.has('name') }">
+                    <label class="label" for="name">姓名 *</label>
+                    <div>
+                        <input style="width:80%" class="is-size-6" v-model="name"
+                               v-validate data-vv-rules="required|min:2" data-vv-as="姓名"
+                               id="name" placeholder="Name" type="text" name="name" required>
+                        <br>
+                        <span class="help-block" v-show="errors.has('name')" style="color: red !important;">{{errors.first('name')}}</span>
                     </div>
-                    <div class="column">
-                        <div class="columns">
-                            <div class="column"  :class="{ 'has-error': errors.has('gender') }">
-                                <label class="label">性别 *</label>
-                                <div class="field">
-                                    <label style="margin-right:20px;" for="gender">
-                                        <input class="is-size-5" v-model="gender" v-validate data-vv-rules="required|in:male,female" data--vv-args="gender" data-vv-as="性别"
-                                               name="gender" value="male" id="gender" type="radio"> 男 <em class="fa fa-male" style="color: cornflowerblue"></em>
-                                    </label>
-                                    <label class="radio" for="gender">
-                                        <input class="is-size-5" v-model="gender" name="gender" value="female" type="radio"> 女 <em class="fa fa-female" style="color: hotpink"></em>
-                                    </label>
-                                    <br>
-                                    <span class="help-block" v-show="errors.has('gender')" style="color: red !important;">{{ errors.first('gender') }}</span>
-                                </div>
+                </div>
+                <div class="column">
+                    <div class="columns">
+                        <div class="column"  :class="{ 'has-error': errors.has('gender') }">
+                            <label class="label">性别 *</label>
+                            <div class="field">
+                                <label style="margin-right:20px;">
+                                    <input class="is-size-5" v-model="gender" v-validate data-vv-rules="required|in:male,female" data--vv-args="gender" data-vv-as="性别"
+                                           name="gender" value="male" id="gender" type="radio"> 男 <em class="fa fa-male" style="color: cornflowerblue"></em>
+                                </label>
+                                <label class="radio">
+                                    <input class="is-size-5" v-model="gender" name="gender" value="female" type="radio"> 女 <em class="fa fa-female" style="color: hotpink"></em>
+                                </label>
+                                <br>
+                                <span class="help-block" v-show="errors.has('gender')" style="color: red !important;">{{ errors.first('gender') }}</span>
                             </div>
-                            <div class="column"  :class="{ 'has-error': errors.has('firstTime') }">
-                                <label class="label">第一次参加 *</label>
-                                <div class="field">
-                                    <label style="margin-right:20px;" for="firstTime">
-                                        <input class="is-size-5" v-model="firstTime" v-validate data-vv-rules="required|in:yes,no" data--vv-args="firstTime" data-vv-as="第一次参加"
-                                               name="firstTime" value="yes" id="firstTime" type="radio"> 是 <em class="fa fa-check" style="color: cornflowerblue"></em>
-                                    </label>
-                                    <label class="radio" for="firstTime">
-                                        <input class="is-size-5" v-model="firstTime" name="firstTime" value="no" type="radio">
-                                        否 <em class="fa fa-times" style="color: hotpink"></em>
-                                    </label>
-                                    <br>
-                                    <span class="help-block" v-show="errors.has('firstTime')" style="color: red !important;">{{ errors.first('firstTime') }}</span>
-                                </div>
+                        </div>
+                        <div class="column"  :class="{ 'has-error': errors.has('firstTime') }">
+                            <label class="label">第一次参加 *</label>
+                            <div class="field">
+                                <label style="margin-right:20px;">
+                                    <input class="is-size-5" v-model="firstTime" v-validate data-vv-rules="required|in:yes,no" data--vv-args="firstTime" data-vv-as="第一次参加"
+                                           name="firstTime" value="yes" id="firstTime" type="radio"> 是 <em class="fa fa-check" style="color: cornflowerblue"></em>
+                                </label>
+                                <label class="radio">
+                                    <input class="is-size-5" v-model="firstTime" name="firstTime" value="no" type="radio">
+                                    否 <em class="fa fa-times" style="color: hotpink"></em>
+                                </label>
+                                <br>
+                                <span class="help-block" v-show="errors.has('firstTime')" style="color: red !important;">{{ errors.first('firstTime') }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="columns">
-                    <div class="column" :class="{'has-error' : errors.has('address') }">
-                        <label class="label" for="address">地址 *</label>
-                        <div>
-                            <input style="width:80%" class="is-size-6" v-model="address"
-                                   v-validate data-vv-rules="required|min:5" data-vv-as="地址"
-                                   id="address" placeholder="Address" type="text" name="address" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('address')" style="color: red !important;">{{errors.first('address')}}</span>
-                        </div>
-                    </div>
-                    <div class="column" :class="{'has-error' : errors.has('mobile') }">
-                        <label class="label" for="mobile">电话 *</label>
-                        <div>
-                            <input style="width:80%" class="is-size-6" v-model="mobile"
-                                   v-validate data-vv-rules="required|min:5" data-vv-as="电话"
-                                   id="mobile" placeholder="Mobile" type="text" name="mobile" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
-                        </div>
+            <div class="columns">
+                <div class="column" :class="{'has-error' : errors.has('address') }">
+                    <label class="label" for="address">地址 *</label>
+                    <div>
+                        <input style="width:80%" class="is-size-6" v-model="address"
+                               v-validate data-vv-rules="required|min:5" data-vv-as="地址"
+                               id="address" placeholder="Address" type="text" name="address" required>
+                        <br>
+                        <span class="help-block" v-show="errors.has('address')" style="color: red !important;">{{errors.first('address')}}</span>
                     </div>
                 </div>
-
-                <div class="columns">
-                    <div class="column" :class="{'has-error' : errors.has('email') }">
-                        <label class="label" for="email">邮箱 *</label>
-                        <div class="field">
-                            <input style="width:80%" class="is-size-6" v-model="email"
-                                   v-validate data-vv-rules="required|email" data-vv-as="邮箱"
-                                   id="email" placeholder="Email" type="email" name="email" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
-                        </div>
-                    </div>
-                    <div class="column" :class="{'has-error' : errors.has('email-confirm') }">
-                        <label class="label" for="email-confirm">确认邮箱 *</label>
-                        <div class="field">
-                            <input style="width:80%" class="is-size-6" v-model="email_confirm"
-                                   id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email" data-vv-as="确认邮箱"
-                                   type="email" name="email-confirm" required>
-                            <br>
-                            <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
-                        </div>
+                <div class="column" :class="{'has-error' : errors.has('mobile') }">
+                    <label class="label" for="mobile">电话 *</label>
+                    <div>
+                        <input style="width:80%" class="is-size-6" v-model="mobile"
+                               v-validate data-vv-rules="required|min:8" data-vv-as="电话"
+                               id="mobile" placeholder="Mobile" type="text" name="mobile" required>
+                        <br>
+                        <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="columns">
-                    <div class="column" :class="{ 'has-error': errors.has('path') }">
-                        <label class="label">从什么途径了解到我们？ *</label>
-                        <div class="field">
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="path" data-vv-as="途径"
-                                       name="path" value="friend" id="path" type="radio"> 朋友
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同学
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络平台
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
-                            </label>
-                            <label class="radio" for="path">
-                                <input class="is-size-5" v-model="path" name="path" value="other" type="radio"> 其他
-                            </label>
-                            <br>
-                            <span class="help-block" v-show="errors.has('path')" style="color: red !important;">{{ errors.first('path') }}</span>
-                        </div>
+            <div class="columns">
+                <div class="column" :class="{'has-error' : errors.has('email') }">
+                    <label class="label" for="email">邮箱 *   <p class="is-size-7" style="display:inline;color:red">请填写正确Email地址，支付凭证将会发到所填写的Email地址</p></label>
+                    <div class="field">
+                        <input style="width:80%" class="is-size-6" v-model="email"
+                               v-validate data-vv-rules="required|email" data-vv-as="邮箱"
+                               id="email" placeholder="Email" type="email" name="email" required>
+                        <br>
+                        <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
                     </div>
                 </div>
-
-                <p class="is-size-3" style="display:inline">支付信息 <p class="is-size-5" style="display:inline"> -- Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em> <em class="fa fa-cc-visa"></em> <em style="color:#c50000;" class="fa fa-cc-mastercard"></em> <em style="color:#4785d9;" class="fa fa-cc-amex"></em></p></p>
-                <br>
-                <div class="columns">
-                    <div class="column">
-                        <label class="control-label" style="margin-right:20px;">卡号 *</label>
-                        <card-number class='stripe-element card-number'
-                                     ref='cardNumber'
-                                     :stripe='key'
-                                     style="width:100%"
-                                     :options='{style}'
-                                     @change='number = $event.complete'></card-number>
-                    </div>
-                    <br>
-                    <div class="column">
-                        <label class="control-label" style="margin-right: 20px;">有效期 *</label>
-                        <card-expiry class='stripe-element card-expiry'
-                                     ref='cardExpiry'
-                                     :stripe='key'
-                                     :options='{style}'
-                                     @change='expiry = $event.complete'></card-expiry>
-                    </div>
-                    <br>
-                    <div class="column">
-                        <label class="control-label" style="margin-right: 20px;">安全码 *</label>
-                        <card-cvc class='stripe-element card-cvc'
-                                  ref='cardCvc'
-                                  :stripe='key'
-                                  :options='{style}'
-                                  @change='cvc = $event.complete'>
-                        </card-cvc>
+                <div class="column" :class="{'has-error' : errors.has('email-confirm') }">
+                    <label class="label" for="email-confirm">确认邮箱 *</label>
+                    <div class="field">
+                        <input style="width:80%" class="is-size-6" v-model="email_confirm"
+                               id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email" data-vv-as="确认邮箱"
+                               type="email" name="email-confirm" required>
+                        <br>
+                        <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
                     </div>
                 </div>
+            </div>
 
-                <p class="is-size-3">同意条款</p>
-
-                <br>
-
-                <div class="columns">
-                    <div class="column">
-                        <label class="checkbox">
-                            <input type="checkbox" v-model="termChecker" @click="toggleChecker()" required>
-                            I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
+            <div class="columns">
+                <div class="column" :class="{ 'has-error': errors.has('path') }">
+                    <label class="label">从什么途径了解到我们 *</label>
+                    <div class="control">
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" v-validate data-vv-rules="required|in:friend,classmate,colleague,web,social,family,other" data--vv-args="path" data-vv-as="途径"
+                                   name="path" value="friend" id="path" type="radio"> 朋友
                         </label>
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同学
+                        </label>
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
+                        </label>
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络平台
+                        </label>
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
+                        </label>
+                        <label class="radio">
+                            <input class="is-size-5" v-model="path" name="path" value="other" type="radio"> 其他
+                        </label>
+                        <br>
+                        <span class="help-block" v-show="errors.has('path')" style="color: red !important;">{{ errors.first('path') }}</span>
                     </div>
                 </div>
             </div>
-            <div class="field">
-                <button class="button is-primary" style="width:100%" @click.prevent="nextStep" :disabled="!(complete && this.termChecker)">
-                    Pay A$ 50.00
-                </button>
+
+            <p class="is-size-3" style="display:inline">支付信息</p>
+            <br>
+            <p class="is-size-5" style="display:inline">Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em> <em class="fa fa-cc-visa"></em> <em style="color:#c50000;" class="fa fa-cc-mastercard"></em> <em style="color:#4785d9;" class="fa fa-cc-amex"></em></p>
+            <br><br>
+            <div class="columns">
+                <div class="column">
+                    <label class="control-label" style="margin-right:20px;">卡号 *</label>
+                    <card-number class='stripe-element card-number'
+                                 ref='cardNumber'
+                                 :stripe='key'
+                                 style="width:100%"
+                                 :options='{style}'
+                                 @change='number = $event.complete'></card-number>
+                </div>
+                <br>
+                <div class="column">
+                    <label class="control-label" style="margin-right: 20px;">有效期 *</label>
+                    <card-expiry class='stripe-element card-expiry'
+                                 ref='cardExpiry'
+                                 :stripe='key'
+                                 :options='{style}'
+                                 @change='expiry = $event.complete'></card-expiry>
+                </div>
+                <br>
+                <div class="column">
+                    <label class="control-label" style="margin-right: 20px;">安全码 *</label>
+                    <card-cvc class='stripe-element card-cvc'
+                              ref='cardCvc'
+                              :stripe='key'
+                              :options='{style}'
+                              @change='cvc = $event.complete'>
+                    </card-cvc>
+                </div>
             </div>
-            <loader :show="show" :label="label"></loader>
+
+            <p class="is-size-3">同意条款</p>
+
+            <br>
+
+            <div class="columns">
+                <div class="column">
+                    <label class="checkbox">
+                        <input type="checkbox" v-model="termChecker" @click="toggleChecker()" required>
+                        I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
+                    </label>
+                </div>
+            </div>
         </div>
-
+        <div class="field">
+            <button :class="(isLoading ? 'button is-primary is-loading' : 'button is-primary')" style="width:100%" @click.prevent="nextStep" :disabled="isLoading || (!(complete && this.termChecker))">
+                Pay A$ 50.00
+            </button>
+            <br><br>
+        </div>
+        <loader :show="show" :label="label"></loader>
     </div>
-
 </template>
 
 <script>
@@ -212,6 +222,7 @@
                 expiry: false,
                 cvc: false,
                 termChecker: false,
+                isLoading: false,
                 style:{
                     base: {
                         color: '#1598af',
@@ -243,27 +254,35 @@
         methods:{
 
             nextStep() {
+
                 if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
                     if (this.termChecker){
+
+//                        this.isLoading = true;
+//                        this.show = true;
+
                         this.$validator.validateAll().then(result => {
-
-                            let formData = {
-                                email: this.email
-                            };
-
-                            axios.post('/api/form/validate', formData).then(response => {
-                                console.log('alert: ', response.data.status);
+                            axios.post('/api/form/validate', {email: this.email}).then(response => {
+//                                console.log('alert: ', response.data.status);
                                 if (response.data.status) {
+                                    this.show = false;
+                                    this.isLoading = false;
                                     alert("此邮箱已被成功注册. 请使用其他邮箱.");
                                     this.$router.push({name: 'summit'});
                                 } else {
+
+                                    this.isLoading = true;
+                                    this.show = true;
+
                                     this.pay();
                                 }
                             })
                         })
                     }
                 }else{
-                    console.log(this.complete , this.gender , this.firstTime , this.name, this.email, this.address, this.mobile.length, this.email_confirm , this.path);
+//                    this.isLoading = false;
+//                    this.show = false;
+//                    console.log(this.complete , this.gender , this.firstTime , this.name.length >= 2 , this.email.length > 0 , this.address.length >= 5 , this.mobile.length >= 8 , this.email === this.email_confirm , this.path);
                     alert('请检查所填写信息是否有误或未填写!');
 //                    this.$router.push({name:'summit'})
                 }
@@ -293,7 +312,7 @@
             pay () {
                 let vm = this;
                 createToken().then(data => {
-                    console.log(data.token.id);
+//                    console.log(data.token.id);
 
                     let formData = {
                         name: vm.name,
@@ -307,11 +326,11 @@
                         stripeToken: data.token.id
                     };
 
-                    vm.show = true;
+//                    vm.show = true;
 
                     axios.post('/api/form/purchase', formData).then(response => {
 
-                        console.log(response.data.message);
+//                        console.log(response.data.message);
 
                         if (response.data.message === 'paid success') {
 
@@ -333,30 +352,35 @@
                                 });
 
                             }).catch(error => {
-                                console.log('dispatching error: ', error);
+//                                console.log('dispatching error: ', error);
                             });
                         }
                         else if(response.data.message === 'failed to send email'){
-                            alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工！ Failed reason: ' + response.data.reason);
+                            alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工 customerservice@glorycitychurch.com' + '\n' +'Failed reason: ' + response.data.reason);
+                            vm.isLoading = false;
                             vm.show = false;
                         }
                         else if(response.data.message === 'failed to charge the card'){
-                            alert('!! Failed to charge, reason: ' + response.data.reason + ' No amount is deducted. Please start again!');
+                            alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
+                            vm.isLoading = false;
                             vm.show = false;
 //                            vm.$router.push({name: 'summit'});
                         }
                         else{
-                            alert('Unknown error, please contact us.');
+                            alert('Unknown error, please contact us： customerservice@glorycitychurch.com');
+                            vm.isLoading = false;
                             vm.show = false;
                             vm.$router.push({name: 'summit'});
                         }
                     }).catch(error => {
-                        console.log("errrrrr: ", error);
+//                        console.log("errrrrr: ", error);
+                        vm.isLoading = false;
                         vm.show = false;
                     })
                 }).catch(err => {
-                    alert('网络中断！请检查是否收到成功支付邮件');
-                    console.log('creating token failed: ', err);
+                    alert('网络中断！请检查是否收到成功支付邮件,或联系我们的同工 customerservice@glorycitychurch.com');
+//                    console.log('creating token failed: ', err);
+                    vm.isLoading = false;
                     vm.show = false;
                 })
             },

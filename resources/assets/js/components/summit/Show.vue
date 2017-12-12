@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <button class="button is-primary" @click.prevent="refresh"><em class="fa fa-refresh"> 刷新</em></button>
-        <a class="button is-primary" href="/form/download-users"><em class="fa fa-paperclip"> Download</em></a>
+        <button class="button is-primary" @click.prevent="refresh"><em class="fa fa-refresh"> </em> 刷新</button>
+        <a class="button is-primary" href="/form/download-users"><em class="fa fa-paperclip"> </em> Download</a>
         <br><br>
         <div>
             <div>
@@ -9,35 +9,29 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>  <!--[0] -->
-                        <th>Gender</th> <!--[1] -->
-                        <th>Mobile</th> <!--[2] -->
+                        <th>名字</th>  <!--[0] -->
+                        <th>性别</th> <!--[1] -->
+                        <th>电话</th> <!--[2] -->
                         <th>Email</th> <!--[3] -->
-                        <th>Address</th> <!--[4] -->
-                        <th>First Time</th> <!--[8] -->
-                        <th>Paid</th> <!--[5] -->
-                        <th>Ref</th> <!--[6] -->
-                        <th>Paid Time</th> <!--[7] -->
-                        <th>Where to know us</th> <!--[8] -->
+                        <th>地址</th> <!--[4] -->
+                        <th>First?</th> <!--[8] -->
+                        <th>支付凭证</th> <!--[6] -->
+                        <th>支付时间</th> <!--[7] -->
+                        <th>途径</th> <!--[8] -->
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="(entry, index) in allEntries">
                         <td v-text="allEntries.length - index"></td>
-                        <td v-text="entry[0]"></td>
-                        <td v-text="entry[1]"></td>
-                        <td v-text="entry[2]"></td>
-                        <td v-text="entry[3]"></td>
-                        <td v-text="entry[4]"></td>
-                        <td v-text="entry[8]"></td>
-
-                        <td v-if="entry[5]"><em class="fa fa-check" style="color: lightseagreen"> Yes</em></td>
-                        <td v-else><em class="fa fa-times" style="color: darkred"> No</em></td>
-                        <td v-text="entry[6]"></td>
-                        <td v-if="entry[5]" v-text="entry[7]"></td>
-                        <td v-else></td>
-
-                        <td v-text="entry[9]"></td>
+                        <td v-text="entry.name"></td>
+                        <td v-text="entry.gender"></td>
+                        <td v-text="entry.mobile"></td>
+                        <td v-text="entry.email"></td>
+                        <td v-text="entry.address"></td>
+                        <td v-text="entry.firstTime"></td>
+                        <td v-text="entry.ref"></td>
+                        <td v-text="entry.time"></td>
+                        <td v-text="entry.path"></td>
 
                     </tr>
                     </tbody>

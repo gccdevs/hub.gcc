@@ -21761,7 +21761,7 @@ var index_esm = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(110);
+module.exports = __webpack_require__(116);
 
 
 /***/ }),
@@ -21773,9 +21773,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_index__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App_vue__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App_vue__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vee_validate_dist_locale_zh_CN__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vee_validate_dist_locale_zh_CN__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vee_validate_dist_locale_zh_CN___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vee_validate_dist_locale_zh_CN__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vee_validate__ = __webpack_require__(16);
 __webpack_require__(19);
@@ -52795,19 +52795,24 @@ var routes = [{
         component: __webpack_require__(88),
         meta: {}
     }, {
+        path: '/user/create',
+        name: 'user.create',
+        component: __webpack_require__(91),
+        meta: {}
+    }, {
         path: '/message',
         name: 'message',
-        component: __webpack_require__(91),
+        component: __webpack_require__(97),
         meta: {}
     }, {
         path: '/dashboard/profile-edit',
         name: 'profile.edit',
-        component: __webpack_require__(94),
+        component: __webpack_require__(100),
         meta: {}
     }, {
         path: '/dashboard/password-edit',
         name: 'password.edit',
-        component: __webpack_require__(100),
+        component: __webpack_require__(106),
         meta: {}
     }],
     meta: {}
@@ -54225,6 +54230,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54251,6 +54266,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             expiry: false,
             cvc: false,
             termChecker: false,
+            isLoading: false,
             style: {
                 base: (_base = {
                     color: '#1598af',
@@ -54289,25 +54305,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             if (this.complete && this.gender && this.firstTime && this.name.length >= 2 && this.email.length > 0 && this.address.length >= 5 && this.mobile.length >= 8 && this.email === this.email_confirm && this.path) {
                 if (this.termChecker) {
+
+                    //                        this.isLoading = true;
+                    //                        this.show = true;
+
                     this.$validator.validateAll().then(function (result) {
-
-                        var formData = {
-                            email: _this.email
-                        };
-
-                        axios.post('/api/form/validate', formData).then(function (response) {
-                            console.log('alert: ', response.data.status);
+                        axios.post('/api/form/validate', { email: _this.email }).then(function (response) {
+                            //                                console.log('alert: ', response.data.status);
                             if (response.data.status) {
+                                _this.show = false;
+                                _this.isLoading = false;
                                 alert("此邮箱已被成功注册. 请使用其他邮箱.");
                                 _this.$router.push({ name: 'summit' });
                             } else {
+
+                                _this.isLoading = true;
+                                _this.show = true;
+
                                 _this.pay();
                             }
                         });
                     });
                 }
             } else {
-                console.log(this.complete, this.gender, this.firstTime, this.name, this.email, this.address, this.mobile.length, this.email_confirm, this.path);
+                //                    this.isLoading = false;
+                //                    this.show = false;
+                //                    console.log(this.complete , this.gender , this.firstTime , this.name.length >= 2 , this.email.length > 0 , this.address.length >= 5 , this.mobile.length >= 8 , this.email === this.email_confirm , this.path);
                 alert('请检查所填写信息是否有误或未填写!');
                 //                    this.$router.push({name:'summit'})
             }
@@ -54335,7 +54358,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         pay: function pay() {
             var vm = this;
             Object(__WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements__["createToken"])().then(function (data) {
-                console.log(data.token.id);
+                //                    console.log(data.token.id);
 
                 var formData = {
                     name: vm.name,
@@ -54349,11 +54372,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     stripeToken: data.token.id
                 };
 
-                vm.show = true;
+                //                    vm.show = true;
 
                 axios.post('/api/form/purchase', formData).then(function (response) {
 
-                    console.log(response.data.message);
+                    //                        console.log(response.data.message);
 
                     if (response.data.message === 'paid success') {
 
@@ -54374,27 +54397,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                 }
                             });
                         }).catch(function (error) {
-                            console.log('dispatching error: ', error);
+                            //                                console.log('dispatching error: ', error);
                         });
                     } else if (response.data.message === 'failed to send email') {
-                        alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工！ Failed reason: ' + response.data.reason);
+                        alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工 customerservice@glorycitychurch.com' + '\n' + 'Failed reason: ' + response.data.reason);
+                        vm.isLoading = false;
                         vm.show = false;
                     } else if (response.data.message === 'failed to charge the card') {
-                        alert('!! Failed to charge, reason: ' + response.data.reason + ' No amount is deducted. Please start again!');
+                        alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
+                        vm.isLoading = false;
                         vm.show = false;
                         //                            vm.$router.push({name: 'summit'});
                     } else {
-                        alert('Unknown error, please contact us.');
+                        alert('Unknown error, please contact us： customerservice@glorycitychurch.com');
+                        vm.isLoading = false;
                         vm.show = false;
                         vm.$router.push({ name: 'summit' });
                     }
                 }).catch(function (error) {
-                    console.log("errrrrr: ", error);
+                    //                        console.log("errrrrr: ", error);
+                    vm.isLoading = false;
                     vm.show = false;
                 });
             }).catch(function (err) {
-                alert('网络中断！请检查是否收到成功支付邮件');
-                console.log('creating token failed: ', err);
+                alert('网络中断！请检查是否收到成功支付邮件,或联系我们的同工 customerservice@glorycitychurch.com');
+                //                    console.log('creating token failed: ', err);
+                vm.isLoading = false;
                 vm.show = false;
             });
         },
@@ -54792,981 +54820,967 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "box" },
-      [
-        _c("p", { staticClass: "is-size-1" }, [_vm._v("Summit 2018")]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c("p", { staticClass: "is-size-3" }, [_vm._v("基本信息")]),
         _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("p", { staticClass: "is-size-3" }, [_vm._v("基本信息")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("name") }
-              },
-              [
-                _c("label", { staticClass: "label", attrs: { for: "name" } }, [
-                  _vm._v("姓名 *")
-                ]),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            {
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("name") }
+            },
+            [
+              _c("label", { staticClass: "label", attrs: { for: "name" } }, [
+                _vm._v("姓名 *")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticClass: "is-size-6",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    "data-vv-rules": "required|min:2",
+                    "data-vv-as": "姓名",
+                    id: "name",
+                    placeholder: "Name",
+                    type: "text",
+                    name: "name",
+                    required: ""
+                  },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                }),
                 _vm._v(" "),
-                _c("div", [
-                  _c("input", {
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
                     directives: [
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      "data-vv-rules": "required|min:2",
-                      "data-vv-as": "姓名",
-                      id: "name",
-                      placeholder: "Name",
-                      type: "text",
-                      name: "name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("name"),
+                        expression: "errors.has('name')"
                       }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("name"),
-                          expression: "errors.has('name')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("name")))]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "columns" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "column",
-                    class: { "has-error": _vm.errors.has("gender") }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
                   },
-                  [
-                    _c("label", { staticClass: "label" }, [_vm._v("性别 *")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c(
-                        "label",
-                        {
-                          staticStyle: { "margin-right": "20px" },
-                          attrs: { for: "gender" }
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.gender,
-                                expression: "gender"
-                              },
-                              { name: "validate", rawName: "v-validate" }
-                            ],
-                            staticClass: "is-size-5",
-                            attrs: {
-                              "data-vv-rules": "required|in:male,female",
-                              "data--vv-args": "gender",
-                              "data-vv-as": "性别",
-                              name: "gender",
-                              value: "male",
-                              id: "gender",
-                              type: "radio"
-                            },
-                            domProps: { checked: _vm._q(_vm.gender, "male") },
-                            on: {
-                              change: function($event) {
-                                _vm.gender = "male"
-                              }
-                            }
-                          }),
-                          _vm._v(" 男 "),
-                          _c("em", {
-                            staticClass: "fa fa-male",
-                            staticStyle: { color: "cornflowerblue" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        { staticClass: "radio", attrs: { for: "gender" } },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.gender,
-                                expression: "gender"
-                              }
-                            ],
-                            staticClass: "is-size-5",
-                            attrs: {
-                              name: "gender",
-                              value: "female",
-                              type: "radio"
-                            },
-                            domProps: { checked: _vm._q(_vm.gender, "female") },
-                            on: {
-                              change: function($event) {
-                                _vm.gender = "female"
-                              }
-                            }
-                          }),
-                          _vm._v(" 女 "),
-                          _c("em", {
-                            staticClass: "fa fa-female",
-                            staticStyle: { color: "hotpink" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("gender"),
-                              expression: "errors.has('gender')"
-                            }
-                          ],
-                          staticClass: "help-block",
-                          staticStyle: { color: "red !important" }
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("gender")))]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "column",
-                    class: { "has-error": _vm.errors.has("firstTime") }
-                  },
-                  [
-                    _c("label", { staticClass: "label" }, [
-                      _vm._v("第一次参加 *")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c(
-                        "label",
-                        {
-                          staticStyle: { "margin-right": "20px" },
-                          attrs: { for: "firstTime" }
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.firstTime,
-                                expression: "firstTime"
-                              },
-                              { name: "validate", rawName: "v-validate" }
-                            ],
-                            staticClass: "is-size-5",
-                            attrs: {
-                              "data-vv-rules": "required|in:yes,no",
-                              "data--vv-args": "firstTime",
-                              "data-vv-as": "第一次参加",
-                              name: "firstTime",
-                              value: "yes",
-                              id: "firstTime",
-                              type: "radio"
-                            },
-                            domProps: { checked: _vm._q(_vm.firstTime, "yes") },
-                            on: {
-                              change: function($event) {
-                                _vm.firstTime = "yes"
-                              }
-                            }
-                          }),
-                          _vm._v(" 是 "),
-                          _c("em", {
-                            staticClass: "fa fa-check",
-                            staticStyle: { color: "cornflowerblue" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        { staticClass: "radio", attrs: { for: "firstTime" } },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.firstTime,
-                                expression: "firstTime"
-                              }
-                            ],
-                            staticClass: "is-size-5",
-                            attrs: {
-                              name: "firstTime",
-                              value: "no",
-                              type: "radio"
-                            },
-                            domProps: { checked: _vm._q(_vm.firstTime, "no") },
-                            on: {
-                              change: function($event) {
-                                _vm.firstTime = "no"
-                              }
-                            }
-                          }),
-                          _vm._v("\n                                    否 "),
-                          _c("em", {
-                            staticClass: "fa fa-times",
-                            staticStyle: { color: "hotpink" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("firstTime"),
-                              expression: "errors.has('firstTime')"
-                            }
-                          ],
-                          staticClass: "help-block",
-                          staticStyle: { color: "red !important" }
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("firstTime")))]
-                      )
-                    ])
-                  ]
+                  [_vm._v(_vm._s(_vm.errors.first("name")))]
                 )
               ])
-            ])
-          ]),
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("address") }
-              },
-              [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "address" } },
-                  [_vm._v("地址 *")]
-                ),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.address,
-                        expression: "address"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      "data-vv-rules": "required|min:5",
-                      "data-vv-as": "地址",
-                      id: "address",
-                      placeholder: "Address",
-                      type: "text",
-                      name: "address",
-                      required: ""
-                    },
-                    domProps: { value: _vm.address },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.address = $event.target.value
-                      }
-                    }
-                  }),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "column",
+                  class: { "has-error": _vm.errors.has("gender") }
+                },
+                [
+                  _c("label", { staticClass: "label" }, [_vm._v("性别 *")]),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("address"),
-                          expression: "errors.has('address')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("address")))]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("mobile") }
-              },
-              [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "mobile" } },
-                  [_vm._v("电话 *")]
-                ),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.mobile,
-                        expression: "mobile"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      "data-vv-rules": "required|min:5",
-                      "data-vv-as": "电话",
-                      id: "mobile",
-                      placeholder: "Mobile",
-                      type: "text",
-                      name: "mobile",
-                      required: ""
-                    },
-                    domProps: { value: _vm.mobile },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.mobile = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("mobile"),
-                          expression: "errors.has('mobile')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("mobile")))]
-                  )
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("email") }
-              },
-              [
-                _c("label", { staticClass: "label", attrs: { for: "email" } }, [
-                  _vm._v("邮箱 *")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      "data-vv-rules": "required|email",
-                      "data-vv-as": "邮箱",
-                      id: "email",
-                      placeholder: "Email",
-                      type: "email",
-                      name: "email",
-                      required: ""
-                    },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("email"),
-                          expression: "errors.has('email')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("email")))]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("email-confirm") }
-              },
-              [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "email-confirm" } },
-                  [_vm._v("确认邮箱 *")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email_confirm,
-                        expression: "email_confirm"
-                      },
-                      { name: "validate", rawName: "v-validate" }
-                    ],
-                    staticClass: "is-size-6",
-                    staticStyle: { width: "80%" },
-                    attrs: {
-                      id: "email-confirm",
-                      placeholder: "Email again",
-                      "data-vv-rules": "required|email|confirmed:email",
-                      "data-vv-as": "确认邮箱",
-                      type: "email",
-                      name: "email-confirm",
-                      required: ""
-                    },
-                    domProps: { value: _vm.email_confirm },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email_confirm = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("email-confirm"),
-                          expression: "errors.has('email-confirm')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("email-confirm")))]
-                  )
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              {
-                staticClass: "column",
-                class: { "has-error": _vm.errors.has("path") }
-              },
-              [
-                _c("label", { staticClass: "label" }, [
-                  _vm._v("从什么途径了解到我们？ *")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
+                  _c("div", { staticClass: "field" }, [
+                    _c("label", { staticStyle: { "margin-right": "20px" } }, [
                       _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
+                            value: _vm.gender,
+                            expression: "gender"
                           },
                           { name: "validate", rawName: "v-validate" }
                         ],
                         staticClass: "is-size-5",
                         attrs: {
-                          "data-vv-rules":
-                            "required|in:friend,classmate,colleague,web,social,family,other",
-                          "data--vv-args": "path",
-                          "data-vv-as": "途径",
-                          name: "path",
-                          value: "friend",
-                          id: "path",
+                          "data-vv-rules": "required|in:male,female",
+                          "data--vv-args": "gender",
+                          "data-vv-as": "性别",
+                          name: "gender",
+                          value: "male",
+                          id: "gender",
                           type: "radio"
                         },
-                        domProps: { checked: _vm._q(_vm.path, "friend") },
+                        domProps: { checked: _vm._q(_vm.gender, "male") },
                         on: {
                           change: function($event) {
-                            _vm.path = "friend"
+                            _vm.gender = "male"
                           }
                         }
                       }),
-                      _vm._v(" 朋友\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
+                      _vm._v(" 男 "),
+                      _c("em", {
+                        staticClass: "fa fa-male",
+                        staticStyle: { color: "cornflowerblue" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "radio" }, [
                       _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
+                            value: _vm.gender,
+                            expression: "gender"
                           }
                         ],
                         staticClass: "is-size-5",
                         attrs: {
-                          name: "path",
-                          value: "classmate",
+                          name: "gender",
+                          value: "female",
                           type: "radio"
                         },
-                        domProps: { checked: _vm._q(_vm.path, "classmate") },
+                        domProps: { checked: _vm._q(_vm.gender, "female") },
                         on: {
                           change: function($event) {
-                            _vm.path = "classmate"
+                            _vm.gender = "female"
                           }
                         }
                       }),
-                      _vm._v(" 同学\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
-                          }
-                        ],
-                        staticClass: "is-size-5",
-                        attrs: {
-                          name: "path",
-                          value: "colleague",
-                          type: "radio"
-                        },
-                        domProps: { checked: _vm._q(_vm.path, "colleague") },
-                        on: {
-                          change: function($event) {
-                            _vm.path = "colleague"
-                          }
-                        }
-                      }),
-                      _vm._v(" 同事\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
-                          }
-                        ],
-                        staticClass: "is-size-5",
-                        attrs: { name: "path", value: "social", type: "radio" },
-                        domProps: { checked: _vm._q(_vm.path, "social") },
-                        on: {
-                          change: function($event) {
-                            _vm.path = "social"
-                          }
-                        }
-                      }),
-                      _vm._v(" 网络平台\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
-                          }
-                        ],
-                        staticClass: "is-size-5",
-                        attrs: { name: "path", value: "family", type: "radio" },
-                        domProps: { checked: _vm._q(_vm.path, "family") },
-                        on: {
-                          change: function($event) {
-                            _vm.path = "family"
-                          }
-                        }
-                      }),
-                      _vm._v(" 家人\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "radio", attrs: { for: "path" } },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.path,
-                            expression: "path"
-                          }
-                        ],
-                        staticClass: "is-size-5",
-                        attrs: { name: "path", value: "other", type: "radio" },
-                        domProps: { checked: _vm._q(_vm.path, "other") },
-                        on: {
-                          change: function($event) {
-                            _vm.path = "other"
-                          }
-                        }
-                      }),
-                      _vm._v(" 其他\n                        ")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("path"),
-                          expression: "errors.has('path')"
-                        }
-                      ],
-                      staticClass: "help-block",
-                      staticStyle: { color: "red !important" }
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("path")))]
-                  )
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "is-size-3", staticStyle: { display: "inline" } },
-            [_vm._v("支付信息 ")]
-          ),
-          _vm._m(0, false, false),
-          _c("p"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              { staticClass: "column" },
-              [
-                _c(
-                  "label",
-                  {
-                    staticClass: "control-label",
-                    staticStyle: { "margin-right": "20px" }
-                  },
-                  [_vm._v("卡号 *")]
-                ),
-                _vm._v(" "),
-                _c("card-number", {
-                  ref: "cardNumber",
-                  staticClass: "stripe-element card-number",
-                  staticStyle: { width: "100%" },
-                  attrs: { stripe: _vm.key, options: { style: _vm.style } },
-                  on: {
-                    change: function($event) {
-                      _vm.number = $event.complete
-                    }
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "column" },
-              [
-                _c(
-                  "label",
-                  {
-                    staticClass: "control-label",
-                    staticStyle: { "margin-right": "20px" }
-                  },
-                  [_vm._v("有效期 *")]
-                ),
-                _vm._v(" "),
-                _c("card-expiry", {
-                  ref: "cardExpiry",
-                  staticClass: "stripe-element card-expiry",
-                  attrs: { stripe: _vm.key, options: { style: _vm.style } },
-                  on: {
-                    change: function($event) {
-                      _vm.expiry = $event.complete
-                    }
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "column" },
-              [
-                _c(
-                  "label",
-                  {
-                    staticClass: "control-label",
-                    staticStyle: { "margin-right": "20px" }
-                  },
-                  [_vm._v("安全码 *")]
-                ),
-                _vm._v(" "),
-                _c("card-cvc", {
-                  ref: "cardCvc",
-                  staticClass: "stripe-element card-cvc",
-                  attrs: { stripe: _vm.key, options: { style: _vm.style } },
-                  on: {
-                    change: function($event) {
-                      _vm.cvc = $event.complete
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "is-size-3" }, [_vm._v("同意条款")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column" }, [
-              _c(
-                "label",
-                { staticClass: "checkbox" },
-                [
-                  _c("input", {
-                    directives: [
+                      _vm._v(" 女 "),
+                      _c("em", {
+                        staticClass: "fa fa-female",
+                        staticStyle: { color: "hotpink" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "span",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.termChecker,
-                        expression: "termChecker"
-                      }
-                    ],
-                    attrs: { type: "checkbox", required: "" },
-                    domProps: {
-                      checked: Array.isArray(_vm.termChecker)
-                        ? _vm._i(_vm.termChecker, null) > -1
-                        : _vm.termChecker
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.toggleChecker()
-                      },
-                      change: function($event) {
-                        var $$a = _vm.termChecker,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 && (_vm.termChecker = $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              (_vm.termChecker = $$a
-                                .slice(0, $$i)
-                                .concat($$a.slice($$i + 1)))
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("gender"),
+                            expression: "errors.has('gender')"
                           }
-                        } else {
-                          _vm.termChecker = $$c
+                        ],
+                        staticClass: "help-block",
+                        staticStyle: { color: "red !important" }
+                      },
+                      [_vm._v(_vm._s(_vm.errors.first("gender")))]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "column",
+                  class: { "has-error": _vm.errors.has("firstTime") }
+                },
+                [
+                  _c("label", { staticClass: "label" }, [
+                    _vm._v("第一次参加 *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field" }, [
+                    _c("label", { staticStyle: { "margin-right": "20px" } }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.firstTime,
+                            expression: "firstTime"
+                          },
+                          { name: "validate", rawName: "v-validate" }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: {
+                          "data-vv-rules": "required|in:yes,no",
+                          "data--vv-args": "firstTime",
+                          "data-vv-as": "第一次参加",
+                          name: "firstTime",
+                          value: "yes",
+                          id: "firstTime",
+                          type: "radio"
+                        },
+                        domProps: { checked: _vm._q(_vm.firstTime, "yes") },
+                        on: {
+                          change: function($event) {
+                            _vm.firstTime = "yes"
+                          }
                         }
-                      }
-                    }
-                  }),
-                  _vm._v("\n                        I agree to the "),
-                  _c(
-                    "router-link",
-                    {
-                      staticStyle: { color: "#474fdb" },
-                      attrs: { to: { name: "summit.terms" }, tag: "a" }
-                    },
-                    [_vm._v("terms and conditions")]
-                  )
-                ],
-                1
+                      }),
+                      _vm._v(" 是 "),
+                      _c("em", {
+                        staticClass: "fa fa-check",
+                        staticStyle: { color: "cornflowerblue" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "radio" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.firstTime,
+                            expression: "firstTime"
+                          }
+                        ],
+                        staticClass: "is-size-5",
+                        attrs: {
+                          name: "firstTime",
+                          value: "no",
+                          type: "radio"
+                        },
+                        domProps: { checked: _vm._q(_vm.firstTime, "no") },
+                        on: {
+                          change: function($event) {
+                            _vm.firstTime = "no"
+                          }
+                        }
+                      }),
+                      _vm._v("\n                                否 "),
+                      _c("em", {
+                        staticClass: "fa fa-times",
+                        staticStyle: { color: "hotpink" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("firstTime"),
+                            expression: "errors.has('firstTime')"
+                          }
+                        ],
+                        staticClass: "help-block",
+                        staticStyle: { color: "red !important" }
+                      },
+                      [_vm._v(_vm._s(_vm.errors.first("firstTime")))]
+                    )
+                  ])
+                ]
               )
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "columns" }, [
           _c(
-            "button",
+            "div",
             {
-              staticClass: "button is-primary",
-              staticStyle: { width: "100%" },
-              attrs: { disabled: !(_vm.complete && this.termChecker) },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.nextStep($event)
-                }
-              }
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("address") }
             },
-            [_vm._v("\n                Pay A$ 50.00\n            ")]
+            [
+              _c("label", { staticClass: "label", attrs: { for: "address" } }, [
+                _vm._v("地址 *")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.address,
+                      expression: "address"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticClass: "is-size-6",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    "data-vv-rules": "required|min:5",
+                    "data-vv-as": "地址",
+                    id: "address",
+                    placeholder: "Address",
+                    type: "text",
+                    name: "address",
+                    required: ""
+                  },
+                  domProps: { value: _vm.address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.address = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("address"),
+                        expression: "errors.has('address')"
+                      }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("address")))]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("mobile") }
+            },
+            [
+              _c("label", { staticClass: "label", attrs: { for: "mobile" } }, [
+                _vm._v("电话 *")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mobile,
+                      expression: "mobile"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticClass: "is-size-6",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    "data-vv-rules": "required|min:8",
+                    "data-vv-as": "电话",
+                    id: "mobile",
+                    placeholder: "Mobile",
+                    type: "text",
+                    name: "mobile",
+                    required: ""
+                  },
+                  domProps: { value: _vm.mobile },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.mobile = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("mobile"),
+                        expression: "errors.has('mobile')"
+                      }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("mobile")))]
+                )
+              ])
+            ]
           )
         ]),
         _vm._v(" "),
-        _c("loader", { attrs: { show: _vm.show, label: _vm.label } })
-      ],
-      1
-    )
-  ])
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            {
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("email") }
+            },
+            [
+              _vm._m(1, false, false),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticClass: "is-size-6",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    "data-vv-rules": "required|email",
+                    "data-vv-as": "邮箱",
+                    id: "email",
+                    placeholder: "Email",
+                    type: "email",
+                    name: "email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("email"),
+                        expression: "errors.has('email')"
+                      }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("email")))]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("email-confirm") }
+            },
+            [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "email-confirm" } },
+                [_vm._v("确认邮箱 *")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email_confirm,
+                      expression: "email_confirm"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticClass: "is-size-6",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    id: "email-confirm",
+                    placeholder: "Email again",
+                    "data-vv-rules": "required|email|confirmed:email",
+                    "data-vv-as": "确认邮箱",
+                    type: "email",
+                    name: "email-confirm",
+                    required: ""
+                  },
+                  domProps: { value: _vm.email_confirm },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email_confirm = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("email-confirm"),
+                        expression: "errors.has('email-confirm')"
+                      }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("email-confirm")))]
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            {
+              staticClass: "column",
+              class: { "has-error": _vm.errors.has("path") }
+            },
+            [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("从什么途径了解到我们 *")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      },
+                      { name: "validate", rawName: "v-validate" }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: {
+                      "data-vv-rules":
+                        "required|in:friend,classmate,colleague,web,social,family,other",
+                      "data--vv-args": "path",
+                      "data-vv-as": "途径",
+                      name: "path",
+                      value: "friend",
+                      id: "path",
+                      type: "radio"
+                    },
+                    domProps: { checked: _vm._q(_vm.path, "friend") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "friend"
+                      }
+                    }
+                  }),
+                  _vm._v(" 朋友\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: { name: "path", value: "classmate", type: "radio" },
+                    domProps: { checked: _vm._q(_vm.path, "classmate") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "classmate"
+                      }
+                    }
+                  }),
+                  _vm._v(" 同学\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: { name: "path", value: "colleague", type: "radio" },
+                    domProps: { checked: _vm._q(_vm.path, "colleague") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "colleague"
+                      }
+                    }
+                  }),
+                  _vm._v(" 同事\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: { name: "path", value: "social", type: "radio" },
+                    domProps: { checked: _vm._q(_vm.path, "social") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "social"
+                      }
+                    }
+                  }),
+                  _vm._v(" 网络平台\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: { name: "path", value: "family", type: "radio" },
+                    domProps: { checked: _vm._q(_vm.path, "family") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "family"
+                      }
+                    }
+                  }),
+                  _vm._v(" 家人\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.path,
+                        expression: "path"
+                      }
+                    ],
+                    staticClass: "is-size-5",
+                    attrs: { name: "path", value: "other", type: "radio" },
+                    domProps: { checked: _vm._q(_vm.path, "other") },
+                    on: {
+                      change: function($event) {
+                        _vm.path = "other"
+                      }
+                    }
+                  }),
+                  _vm._v(" 其他\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("path"),
+                        expression: "errors.has('path')"
+                      }
+                    ],
+                    staticClass: "help-block",
+                    staticStyle: { color: "red !important" }
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("path")))]
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "is-size-3", staticStyle: { display: "inline" } },
+          [_vm._v("支付信息")]
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(2, false, false),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "control-label",
+                  staticStyle: { "margin-right": "20px" }
+                },
+                [_vm._v("卡号 *")]
+              ),
+              _vm._v(" "),
+              _c("card-number", {
+                ref: "cardNumber",
+                staticClass: "stripe-element card-number",
+                staticStyle: { width: "100%" },
+                attrs: { stripe: _vm.key, options: { style: _vm.style } },
+                on: {
+                  change: function($event) {
+                    _vm.number = $event.complete
+                  }
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "control-label",
+                  staticStyle: { "margin-right": "20px" }
+                },
+                [_vm._v("有效期 *")]
+              ),
+              _vm._v(" "),
+              _c("card-expiry", {
+                ref: "cardExpiry",
+                staticClass: "stripe-element card-expiry",
+                attrs: { stripe: _vm.key, options: { style: _vm.style } },
+                on: {
+                  change: function($event) {
+                    _vm.expiry = $event.complete
+                  }
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "control-label",
+                  staticStyle: { "margin-right": "20px" }
+                },
+                [_vm._v("安全码 *")]
+              ),
+              _vm._v(" "),
+              _c("card-cvc", {
+                ref: "cardCvc",
+                staticClass: "stripe-element card-cvc",
+                attrs: { stripe: _vm.key, options: { style: _vm.style } },
+                on: {
+                  change: function($event) {
+                    _vm.cvc = $event.complete
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "is-size-3" }, [_vm._v("同意条款")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c(
+              "label",
+              { staticClass: "checkbox" },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.termChecker,
+                      expression: "termChecker"
+                    }
+                  ],
+                  attrs: { type: "checkbox", required: "" },
+                  domProps: {
+                    checked: Array.isArray(_vm.termChecker)
+                      ? _vm._i(_vm.termChecker, null) > -1
+                      : _vm.termChecker
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.toggleChecker()
+                    },
+                    change: function($event) {
+                      var $$a = _vm.termChecker,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.termChecker = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.termChecker = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.termChecker = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v("\n                    I agree to the "),
+                _c(
+                  "router-link",
+                  {
+                    staticStyle: { color: "#474fdb" },
+                    attrs: { to: { name: "summit.terms" }, tag: "a" }
+                  },
+                  [_vm._v("terms and conditions")]
+                )
+              ],
+              1
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c(
+          "button",
+          {
+            class: _vm.isLoading
+              ? "button is-primary is-loading"
+              : "button is-primary",
+            staticStyle: { width: "100%" },
+            attrs: {
+              disabled: _vm.isLoading || !(_vm.complete && this.termChecker)
+            },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.nextStep($event)
+              }
+            }
+          },
+          [_vm._v("\n            Pay A$ 50.00\n        ")]
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _c("br")
+      ]),
+      _vm._v(" "),
+      _c("loader", { attrs: { show: _vm.show, label: _vm.label } })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "hero is-primary is-bold" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "title has-text-left" }, [
+            _vm._v(
+              "\n                    无可限量 Limitless 2018\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "subtitle has-text-left" }, [
+            _vm._v("\n                    墨尔本荣耀城高峰会\n                ")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "label", attrs: { for: "email" } }, [
+      _vm._v("邮箱 *   "),
+      _c(
+        "p",
+        {
+          staticClass: "is-size-7",
+          staticStyle: { display: "inline", color: "red" }
+        },
+        [_vm._v("请填写正确Email地址，支付凭证将会发到所填写的Email地址")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -55775,7 +55789,7 @@ var staticRenderFns = [
       "p",
       { staticClass: "is-size-5", staticStyle: { display: "inline" } },
       [
-        _vm._v(" -- Pay with "),
+        _vm._v("Pay with "),
         _c("em", {
           staticClass: "fa fa-cc-stripe",
           staticStyle: { color: "#474fdb" }
@@ -55895,6 +55909,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
@@ -55907,75 +55922,80 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "box" },
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "button is-primary",
-            attrs: { to: { name: "summit" }, tag: "a" }
-          },
-          [_vm._v("返回")]
-        ),
-        _vm._v(" "),
-        _c("h1", { staticClass: "is-size-1 has-text-centered" }, [
-          _vm._v("Terms and Coditions")
-        ]),
-        _vm._v(" "),
-        _c("wbr"),
-        _vm._v(" "),
-        _c("h3", { staticClass: "is-size-2 has-text-centered" }, [
-          _vm._v("Limitless - Glory City Church of Melbourne Summit 2018")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _vm._m(0, false, false),
-        _vm._v(" "),
-        _c("hr")
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _vm._m(1, false, false),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          staticClass: "button is-primary",
+          staticStyle: { width: "100%" },
+          attrs: { to: { name: "summit" }, tag: "a" }
+        },
+        [_vm._v("返回")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "hero is-primary is-bold" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "title has-text-left" }, [
+            _vm._v(
+              "\n                    Terms and Conditions\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "subtitle has-text-left" }, [
+            _vm._v(
+              "\n                    Limitless - Glory City Church of Melbourne Summit 2018\n                "
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box" }, [
-      _c("h3", { staticClass: "is-size-4 has-text-centered" }, [
-        _vm._v("Title here")
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
       _c("p", { staticClass: "is-size-6 has-text-centered" }, [
         _vm._v(
-          "\n                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                "
+          "\n            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n            "
         ),
         _c("br"),
         _c("br"),
         _vm._v(
-          "\n                Why do we use it?\n                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n                "
+          "\n            Why do we use it?\n            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n            "
         ),
         _c("br"),
         _c("br"),
         _vm._v(
-          '\n                Where does it come from?\n                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n                '
+          '\n            Where does it come from?\n            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n            '
         ),
         _c("br"),
         _c("br"),
         _vm._v(
-          '\n                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\n                '
+          '\n            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\n            '
         ),
         _c("br"),
         _c("br"),
         _vm._v(
-          "\n                Where can I get some?\n                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.\n            "
+          "\n            Where can I get some?\n            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.\n        "
         )
       ])
     ])
@@ -56063,6 +56083,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56080,36 +56127,218 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Successfully")]),
-    _vm._v(" "),
-    _c("h3", [_vm._v("check your inbox for email confirmation.")]),
-    _vm._v(" "),
-    _c("h3", [_vm._v("Purchase Detail: ")]),
-    _vm._v(" "),
-    _c("h4", { domProps: { textContent: _vm._s("Name: " + this.name) } }),
-    _vm._v(" "),
-    _c("h4", {
-      domProps: { textContent: _vm._s("Receipt: " + this.paymentRef) }
-    }),
-    _vm._v(" "),
-    _c("h4", { domProps: { textContent: _vm._s("Email: " + this.email) } }),
-    _vm._v(" "),
-    _c("h4", { domProps: { textContent: _vm._s("Mobile: " + this.gender) } }),
-    _vm._v(" "),
-    _c("h4", {
-      domProps: { textContent: _vm._s("First Time: " + this.firstTime) }
-    }),
-    _vm._v(" "),
-    _c("h4", { domProps: { textContent: _vm._s("Gender: " + this.mobile) } }),
-    _vm._v(" "),
-    _c("h4", { domProps: { textContent: _vm._s("Address: " + this.address) } }),
-    _vm._v(" "),
-    _c("h4", {
-      domProps: { textContent: _vm._s("Where hear us: " + this.path) }
-    })
+    _c(
+      "div",
+      {
+        staticClass: "container has-text-centered",
+        staticStyle: { "margin-bottom": "10%" }
+      },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(1, false, false),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "box" }, [
+          _vm._m(2, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.name) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(3, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.paymentRef) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(4, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.email) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(5, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.gender) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(6, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.firstTime) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(7, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.mobile) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(8, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.address) }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(9, false, false),
+          _c("p", {
+            staticStyle: { display: "inline" },
+            domProps: { textContent: _vm._s(this.path) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "is-size-3" }, [
+          _vm._v("支付成功邮件已发送到： " + _vm._s(this.email))
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(10, false, false),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "button is-primary is-bold is-large",
+            attrs: { href: "/" }
+          },
+          [_vm._v("了解更多")]
+        )
+      ]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "hero is-primary is-bold" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "title has-text-left" }, [
+            _vm._v(
+              "\n                        无可限量 Limitless 2018\n                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "subtitle has-text-left" }, [
+            _vm._v(
+              "\n                        墨尔本荣耀城高峰会 -- 报名成功！\n                    "
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "h1",
+      { staticClass: "is-size-1", staticStyle: { color: "#00cba9" } },
+      [_c("em", { staticClass: "fa  fa-check-circle fa-3x" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("姓名: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("付款凭证: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("Email: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("性别: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("第一次参加: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("电话: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("地址: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticStyle: { display: "inline" } }, [
+      _c("b", [_vm._v("从何知道: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "is-size-6" }, [
+      _vm._v("如未收到，请联系 "),
+      _c(
+        "a",
+        { attrs: { href: "mailto:customerservice@glorycitychurch.com" } },
+        [_vm._v("customerservice@glorycitychurch.com")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56303,6 +56532,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56360,46 +56606,12 @@ var render = function() {
           [
             _c(
               "router-link",
-              { class: _vm.classObject, attrs: { to: { name: "calendar" } } },
-              [
-                _c("span", { staticClass: "icon" }, [
-                  _c("i", { staticClass: "fa fa-calendar-o" })
-                ]),
-                _vm._v(" Calendar\n                ")
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c(
-              "router-link",
-              { class: _vm.classObject, attrs: { to: { name: "user.list" } } },
-              [
-                _c("span", { staticClass: "icon" }, [
-                  _c("i", { staticClass: "fa fa-home" })
-                ]),
-                _vm._v(" 用户列表\n                ")
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c(
-              "router-link",
               { class: _vm.classObject, attrs: { to: { name: "form.show" } } },
               [
                 _c("span", { staticClass: "icon" }, [
                   _c("i", { staticClass: "fa fa-table" })
                 ]),
-                _vm._v(" 表单\n                ")
+                _vm._v(" Tables\n                ")
               ]
             )
           ],
@@ -56416,7 +56628,7 @@ var render = function() {
                 _c("span", { staticClass: "icon" }, [
                   _c("i", { staticClass: "fa fa-user-md" })
                 ]),
-                _vm._v(" 个人资料\n                ")
+                _vm._v(" Profile\n                ")
               ]
             ),
             _vm._v(" "),
@@ -56431,7 +56643,7 @@ var render = function() {
                       _c("span", { staticClass: "icon is-small" }, [
                         _c("i", { staticClass: "fa fa-info" })
                       ]),
-                      _vm._v(" 更改信息\n                        ")
+                      _vm._v(" Update profile\n                        ")
                     ]
                   )
                 ],
@@ -56448,7 +56660,24 @@ var render = function() {
                       _c("span", { staticClass: "icon is-small" }, [
                         _c("i", { staticClass: "fa fa-key" })
                       ]),
-                      _vm._v(" 更改密码\n                        ")
+                      _vm._v(" Change Password\n                        ")
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "user.create" } } },
+                    [
+                      _c("span", { staticClass: "icon is-small" }, [
+                        _c("i", { staticClass: "fa fa-plus" })
+                      ]),
+                      _vm._v(" Invite Users\n                        ")
                     ]
                   )
                 ],
@@ -56484,11 +56713,11 @@ var render = function() {
     "section",
     { staticClass: "container columns" },
     [
-      _c("side-bar", { staticClass: "column is-2" }),
+      _c("side-bar", { staticClass: "column is-3" }),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "column is-10" },
+        { staticClass: "column is-9" },
         [
           _c("br"),
           _vm._v(" "),
@@ -56780,12 +57009,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56835,7 +57058,7 @@ var render = function() {
           }
         }
       },
-      [_c("em", { staticClass: "fa fa-refresh" }, [_vm._v(" 刷新")])]
+      [_c("em", { staticClass: "fa fa-refresh" }), _vm._v(" 刷新")]
     ),
     _vm._v(" "),
     _vm._m(0, false, false),
@@ -56858,47 +57081,25 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[0]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.name) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[1]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.gender) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[2]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.mobile) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[3]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.email) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[4]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.address) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[8]) } }),
+                _c("td", {
+                  domProps: { textContent: _vm._s(entry.firstTime) }
+                }),
                 _vm._v(" "),
-                entry[5]
-                  ? _c("td", [
-                      _c(
-                        "em",
-                        {
-                          staticClass: "fa fa-check",
-                          staticStyle: { color: "lightseagreen" }
-                        },
-                        [_vm._v(" Yes")]
-                      )
-                    ])
-                  : _c("td", [
-                      _c(
-                        "em",
-                        {
-                          staticClass: "fa fa-times",
-                          staticStyle: { color: "darkred" }
-                        },
-                        [_vm._v(" No")]
-                      )
-                    ]),
+                _c("td", { domProps: { textContent: _vm._s(entry.ref) } }),
                 _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[6]) } }),
+                _c("td", { domProps: { textContent: _vm._s(entry.time) } }),
                 _vm._v(" "),
-                entry[5]
-                  ? _c("td", { domProps: { textContent: _vm._s(entry[7]) } })
-                  : _c("td"),
-                _vm._v(" "),
-                _c("td", { domProps: { textContent: _vm._s(entry[9]) } })
+                _c("td", { domProps: { textContent: _vm._s(entry.path) } })
               ])
             })
           )
@@ -56918,7 +57119,7 @@ var staticRenderFns = [
         staticClass: "button is-primary",
         attrs: { href: "/form/download-users" }
       },
-      [_c("em", { staticClass: "fa fa-paperclip" }, [_vm._v(" Download")])]
+      [_c("em", { staticClass: "fa fa-paperclip" }), _vm._v(" Download")]
     )
   },
   function() {
@@ -56929,25 +57130,23 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("名字")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Gender")]),
+        _c("th", [_vm._v("性别")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Mobile")]),
+        _c("th", [_vm._v("电话")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Address")]),
+        _c("th", [_vm._v("地址")]),
         _vm._v(" "),
-        _c("th", [_vm._v("First Time")]),
+        _c("th", [_vm._v("First?")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Paid")]),
+        _c("th", [_vm._v("支付凭证")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Ref")]),
+        _c("th", [_vm._v("支付时间")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Paid Time")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Where to know us")])
+        _c("th", [_vm._v("途径")])
       ])
     ])
   }
@@ -57265,7 +57464,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", { staticClass: "is-size-1" }, [_vm._v("用户列表")]),
+    _c("h1", { staticClass: "is-size-1" }, [_vm._v("User List")]),
     _vm._v(" "),
     _c("div", { staticClass: "box" }, [
       _vm._m(0, false, false),
@@ -57290,20 +57489,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", { domProps: { textContent: _vm._s(user[4]) } }),
                   _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "button is-primary",
-                        on: { click: _vm.chat }
-                      },
-                      [
-                        _c("em", { staticClass: "fa fa-commenting" }, [
-                          _vm._v(" 发送信息")
-                        ])
-                      ]
-                    )
-                  ])
+                  _c("td", { domProps: { textContent: _vm._s(user[5]) } })
                 ])
               ])
             })
@@ -57334,19 +57520,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead" }, [
       _c("tr", [
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("姓名")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
+        _c("th", [_vm._v("邮件")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Mobile")]),
+        _c("th", [_vm._v("电话")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Role")]),
+        _c("th", [_vm._v("权限")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Invited by")]),
+        _c("th", [_vm._v("邀请人")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Created at")]),
-        _vm._v(" "),
-        _c("th")
+        _c("th", [_vm._v("邀请时间")])
       ])
     ])
   }
@@ -57369,7 +57553,428 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(93)
+var __vue_template__ = __webpack_require__(96)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/register/Register.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6f593c28", Component.options)
+  } else {
+    hotAPI.reload("data-v-6f593c28", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RegisterForm__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RegisterForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__RegisterForm__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        RegisterForm: __WEBPACK_IMPORTED_MODULE_0__RegisterForm___default.a
+    }
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/register/RegisterForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9e6f39e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-9e6f39e8", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: '',
+            email: '',
+            roles: ''
+        };
+    },
+
+
+    props: ['id'],
+
+    methods: {
+        invite: function invite() {
+            var _this = this;
+
+            var formData = {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                roles: this.roles,
+                invitedBy: this.id
+            };
+
+            return axios.post('/api/register/validate', formData).then(function (response) {
+                if (response.data.message !== 'taken') {
+                    axios.post('/api/register', formData).then(function (response) {
+                        console.log("register response: ", response.message);
+                        _this.$router.push({ name: 'confirm' });
+                    }).catch(function (error) {
+                        console.log('register error');
+                    });
+                } else {
+                    alert('This email has been taken. Please use another email.');
+                    _this.$router.push({ name: 'register' });
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "form",
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          _vm.invite($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "field",
+          class: { "has-error": _vm.errors.has("name") }
+        },
+        [
+          _c("label", { staticClass: "label", attrs: { for: "name" } }, [
+            _vm._v("姓名")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.name,
+                  expression: "name"
+                },
+                { name: "validate", rawName: "v-validate" }
+              ],
+              staticClass: "input",
+              attrs: {
+                "data-vv-rules": "required|min:4",
+                "data-vv-as": "姓名",
+                id: "name",
+                type: "text",
+                name: "name",
+                required: ""
+              },
+              domProps: { value: _vm.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("name"),
+                    expression: "errors.has('name')"
+                  }
+                ],
+                staticClass: "help-block",
+                staticStyle: { color: "red" }
+              },
+              [_vm._v(_vm._s(_vm.errors.first("name")))]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "field",
+          class: { "has-error": _vm.errors.has("email") }
+        },
+        [
+          _c("label", { staticClass: "label", attrs: { for: "email" } }, [
+            _vm._v("邮箱")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                },
+                { name: "validate", rawName: "v-validate" }
+              ],
+              staticClass: "input",
+              attrs: {
+                "data-vv-rules": "required|email",
+                "data-vv-as": "邮箱",
+                id: "email",
+                type: "email",
+                name: "email",
+                required: ""
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("email"),
+                    expression: "errors.has('email')"
+                  }
+                ],
+                staticClass: "help-block",
+                staticStyle: { color: "red" }
+              },
+              [_vm._v(_vm._s(_vm.errors.first("email")))]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0, false, false)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "field" }, [
+      _c("div", { staticClass: "control" }, [
+        _c(
+          "button",
+          {
+            staticClass: "button is-primary",
+            staticStyle: { width: "100%" },
+            attrs: { type: "submit" }
+          },
+          [_vm._v("\n                邀请\n            ")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9e6f39e8", module.exports)
+  }
+}
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-outline-info",
+          attrs: { to: { name: "profile" }, activeClass: "active", exact: "" }
+        },
+        [_vm._v("返回")]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [_c("register-form")], 1)
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6f593c28", module.exports)
+  }
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(98)
+/* template */
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57409,7 +58014,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57424,7 +58029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 93 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57451,15 +58056,15 @@ if (false) {
 }
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(95)
+var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(99)
+var __vue_template__ = __webpack_require__(105)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57499,12 +58104,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditProfileForm_vue__);
 //
 //
@@ -57529,15 +58134,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(97)
+var __vue_script__ = __webpack_require__(103)
 /* template */
-var __vue_template__ = __webpack_require__(98)
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57577,7 +58182,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57657,7 +58262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57833,7 +58438,7 @@ if (false) {
 }
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57874,15 +58479,15 @@ if (false) {
 }
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(101)
+var __vue_script__ = __webpack_require__(107)
 /* template */
-var __vue_template__ = __webpack_require__(105)
+var __vue_template__ = __webpack_require__(111)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57922,12 +58527,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditPasswordForm_vue__);
 //
 //
@@ -57952,15 +58557,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 102 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(103)
+var __vue_script__ = __webpack_require__(109)
 /* template */
-var __vue_template__ = __webpack_require__(104)
+var __vue_template__ = __webpack_require__(110)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -58000,7 +58605,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 103 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58066,7 +58671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 104 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58226,7 +58831,7 @@ if (false) {
 }
 
 /***/ }),
-/* 105 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58267,15 +58872,15 @@ if (false) {
 }
 
 /***/ }),
-/* 106 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(107)
+var __vue_script__ = __webpack_require__(113)
 /* template */
-var __vue_template__ = __webpack_require__(108)
+var __vue_template__ = __webpack_require__(114)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -58315,7 +58920,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 107 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58332,7 +58937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 108 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58363,13 +58968,13 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(n,e){ true?module.exports=e():"function"==typeof define&&define.amd?define(e):(n.__vee_validate_locale__zh_CN=n.__vee_validate_locale__zh_CN||{},n.__vee_validate_locale__zh_CN.js=e())}(this,function(){"use strict";var n={name:"zh_CN",messages:{after:function(n,e){return" "+n+"必须在"+e[0]+"之后"},alpha_dash:function(n){return" "+n+"能够包含字母数字字符，包括破折号、下划线"},alpha_num:function(n){return n+" 只能包含字母数字字符."},alpha_spaces:function(n){return" "+n+" 只能包含字母字符，包括空格."},alpha:function(n){return" "+n+" 只能包含字母字符."},before:function(n,e){return" "+n+" 必须在"+e[0]+" 之前."},between:function(n,e){return" "+n+" 必须在"+e[0]+" "+e[1]+"之间."},confirmed:function(n,e){return" "+n+" 不能和"+e[0]+"匹配."},date_between:function(n,e){return" "+n+"必须在"+e[0]+"和"+e[1]+"之间."},date_format:function(n,e){return" "+n+"必须在在"+e[0]+"格式中."},decimal:function(n,e){void 0===e&&(e=[]);var t=e[0];return void 0===t&&(t="*")," "+n+" 必须是数字的而且能够包含"+("*"===t?"":t)+" 小数点."},digits:function(n,e){return" "+n+" 必须是数字，且精确到 "+e[0]+"数"},dimensions:function(n,e){return" "+n+"必须是 "+e[0]+" 像素到 "+e[1]+" 像素."},email:function(n){return" "+n+" 必须是有效的邮箱."},ext:function(n){return" "+n+" 必须是有效的文件."},image:function(n){return" "+n+" 必须是图片."},in:function(n){return" "+n+" 必须是一个有效值."},ip:function(n){return" "+n+" 必须是一个有效的地址."},max:function(n,e){return" "+n+" 不能大于"+e[0]+"字符."},max_value:function(n,e){return" "+n+" 必须小于或等于"+e[0]+"."},mimes:function(n){return" "+n+" 必须是有效的文件类型."},min:function(n,e){return" "+n+" 必须至少有 "+e[0]+" 字符."},min_value:function(n,e){return" "+n+" 必须大于或等于"+e[0]+"."},not_in:function(n){return" "+n+"必须是一个有效值."},numeric:function(n){return" "+n+" 只能包含数字字符."},regex:function(n){return" "+n+" 格式无效."},required:function(n){return n+" 是必须的."},size:function(n,e){return" "+n+" 必须小于 "+function(n){var e=0==(n=1024*Number(n))?0:Math.floor(Math.log(n)/Math.log(1024));return 1*(n/Math.pow(1024,e)).toFixed(2)+" "+["Byte","KB","MB","GB","TB","PB","EB","ZB","YB"][e]}(e[0])+"."},url:function(n){return" "+n+"不是有效的url."}},attributes:{}};return"undefined"!=typeof VeeValidate&&VeeValidate.Validator.addLocale(n),n});
 
 /***/ }),
-/* 110 */
+/* 116 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
