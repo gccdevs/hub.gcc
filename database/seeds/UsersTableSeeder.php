@@ -30,8 +30,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name'	 => 'Tony Gao',
-            'email'	 => 'gaohaoqian@gmail.com',
+            'name'	 => 'Admin',
+            'email'	 => 'admin@admin.com',
             'role' => 2,
             'invited_by' => 1,
             'mobile' => 11111111,

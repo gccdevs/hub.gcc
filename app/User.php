@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile', 'role'
+        'name', 'email', 'password', 'mobile', 'role', 'is_active', 'invited_by'
     ];
 
     /**
@@ -30,11 +30,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function setInvitedBy($invitedBy)
-    {
-        $this->invited_by = $invitedBy;
-    }
-
     public function setInviteToken($token)
     {
         $this->confirm_token = $token;
@@ -42,7 +37,6 @@ class User extends Authenticatable
 
     public function activeAccount()
     {
-        $this->is_active = true;
         $this->confirm_token = 'used';
     }
 

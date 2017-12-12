@@ -23,8 +23,12 @@ Route::get('/dashboard/password-edit', 'HomeController@index')->name('password.e
 Route::get('/user/profile','ProfileController@fetchUser')->middleware('auth');
 Route::post('/user/profile/update','ProfileController@update')->middleware('auth');
 Route::post('/user/password/update','PasswordController@update')->middleware('auth');
+
 Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
-Route::get('/user/create', 'HomeController@index')->name('user.create')->middleware('auth');
+Route::get('/user/invite', 'HomeController@index')->name('user.invite')->middleware('auth');
+Route::get('/user/invite/success', 'HomeController@index')->name('user.invite.success')->middleware('auth');
+//Route::post('/user/send-invitation', 'Auth\RegisterController@invite')->middleware('auth');
+
 Route::get('/users/list','ProfileController@show')->middleware('auth');
 
 Route::get('/form/download-registered-users', function () {
@@ -39,6 +43,10 @@ Route::get('/message', 'HomeController@index')->name('message')->middleware('aut
 
 Route::get('/mail-purchase', function () {
     return new App\Mail\PurchaseConfirmation(App\Form::first());
+});
+
+Route::get('/user-invitation', function () {
+    return new App\Mail\UserInvitation(App\User::first());
 });
 
 Route::any('{all}', function () {

@@ -4,7 +4,7 @@
         <div class="column is-9">
             <br>
             <transition name="fade" mode="out-in">
-                <router-view></router-view>
+                <router-view :id="this.id"></router-view>
             </transition>
         </div>
     </section>
@@ -19,7 +19,9 @@
 
         components: {
             SideBar
-        }
+        },
+
+        props:['id']
 
     }
 </script>

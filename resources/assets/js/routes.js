@@ -57,10 +57,16 @@ let routes = [
                 meta: {}
             },
             {
-                path: '/user/create',
+                path: '/user/invite',
                 name: 'user.create',
                 component: require('./components/register/Register'),
-                meta: {}
+                meta: {},
+            },
+            {
+                path: '/user/invite/success',
+                name: 'user.create.success',
+                component: require('./components/register/InviteSuccess.vue'),
+                meta: { requiresInvite: true }
             },
             {
                 path: '/message',
@@ -107,7 +113,17 @@ router.beforeEach((to, from, next) => {
             return next({'name' : 'summit'})
         }
     }
+
+    if (to.meta.requiresInvite) {
+        if(Store.state.User.invited) {
+            return next();
+        } else {
+            return next({'name' : 'user.create'});
+        }
+    }
+
     next()
-})
+
+});
 
 export default router;

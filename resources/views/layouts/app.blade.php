@@ -27,7 +27,7 @@
 <br>
 
 <div id="app">
-    <app></app>
+    <app :id="{{ auth()->user()->id }}"></app>
 </div>
 
 <!-- Scripts -->

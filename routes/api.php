@@ -13,6 +13,8 @@ Route::get('/form/result', 'FormController@show');
 Route::post('/form/purchase','FormController@purchase');
 Route::post('/form/validate','FormController@validateEmail');
 
+Route::post('/user/send-invitation','Auth\RegisterController@invite');
+
 //Route::post('/register','Auth\RegisterController@register');
 //Route::post('/register/validate','Auth\RegisterController@validateEmail');
 //Route::post('/user/profile/update','ProfileController@update');
