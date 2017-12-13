@@ -101,7 +101,7 @@ This project is to create a sign up and pay form for users can register for the 
 
 ### Summit poster
 
-![screen shot 2017-12-06 at 5 02 26 pm](https://user-images.githubusercontent.com/9074571/33647172-a69123a2-daa7-11e7-87df-8f2fd808665c.png)
+![](https://user-images.githubusercontent.com/9074571/33647172-a69123a2-daa7-11e7-87df-8f2fd808665c.png)
 
 ### Summit Register and Pay
 
@@ -109,7 +109,7 @@ This project is to create a sign up and pay form for users can register for the 
 
 ### Processing payment
 
-![screen shot 2017-12-13 at 3 05 37 pm](https://user-images.githubusercontent.com/9074571/33921327-2f48bf4c-e017-11e7-83f5-ba4e0ef2c99b.png)
+![](https://user-images.githubusercontent.com/9074571/33921327-2f48bf4c-e017-11e7-83f5-ba4e0ef2c99b.png)
 
 ### Payment success
 
@@ -117,29 +117,29 @@ This project is to create a sign up and pay form for users can register for the 
 
 ### Receipt Email
 
-![screen shot 2017-12-13 at 3 12 49 pm](https://user-images.githubusercontent.com/9074571/33921484-1e3a6a38-e018-11e7-8a7b-6afd292022a0.png)
+![](https://user-images.githubusercontent.com/9074571/33921484-1e3a6a38-e018-11e7-8a7b-6afd292022a0.png)
 
 
 ### Admin Login
 
-![screen shot 2017-12-06 at 5 03 24 pm](https://user-images.githubusercontent.com/9074571/33865057-100e2eb0-df44-11e7-8b10-2e7233a5d480.png)
+![](https://user-images.githubusercontent.com/9074571/33865057-100e2eb0-df44-11e7-8b10-2e7233a5d480.png)
 
 ### Admin Panel
 
-![screen shot 2017-12-06 at 5 03 38 pm](https://user-images.githubusercontent.com/9074571/33857561-5161f2bc-df20-11e7-95b0-feb3fc4b37ed.png)
+![](https://user-images.githubusercontent.com/9074571/33857561-5161f2bc-df20-11e7-95b0-feb3fc4b37ed.png)
 
 ### Invite User
 
-![screen shot 2017-12-13 at 12 52 45 pm](https://user-images.githubusercontent.com/9074571/33917893-ca8e6d8e-e004-11e7-92fc-14fe1fdb8442.png)
+![](https://user-images.githubusercontent.com/9074571/33917893-ca8e6d8e-e004-11e7-92fc-14fe1fdb8442.png)
 
 ### Inivtation sent
 
-![screen shot 2017-12-13 at 12 53 23 pm](https://user-images.githubusercontent.com/9074571/33917892-ca58d19c-e004-11e7-8038-945d10060a8f.png)
+![](https://user-images.githubusercontent.com/9074571/33917892-ca58d19c-e004-11e7-8038-945d10060a8f.png)
 
 ### Invitation Email
 
-![screen shot 2017-12-13 at 3 11 40 pm](https://user-images.githubusercontent.com/9074571/33921455-fa725b4c-e017-11e7-81dc-2c6b109bd337.png)
+![](https://user-images.githubusercontent.com/9074571/33921455-fa725b4c-e017-11e7-81dc-2c6b109bd337.png)
 
 ### Confirm Invitation
 
-![screen shot 2017-12-13 at 3 07 32 pm](https://user-images.githubusercontent.com/9074571/33921406-bc94f744-e017-11e7-9df7-a341546cc5da.png)
+![](https://user-images.githubusercontent.com/9074571/33921406-bc94f744-e017-11e7-9df7-a341546cc5da.png)
