@@ -109,7 +109,7 @@ This project is to create a sign up and pay form for users can register for the 
 
 ### Processing payment
 
-![](https://user-images.githubusercontent.com/9074571/33714870-b2b87ea2-dba4-11e7-89ae-ad159a16e178.png)
+![screen shot 2017-12-13 at 3 05 37 pm](https://user-images.githubusercontent.com/9074571/33921327-2f48bf4c-e017-11e7-83f5-ba4e0ef2c99b.png)
 
 ### Payment success
 
