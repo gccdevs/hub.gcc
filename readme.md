@@ -115,6 +115,11 @@ This project is to create a sign up and pay form for users can register for the 
 
 ![](https://user-images.githubusercontent.com/9074571/33865145-7d1ded42-df44-11e7-91da-76207a539c7e.png)
 
+### Receipt Email
+
+![screen shot 2017-12-13 at 3 12 49 pm](https://user-images.githubusercontent.com/9074571/33921484-1e3a6a38-e018-11e7-8a7b-6afd292022a0.png)
+
+
 ### Admin Login
 
 ![screen shot 2017-12-06 at 5 03 24 pm](https://user-images.githubusercontent.com/9074571/33865057-100e2eb0-df44-11e7-8b10-2e7233a5d480.png)
@@ -130,3 +135,11 @@ This project is to create a sign up and pay form for users can register for the 
 ### Inivtation sent
 
 ![screen shot 2017-12-13 at 12 53 23 pm](https://user-images.githubusercontent.com/9074571/33917892-ca58d19c-e004-11e7-8038-945d10060a8f.png)
+
+### Invitation Email
+
+![screen shot 2017-12-13 at 3 11 40 pm](https://user-images.githubusercontent.com/9074571/33921455-fa725b4c-e017-11e7-81dc-2c6b109bd337.png)
+
+### Confirm Invitation
+
+![screen shot 2017-12-13 at 3 07 32 pm](https://user-images.githubusercontent.com/9074571/33921406-bc94f744-e017-11e7-9df7-a341546cc5da.png)
