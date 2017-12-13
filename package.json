@@ -16,7 +16,7 @@
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "vue": "^2.5.10"
     },
     "dependencies": {
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
