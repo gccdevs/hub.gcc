@@ -13,9 +13,7 @@ class FormsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('en_AU');
-
-        $this->seedTestForms($faker);
+//        $this->seedTestForms($faker);
     }
 
     private function seedTestForms($faker)

@@ -15,12 +15,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('en_AU');
-
-        $this->seedTestUsers($faker);
+        $this->seedTestUsers();
     }
 
-    private function seedTestUsers($faker)
+    private function seedTestUsers()
     {
         User::create([
             'name'	 => 'Customer Service',
