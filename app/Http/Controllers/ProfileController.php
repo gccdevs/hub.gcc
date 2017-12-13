@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function update()
     {
-        request()->user()->update(request()->only('name'));
+        request()->user()->update(request()->only('name','mobile'));
 //        request()->user()->update(request()->only('name','email'));
 
         return response()->json(['status' => true]);
@@ -42,9 +42,9 @@ class ProfileController extends Controller
     public function fetchUser()
     {
         if (Auth::check()) {
-            return ['name' => Auth::user()->name,'email' => Auth::user()->email];
+            return ['name' => Auth::user()->name,'email' => Auth::user()->email, 'mobile' =>Auth::user()->mobile ?: 'Not set up'];
         }else{
-            return ['name' => 'No','email' => 'no@no.com'];
+            return ['name' => 'No','email' => 'no@no.com', 'mobile' => 000];
         }
     }
 

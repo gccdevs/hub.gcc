@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <aside class="menu">
-            <p class="menu-label">General</p>
+            <p class="menu-label" style="margin-left:10px;">General</p>
             <ul class="menu-list">
                 <li>
                     <router-link :to="{ name: 'booking' }" v-bind:class="classObject">

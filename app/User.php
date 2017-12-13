@@ -41,9 +41,9 @@ class User extends Authenticatable
         $this->confirm_token = 'expired';
     }
 
-    public function activeAccount()
+    public function activeAccount($token)
     {
-        $this->confirm_token = 'confirmed';
+        $this->confirm_token = 'confirmed' . $token;
     }
 
 }

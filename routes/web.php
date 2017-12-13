@@ -4,31 +4,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-
-//use App\User;
-//use Carbon\Carbon;
-//Route::get('/abc', function(){
-//
-//    $allExpiredInvitations = User::where('is_active',false)->where('confirm_token', '!=', 'expired')->get();
-//
-//    $now = Carbon::now();
-//
-//    foreach ($allExpiredInvitations as $entry) {
-//
-//        $update = $entry->created_at;
-//        $diff = $now->diffInMinutes($update);
-//
-//        echo $diff;
-//
-//        if ($diff >= 2) {
-//            $entry->outdateToken();
-//            $entry->save();
-//        }else{
-//            // do nothing
-//        }
-//    }
-//});
-
 Route::get ('logout',   'Auth\LoginController@logout')->name('logout');
 Route::post('logout',   'Auth\LoginController@logout');
 
@@ -47,11 +22,12 @@ Route::get('/dashboard/password-edit', 'HomeController@index')->name('password.e
 
 Route::get('/user/profile','ProfileController@fetchUser')->middleware('auth');
 Route::post('/user/profile/update','ProfileController@update')->middleware('auth');
-Route::post('/user/password/update','PasswordController@update')->middleware('auth');
+Route::post('/user/password/update','PasswordController@update')->name('password.update')->middleware('auth');
 
 Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
 Route::get('/user/invite', 'HomeController@index')->name('user.invite')->middleware('auth');
 Route::get('/user/invite/success', 'HomeController@index')->name('user.invite.success')->middleware('auth');
+Route::get('/user-confirmation/{confirmToken}','Auth\LoginController@confirm')->middleware('guest');
 //Route::post('/user/send-invitation', 'Auth\RegisterController@invite')->middleware('auth');
 
 Route::get('/users/list','ProfileController@show')->middleware('auth');
@@ -71,7 +47,7 @@ Route::get('/mail-purchase', function () {
 });
 
 Route::get('/user-invitation', function () {
-    return new App\Mail\UserInvitation(App\User::first());
+    return new App\Mail\UserInvitation(App\User::first(), str_random(16));
 });
 
 Route::any('{all}', function () {

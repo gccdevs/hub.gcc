@@ -80,6 +80,7 @@
                     name: vm.name,
                     email: vm.email,
                     invitedId: vm.id,
+                    password: Math.random().toString(16),
                     role: vm.role
                 };
 

@@ -1,19 +1,26 @@
 <template>
     <div class="box">
         <form @submit.prevent="updateProfile" class="box">
+
             <div class="field" :class="{'has-error' : errors.has('name') }">
-                <label for="name" class="label">用户名</label>
+                <label for="name" class="label">姓名</label>
                 <input v-model="name"
-                       v-validate data-vv-rules="required" data-vv-as="邮箱"
+                       v-validate="'required|min:2|max:10'" data-vv-as="姓名"
                        id="name" type="text" class="input" name="name" required>
                 <span class="help-block" style="color:red" v-show="errors.has('name')">{{errors.first('name')}}</span>
             </div>
-            <div class="field" :class="{'has-error' : errors.has('email') }">
-                <label for="email" class="label">邮箱</label>
-                <input v-model="this.person.email"
-                       v-validate data-vv-rules="required|email" data-vv-as="邮箱"
-                       id="email" type="email" class="input" name="email" required disabled>
-                <span class="help-block" style="color:red" v-show="errors.has('email')">{{errors.first('email')}}</span>
+
+            <div class="field" :class="{'has-error' : errors.has('mobile') }">
+                <label for="mobile" class="label">电话</label>
+                <input v-model="mobile"
+                       v-validate="'numeric|min:10|max:20'" data-vv-as="电话"
+                       id="mobile" type="text" class="input" name="mobile">
+                <span class="help-block" style="color:red" v-show="errors.has('mobile')">{{errors.first('mobile')}}</span>
+            </div>
+
+            <div class="field">
+                <label class="label">邮箱</label>
+                <input v-model="this.person.email"class="input" required disabled>
             </div>
             <div class="field">
                 <div class="control">
@@ -38,6 +45,7 @@
 
                 person: {
                     name: '',
+                    mobile: '',
                     email: ''
                 }
             }
@@ -59,7 +67,8 @@
 
             updateProfile() {
                 const formData = {
-                    name: this.name
+                    name: this.name,
+                    mobile: this.mobile
                 };
                 this.$store.dispatch('updateProfileRequest',formData).then(response => {
                     this.$router.push({name:'profile'})

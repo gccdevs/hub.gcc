@@ -18,13 +18,17 @@ class UserInvitation extends Mailable
 
     public $activateLink;
 
-    public function __construct(User $user)
+    public $tempPassword;
+
+    public function __construct(User $user, $tempPassword)
     {
         $this->user = $user;
 
         $this->inviterName = User::where('id',$user->invited_by)->first()->name;
 
-        $this->activateLink = env('APP_URL');
+        $this->tempPassword = $tempPassword;
+
+        $this->activateLink = env('APP_URL') . '/user-confirmation/' . $user->confirm_token;
 
     }
 

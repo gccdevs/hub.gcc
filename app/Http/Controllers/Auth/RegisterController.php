@@ -105,11 +105,12 @@ class RegisterController extends Controller
             return response()->json(['message' => 'taken', 'reason' => $e->getMessage()]);
         }
 
+
         $user = new User([
             'name' => request('name'),
             'email' => request('email'),
             'invited_by' => request('invitedId'),
-            'password' => bcrypt(str_random(20)),
+            'password' => bcrypt(request('password')),
             'role' => $roleId,
             'is_active' => false
         ]);
@@ -119,7 +120,7 @@ class RegisterController extends Controller
         $user->save();
 
         try{
-            Mail::to($user)->queue(new UserInvitation($user)); // send confirmation email
+            Mail::to($user)->queue(new UserInvitation($user, request('password'))); // send confirmation email
 
         } catch(\Exception $e) {
             return response()->json(['message' => 'failed', 'reason' => $e->getMessage()]);

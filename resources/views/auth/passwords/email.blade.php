@@ -31,7 +31,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <button type="submit" class="button is-primary" style="width:100%" >
+                            <button type="submit" id="send" onclick="isLoading()"  class="button is-primary" style="width:100%" >
                                 Send Password Reset Link
                             </button>
                         </div>
@@ -40,4 +40,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        function isLoading () {
+            document.getElementById("send").classList.add('is-loading');
+        }
+
+    </script>
+
 @endsection

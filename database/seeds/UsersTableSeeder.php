@@ -43,20 +43,5 @@ class UsersTableSeeder extends Seeder
             'is_active' => false,
             'password' => bcrypt('123123')
         ]);
-
-
-        foreach(range(1, 5) as $index) {
-            User::create([
-                'name'	 => $faker->name,
-                'email'	 => $faker->email,
-                'role' => 2,
-                'invited_by' => 1,
-                'mobile' => 11111111,
-                'confirm_token' => str_random(99),
-                'is_active' => false,
-                'password' => bcrypt('123123')
-            ]);
-        }
-
     }
 }

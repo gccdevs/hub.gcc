@@ -56676,7 +56676,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("aside", { staticClass: "menu" }, [
-      _c("p", { staticClass: "menu-label" }, [_vm._v("General")]),
+      _c(
+        "p",
+        { staticClass: "menu-label", staticStyle: { "margin-left": "10px" } },
+        [_vm._v("General")]
+      ),
       _vm._v(" "),
       _c("ul", { staticClass: "menu-list" }, [
         _c(
@@ -56915,12 +56919,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             person: {
                 name: '',
+                mobile: '',
                 email: ''
             }
         };
@@ -56960,12 +56970,22 @@ var render = function() {
       _vm._m(0, false, false),
       _vm._v(" "),
       _c("li", { staticClass: "column is-12" }, [
-        _vm._v("\n            用户名\n            "),
+        _vm._v("\n            姓名\n            "),
         _c("br"),
         _vm._v(" "),
         _c("h4", {
           staticClass: "label",
           domProps: { textContent: _vm._s(this.person.name) }
+        })
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "column is-12" }, [
+        _vm._v("\n            电话\n            "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h4", {
+          staticClass: "label",
+          domProps: { textContent: _vm._s(this.person.mobile) }
         })
       ]),
       _vm._v(" "),
@@ -57851,6 +57871,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: vm.name,
                 email: vm.email,
                 invitedId: vm.id,
+                password: Math.random().toString(16),
                 role: vm.role
             };
 
@@ -58538,6 +58559,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 //    import jwtToken from './../../helpers/jwt'
 
@@ -58550,6 +58578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             person: {
                 name: '',
+                mobile: '',
                 email: ''
             }
         };
@@ -58573,7 +58602,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var formData = {
-                name: this.name
+                name: this.name,
+                mobile: this.mobile
             };
             this.$store.dispatch('updateProfileRequest', formData).then(function (response) {
                 _this2.$router.push({ name: 'profile' });
@@ -58611,7 +58641,7 @@ var render = function() {
           },
           [
             _c("label", { staticClass: "label", attrs: { for: "name" } }, [
-              _vm._v("用户名")
+              _vm._v("姓名")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -58622,12 +58652,16 @@ var render = function() {
                   value: _vm.name,
                   expression: "name"
                 },
-                { name: "validate", rawName: "v-validate" }
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|min:2|max:10",
+                  expression: "'required|min:2|max:10'"
+                }
               ],
               staticClass: "input",
               attrs: {
-                "data-vv-rules": "required",
-                "data-vv-as": "邮箱",
+                "data-vv-as": "姓名",
                 id: "name",
                 type: "text",
                 name: "name",
@@ -58667,11 +58701,11 @@ var render = function() {
           "div",
           {
             staticClass: "field",
-            class: { "has-error": _vm.errors.has("email") }
+            class: { "has-error": _vm.errors.has("mobile") }
           },
           [
-            _c("label", { staticClass: "label", attrs: { for: "email" } }, [
-              _vm._v("邮箱")
+            _c("label", { staticClass: "label", attrs: { for: "mobile" } }, [
+              _vm._v("电话")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -58679,28 +58713,30 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: this.person.email,
-                  expression: "this.person.email"
+                  value: _vm.mobile,
+                  expression: "mobile"
                 },
-                { name: "validate", rawName: "v-validate" }
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "numeric|min:10|max:20",
+                  expression: "'numeric|min:10|max:20'"
+                }
               ],
               staticClass: "input",
               attrs: {
-                "data-vv-rules": "required|email",
-                "data-vv-as": "邮箱",
-                id: "email",
-                type: "email",
-                name: "email",
-                required: "",
-                disabled: ""
+                "data-vv-as": "电话",
+                id: "mobile",
+                type: "text",
+                name: "mobile"
               },
-              domProps: { value: this.person.email },
+              domProps: { value: _vm.mobile },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(this.person, "email", $event.target.value)
+                  _vm.mobile = $event.target.value
                 }
               }
             }),
@@ -58712,17 +58748,43 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.errors.has("email"),
-                    expression: "errors.has('email')"
+                    value: _vm.errors.has("mobile"),
+                    expression: "errors.has('mobile')"
                   }
                 ],
                 staticClass: "help-block",
                 staticStyle: { color: "red" }
               },
-              [_vm._v(_vm._s(_vm.errors.first("email")))]
+              [_vm._v(_vm._s(_vm.errors.first("mobile")))]
             )
           ]
         ),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("邮箱")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: this.person.email,
+                expression: "this.person.email"
+              }
+            ],
+            staticClass: "input",
+            attrs: { required: "", disabled: "" },
+            domProps: { value: this.person.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(this.person, "email", $event.target.value)
+              }
+            }
+          })
+        ]),
         _vm._v(" "),
         _vm._m(0, false, false)
       ]

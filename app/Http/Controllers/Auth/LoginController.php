@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function confirm($confirmToken)
+    {
+
+        $user = User::where('confirm_token',$confirmToken)->first();
+
+        if (!is_null($user)){
+
+            $user->is_active = true;
+
+            $user->activeAccount(str_random(18));
+
+            $user->save();
+
+            return view('auth.passwords.setup',  ['email' => $user->email]);
+        }
+
+        return redirect('/login');
+
     }
 
 
