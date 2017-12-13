@@ -99,7 +99,7 @@ class RegisterController extends Controller
         try{
 
             $this->validateCreation($request->all())->validate(); // validate requested inputs
-            $roleId = Role::where('role_title',request('role'))->firstOrFail()->id; // role id get by role selected by user
+            $roleId = Role::where('role_title',request('role'))->first()->id; // role id get by role selected by user
 
         } catch( \Exception $e){
             return response()->json(['message' => 'taken', 'reason' => $e->getMessage()]);
@@ -135,7 +135,7 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'name' => 'required|string|max:50|min:2',
-            'email' => 'required|string|email|max:50|unique:forms',
+            'email' => 'required|string|email|max:50|unique:users',
             'role' => 'required|in:Admin,User'
         ]);
 

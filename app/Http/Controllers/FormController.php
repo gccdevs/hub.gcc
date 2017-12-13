@@ -35,7 +35,7 @@ class FormController extends Controller
                 'path' => request('path'),
             ]); // create an entry
 
-            $form->setAgree();
+            $form->is_agreed = true;
 
             $customer = Customer::create([
                 'email' =>request('email'),
@@ -54,6 +54,7 @@ class FormController extends Controller
 
         $form->confirmPayment($charge->id);
 
+        $form->save();
         try{
             Mail::to($form)->queue(new PurchaseConfirmation($form)); // send confirmation email
 
