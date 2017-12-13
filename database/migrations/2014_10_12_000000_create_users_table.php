@@ -17,12 +17,14 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->string('password');
             $table->integer('role')->nullable();
             $table->integer('invited_by')->nullable();
             $table->boolean('is_active')->default(false);
-            $table->rememberToken();
+            $table->string('confirm_token', 100)->nullable(); // for invitation link
+            $table->rememberToken(); // for remember me option
+            $table->softDeletes();
             $table->timestamps();
         });
     }

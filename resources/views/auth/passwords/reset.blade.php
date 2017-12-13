@@ -12,10 +12,10 @@
                     <input type="hidden" name="token" value="{{ $token }}">
 
                     <div class="field">
-                        <label for="email" class="label">E-Mail Address</label>
+                        <label for="email" class="label" >E-Mail Address</label>
 
                         <div class="control">
-                            <input id="email" type="email" class="input" name="email" value="{{ $email or old('email') }}" required autofocus>
+                            <input id="email" type="email" class="input" placeholder="{{ $email }}" name="email" value="{{ $email or old('email') }}" required autofocus>
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -51,8 +51,6 @@
                             @endif
                         </div>
                     </div>
-
-
 
                     <div class="field">
                         <div class="control">

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -9,13 +11,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'mobile', 'role', 'is_active', 'invited_by'
     ];
 
     /**
@@ -27,16 +31,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function invitedBy($invitedBy)
+    public function setInviteToken($token)
     {
-        $this->invited_by = $invitedBy;
-        $this->save();
+        $this->confirm_token = $token;
     }
 
-    public function setRole($role)
+    public function outdateToken()
     {
-        $this->role = $role;
-        $this->save();
+        $this->confirm_token = 'expired';
+    }
+
+    public function activeAccount($token)
+    {
+        $this->confirm_token = 'confirmed' . $token;
     }
 
 }

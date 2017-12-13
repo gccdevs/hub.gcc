@@ -5,6 +5,7 @@ import EditProfile from './modules/edit-profile'
 import EditPassword from './modules/edit-password'
 import Notification from './modules/notification'
 import Form from './modules/checkout'
+import User from './modules/user'
 
 Vue.use(Vuex);
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
         EditProfile,
         EditPassword,
         Notification,
-        Form
+        Form,
+        User
     },
     strict: true
 })

@@ -1,22 +1,5 @@
 @extends('layouts.app')
 
-
-<style>
-
-    input {
-        outline: 0 !important;
-        border-width: 0 0 2px 0 !important;
-        border-color: darkgray !important;
-    }
-
-    input:focus {
-    outline: 0 !important;
-    border-width: 0 0 2px 0 !important;
-    border-color: #1598af !important;
-    }
-
-</style>
-
 @section('content')
     <br>
     <div class="container">

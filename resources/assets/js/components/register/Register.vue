@@ -3,7 +3,7 @@
         <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
         <br><br>
         <div class="box">
-            <register-form></register-form>
+            <register-form :id="this.id"></register-form>
         </div>
     </div>
 </template>
@@ -13,8 +13,12 @@
     import RegisterForm from './RegisterForm'
 
     export default {
+
         components: {
             RegisterForm
-        }
+        },
+
+        props:['id']
+
     }
 </script>

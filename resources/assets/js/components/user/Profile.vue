@@ -7,9 +7,14 @@
                 <a href="javascript:window.location.reload();" class="button is-primary"><em class="fa fa-refresh"> 刷新</em></a>
             </li>
             <li class="column is-12">
-                用户名
+                姓名
                 <br>
                 <h4 class="label" v-text="this.person.name"></h4>
+            </li>
+            <li class="column is-12">
+                电话
+                <br>
+                <h4 class="label" v-text="this.person.mobile"></h4>
             </li>
             <li class="column is-12">
                 邮箱
@@ -27,6 +32,7 @@
             return {
                 person: {
                     name: '',
+                    mobile: '',
                     email: ''
                 }
             }

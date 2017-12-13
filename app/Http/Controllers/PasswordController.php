@@ -10,10 +10,14 @@ class PasswordController extends Controller
 
     public function update()
     {
-//        Auth::user()->update(['password' => bcrypt(request('password'))]);
         request()->user()->update(['password' => bcrypt(request('password'))]);
 
-        return response()->json(['status' => true]);
+        if(request()->wantsJson()) {
+            return response()->json(['status' => true]);
+        }
+
+        return view('auth.passwords.confirmed');
+
     }
 
 }

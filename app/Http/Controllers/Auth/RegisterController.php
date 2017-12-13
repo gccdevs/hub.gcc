@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\UserInvitation;
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -75,12 +80,7 @@ class RegisterController extends Controller
         return view('404');
     }
 
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -92,4 +92,59 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
+
+
+    public function invite(Request $request)
+    {
+        try{
+
+            $this->validateCreation($request->all())->validate(); // validate requested inputs
+            $roleId = Role::where('role_title',request('role'))->firstOrFail()->id; // role id get by role selected by user
+
+        } catch( \Exception $e){
+            return response()->json(['message' => 'taken', 'reason' => $e->getMessage()]);
+        }
+
+
+        $user = new User([
+            'name' => request('name'),
+            'email' => request('email'),
+            'invited_by' => request('invitedId'),
+            'password' => bcrypt(request('password')),
+            'role' => $roleId,
+            'is_active' => false
+        ]);
+
+        $user->setInviteToken(str_random(99));
+
+        $user->save();
+
+        try{
+            Mail::to($user)->queue(new UserInvitation($user, request('password'))); // send confirmation email
+
+        } catch(\Exception $e) {
+            return response()->json(['message' => 'failed', 'reason' => $e->getMessage()]);
+        }
+
+        return response()->json(['message' => 'sent']);
+
+    }
+
+    private function validateCreation(array $data)
+    {
+
+        return Validator::make($data, [
+            'name' => 'required|string|max:50|min:2',
+            'email' => 'required|string|email|max:50|unique:forms',
+            'role' => 'required|in:Admin,User'
+        ]);
+
+    }
+
+
+    public function activateInvitation()
+    {
+
+    }
+
 }
