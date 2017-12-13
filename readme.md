@@ -49,7 +49,19 @@ This project is to create a sign up and pay form for users can register for the 
     php artisan work
     php artisan work --tries=4 // with max attempts of four 
     ```
-    
+
+7. Schedulling tasks
+
+    1. **Server development (Linux or Homestead)**, In order to run schedule properly every given timeframe, execute:
+    ```
+    * * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+    ```
+
+    2. **Mac Development Environment**, In order to run schedule properly every given timeframe, open a new tab with same root directory of the project and run:
+    ```
+    while true; do php artisan schedule:run; sleep 60; done
+    ```
+
 # Virtual Environment
 
 - If has [valet](https://laravel.com/docs/5.5/valet) installed,

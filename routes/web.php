@@ -4,6 +4,31 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
+//use App\User;
+//use Carbon\Carbon;
+//Route::get('/abc', function(){
+//
+//    $allExpiredInvitations = User::where('is_active',false)->where('confirm_token', '!=', 'expired')->get();
+//
+//    $now = Carbon::now();
+//
+//    foreach ($allExpiredInvitations as $entry) {
+//
+//        $update = $entry->created_at;
+//        $diff = $now->diffInMinutes($update);
+//
+//        echo $diff;
+//
+//        if ($diff >= 2) {
+//            $entry->outdateToken();
+//            $entry->save();
+//        }else{
+//            // do nothing
+//        }
+//    }
+//});
+
 Route::get ('logout',   'Auth\LoginController@logout')->name('logout');
 Route::post('logout',   'Auth\LoginController@logout');
 

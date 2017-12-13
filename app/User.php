@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,9 +36,14 @@ class User extends Authenticatable
         $this->confirm_token = $token;
     }
 
+    public function outdateToken()
+    {
+        $this->confirm_token = 'expired';
+    }
+
     public function activeAccount()
     {
-        $this->confirm_token = 'used';
+        $this->confirm_token = 'confirmed';
     }
 
 }

@@ -27,7 +27,14 @@
 <br>
 
 <div id="app">
-    <app :id="{{ auth()->user()->id }}"></app>
+
+    @if (Route::has('login'))
+        @auth
+            <app :id="{{ auth()->user()->id }}"></app>
+            @else
+                <app id="-1"></app>
+                @endauth
+            @endif
 </div>
 
 <!-- Scripts -->

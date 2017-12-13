@@ -65,6 +65,7 @@ let routes = [
             {
                 path: '/user/invite/success',
                 name: 'user.create.success',
+                props:true,
                 component: require('./components/register/InviteSuccess.vue'),
                 meta: { requiresInvite: true }
             },

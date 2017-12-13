@@ -90,7 +90,11 @@
                     if (response.data.message === 'sent'){
 
                         vm.$store.dispatch('inviteUserRequest').then(response => {
-                            vm.$router.push({name: 'user.create.success'});
+                            vm.$router.push({name: 'user.create.success', params:{
+                                name: vm.name,
+                                email: vm.email,
+                                role: vm.role
+                            }});
                         });
 
                     }else if(response.data.message === 'taken'){

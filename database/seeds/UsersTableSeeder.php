@@ -3,6 +3,8 @@
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,10 +15,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->seedTestUsers();
+        $faker = Faker::create('en_AU');
+
+        $this->seedTestUsers($faker);
     }
 
-    private function seedTestUsers()
+    private function seedTestUsers($faker)
     {
         User::create([
             'name'	 => 'Customer Service',
@@ -32,13 +36,27 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'	 => 'Admin',
             'email'	 => 'admin@admin.com',
-            'role' => 2,
+            'role' => 1,
             'invited_by' => 1,
             'mobile' => 11111111,
             'confirm_token' => str_random(99),
             'is_active' => false,
             'password' => bcrypt('123123')
         ]);
+
+
+        foreach(range(1, 5) as $index) {
+            User::create([
+                'name'	 => $faker->name,
+                'email'	 => $faker->email,
+                'role' => 2,
+                'invited_by' => 1,
+                'mobile' => 11111111,
+                'confirm_token' => str_random(99),
+                'is_active' => false,
+                'password' => bcrypt('123123')
+            ]);
+        }
 
     }
 }

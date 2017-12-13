@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +26,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+
+            $allExpiredInvitations = User::where('is_active',false)->where('confirm_token', '!=', 'expired')->get();
+
+            $now = Carbon::now();
+
+            foreach ($allExpiredInvitations as $entry) {
+
+                $update = $entry->created_at;
+                $diff = $now->diffInMinutes($update);
+
+                if ($diff >= 2) {
+                    $entry->outdateToken();
+                    $entry->save();
+                }else{
+                    // do nothing
+                }
+            }
+
+        })->everyMinute()->runInBackground();
     }
 
     /**
