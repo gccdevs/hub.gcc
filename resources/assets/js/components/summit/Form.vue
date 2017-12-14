@@ -180,7 +180,7 @@
             <div class="columns">
                 <div class="column">
                     <label class="checkbox">
-                        <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意条款" v-model="termChecker" @click="toggleChecker()" required>
+                        <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意条款" @click="toggleChecker" required>
                         I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
                     </label>
                     <span class="help-block" v-show="errors.has('terms')" style="color: red !important;">{{ errors.first('terms') }}</span>

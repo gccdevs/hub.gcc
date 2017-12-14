@@ -4,7 +4,7 @@
         <div class="container">
             <a href="javascript:window.location.reload();" class="button is-primary"><em class="fa fa-refresh"></em></a>
             <div class="col-md-10">
-                <table class="table">
+                <table class="table is-responsive">
                     <thead class="thead">
                     <tr>
                         <th>姓名</th>

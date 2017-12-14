@@ -55749,12 +55749,6 @@ var render = function() {
                       rawName: "v-validate",
                       value: "required",
                       expression: "'required'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.termChecker,
-                      expression: "termChecker"
                     }
                   ],
                   attrs: {
@@ -55764,35 +55758,7 @@ var render = function() {
                     "data-vv-as": "同意条款",
                     required: ""
                   },
-                  domProps: {
-                    checked: Array.isArray(_vm.termChecker)
-                      ? _vm._i(_vm.termChecker, null) > -1
-                      : _vm.termChecker
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.toggleChecker()
-                    },
-                    change: function($event) {
-                      var $$a = _vm.termChecker,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.termChecker = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.termChecker = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.termChecker = $$c
-                      }
-                    }
-                  }
+                  on: { click: _vm.toggleChecker }
                 }),
                 _vm._v("\n                    I agree to the "),
                 _c(
@@ -57733,7 +57699,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-10" }, [
         _c(
           "table",
-          { staticClass: "table" },
+          { staticClass: "table is-responsive" },
           [
             _vm._m(1),
             _vm._v(" "),
