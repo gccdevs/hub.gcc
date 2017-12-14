@@ -22,8 +22,8 @@
                     <tr>
                         <td v-text="user.name"></td>
 
-                        <td v-if="user.status" class="tag is-primary"><em class="fa fa-check"></em> 正在使用</td>
-                        <td v-else class="tag is-light"><em class="fa fa-times"></em> 未激活</td>
+                        <td v-if="user.status" class="tag is-primary" style="margin-top: 7px;"><em class="fa fa-check"></em> 正在使用</td>
+                        <td v-else class="tag is-light" style="margin-top:7px;"><em class="fa fa-times"></em> 未激活</td>
 
                         <td v-text="user.email"></td>
                         <td v-text="user.mobile"></td>
@@ -31,8 +31,8 @@
                         <td v-text="user.createdBy"></td>
                         <td v-text="user.time"></td>
                         <td>
-                            <button class="button is-warnning" @click="update(user)"><em class="fa fa-wrench"> Edit</em></button>
-                            <button class="button is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
+                            <button class="tag is-warning" @click="update(user)"><em class="fa fa-wrench"> Edit</em></button>
+                            <button class="tag is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
                         </td>
 
                     </tr>

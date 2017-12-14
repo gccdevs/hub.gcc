@@ -56887,7 +56887,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("a", { attrs: { href: "/logout" } }, [
-        _c("span", { staticClass: "icon" }, [
+        _c("span", { staticClass: "icon is-dark" }, [
           _c("i", { staticClass: "fa fa-sign-out" })
         ]),
         _vm._v(" Log out\n                ")
@@ -57743,14 +57743,28 @@ var render = function() {
                   _c("td", { domProps: { textContent: _vm._s(user.name) } }),
                   _vm._v(" "),
                   user.status
-                    ? _c("td", { staticClass: "tag is-primary" }, [
-                        _c("em", { staticClass: "fa fa-check" }),
-                        _vm._v(" 正在使用")
-                      ])
-                    : _c("td", { staticClass: "tag is-light" }, [
-                        _c("em", { staticClass: "fa fa-times" }),
-                        _vm._v(" 未激活")
-                      ]),
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "tag is-primary",
+                          staticStyle: { "margin-top": "7px" }
+                        },
+                        [
+                          _c("em", { staticClass: "fa fa-check" }),
+                          _vm._v(" 正在使用")
+                        ]
+                      )
+                    : _c(
+                        "td",
+                        {
+                          staticClass: "tag is-light",
+                          staticStyle: { "margin-top": "7px" }
+                        },
+                        [
+                          _c("em", { staticClass: "fa fa-times" }),
+                          _vm._v(" 未激活")
+                        ]
+                      ),
                   _vm._v(" "),
                   _c("td", { domProps: { textContent: _vm._s(user.email) } }),
                   _vm._v(" "),
@@ -57768,7 +57782,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "button is-warnning",
+                        staticClass: "tag is-warning",
                         on: {
                           click: function($event) {
                             _vm.update(user)
@@ -57785,7 +57799,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "button is-danger",
+                        staticClass: "tag is-danger",
                         on: {
                           click: function($event) {
                             _vm.deleteUser(user)

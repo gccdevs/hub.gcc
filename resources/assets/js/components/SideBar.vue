@@ -59,7 +59,7 @@
                 <hr>
                 <li>
                     <a href="/logout">
-                        <span class="icon"><i class="fa fa-sign-out"></i></span> Log out
+                        <span class="icon is-dark"><i class="fa fa-sign-out"></i></span> Log out
                     </a>
                 </li>
             </ul>
