@@ -31,8 +31,8 @@
                         <td v-text="user.createdBy"></td>
                         <td v-text="user.time"></td>
                         <td>
-                            <button class="tag is-warning" @click="update(user)"><em class="fa fa-wrench"> Edit</em></button>
-                            <button class="tag is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
+                            <button class="tag is-warning" @click="update(user)" disabled><em class="fa fa-wrench"> Edit</em></button>
+                            <!--<button class="tag is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>-->
                         </td>
 
                     </tr>
