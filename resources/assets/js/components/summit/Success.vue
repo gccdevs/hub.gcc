@@ -24,7 +24,7 @@
                 <br>
                 <p style="display: inline;"><b>Email: </b></p><p style="display: inline;" v-text="this.email"></p>
                 <br>
-                <p style="display: inline;"><b>性别: </b></p><p style="display: inline;" v-text="this.gender"></p>
+                <p style="display: inline;"><b>性别: </b></p><p style="display: inline;" v-text="this.gender === 'male' ? '男性' : '女性'"></p>
                 <br>
                 <p style="display: inline;"><b>第一次参加: </b></p><p style="display: inline;" v-text="this.firstTime"></p>
                 <br>
@@ -32,7 +32,7 @@
                 <br>
                 <p style="display: inline;"><b>地址: </b></p><p style="display: inline;" v-text="this.address"></p>
                 <br>
-                <p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>
+                <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
             </div>
             <h3 class="is-size-3">支付成功邮件已发送到： {{ this.email }}</h3>
             <br>

@@ -99,7 +99,7 @@
                             }});
                         });
 
-                    }else if(response.data.message === 'taken'){
+                    }else if(response.data.message === 'Email format is wrong or has already been invited'){
                         alert('This email has been taken. Please use another email.');
                     }else {
                         console.log(response.data);

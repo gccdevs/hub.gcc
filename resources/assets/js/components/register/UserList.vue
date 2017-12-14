@@ -14,7 +14,7 @@
                         <th>权限</th>
                         <th>邀请人</th>
                         <th>邀请时间</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
 
@@ -31,7 +31,7 @@
                         <td v-text="user.createdBy"></td>
                         <td v-text="user.time"></td>
                         <td>
-                            <!--<button class="button is-primary" @click="chat"><em class="fa fa-commenting"> 发送信息</em></button>-->
+                            <button class="button is-warnning" @click="update(user)"><em class="fa fa-wrench"> Edit</em></button>
                             <button class="button is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
                         </td>
 
@@ -86,6 +86,14 @@
                 }).catch(error => {
                     console.log(error);
                 })
+            }
+        },
+
+        update(user){
+            if(!user){
+                this.$router.push({name:'user.update',params:{
+
+                }});
             }
         },
 

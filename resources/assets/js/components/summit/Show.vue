@@ -5,7 +5,7 @@
         <br><br>
         <div>
             <div>
-                <table class="table is-narrow">
+                <table class="table is-responsive">
                     <thead>
                     <tr>
                         <th>#</th>

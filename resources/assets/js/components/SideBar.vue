@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <aside class="menu">
-            <p class="menu-label" style="margin-left:10px;">General</p>
+            <p class="menu-label is-size-3">Menu</p>
             <ul class="menu-list">
                 <li>
                     <router-link :to="{ name:'profile' }" v-bind:class="classObject">
@@ -13,6 +13,7 @@
                                 <span class="icon is-small"><i class="fa fa-info"></i></span> Update profile
                             </router-link>
                         </li>
+                        <hr>
                         <li>
                             <router-link :to="{ name: 'password.edit' }">
                                 <span class="icon is-small"><i class="fa fa-key"></i></span> Change Password
@@ -21,23 +22,27 @@
                     </ul>
                 </li>
 
+                <hr>
+
                 <li>
                     <router-link :to="{ name: 'booking' }" v-bind:class="classObject">
                         <span class="icon"><i class="fa fa-clipboard"></i></span> Booking <p class="tag is-light">Developing...</p>
                     </router-link>
                 </li>
-
+                <hr>
                 <li>
                     <router-link :to="{ name: 'message' }" v-bind:class="classObject">
                         <span class="icon"><i class="fa fa-comment"></i></span> Message <p class="tag is-light">Developing...</p>
                     </router-link>
                 </li>
-
+                <hr>
                 <li v-show="this.role === 1 || this.role === 2">
                     <router-link :to="{ name: 'form.show' }" v-bind:class="classObject">
                         <span class="icon"><i class="fa fa-table"></i></span> Tables
                     </router-link>
                 </li>
+
+                <hr>
 
                 <li v-show="this.role === 1 || this.role === 2">
                     <router-link :to="{ name: 'user.list' }" v-bind:class="classObject">
@@ -51,8 +56,14 @@
                         </li>
                     </ul>
                 </li>
-
+                <hr>
+                <li>
+                    <a href="/logout">
+                        <span class="icon"><i class="fa fa-sign-out"></i></span> Log out
+                    </a>
+                </li>
             </ul>
+
         </aside>
     </div>
 </template>

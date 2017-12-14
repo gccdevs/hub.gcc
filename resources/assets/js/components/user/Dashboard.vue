@@ -1,6 +1,6 @@
 <template>
     <section class="container columns">
-        <side-bar class="column is-3" :id="this.id" :role="this.role"></side-bar>
+        <side-bar class="column is-3" :id="this.id" :role="this.role" style="margin-left:2%"></side-bar>
         <div class="column is-9">
             <br>
             <transition name="fade" mode="out-in">

@@ -4,21 +4,21 @@
         <a class="navbar-item" href="{{ route('home') }}">
             <img src="{{ asset('images/gcc-logo.png') }}" alt="Glory City Church of Melbourne" width="112" height="28">
         </a>
-        <div class="navbar-burger burger" data-target="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        {{--<div class="navbar-burger burger" data-target="nav-toggle">--}}
+            {{--<span></span>--}}
+            {{--<span></span>--}}
+            {{--<span></span>--}}
+        {{--</div>--}}
     </div>
 
     <div id="nav" class="navbar-menu">
-        <div class="navbar-start">
-            <span id="nav-toggle" class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
+        {{--<div class="navbar-start">--}}
+            {{--<span id="nav-toggle" class="nav-toggle">--}}
+                {{--<span></span>--}}
+                {{--<span></span>--}}
+                {{--<span></span>--}}
+            {{--</span>--}}
+        {{--</div>--}}
 
         <div class="navbar-end">
             <div class="navbar-item">
@@ -52,16 +52,3 @@
         </div>
     </div>
 </nav>
-
-<script type="text/javascript">
-    document.getElementById("nav-toggle").addEventListener ("click", toggleNav);
-    function toggleNav() {
-        var nav = document.getElementById("nav-menu");
-        var className = nav.getAttribute("class");
-        if(className == "field is-grouped") {
-            nav.className = "field is-grouped is-active";
-        } else {
-            nav.className = "field is-grouped";
-        }
-    }
-</script>

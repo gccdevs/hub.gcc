@@ -70,6 +70,13 @@ let routes = [
                 meta: { requiresInvite: true }
             },
             {
+                path: '/user/update',
+                name: 'user.update',
+                props:true,
+                component: require('./components/register/UpdateUser'),
+                meta: {},
+            },
+            {
                 path: '/message',
                 name: 'message',
                 component: require('./components/message/Message'),
