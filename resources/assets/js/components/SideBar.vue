@@ -35,14 +35,14 @@
                         <span class="icon"><i class="fa fa-comment"></i></span> Message <p class="tag is-light">Developing...</p>
                     </router-link>
                 </li>
-                <hr>
+                <hr v-show="this.role === 1 || this.role === 2">
                 <li v-show="this.role === 1 || this.role === 2">
                     <router-link :to="{ name: 'form.show' }" v-bind:class="classObject">
                         <span class="icon"><i class="fa fa-table"></i></span> Tables
                     </router-link>
                 </li>
 
-                <hr>
+                <hr v-show="this.role === 1 || this.role === 2">
 
                 <li v-show="this.role === 1 || this.role === 2">
                     <router-link :to="{ name: 'user.list' }" v-bind:class="classObject">
