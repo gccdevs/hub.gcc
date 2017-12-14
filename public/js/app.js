@@ -57903,6 +57903,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -57971,6 +57973,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -58087,233 +58091,241 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      staticClass: "form",
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          _vm.processInvite($event)
+  return _c("div", { staticClass: "box" }, [
+    _c(
+      "form",
+      {
+        staticClass: "box",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            _vm.processInvite($event)
+          }
         }
-      }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "field",
-          class: { "has-error": _vm.errors.has("name") }
-        },
-        [
-          _c("label", { staticClass: "label", attrs: { for: "name" } }, [
-            _vm._v("姓名")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|min:2|max:20",
-                  expression: "'required|min:2|max:20'"
-                }
-              ],
-              staticClass: "input",
-              attrs: {
-                "data-vv-as": "姓名",
-                id: "name",
-                type: "text",
-                name: "name",
-                required: ""
-              },
-              domProps: { value: _vm.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("name"),
-                    expression: "errors.has('name')"
-                  }
-                ],
-                staticClass: "help-block",
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("name")))]
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "field",
-          class: { "has-error": _vm.errors.has("email") }
-        },
-        [
-          _c("label", { staticClass: "label", attrs: { for: "email" } }, [
-            _vm._v("邮箱")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|alpha_dash|max:20|min:2",
-                  expression: "'required|alpha_dash|max:20|min:2'"
-                }
-              ],
-              staticClass: "input",
-              staticStyle: { width: "30%" },
-              attrs: {
-                "data-vv-as": "邮箱",
-                id: "email",
-                type: "text",
-                name: "email",
-                required: ""
-              },
-              domProps: { value: _vm.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "is-size-4", staticStyle: { display: "inline" } },
-              [_vm._v("@glorycitychurch.com")]
-            ),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("email"),
-                    expression: "errors.has('email')"
-                  }
-                ],
-                staticClass: "help-block",
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("email")))]
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label", attrs: { for: "role" } }, [
-          _vm._v("身份")
-        ]),
-        _vm._v(" "),
+      },
+      [
         _c(
           "div",
-          { staticClass: "select is-rounded", staticStyle: { width: "100%" } },
+          {
+            staticClass: "field",
+            class: { "has-error": _vm.errors.has("name") }
+          },
           [
-            _c(
-              "select",
-              {
+            _c("label", { staticClass: "label", attrs: { for: "name" } }, [
+              _vm._v("姓名")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "control" }, [
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.role,
-                    expression: "role"
+                    value: _vm.name,
+                    expression: "name"
                   },
-                  { name: "validate", rawName: "v-validate" }
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|min:2|max:20",
+                    expression: "'required|min:2|max:20'"
+                  }
                 ],
-                staticStyle: { width: "100%" },
-                attrs: { id: "role", "data-vv-rules": "required" },
+                staticClass: "input",
+                attrs: {
+                  "data-vv-as": "姓名",
+                  id: "name",
+                  type: "text",
+                  name: "name",
+                  required: ""
+                },
+                domProps: { value: _vm.name },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.role = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
                   }
                 }
-              },
-              [
-                _c("option", { attrs: { disabled: "", value: "" } }, [
-                  _vm._v("Please select one")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Admin")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("User")])
-              ]
-            )
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("name"),
+                      expression: "errors.has('name')"
+                    }
+                  ],
+                  staticClass: "help-block",
+                  staticStyle: { color: "red" }
+                },
+                [_vm._v(_vm._s(_vm.errors.first("name")))]
+              )
+            ])
           ]
         ),
         _vm._v(" "),
         _c(
-          "span",
+          "div",
           {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("role"),
-                expression: "errors.has('role')"
-              }
-            ],
-            staticClass: "help-block",
-            staticStyle: { color: "red" }
+            staticClass: "field",
+            class: { "has-error": _vm.errors.has("email") }
           },
-          [_vm._v(_vm._s(_vm.errors.first("role")))]
-        )
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+          [
+            _c("label", { staticClass: "label", attrs: { for: "email" } }, [
+              _vm._v("邮箱")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "control" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|alpha_dash|max:20|min:2",
+                    expression: "'required|alpha_dash|max:20|min:2'"
+                  }
+                ],
+                staticClass: "input",
+                staticStyle: { width: "30%" },
+                attrs: {
+                  "data-vv-as": "邮箱",
+                  id: "email",
+                  type: "text",
+                  name: "email",
+                  required: ""
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass: "is-size-4",
+                  staticStyle: { display: "inline" }
+                },
+                [_vm._v("@glorycitychurch.com")]
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("email"),
+                      expression: "errors.has('email')"
+                    }
+                  ],
+                  staticClass: "help-block",
+                  staticStyle: { color: "red" }
+                },
+                [_vm._v(_vm._s(_vm.errors.first("email")))]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label", attrs: { for: "role" } }, [
+            _vm._v("身份")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "select is-rounded",
+              staticStyle: { width: "100%" }
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.role,
+                      expression: "role"
+                    },
+                    { name: "validate", rawName: "v-validate" }
+                  ],
+                  staticStyle: { width: "100%" },
+                  attrs: { id: "role", "data-vv-rules": "required" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.role = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Please select one")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Admin")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("User")])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("role"),
+                  expression: "errors.has('role')"
+                }
+              ],
+              staticClass: "help-block",
+              staticStyle: { color: "red" }
+            },
+            [_vm._v(_vm._s(_vm.errors.first("role")))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -58329,7 +58341,7 @@ var staticRenderFns = [
             staticStyle: { width: "100%" },
             attrs: { type: "submit" }
           },
-          [_vm._v("\n                邀请\n            ")]
+          [_vm._v("\n                    邀请\n                ")]
         )
       ])
     ])
@@ -58354,7 +58366,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
     [
       _c(
         "router-link",
@@ -58368,12 +58379,14 @@ var render = function() {
       _c("br"),
       _c("br"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "box" },
-        [_c("register-form", { attrs: { id: this.id } })],
-        1
-      )
+      _c("div", { staticClass: "card card-default" }, [
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [_c("register-form", { attrs: { id: this.id } })],
+          1
+        )
+      ])
     ],
     1
   )
