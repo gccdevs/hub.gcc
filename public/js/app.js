@@ -56666,7 +56666,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    props: ['role'],
+    props: ['role', 'id'],
 
     computed: {
         classObject: function classObject() {
@@ -56889,7 +56889,7 @@ var render = function() {
     [
       _c("side-bar", {
         staticClass: "column is-3",
-        attrs: { role: this.role }
+        attrs: { id: this.id, role: this.role }
       }),
       _vm._v(" "),
       _c(
@@ -57642,6 +57642,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
+    props: ['id'],
+
     methods: {
         loadUsers: function loadUsers() {
             var _this = this;
@@ -57650,7 +57652,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.allUsers = response.data;
             }).catch(function (error) {});
         },
-        deleteUser: function deleteUser(user) {}
+        deleteUser: function deleteUser(user) {
+
+            var formData = {
+                authId: this.id,
+                userId: user.id
+            };
+
+            var vm = this;
+
+            return axios.post('/api/user/delete', formData).then(function (response) {
+                if (response.data.message === 'deleted') {
+                    alert('User deleted!');
+                    vm.loadUsers();
+                } else if (response.data.message === 'null') {
+                    alert('Cannot delete not existing user');
+                } else {
+                    alert('Cannot delete yourself');
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     },
 
     created: function created() {
@@ -57682,9 +57705,9 @@ var render = function() {
             _vm._l(_vm.allUsers, function(user) {
               return _c("tbody", [
                 _c("tr", [
-                  _c("td", { domProps: { textContent: _vm._s(user[0]) } }),
+                  _c("td", { domProps: { textContent: _vm._s(user.name) } }),
                   _vm._v(" "),
-                  user[6]
+                  user.status
                     ? _c("td", { staticClass: "tag is-primary" }, [
                         _c("em", { staticClass: "fa fa-check" }),
                         _vm._v(" 正在使用")
@@ -57694,15 +57717,17 @@ var render = function() {
                         _vm._v(" 未激活")
                       ]),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[1]) } }),
+                  _c("td", { domProps: { textContent: _vm._s(user.email) } }),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[2]) } }),
+                  _c("td", { domProps: { textContent: _vm._s(user.mobile) } }),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[3]) } }),
+                  _c("td", { domProps: { textContent: _vm._s(user.role) } }),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[4]) } }),
+                  _c("td", {
+                    domProps: { textContent: _vm._s(user.createdBy) }
+                  }),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[5]) } }),
+                  _c("td", { domProps: { textContent: _vm._s(user.time) } }),
                   _vm._v(" "),
                   _c("td", [
                     _c(

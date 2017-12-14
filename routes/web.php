@@ -20,8 +20,8 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 Route::get('/dashboard/profile-edit', 'HomeController@index')->name('profile.edit')->middleware('auth');
 Route::get('/dashboard/password-edit', 'HomeController@index')->name('password.edit')->middleware('auth');
 
-Route::get('/user/profile','ProfileController@fetchUser')->middleware('auth');
-Route::post('/user/profile/update','ProfileController@update')->middleware('auth');
+Route::get('/user/profile','UserController@fetchUser')->middleware('auth');
+Route::post('/user/profile/update','UserController@update')->middleware('auth');
 Route::post('/user/password/update','PasswordController@update')->name('password.update')->middleware('auth');
 
 Route::get('/user/list', 'HomeController@index')->name('user.list')->middleware('auth');
@@ -30,7 +30,7 @@ Route::get('/user/invite/success', 'HomeController@index')->name('user.invite.su
 Route::get('/user-confirmation/{confirmToken}','Auth\LoginController@confirm')->middleware('guest');
 //Route::post('/user/send-invitation', 'Auth\RegisterController@invite')->middleware('auth');
 
-Route::get('/users/list','ProfileController@show')->middleware('auth');
+Route::get('/users/list','UserController@show')->middleware('auth');
 
 Route::get('/form/download-registered-users', function () {
     return view('forms.download');

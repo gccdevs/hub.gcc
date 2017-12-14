@@ -20,16 +20,16 @@
 
                     <tbody v-for="user in allUsers">
                     <tr>
-                        <td v-text="user[0]"></td>
+                        <td v-text="user.name"></td>
 
-                        <td v-if="user[6]" class="tag is-primary"><em class="fa fa-check"></em> 正在使用</td>
+                        <td v-if="user.status" class="tag is-primary"><em class="fa fa-check"></em> 正在使用</td>
                         <td v-else class="tag is-light"><em class="fa fa-times"></em> 未激活</td>
 
-                        <td v-text="user[1]"></td>
-                        <td v-text="user[2]"></td>
-                        <td v-text="user[3]"></td>
-                        <td v-text="user[4]"></td>
-                        <td v-text="user[5]"></td>
+                        <td v-text="user.email"></td>
+                        <td v-text="user.mobile"></td>
+                        <td v-text="user.role"></td>
+                        <td v-text="user.createdBy"></td>
+                        <td v-text="user.time"></td>
                         <td>
                             <!--<button class="button is-primary" @click="chat"><em class="fa fa-commenting"> 发送信息</em></button>-->
                             <button class="button is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
@@ -46,11 +46,14 @@
 
 <script>
     export default{
+
         data(){
             return {
                 allUsers: {}
             }
         },
+
+        props:['id'],
 
         methods:{
 
@@ -64,6 +67,25 @@
 
             deleteUser(user){
 
+                let formData = {
+                    authId: this.id,
+                    userId: user.id
+                };
+
+                let vm = this;
+
+                return axios.post('/api/user/delete', formData).then(response => {
+                    if (response.data.message === 'deleted'){
+                        alert('User deleted!');
+                        vm.loadUsers();
+                    }else if (response.data.message === 'null'){
+                        alert('Cannot delete not existing user');
+                    } else {
+                        alert('Cannot delete yourself');
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
             }
         },
 

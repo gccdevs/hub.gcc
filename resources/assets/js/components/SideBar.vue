@@ -51,7 +51,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
             </ul>
         </aside>
     </div>
@@ -69,7 +69,7 @@
             }
         },
 
-        props:['role'],
+        props:['role', 'id'],
 
         computed: {
             classObject: function () {
