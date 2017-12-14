@@ -4,7 +4,7 @@
             <label for="name" class="label">姓名</label>
             <div class="control">
                 <input v-model="name"
-                       v-validate data-vv-rules="required|min:2|max:25" data-vv-as="姓名"
+                       v-validate="'required|min:2|max:20'" data-vv-as="姓名"
                        id="name" type="text" class="input" name="name" required>
                 <span class="help-block" v-show="errors.has('name')" style="color: red">{{errors.first('name')}}</span>
             </div>
@@ -13,8 +13,9 @@
             <label for="email" class="label">邮箱</label>
             <div class="control">
                 <input v-model="email"
-                       v-validate data-vv-rules="required|email|max:50" data-vv-as="邮箱"
-                       id="email" type="email" class="input" name="email" required>
+                       v-validate="'required|alpha_dash|max:20|min:2'" data-vv-as="邮箱" style="width:30%;"
+                       id="email" type="text" name="email" class="input" required>
+                <p class="is-size-4" style="display:inline">@glorycitychurch.com</p><br>
                 <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>
             </div>
         </div>
@@ -69,7 +70,7 @@
 
 
             validatesInputLength(){
-                return this.name.length <= 50 && this.email.length <= 50 && this.role && this.email.length > 0 && this.name.length > 0;
+                return this.name.length <= 20 && this.email.length <= 20 && this.role && this.email.length > 2 && this.name.length > 0;
             },
 
             invite() {
@@ -78,7 +79,7 @@
 
                 let formData = {
                     name: vm.name,
-                    email: vm.email,
+                    email: vm.email + '@glorycitychurch.com',
                     invitedId: vm.id,
                     password: Math.random().toString(16),
                     role: vm.role
@@ -93,7 +94,7 @@
                         vm.$store.dispatch('inviteUserRequest').then(response => {
                             vm.$router.push({name: 'user.create.success', params:{
                                 name: vm.name,
-                                email: vm.email,
+                                email: vm.email + '@glorycitychurch.com',
                                 role: vm.role
                             }});
                         });
