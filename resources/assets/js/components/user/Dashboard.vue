@@ -1,10 +1,10 @@
 <template>
     <section class="container columns">
-        <side-bar class="column is-3"></side-bar>
+        <side-bar class="column is-3" :role="this.role"></side-bar>
         <div class="column is-9">
             <br>
             <transition name="fade" mode="out-in">
-                <router-view :id="this.id"></router-view>
+                <router-view :id="this.id" :role="this.role"></router-view>
             </transition>
         </div>
     </section>
@@ -21,7 +21,7 @@
             SideBar
         },
 
-        props:['id']
+        props:['id','role']
 
     }
 </script>

@@ -56537,7 +56537,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         SideBar: __WEBPACK_IMPORTED_MODULE_0__sideBar___default.a
     },
 
-    props: ['id']
+    props: ['id', 'role']
 
 });
 
@@ -56655,12 +56655,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56671,6 +56665,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+
+    props: ['role'],
 
     computed: {
         classObject: function classObject() {
@@ -56700,40 +56696,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("ul", { staticClass: "menu-list" }, [
-        _c(
-          "li",
-          [
-            _c(
-              "router-link",
-              { class: _vm.classObject, attrs: { to: { name: "booking" } } },
-              [
-                _c("span", { staticClass: "icon" }, [
-                  _c("i", { staticClass: "fa fa-clipboard" })
-                ]),
-                _vm._v(" Booking\n                ")
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c(
-              "router-link",
-              { class: _vm.classObject, attrs: { to: { name: "form.show" } } },
-              [
-                _c("span", { staticClass: "icon" }, [
-                  _c("i", { staticClass: "fa fa-table" })
-                ]),
-                _vm._v(" Tables\n                ")
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
         _c(
           "li",
           [
@@ -56781,8 +56743,104 @@ var render = function() {
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { class: _vm.classObject, attrs: { to: { name: "booking" } } },
+              [
+                _c("span", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "fa fa-clipboard" })
+                ]),
+                _vm._v(" Booking "),
+                _c("p", { staticClass: "tag is-light" }, [
+                  _vm._v("Developing...")
+                ])
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { class: _vm.classObject, attrs: { to: { name: "message" } } },
+              [
+                _c("span", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "fa fa-comment" })
+                ]),
+                _vm._v(" Message "),
+                _c("p", { staticClass: "tag is-light" }, [
+                  _vm._v("Developing...")
+                ])
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.role === 1 || this.role === 2,
+                expression: "this.role === 1 || this.role === 2"
+              }
+            ]
+          },
+          [
+            _c(
+              "router-link",
+              { class: _vm.classObject, attrs: { to: { name: "form.show" } } },
+              [
+                _c("span", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "fa fa-table" })
+                ]),
+                _vm._v(" Tables\n                ")
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.role === 1 || this.role === 2,
+                expression: "this.role === 1 || this.role === 2"
+              }
+            ]
+          },
+          [
+            _c(
+              "router-link",
+              { class: _vm.classObject, attrs: { to: { name: "user.list" } } },
+              [
+                _c("span", { staticClass: "icon" }, [
+                  _c("i", { staticClass: "fa fa-home" })
+                ]),
+                _vm._v(" User List\n                ")
+              ]
+            ),
+            _vm._v(" "),
+            _c("ul", [
               _c(
                 "li",
                 [
@@ -56829,7 +56887,10 @@ var render = function() {
     "section",
     { staticClass: "container columns" },
     [
-      _c("side-bar", { staticClass: "column is-3" }),
+      _c("side-bar", {
+        staticClass: "column is-3",
+        attrs: { role: this.role }
+      }),
       _vm._v(" "),
       _c(
         "div",
@@ -56840,7 +56901,7 @@ var render = function() {
           _c(
             "transition",
             { attrs: { name: "fade", mode: "out-in" } },
-            [_c("router-view", { attrs: { id: this.id } })],
+            [_c("router-view", { attrs: { id: this.id, role: this.role } })],
             1
           )
         ],
@@ -57562,6 +57623,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -57579,7 +57650,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.allUsers = response.data;
             }).catch(function (error) {});
         },
-        chat: function chat() {}
+        deleteUser: function deleteUser(user) {}
     },
 
     created: function created() {
@@ -57598,13 +57669,13 @@ var render = function() {
   return _c("div", [
     _c("h1", { staticClass: "is-size-1" }, [_vm._v("User List")]),
     _vm._v(" "),
-    _c("div", { staticClass: "box" }, [
+    _c("div", { staticClass: "container" }, [
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-10" }, [
         _c(
           "table",
-          { staticClass: "table table-responsive-sg" },
+          { staticClass: "table" },
           [
             _vm._m(1),
             _vm._v(" "),
@@ -57612,6 +57683,16 @@ var render = function() {
               return _c("tbody", [
                 _c("tr", [
                   _c("td", { domProps: { textContent: _vm._s(user[0]) } }),
+                  _vm._v(" "),
+                  user[6]
+                    ? _c("td", { staticClass: "tag is-primary" }, [
+                        _c("em", { staticClass: "fa fa-check" }),
+                        _vm._v(" 正在使用")
+                      ])
+                    : _c("td", { staticClass: "tag is-light" }, [
+                        _c("em", { staticClass: "fa fa-times" }),
+                        _vm._v(" 未激活")
+                      ]),
                   _vm._v(" "),
                   _c("td", { domProps: { textContent: _vm._s(user[1]) } }),
                   _vm._v(" "),
@@ -57621,7 +57702,26 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", { domProps: { textContent: _vm._s(user[4]) } }),
                   _vm._v(" "),
-                  _c("td", { domProps: { textContent: _vm._s(user[5]) } })
+                  _c("td", { domProps: { textContent: _vm._s(user[5]) } }),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button is-danger",
+                        on: {
+                          click: function($event) {
+                            _vm.deleteUser(user)
+                          }
+                        }
+                      },
+                      [
+                        _c("em", { staticClass: "fa fa-trash-o" }, [
+                          _vm._v(" 删除")
+                        ])
+                      ]
+                    )
+                  ])
                 ])
               ])
             })
@@ -57654,6 +57754,8 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("姓名")]),
         _vm._v(" "),
+        _c("th", [_vm._v("账户状态")]),
+        _vm._v(" "),
         _c("th", [_vm._v("邮件")]),
         _vm._v(" "),
         _c("th", [_vm._v("电话")]),
@@ -57662,7 +57764,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("邀请人")]),
         _vm._v(" "),
-        _c("th", [_vm._v("邀请时间")])
+        _c("th", [_vm._v("邀请时间")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Delete")])
       ])
     ])
   }
@@ -59353,7 +59457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['id']
+    props: ['id', 'role']
 
 });
 
@@ -59371,7 +59475,7 @@ var render = function() {
       _c(
         "transition",
         { attrs: { name: "fade", mode: "out-in" } },
-        [_c("router-view", { attrs: { id: this.id } })],
+        [_c("router-view", { attrs: { id: this.id, role: this.role } })],
         1
       )
     ],

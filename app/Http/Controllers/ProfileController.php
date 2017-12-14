@@ -32,7 +32,8 @@ class ProfileController extends Controller
                 $name = $user->mobile,
                 $role = Role::find($user->role)->role_title,
                 $createdBy =User::find($user->invited_by)->name,
-                $time = date('Y/m/d h:i:s',strtotime($user->created_at))
+                $time = date('Y/m/d h:i:s',strtotime($user->created_at)),
+                $status = $user->is_active
             ]);
         }
 

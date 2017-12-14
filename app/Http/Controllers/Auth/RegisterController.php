@@ -102,7 +102,7 @@ class RegisterController extends Controller
             $roleId = Role::where('role_title',request('role'))->first()->id; // role id get by role selected by user
 
         } catch( \Exception $e){
-            return response()->json(['message' => 'taken', 'reason' => $e->getMessage()]);
+            return response()->json(['message' => 'Email format is wrong or has already been invited', 'reason' => $e->getMessage()]);
         }
 
 

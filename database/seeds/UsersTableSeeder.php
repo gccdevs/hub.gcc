@@ -32,8 +32,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name'	 => 'Admin',
-            'email'	 => 'admin@admin.com',
+            'name'	 => 'Example',
+            'email'	 => 'example@example.com',
             'role' => 1,
             'invited_by' => 1,
             'mobile' => 11111111,
