@@ -1,49 +1,43 @@
 <template>
-    <div class="box">
-        <form class="box" @submit.prevent="processInvite">
-            <div class="field" :class="{'has-error' : errors.has('name') }">
-                <label for="name" class="label">姓名</label>
-                <div class="control">
-                    <input v-model="name"
-                           v-validate="'required|min:2|max:20'" data-vv-as="姓名"
-                           id="name" type="text" class="input" name="name" required>
-                    <span class="help-block" v-show="errors.has('name')" style="color: red">{{errors.first('name')}}</span>
-                </div>
-            </div>
-            <div class="field" :class="{'has-error' : errors.has('email') }">
-                <label for="email" class="label">邮箱</label>
-                <div class="control">
-                    <input v-model="email"
-                           v-validate="'required|alpha_dash|max:20|min:2'" data-vv-as="邮箱" style="width:30%;"
-                           id="email" type="text" name="email" class="input" required>
-                    <p class="is-size-4" style="display:inline">@glorycitychurch.com</p><br>
-                    <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>
-                </div>
-            </div>
+    <form @submit.prevent="processInvite">
 
-            <div class="field">
-                <label for="role" class="label">身份</label>
-                <div class="select is-rounded" style="width:100%;">
-                    <select v-model="role" id="role" style="width:100%;" v-validate data-vv-rules="required">
-                        <option disabled value="">Please select one</option>
-                        <option>Admin</option>
-                        <option>User</option>
-                    </select>
-                </div>
-                <span class="help-block" v-show="errors.has('role')" style="color: red">{{errors.first('role')}}</span>
-            </div>
+        <div class="form-group" :class="{'has-error' : errors.has('name') }">
+            <label for="name">姓名</label>
+            <input v-model="name"
+                   v-validate="'required|min:2|max:20'" data-vv-as="姓名"
+                   id="name" type="text" class="form-control" name="name" required>
+            <span class="help-block" v-show="errors.has('name')" style="color: red">{{errors.first('name')}}</span>
+        </div>
 
-            <br>
+        <div class="form-group" :class="{'has-error' : errors.has('email') }">
+            <label for="email">邮箱</label><br>
+            <input v-model="email"
+                   v-validate="'required|alpha_dash|max:20|min:2'" data-vv-as="邮箱" style="width:30%;display: inline-block"
+                   id="email" type="text" name="email" class="form-control" required>
+            <h2 class="is-size-4" style="display:inline">@glorycitychurch.com</h2><br>
+            <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>
+        </div>
 
-            <div class="field">
-                <div class="control">
-                    <button type="submit" class="button is-primary" style="width:100% ;">
-                        邀请
-                    </button>
-                </div>
+        <div class="form-group">
+            <label for="role">身份</label>
+            <select v-model="role" class="form-control" id="role" style="width:100%;" v-validate data-vv-rules="required">
+                <option disabled value="">Please select one</option>
+                <option>Admin</option>
+                <option>User</option>
+            </select>
+            <span class="help-block" v-show="errors.has('role')" style="color: red">{{errors.first('role')}}</span>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-info" style="width:100% ;">
+                    邀请
+                </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </template>
 
 <script>

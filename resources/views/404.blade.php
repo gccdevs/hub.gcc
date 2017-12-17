@@ -79,12 +79,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Come to a void
+                    Not Found
                     <hr>
                 </div>
 
                 <div class="links">
-                    <a href="/">Summit 2018</a>
+                    <a href="/">Home</a>
                 </div>
             </div>
         </div>

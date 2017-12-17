@@ -3,7 +3,7 @@
         <div class="row">
             <side-bar class="col-md-2" :id="this.id" :role="this.role"></side-bar>
             <div class="col-md-9">
-                <br>
+                <br><br>
                 <transition name="fade" mode="out-in">
                     <router-view :id="this.id" :role="this.role"></router-view>
                 </transition>

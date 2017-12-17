@@ -1,45 +1,41 @@
 <template>
     <div>
-        <h1 class="is-size-1">User List</h1>
-        <div class="container">
-            <a href="javascript:window.location.reload();" class="button is-primary"><em class="fa fa-refresh"></em></a>
-            <div class="col-md-10">
-                <table class="table is-responsive">
-                    <thead class="thead">
-                    <tr>
-                        <th>姓名</th>
-                        <th>账户状态</th>
-                        <th>邮件</th>
-                        <th>电话</th>
-                        <th>权限</th>
-                        <th>邀请人</th>
-                        <th>邀请时间</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
+        <h2>User List <a href="javascript:window.location.reload();" class="btn btn-outline-info"><em class="fa fa-refresh"></em></a></h2>
+        <br>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>账户状态</th>
+                <th>邮件</th>
+                <th>电话</th>
+                <th>权限</th>
+                <th>邀请人</th>
+                <th>邀请时间</th>
+                <th>Action</th>
+            </tr>
+            </thead>
 
-                    <tbody v-for="user in allUsers">
-                    <tr>
-                        <td v-text="user.name"></td>
+            <tbody v-for="user in allUsers">
+            <tr>
+                <td v-text="user.name"></td>
 
-                        <td v-if="user.status" class="tag is-primary" style="margin-top: 7px;"><em class="fa fa-check"></em> 正在使用</td>
-                        <td v-else class="tag is-light" style="margin-top:7px;"><em class="fa fa-times"></em> 未激活</td>
+                <td v-if="user.status" class="btn btn-info"><em class="fa fa-check"></em> 正在使用</td>
+                <td class="btn btn-danger" v-else><em class="fa fa-times"></em> 未激活</td>
 
-                        <td v-text="user.email"></td>
-                        <td v-text="user.mobile"></td>
-                        <td v-text="user.role"></td>
-                        <td v-text="user.createdBy"></td>
-                        <td v-text="user.time"></td>
-                        <td>
-                            <!--<button class="tag is-warning" @click="update(user)" disabled><em class="fa fa-wrench"> Edit</em></button>-->
-                            <button class="tag is-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
-                        </td>
+                <td v-text="user.email"></td>
+                <td v-text="user.mobile"></td>
+                <td v-text="user.role"></td>
+                <td v-text="user.createdBy"></td>
+                <td v-text="user.time"></td>
+                <td>
+                    <!--<button class="tag is-warning" @click="update(user)" disabled><em class="fa fa-wrench"> Edit</em></button>-->
+                    <button class="btn btn-outline-danger" @click="deleteUser(user)"><em class="fa fa-trash-o"> 删除</em></button>
+                </td>
 
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
