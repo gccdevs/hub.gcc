@@ -23,25 +23,19 @@
                 <span class="icon"><i class="fa fa-clipboard"></i></span> Booking
             </router-link>
 
-            <br>
-
             <router-link :to="{ name: 'message' }" class="menu-text nav-link">
                 <span class="icon"><i class="fa fa-comment"></i></span> Message
             </router-link>
 
-            <br>
-
-            <router-link :to="{ name: 'form.show' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link">
+            <router-link :to="{ name: 'form.show' }" v-if="this.role === 1 || this.role === 2" class="menu-text nav-link">
                 <span class="icon"><i class="fa fa-table"></i></span> Tables
             </router-link>
 
-            <br>
-
-            <router-link :to="{ name: 'user.list' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link">
+            <router-link :to="{ name: 'user.list' }" v-if="this.role === 1 || this.role === 2" class="menu-text nav-link">
                 <span class="icon"><i class="fa fa-home"></i></span> User List
             </router-link>
 
-            <nav class="menu-text nav nav-pills flex-column">
+            <nav class="menu-text nav nav-pills flex-column" v-if="this.role === 1 || this.role === 2">
                 <router-link :to="{name: 'user.create'}" class="menu-text nav-link ml-3 my-1">
                     <span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users
                 </router-link>

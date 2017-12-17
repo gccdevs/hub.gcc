@@ -4,10 +4,11 @@
     <br>
     <div class="container">
         <div class="">
-            <p class="is-size-1 has-text-centered">Account Confirmed </p><br><p class="is-size-3 has-text-centered">Welcome to join us!</p>
+            <h1 class="text-center">Account Confirmed </h1><br><h3 class="text-center">Welcome to join us!</h3>
             <br>
             <div>
-                <a href="/login" class="button is-primary" style="width:100%;">Log In</a>
+                <a href="/login" class="btn btn-outline-info" style="width:100%;">Log In</a>
             </div>
         </div>
-    </div>@endsection
+    </div>
+@endsection

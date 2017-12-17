@@ -30,7 +30,7 @@ blockquote {
 }
 
 a {
-    color: #f58b25;
+    color: #1a92a9;
 }
 
 a img {
@@ -82,7 +82,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: lightgray;
+    background-color: #1a92a9;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -112,7 +112,7 @@ img {
     font-size: 22px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
+    text-shadow: 0 0 0 0 white;
 }
 
 /* Body */
@@ -219,11 +219,11 @@ img {
 }
 
 .button-blue {
-    background-color: #f58b25;
-    border-top: 10px solid #f58b25;
-    border-right: 18px solid #f58b25;
-    border-bottom: 10px solid #f58b25;
-    border-left: 18px solid #f58b25;
+    background-color: #1a92a9;
+    border-top: 10px solid #1a92a9;
+    border-right: 18px solid #1a92a9;
+    border-bottom: 10px solid #1a92a9;
+    border-left: 18px solid #1a92a9;
 }
 
 .button-green {
