@@ -67,15 +67,13 @@
 
 <div class="flex-center position-ref full-height">
     <div class="content">
-        <img class="logo" style="height:300px !important;display: block;margin: 0 auto;" src="{{ asset('images/large-logo.png') }}" />
+        <img class="logo" style="display: block;margin: auto;width: 40%;" src="{{ asset('images/gcc-logo.jpg') }}" />
         <div class="title m-b-md">
-            <hr>
-            2018, Coming soon
+            2018, Limitless
         </div>
 
         <div class="links">
             <a href="/summit-2018/signup">了解更多</a>
-            <a href="/summit-2018/signup">报名</a>
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}">Dashboard</a>

@@ -1,13 +1,16 @@
 <template>
-    <section class="container columns">
-        <side-bar class="column is-3" :id="this.id" :role="this.role" style="margin-left:2%"></side-bar>
-        <div class="column is-9">
-            <br>
-            <transition name="fade" mode="out-in">
-                <router-view :id="this.id" :role="this.role"></router-view>
-            </transition>
+    <div style="margin-left:5%;">
+        <div class="row">
+            <side-bar class="col-md-2" :id="this.id" :role="this.role"></side-bar>
+            <div class="col-md-9">
+                <br><br>
+                <transition name="fade" mode="out-in">
+                    <router-view :id="this.id" :role="this.role"></router-view>
+                </transition>
+                <br><br>
+            </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>

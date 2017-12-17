@@ -4,18 +4,16 @@
 <br>
     <div class="container">
         <div class="box">
-            <p class="is-size-1">Reset Password</p>
-            <div class="box">
+            <h1>Reset Password</h1>
                 <form class="form" method="POST" action="{{ route('password.request') }}">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="token" value="{{ $token }}">
 
-                    <div class="field">
-                        <label for="email" class="label" >E-Mail Address</label>
+                    <div class="form-group">
+                        <label for="email" >E-Mail Address</label>
 
-                        <div class="control">
-                            <input id="email" type="email" class="input" placeholder="{{ $email }}" name="email" value="{{ $email or old('email') }}" required autofocus>
+                            <input id="email" type="email" class="form-control" placeholder="{{ $email }}" name="email" value="{{ $email or old('email') }}" required autofocus>
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -23,13 +21,12 @@
                                     </span>
                             @endif
                         </div>
-                    </div>
 
-                    <div class="field">
-                        <label for="password" class="label">Password</label>
+                    <div class="form-group">
+                        <label for="password">Password</label>
 
                         <div class="control">
-                            <input id="password" type="password" class="input" name="password" required>
+                            <input id="password" type="password" class="form-control" name="password" required>
 
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -39,10 +36,10 @@
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label for="password-confirm" class="label">Confirm Password</label>
+                    <div class="form-group">
+                        <label for="password-confirm">Confirm Password</label>
                         <div class="control">
-                            <input id="password-confirm" type="password" class="input" name="password_confirmation" required>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
@@ -52,15 +49,13 @@
                         </div>
                     </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-primary" style="width:100%" type="submit">
+                    <div class="form-group">
+                            <button class="btn btn-outline-info" style="width:100%" type="submit">
                                 Reset Password
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
     </div>
 @endsection

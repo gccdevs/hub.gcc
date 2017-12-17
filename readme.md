@@ -62,6 +62,37 @@ This project is to create a sign up and pay form for users can register for the 
     while true; do php artisan schedule:run; sleep 60; done
     ```
 
+
+# Deployment on Heroku
+
+- Install ClearDB addon on heroku cli first. Addons can be installed either from cli or dashboard panel.
+
+- Add ClearDB config at the start of `config/database`:
+  ```
+  // Production on  Heroku configs
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $host = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $database = substr($url["path"], 1);
+  ```
+
+- Replace the default __mysql__ connection in`config/database.php` with the followings:
+  ```
+  'driver'    => 'mysql',
+  'host'      => $host,
+  'database'  => $database,
+  'username'  => $username,
+  'password'  => $password,
+  'charset'   => 'utf8',
+  'collation' => 'utf8_unicode_ci',
+  'prefix'    => '',
+  'strict' => true,
+  'engine' => null,
+  ```
+
+
 # Virtual Environment
 
 - If has [valet](https://laravel.com/docs/5.5/valet) installed,

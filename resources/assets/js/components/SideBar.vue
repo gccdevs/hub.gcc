@@ -1,73 +1,60 @@
 <template>
-    <div class="container">
-        <aside class="menu">
-            <p class="menu-label is-size-3">Menu</p>
-            <ul class="menu-list">
-                <li>
-                    <router-link :to="{ name:'profile' }" v-bind:class="classObject">
-                        <span class="icon"><i class="fa fa-user-md"></i></span> Profile
-                    </router-link>
-                    <ul>
-                        <li>
-                            <router-link :to="{name: 'profile.edit'}">
-                                <span class="icon is-small"><i class="fa fa-info"></i></span> Update profile
-                            </router-link>
-                        </li>
-                        <hr>
-                        <li>
-                            <router-link :to="{ name: 'password.edit' }">
-                                <span class="icon is-small"><i class="fa fa-key"></i></span> Change Password
-                            </router-link>
-                        </li>
-                    </ul>
-                </li>
+    <nav class="menu-text navbar navbar-light bg-light">
+        <!--<div class="sidebar-header">-->
+            <!--<h2>Menu</h2>-->
+        <!--</div>-->
+        <nav class="menu-text nav nav-pills flex-column">
 
-                <hr>
+            <router-link :to="{ name:'profile' }" class="menu-text nav-link" tag="a">
+                <span class="icon"><i class="fa fa-user-md"></i></span> Profile
+            </router-link>
 
-                <li>
-                    <router-link :to="{ name: 'booking' }" v-bind:class="classObject">
-                        <span class="icon"><i class="fa fa-clipboard"></i></span> Booking <p class="tag is-light">Developing...</p>
-                    </router-link>
-                </li>
-                <hr>
-                <li>
-                    <router-link :to="{ name: 'message' }" v-bind:class="classObject">
-                        <span class="icon"><i class="fa fa-comment"></i></span> Message <p class="tag is-light">Developing...</p>
-                    </router-link>
-                </li>
-                <hr v-show="this.role === 1 || this.role === 2">
-                <li v-show="this.role === 1 || this.role === 2">
-                    <router-link :to="{ name: 'form.show' }" v-bind:class="classObject">
-                        <span class="icon"><i class="fa fa-table"></i></span> Tables
-                    </router-link>
-                </li>
+            <nav class="menu-text nav nav-pills flex-column">
+                <router-link :to="{name: 'profile.edit'}" class="menu-text nav-link ml-3 my-1">
+                    <span class="icon is-small"><i class="fa fa-info"></i></span> Update profile
+                </router-link>
 
-                <hr v-show="this.role === 1 || this.role === 2">
+                <router-link :to="{ name: 'password.edit' }" class="menu-text nav-link ml-3 my-1">
+                    <span class="icon is-small"><i class="fa fa-key"></i></span> Change Password
+                </router-link>
+            </nav>
 
-                <li v-show="this.role === 1 || this.role === 2">
-                    <router-link :to="{ name: 'user.list' }" v-bind:class="classObject">
-                        <span class="icon"><i class="fa fa-home"></i></span> User List
-                    </router-link>
-                    <ul>
-                        <li>
-                            <router-link :to="{name: 'user.create'}">
-                                <span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users
-                            </router-link>
-                        </li>
-                    </ul>
-                </li>
-                <hr>
-                <li>
-                    <a href="/logout">
-                        <span class="icon is-dark"><i class="fa fa-sign-out"></i></span> Log out
-                    </a>
-                </li>
-            </ul>
+            <router-link :to="{ name: 'booking' }" class="menu-text nav-link">
+                <span class="icon"><i class="fa fa-clipboard"></i></span> Booking
+            </router-link>
 
-        </aside>
-    </div>
+            <br>
+
+            <router-link :to="{ name: 'message' }" class="menu-text nav-link">
+                <span class="icon"><i class="fa fa-comment"></i></span> Message
+            </router-link>
+
+            <br>
+
+            <router-link :to="{ name: 'form.show' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link">
+                <span class="icon"><i class="fa fa-table"></i></span> Tables
+            </router-link>
+
+            <br>
+
+            <router-link :to="{ name: 'user.list' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link">
+                <span class="icon"><i class="fa fa-home"></i></span> User List
+            </router-link>
+
+            <nav class="menu-text nav nav-pills flex-column">
+                <router-link :to="{name: 'user.create'}" class="menu-text nav-link ml-3 my-1">
+                    <span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users
+                </router-link>
+            </nav>
+
+            <a href="/logout" class="menu-text nav-link">
+                <span class="icon is-small"><i class="fa fa-sign-out"></i></span> Log out
+            </a>
+        </nav>
+
+    </nav>
+
 </template>
-
 
 <script>
 
@@ -94,3 +81,9 @@
     }
 
 </script>
+
+<style>
+    .menu-text {
+        color:#25a2b7 !important;
+    }
+</style>

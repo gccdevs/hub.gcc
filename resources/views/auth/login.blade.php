@@ -4,62 +4,51 @@
     <br>
     <div class="container">
         <div class="box">
-            <p class="is-size-1">Login</p>
-            <div class="box">
-                <form class="form" method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
+            <h1>Login</h1>
+            <form method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
 
-                    <div class="field">
-                        <label for="email" class="label">E-Mail Address</label>
+                <div class="form-group">
+                    <label for="email">E-Mail Address</label>
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
-                        <div class="control">
-                            <input id="email" type="email" class="input" name="email" value="{{ old('email') }}" required autofocus>
-
-                            @if ($errors->has('email'))
-                                <span class="help-block">
+                    @if ($errors->has('email'))
+                        <span class="help-block">
                                         <strong style="color:red !important;">{{ $errors->first('email') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                    </div>
+                    @endif
+                </div>
 
-                    <div class="field">
-                        <label for="password" class="label">Password</label>
+                <div class="form-group">
+                    <label for="password">Password</label>
 
-                        <div class="control">
-                            <input id="password" type="password" class="input" name="password" required>
+                    <input id="password" type="password" class="form-control" name="password" required>
 
-                            @if ($errors->has('password'))
-                                <span class="help-block">
+                    @if ($errors->has('password'))
+                        <span class="help-block">
                                         <strong style="color:red !important;">{{ $errors->first('password') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                    </div>
+                    @endif
+                </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                </label>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                        </label>
                     </div>
+                </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-primary" style="width:100%" type="submit">
-                                Login
-                            </button>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" style="width:100%" type="submit">
+                        Login
+                    </button>
 
-                            <a style="color:#5bc0de;" class="has-text-centered" href="{{ route('password.request') }}">
-                                Forgot Your Password?
-                            </a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    <a style="color:#5bc0de;" class="text-justify" href="{{ route('password.request') }}">
+                        Forgot Your Password?
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
