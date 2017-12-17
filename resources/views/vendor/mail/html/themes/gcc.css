@@ -82,7 +82,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: lightgray;
+    background-color: #1a92a9;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -112,7 +112,7 @@ img {
     font-size: 22px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
+    text-shadow: 0 0 0 0 white;
 }
 
 /* Body */
