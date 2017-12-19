@@ -3,7 +3,7 @@
         <div class="form-group" :class="{'has-error' : errors.has('name') }">
             <label for="name">姓名</label>
             <input v-model="name"
-                   v-validate="'required|min:2|max:10'" data-vv-as="姓名"
+                   v-validate="'required|min:2|max:25'" data-vv-as="姓名"
                    id="name" type="text" class="form-control" name="name" required>
             <span class="help-block" style="color:red" v-show="errors.has('name')">{{errors.first('name')}}</span>
         </div>
