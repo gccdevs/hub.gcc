@@ -94,6 +94,7 @@ class FormController extends Controller
         foreach ($data as $form){
 
             $object = (object) [];
+            $object->id = $form->id;
             $object->name = $form->name;
             $object->gender = $form->gender;
             $object->mobile = $form->mobile;

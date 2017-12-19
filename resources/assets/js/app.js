@@ -8,6 +8,7 @@ import store from './store/index';
 import App from './components/App.vue';
 import zh_CN from 'vee-validate/dist/locale/zh_CN';
 import VeeValidate, {Validator} from 'vee-validate';
+import BootstrapVue from 'bootstrap-vue';
 
 axios.interceptors.request.use(function (config) {
     config.headers['X-CSRF-TOKEN'] = GCC.csrfToken;
@@ -17,6 +18,7 @@ axios.interceptors.request.use(function (config) {
 Validator.localize('zh_CN', zh_CN);
 
 Vue.use(VueRouter);
+Vue.use(BootstrapVue);
 
 Vue.use(VeeValidate, {
     locale: 'zh_CN'
