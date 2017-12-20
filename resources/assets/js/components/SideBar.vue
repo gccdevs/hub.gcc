@@ -42,9 +42,9 @@
 
         <hr>
 
-        <ul class="nav nav-pills flex-column" v-show="this.role === 1 || this.role === 2">
+        <ul class="nav nav-pills flex-column">
             <li>
-                <router-link :to="{ name: 'form.show' }" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'form.show' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link" tag="a">
                     <span class="icon"><i class="fa fa-table"></i></span> Tables
                 </router-link>
             </li>
@@ -52,14 +52,14 @@
 
         <hr v-show="this.role === 1 || this.role === 2">
 
-        <ul class="menu-text nav nav-pills flex-column" v-show="this.role === 1 || this.role === 2" >
+        <ul class="menu-text nav nav-pills flex-column">
             <li>
-                <router-link :to="{ name: 'user.list' }" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'user.list' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link" tag="a">
                     <span class="icon"><i class="fa fa-home"></i></span> User List
                 </router-link>
 
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-show="this.role === 1 || this.role === 2">
 
                 <ul class="menu-text nav nav-pills flex-column">
                     <router-link :to="{name: 'user.create'}" class="menu-text nav-link ml-3 my-1">

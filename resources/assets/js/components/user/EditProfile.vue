@@ -1,10 +1,12 @@
 <template>
-    <div class="card border-info">
-        <div class="card-header bg-transparent border-info">
-            <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
-        </div>
-        <div class="card-body">
-            <edit-profile-form></edit-profile-form>
+    <div class="container">
+        <div class="card border-info">
+            <div class="card-header bg-transparent border-info">
+                <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
+            </div>
+            <div class="card-body">
+                <edit-profile-form></edit-profile-form>
+            </div>
         </div>
     </div>
 </template>
