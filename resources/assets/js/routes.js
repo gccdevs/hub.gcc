@@ -4,8 +4,21 @@ import Store from './store/index'
 
 let routes = [
     {
+        path:'/summit-2018',
+        name:'summit.landing',
+        component:require('./components/summit/Home'),
+        children:[
+            {
+                path:'',
+                component:require('./components/summit/Landing'),
+                meta: {}
+            }
+        ],
+        meta:{}
+    },
+    {
         path: '/summit-2018/signup',
-        name:'summit',
+        name:'summit.signup',
         component: require('./components/summit/Form'),
         meta: {}
     },
