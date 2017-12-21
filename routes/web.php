@@ -9,6 +9,7 @@ Route::post('logout',   'Auth\LoginController@logout');
 
 Auth::routes();
 
+Route::get('/summit-2018', 'FormController@index')->name('summit.home');
 Route::get('/summit-2018/signup', 'FormController@index')->name('summit.signup');
 Route::get('/summit-2018/terms-and-conditions', 'FormController@index')->name('summit.terms');
 Route::get('/summit-2018/checkout', 'FormController@index')->name('summit.checkout');

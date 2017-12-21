@@ -2,7 +2,7 @@
     <div>
         <div class="container has-text-centered" style="margin-bottom:10%;">
 
-            <section class="hero is-primary is-bold">
+            <section class="hero is-info is-bold">
                 <div class="hero-body">
                     <div class="container">
                         <h1 class="title has-text-left" >
@@ -15,7 +15,7 @@
                 </div>
             </section>
             <br>
-            <h1 class="is-size-1" style="color:#00cba9;"><em class="fa  fa-check-circle fa-3x"></em></h1>
+            <h1 class="is-size-1" style="color:#1e87e8;"><em class="fa  fa-check-circle fa-3x"></em></h1>
             <br>
             <div class="box">
                 <p style="display: inline;"><b>姓名: </b></p><p style="display: inline;" v-text="this.name"></p>
@@ -34,11 +34,11 @@
                 <br>
                 <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
             </div>
-            <h3 class="is-size-3">支付成功邮件已发送到： {{ this.email }}</h3>
+            <h3 class="is-size-3">确认邮件已发送到： {{ this.email }}</h3>
             <br>
             <h6 class="is-size-6">如未收到，请联系 <a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
             <br>
-            <a class="button is-primary is-bold is-large" href="/">了解更多</a>
+            <a class="button is-info is-bold is-large" style="text-decoration: none" href="/summit-2018">了解更多</a>
         </div>
     </div>
 </template>
@@ -53,3 +53,5 @@
     }
 
 </script>
+
+<style src="./../../../../../public/css/bulma-0.6.1/css/bulma.css"></style>
