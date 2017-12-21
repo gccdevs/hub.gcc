@@ -10,7 +10,7 @@
               <img src="./../../../image/small-logo.png" alt="logo" height="100">
               <h1 class="white--text mb-2 display-3 text-xs-center">Limitless</h1>
               <div class="subheading mb-3 text-xs-center white--text">2018 Conference GCC</div>
-              <router-link
+              <v-btn
                 class="blue lighten-2 mt-5"
                 dark
                 large
@@ -18,7 +18,7 @@
                 tag="a"
               >
                 Register Now
-              </router-link>
+              </v-btn>
             </v-layout>
           </v-parallax>
         </section>
@@ -28,21 +28,22 @@
             <v-flex xs12>
            
               <v-carousel style="height:95vh" :cycle='false'>
-                <v-carousel-item>
+                <v-carousel-item src="">
                   <youtube :video-id="videoId" @ready="ready" @ended="ended" player-width="1570" player-height="710" :player-vars="{autoplay:0, controls: 1, modestbranding:1, showinfo:0, rel:0 }"></youtube>
                 </v-carousel-item>
-                <v-carousel-item>
+                <v-carousel-item src="">
                   <youtube :video-id="videoId1" @ready="ready" @ended="ended" player-width="1570" player-height="710" :player-vars="{autoplay:0, controls: 1, modestbranding:1, showinfo:0, rel:0 }"></youtube>
                 </v-carousel-item>
-                <v-carousel-item>
+                <v-carousel-item src="">
                   <youtube :video-id="videoId2" @ready="ready" @ended="ended" player-width="1570" player-height="710" :player-vars="{autoplay:0, controls: 1, modestbranding:1, showinfo:0, rel:0 }"></youtube>
                 </v-carousel-item>
-                <v-carousel-item>
+                <v-carousel-item src="">
                   <youtube :video-id="videoId3" @ready="ready" @ended="ended" player-width="1570" player-height="710" :player-vars="{autoplay:0, controls: 1, modestbranding:1, showinfo:0, rel:0 }"></youtube>
                 </v-carousel-item>
               </v-carousel>
          
             </v-flex>
+            <br><br><br><br><br>
           </v-layout>
         </section>
 
@@ -316,6 +317,7 @@
             <v-flex xs12>
               <div class="white--text ml-3">
                 2017 - 2018
+                <a class="white--text" href="/login">Login</a>
               </div>
             </v-flex>
           </v-layout>
@@ -360,7 +362,7 @@
       }
     },
       mounted: function (){
-        console.log("map: ", google.maps)
+//        console.log("map: ", google.maps);
           this.map = new google.maps.Map(document.getElementById('myMap'), {
             center: {lng: 144.959833, lat: -37.807449},
             scrollwheel: false,

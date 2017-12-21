@@ -22,12 +22,12 @@
         </v-toolbar-side-icon>
       </span>
             <v-toolbar-title>
-                <router-link :to="{name:'summit.landing'}" tag="span" style="cursor: pointer">
+                <a href="/summit-2018" tag="span" style="cursor: pointer;color:black;text-decoration: none;">
                     <v-avatar :tile='true'>
                         <img src="./../../../image/small-logo.png">
                     </v-avatar>
                     {{ appTitle }}
-                </router-link>
+                </a>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-xs-only">
@@ -44,7 +44,7 @@
         </v-toolbar>
 
         <main>
-            <v-container fluid>
+            <v-container fluid style="padding: 0px !important;">
                 <router-view></router-view>
             </v-container>
         </main>
@@ -64,10 +64,10 @@
                 sidebar: false,
 
                 menuItems: [
-                    { title: 'Home', path: '/summit-2018' },
+//                    { title: 'Home', path: '/summit-2018' },
 //                    { title: 'Home', path: '/summit-2018', icon: 'home' },
-                    { title: 'Register Now', path: '/summit-2018/signup' },
-//                    { title: 'Register Now', path: '/summit-2018/signup', icon: 'mode_edit' },
+//                    { title: 'Register Now', path: '/summit-2018/signup' },
+                    { title: 'Register Now', path: '/summit-2018/signup', icon: 'mode_edit' },
                 ]
             }
         }

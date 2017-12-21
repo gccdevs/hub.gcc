@@ -73,7 +73,7 @@
         </div>
 
         <div class="links">
-            <a href="/summit-2018/signup">了解更多</a>
+            <a href="/summit-2018">了解更多</a>
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}">Dashboard</a>

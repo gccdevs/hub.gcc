@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <section class="hero is-primary is-bold">
+        <section class="hero is-info is-bold">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
@@ -188,7 +188,7 @@
             </div>
         </div>
         <div class="field">
-            <button :class="(isLoading ? 'button is-primary is-loading' : 'button is-primary')" style="width:100%" @click.prevent="validateAndPay" :disabled=" errors.any() || isLoading || (!(complete && this.termChecker))">
+            <button :class="(isLoading ? 'button is-info is-loading' : 'button is-info')" style="width:100%" @click.prevent="validateAndPay" :disabled=" errors.any() || isLoading || (!(complete && this.termChecker))">
                 Pay A$ 50.00
             </button>
             <br><br>
@@ -264,7 +264,7 @@
                                 this.dismissLoader();
 
                                 alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                                this.$router.push({name: 'summit'});
+                                this.$router.push({name: 'summit.signup'});
                             } else {
 
                                 this.isLoading = true;
@@ -369,7 +369,7 @@
                         else{
                             alert('Unknown error, please contact us： customerservice@glorycitychurch.com');
                             vm.dismissLoader();
-                            vm.$router.push({name: 'summit'});
+                            vm.$router.push({name: 'summit.signup'});
                         }
                     }).catch(error => {
 //                        console.log("errrrrr: ", error);
@@ -396,24 +396,4 @@
 </script>
 
 
-<style>
-
-    input {
-        outline: 0 !important;
-        border-width: 0 0 2px 0 !important;
-        border-color: darkgray !important;
-    }
-
-    /*input:focus {*/
-    /*outline: 0 !important;*/
-    /*border-width: 0 0 2px 0 !important;*/
-    /*border-color: #1598af !important;*/
-    /*}*/
-
-    .stripe-element {
-        outline: 0 !important;
-        border-bottom: 2px solid !important;
-        border-color: darkgray !important;
-    }
-
-</style>
+<style src="./../../../../../public/css/bulma-0.6.1/css/bulma.css"></style>

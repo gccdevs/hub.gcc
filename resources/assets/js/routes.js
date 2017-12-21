@@ -5,35 +5,35 @@ import Store from './store/index'
 let routes = [
     {
         path:'/summit-2018',
-        name:'summit.landing',
+        name:'summit',
         component:require('./components/summit/Home'),
         children:[
             {
-                path:'',
+                path:'/',
                 component:require('./components/summit/Landing'),
                 meta: {}
-            }
+            },
+            {
+                path: '/summit-2018/signup',
+                name:'summit.signup',
+                component: require('./components/summit/Form'),
+                meta: {}
+            },
+            {
+                path: '/summit-2018/terms-and-conditions',
+                name:'summit.terms',
+                component: require('./components/summit/Terms'),
+                meta: {}
+            },
+            {
+                path: '/summit-2018/success',
+                name:'summit.success',
+                props: true,
+                component: require('./components/summit/Success'),
+                meta: { }
+            },
         ],
         meta:{}
-    },
-    {
-        path: '/summit-2018/signup',
-        name:'summit.signup',
-        component: require('./components/summit/Form'),
-        meta: {}
-    },
-    {
-        path: '/summit-2018/terms-and-conditions',
-        name:'summit.terms',
-        component: require('./components/summit/Terms'),
-        meta: {}
-    },
-    {
-        path: '/summit-2018/success',
-        name:'summit.success',
-        props: true,
-        component: require('./components/summit/Success'),
-        meta: { requiresPaid: true }
     },
     {
         path: '/dashboard',

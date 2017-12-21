@@ -1,6 +1,6 @@
 <template>
     <div class='container'>
-        <section class="hero is-primary is-bold">
+        <section class="hero is-info is-bold">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left">
@@ -30,7 +30,7 @@
             </p>
         </div>
         <hr>
-        <router-link :to="{ name: 'summit' }" tag="a" class='button is-primary' style="width:100%">返回</router-link>
+        <router-link :to="{ name: 'summit.signup' }" tag="a" class='button is-info' style="width:100%">返回</router-link>
     </div>
 </template>
 
@@ -42,3 +42,5 @@
     }
 
 </script>
+
+<style src="./../../../../../public/css/bulma-0.6.1/css/bulma.css"></style>
