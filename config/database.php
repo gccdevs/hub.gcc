@@ -1,6 +1,6 @@
 <?php
 
-// Production on  Heroku configs
+ Production on  Heroku configs
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = $url["host"];
@@ -56,8 +56,9 @@ return [
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
-//            'strict' => true,
-//            'engine' => null,
+            'strict' => true,
+            'engine' => null,
+            
 //            'driver' => 'mysql',
 //            'host' => env('DB_HOST', '127.0.0.1'),
 //            'port' => env('DB_PORT', '3306'),

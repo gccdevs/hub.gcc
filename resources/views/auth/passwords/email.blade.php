@@ -3,7 +3,7 @@
 @section('content')
     <br>
     <div class="container">
-        <div class="box">
+        <div class="container">
             <h1>Reset Password</h1>
             @if (session('status'))
                 <div class="alert alert-success" style="color:#00cba9;">
@@ -11,7 +11,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('password.email') }}">
+            <form class="container" method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group">

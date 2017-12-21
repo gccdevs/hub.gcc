@@ -3,9 +3,9 @@
 @section('content')
 <br>
     <div class="container">
-        <div class="box">
+        <div class="container">
             <h1>Reset Password</h1>
-                <form class="form" method="POST" action="{{ route('password.request') }}">
+                <form class="container" method="POST" action="{{ route('password.request') }}">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="token" value="{{ $token }}">

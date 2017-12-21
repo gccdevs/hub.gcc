@@ -1,11 +1,13 @@
 <template>
-    <div class="card border-info">
-        <div class="card-header bg-transparent border-info">
-            <router-link :to="{name: 'profile'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <register-form :id="this.id"></register-form>
+    <div class="container">
+        <div class="card border-info">
+            <div class="card-header bg-transparent border-info">
+                <router-link :to="{name: 'user.list'}" class="btn btn-outline-info" activeClass="active" exact>返回</router-link>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <register-form :id="this.id"></register-form>
+                </div>
             </div>
         </div>
     </div>

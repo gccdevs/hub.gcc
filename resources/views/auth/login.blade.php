@@ -3,9 +3,9 @@
 @section('content')
     <br>
     <div class="container">
-        <div class="box">
+        <div class="container">
             <h1>Login</h1>
-            <form method="POST" action="{{ route('login') }}">
+            <form class="container" method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group">
