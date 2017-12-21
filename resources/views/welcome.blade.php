@@ -69,11 +69,11 @@
     <div class="content">
         <img class="logo" style="display: block;margin: auto;width: 40%;" src="{{ asset('images/gcc-logo.jpg') }}" />
         <div class="title m-b-md">
-            2018, Limitless
+            Say hi
         </div>
 
         <div class="links">
-            <a href="/summit-2018">了解更多</a>
+            <a href="/summit-2018">2018 高峰会</a>
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}">Dashboard</a>
