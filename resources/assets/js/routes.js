@@ -5,7 +5,6 @@ import Store from './store/index'
 let routes = [
     {
         path:'/summit-2018',
-        name:'summit',
         component:require('./components/summit/Home'),
         children:[
             {

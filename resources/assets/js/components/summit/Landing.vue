@@ -1,7 +1,7 @@
 <template>
     <v-content>
         <section>
-          <v-parallax src="http://eskipaper.com/images/galaxy-wallpaper-hd-16.jpg" height="600">
+          <v-parallax src="https://glorycitychurch.com/wp-content/uploads/2017/12/galaxy-wallpaper-hd-16.jpg" height="600">
             <v-layout
               column
               align-center
@@ -48,7 +48,7 @@
         </section>
 
         <section>
-          <v-parallax src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Galaxy-Wallpapers-Free-Download-115.jpg" height="600">
+          <v-parallax src="https://glorycitychurch.com/wp-content/uploads/2017/12/HD-Galaxy-Wallpapers-Free-Download-115.jpg" height="600">
             <v-layout column align-center justify-center>
               <div class="headline white--text mb-3 text-xs-center">Summit 2018</div>
               <em> Italic subtext</em>
@@ -158,7 +158,7 @@
         </section>
 
         <section>
-          <v-parallax src="http://eskipaper.com/images/galaxy-wallpaper-hd-16.jpg" height="600">
+          <v-parallax src="https://glorycitychurch.com/wp-content/uploads/2017/12/galaxy-wallpaper-hd-16.jpg" height="600">
           <v-layout
             column
             justify-center
