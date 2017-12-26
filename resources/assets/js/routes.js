@@ -29,7 +29,7 @@ let routes = [
                 name:'summit.success',
                 props: true,
                 component: require('./components/summit/Success'),
-                meta: { }
+                meta: { requiresPaid:true }
             },
         ],
         meta:{}
