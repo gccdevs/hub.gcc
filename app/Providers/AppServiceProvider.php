@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
 
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        URL::forceScheme('https');
         Stripe::setApiKey(config('services.stripe.secret'));
     }
 
@@ -24,9 +26,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-        if (env('APP_ENV') === 'production') {
-            $this->app['request']->server->set('HTTPS', true);
-        }
     }
 }
