@@ -12,7 +12,7 @@
     </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Summit 2018 - Glory City Church of Melbourne</title>
-    <link rel="icon" href="{!! asset('images/small-logo.png') !!}"/>
+    <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
     <script>
         var GCC = {
             csrfToken: "{{ csrf_token() }}",

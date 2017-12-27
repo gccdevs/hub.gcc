@@ -10,84 +10,28 @@
             window.location.href = loc.replace('http://','https://');
         }
     </script>
-    <title>Central Hub | Glory City Church of Melbourne</title>
-    <link rel="icon" href="{!! asset('images/small-logo.png') !!}"/>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Central Hub - Glory City Church of Melbourne</title>
+    <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
+    <script>
+        var GCC = {
+            csrfToken: "{{ csrf_token() }}",
+            stripeKey: "{{ config('services.stripe.key') }}"
+        };
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
-<div class="flex-center position-ref full-height">
-    <div class="content">
-        <img class="logo" style="display: block;margin: auto;width: 40%;" src="{{ asset('images/gcc-logo.jpg') }}" />
-        <div class="title m-b-md">
-            Say hi
-        </div>
-
-        <div class="links">
-            <a href="/summit-2018">2018 高峰会</a>
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        @endauth
-                    @endif
-        </div>
-    </div>
+<div id="app">
+    <app></app>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9djCDpkIdN41n0ze0Cs-RDyuzuEV1a7k"></script>
+<script src="/js/app.js"></script>
 </body>
 </html>

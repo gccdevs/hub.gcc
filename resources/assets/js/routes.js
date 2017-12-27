@@ -4,6 +4,12 @@ import Store from './store/index'
 
 let routes = [
     {
+        path:'/',
+        name:'home',
+        component:require('./components/home/Home'),
+        meta:{}
+    },
+    {
         path:'/summit-2018',
         name:'summit',
         component:require('./components/summit/Home'),
