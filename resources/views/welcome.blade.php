@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-        var loc = window.location.href+'';
-        if (loc.indexOf('http://') === 0){
-            window.location.href = loc.replace('http://','https://');
-        }
         var GCC = {
             csrfToken: "{{ csrf_token() }}",
             stripeKey: "{{ config('services.stripe.key') }}"

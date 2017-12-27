@@ -4,12 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-        var loc = window.location.href+'';
-        if (loc.indexOf('http://') === 0){
-            window.location.href = loc.replace('http://','https://');
-        }
-    </script>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
