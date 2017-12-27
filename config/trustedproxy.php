@@ -24,7 +24,9 @@ return [
      * how many proxies that client's request has
      * subsequently passed through.
      */
-    'proxies' => '*',
+    'proxies' => [
+        '192.168.1.10',
+    ],
 
     /*
      * Or, to trust all proxies that connect
@@ -60,11 +62,9 @@ return [
      * as they are currently unsupported there.
      */
     'headers' => [
-//        (defined('Illuminate\Http\Request::HEADER_FORWARDED') ? Illuminate\Http\Request::HEADER_FORWARDED : 'forwarded') => 'FORWARDED',
-        Illuminate\Http\Request::HEADER_FORWARDED    => null, // not set on AWS or Heroku
+        (defined('Illuminate\Http\Request::HEADER_FORWARDED') ? Illuminate\Http\Request::HEADER_FORWARDED : 'forwarded') => 'FORWARDED',
         Illuminate\Http\Request::HEADER_CLIENT_IP    => 'X_FORWARDED_FOR',
-        Illuminate\Http\Request::HEADER_CLIENT_HOST  => null, // not set on AWS or Heroku
-//        Illuminate\Http\Request::HEADER_CLIENT_HOST  => 'X_FORWARDED_HOST',
+        Illuminate\Http\Request::HEADER_CLIENT_HOST  => 'X_FORWARDED_HOST',
         Illuminate\Http\Request::HEADER_CLIENT_PROTO => 'X_FORWARDED_PROTO',
         Illuminate\Http\Request::HEADER_CLIENT_PORT  => 'X_FORWARDED_PORT',
     ]
