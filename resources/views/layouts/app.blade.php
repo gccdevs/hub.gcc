@@ -12,7 +12,7 @@
     </script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{!! asset('images/small-logo.png') !!}"/>
+    <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
     <title>Central Hub - Glory City Church of Melbourne</title>
     {{--<link rel="stylesheet" href="{{ asset('css/bulma.css') }}">--}}
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">--}}
