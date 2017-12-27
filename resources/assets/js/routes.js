@@ -11,7 +11,6 @@ let routes = [
     },
     {
         path:'/summit-2018',
-        name:'summit',
         component:require('./components/summit/Home'),
         children:[
             {
@@ -36,7 +35,7 @@ let routes = [
                 name:'summit.success',
                 props: true,
                 component: require('./components/summit/Success'),
-                meta: { }
+                meta: { requiresPaid:true }
             },
         ],
         meta:{}

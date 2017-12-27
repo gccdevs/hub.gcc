@@ -14,6 +14,7 @@
                     </div>
                 </div>
             </section>
+
             <br>
             <h1 class="is-size-1" style="color:#1e87e8;"><em class="fa  fa-check-circle fa-3x"></em></h1>
             <br>
@@ -38,7 +39,11 @@
             <br>
             <h6 class="is-size-6">如未收到，请联系 <a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
             <br>
-            <a class="button is-info is-bold is-large" style="text-decoration: none" href="/summit-2018">了解更多</a>
+            <div class="columns" id="links">
+                <a class="column is-outline-info" style="text-decoration: none" href="https://www.facebook.com/GloryCityChurch/"><em class="fa fa-facebook"></em> Facebook</a>&nbsp;
+                <a class="column is-outline-info" style="text-decoration: none" href="https://www.instagram.com/glorycitychurch_mel/"><em class="fa fa-instagram"></em> Instagram</a>&nbsp;
+                <a class="column is-outline-info" style="text-decoration: none" href="/"><em class="fa fa-info"></em> Central Hub</a>&nbsp;
+            </div>
         </div>
     </div>
 </template>
@@ -53,5 +58,12 @@
     }
 
 </script>
+
+<style>
+    #links a:hover {
+        background-color: #1e87e8 !important;
+        color:white !important;
+    }
+</style>
 
 <style src="./../../../../../public/css/bulma-0.6.1/css/bulma.css"></style>

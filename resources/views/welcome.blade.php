@@ -9,16 +9,14 @@
         if (loc.indexOf('http://') === 0){
             window.location.href = loc.replace('http://','https://');
         }
-    </script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Central Hub - Glory City Church of Melbourne</title>
-    <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
-    <script>
         var GCC = {
             csrfToken: "{{ csrf_token() }}",
             stripeKey: "{{ config('services.stripe.key') }}"
         };
     </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Central Hub - Glory City Church of Melbourne</title>
+    <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
