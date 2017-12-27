@@ -46,7 +46,7 @@ class HttpsProtocol
 
             $request->setTrustedProxies([$request->getClientIp()]);
 
-            return redirect()->secure($request->getRequestUri());
+//            return redirect()->secure($request->getRequestUri());
 
         }
 
