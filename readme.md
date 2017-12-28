@@ -81,10 +81,21 @@
 
 # Deployment on Heroku
 
-- Install ClearDB addon on heroku cli first. Addons can be installed either from cli or dashboard panel.
-
-- Add ClearDB config at the start of `config/database`:
+- Create a __Procfile__ file and add two lines to allocate dynos:
   ```
+    web: vendor/bin/heroku-php-apache2 public/
+    queue: php artisan queue:work --tries=3 --daemon
+  ```
+  **web** used for indicating where to serve the application. **queue** is used to allocate a queue to send email tasks.
+
+- Install ClearDB addon. 
+
+  The Addon can be installed either from cli or dashboard panel.
+
+- Add ClearDB config at the start of `config/database.php` in Laravel:
+  ```
+  <? php
+  
   // Production on  Heroku configs
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -92,29 +103,22 @@
   $username = $url["user"];
   $password = $url["pass"];
   $database = substr($url["path"], 1);
+  
   ```
 
 - Replace the default __mysql__ connection in`config/database.php` with the followings:
   ```
-  'driver'    => 'mysql',
-  'host'      => $host,
-  'database'  => $database,
-  'username'  => $username,
-  'password'  => $password,
-  'charset'   => 'utf8',
-  'collation' => 'utf8_unicode_ci',
-  'prefix'    => '',
-  'strict' => true,
-  'engine' => null,
+  'mysql' => [
+      'driver'    => 'mysql',
+      'host'      => $host,
+      'database'  => $database,
+      'username'  => $username,
+      'password'  => $password,
+      'charset'   => 'utf8',
+      'collation' => 'utf8_unicode_ci',
+      'prefix'    => '',
+      'strict' => true,
+      'engine' => null,
+  ],
   ```
-  
-# Packages Version
-
-[Laravel](https://laravel.com/docs/5.5) version is _5.5_
-
-[Vue](https://vuejs.org/v2/guide/) version is _2.5.*_
-
-[Vuex](https://vuex.vuejs.org/en/intro.html) version is _3.0.*_
-
-[Stripe](https://stripe.com.au) version is *5.7*
 
