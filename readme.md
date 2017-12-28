@@ -134,4 +134,10 @@
       'engine' => null,
   ],
   ```
-
+  
+- Run in production mode (if deployed in heroku directly using github repo), so run:
+  ```
+  npm run prod
+  ```
+  
+  Also, set config var `APP_ENV` to **production** in heroku dashboard panel or using cli.
