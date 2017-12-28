@@ -9,13 +9,15 @@
   
 # Installation
 
-1. Create __.env__  
+1. Create __.env__ by running `vi .env` if you already have __vi__ or __vim__ installed, then:
 
-   * Copy from the __.env.sample__ 
+   * Copy from the sample from __.env.sample__ 
    
-   * Modify the database config and stripe information if payment is needed.
+   * Modify the database configuration to your database connection
+   
+   * Add Stripe Keys if payment is needed
 
-2. Install packages:
+2. Install packages and dependencies:
     ```
     composer install
     ```
