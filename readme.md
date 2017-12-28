@@ -2,8 +2,6 @@
 
   ### This project is to create a central hub system for glory city church.
 
-  ### [Screenshots](https://github.com/haog1/hub.gcc/wiki/Screenshots)
-
   ### [Demo](https://centralhub.glorycitychurch.com)
   
   
