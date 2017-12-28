@@ -11,7 +11,8 @@
             }
         </script>
 
-        <title>404 -- GCC</title>
+        <title>404 -- Central Hub GCC</title>
+        <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -90,7 +91,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/">Home</a>
+                    <a href="/">HUB</a>
                 </div>
             </div>
         </div>

@@ -96,11 +96,11 @@
 
 
         <b-modal id="formRego" title="GCC Central Hub">
-            <a class="my-4" href="/summit-2018">Summit 2018</a>
+            <a style="text-decoration: none !important;" href="/summit-2018" target="_blank">Summit 2018</a>
             <br>
-            <a class="my-4">Cell groups Signup</a>
+            <a style="text-decoration: none !important;" href="/registration/cell-group" target="_blank">Cell groups sign up</a>
             <br>
-            <a class="my-4">Baptism Signup</a>
+            <a style="text-decoration: none !important;" href="/registration/baptism" target="_blank">Baptism Sign up</a>
         </b-modal>
 
         <b-modal id="comming-soon" title="GCC Central Hub">
@@ -117,6 +117,7 @@
 </script>
 
 <style>
+
     .tinted-image {
         background-color: rgba(255, 0, 0, 0.25);
     }

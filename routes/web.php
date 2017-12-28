@@ -14,8 +14,13 @@ Route::get('/summit-2018/signup', 'FormController@index')->name('summit.signup')
 Route::get('/summit-2018/terms-and-conditions', 'FormController@index')->name('summit.terms');
 Route::get('/summit-2018/checkout', 'FormController@index')->name('summit.checkout');
 Route::get('/summit-2018/success', 'FormController@index')->name('summit.checkout');
-
 Route::get('/summit-2018/registered-users', 'FormController@show')->name('summit.result')->middleware('auth');
+
+Route::get('/registration/','RegistrationsController@index')->name('rego.index');
+Route::get('/registration/cell-group','RegistrationsController@index')->name('rego.registrations');
+Route::get('/registration/baptism','RegistrationsController@index')->name('rego.baptism');
+Route::get('/registration/confirmation','RegistrationsController@index')->name('rego.confirm');
+
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 Route::get('/dashboard/profile-edit', 'HomeController@index')->name('profile.edit')->middleware('auth');
