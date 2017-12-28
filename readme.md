@@ -56,16 +56,29 @@
         
 6. Queue email tasks:
     
-    1. Remember to change the `QUEUE_DRIVE` setting in **.env** file
-    ```
-    QUEUE_DRIVER=database
-    ```
-    
-    2. Run `queue listen` or `queue work`
-    ```
-    php artisan work
-    php artisan work --tries=4 // with max attempts of four 
-    ```
+    1. Change the `QUEUE_DRIVE` setting in **.env** file
+        ```
+        QUEUE_DRIVER=database
+        ```
+
+    2. Modify the mail settings in __.env__ file, the example is using *gmail*:
+        ```
+        MAIL_DRIVER=smtp
+        MAIL_HOST=smtp.gmail.com
+        MAIL_PORT=587
+        MAIL_USERNAME=Example@gmail.com
+        MAIL_PASSWORD=example
+        MAIL_ENCRYPTION=tls
+        MAIL_FROM_ADDRESS=example@gmail.com
+        MAIL_FROM_NAME="GCC Central Hub"
+        ```
+        Remember for **APP_NAME** or **MAIL_FROM_NAME** in *.env*, include the __" "__ to the name you gave.
+
+    3. Run `queue listen` or `queue work`
+        ```
+        php artisan work
+        php artisan work --tries=4 // with max attempts of four 
+        ```
 
 7. Invitation token schedulling refresh:
 
