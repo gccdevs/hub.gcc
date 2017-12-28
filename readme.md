@@ -83,14 +83,14 @@
 7. Invitation token schedulling refresh:
 
     1. **Server development (Linux or Homestead)**, In order to run schedule properly every given timeframe, execute:
-    ```
-    * * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
-    ```
+       ```
+       * * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+       ```
 
     2. **Mac Development Environment**, In order to run schedule properly every given timeframe, open a new tab with same root directory of the project and run:
-    ```
-    while true; do php artisan schedule:run; sleep 60; done
-    ```
+       ```
+       while true; do php artisan schedule:run; sleep 60; done
+       ```
 
 # Deployment on Heroku
 
