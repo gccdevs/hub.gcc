@@ -142,7 +142,8 @@
   
   Also, set config var `APP_ENV` to **production** in heroku dashboard panel or using cli.
 
-- SSL and HTTPS redirection
+
+## SSL and HTTPS redirection
   
   1. Purchase SSL with your domain provider or with Heroku.
   2. Set up HTTPS protocol in laravel. See detail insturctions [here](https://github.com/haog1/hub.gcc/wiki/Laravel-HTTPS-force-redirection-on-Heroku-Deployment).
