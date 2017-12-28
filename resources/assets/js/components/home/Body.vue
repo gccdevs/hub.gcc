@@ -10,7 +10,7 @@
                     <img class="card-img-top tinted-image" src="./../../../image/limitless-wallpapers.jpg" alt="Card image cap">
                     <div class="card text-white">
                         <div class="card-body">
-                            <h4 class="card-title">Summit 2018</h4>
+                            <h4 class="card-title">活动报名</h4>
                             <p class="card-text">
                                 荣耀城高峰会2018 <br>
                                 报名参加小组 <br>
