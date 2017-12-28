@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css/bulma-0.6.1/node_modules
+/public/css/bulma-0.6.1/sass
 /storage/*.key
 /vendor
 /.idea
