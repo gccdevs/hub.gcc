@@ -44,6 +44,13 @@ let routes = [
                 meta: {title: 'Summit 2018 Registration - GCC'}
             },
             {
+                path: '/summit-2018/checkout',
+                name: 'summit.checkout',
+                props:true,
+                component: require('./components/summit/Checkout'),
+                meta: {requiresInfo:true,title: 'Summit 2018 Checkout - GCC'}
+            },
+            {
                 path: '/summit-2018/terms-and-conditions',
                 name:'summit.terms',
                 component: require('./components/summit/Terms'),
@@ -140,19 +147,19 @@ router.beforeEach((to, from, next) => {
         document.title = to.meta.title;
     }
 
-    if (to.meta.requiresForm){
-        if(Store.state.Form.hasEmail){
-            return next();
-        } else {
-            return next({'name' : 'summit'})
-        }
-    }
-
     if (to.meta.requiresPaid){
         if(Store.state.Form.paid){
             return next();
         } else {
-            return next({'name' : 'summit'})
+            return next({'name' : 'summit.signup'})
+        }
+    }
+
+    if (to.meta.requiresInfo){
+        if(Store.state.Form.info){
+            return next();
+        } else {
+            return next({'name' : 'summit.signup'})
         }
     }
 

@@ -31,8 +31,6 @@
                 <br>
                 <p style="display: inline;"><b>电话: </b></p><p style="display: inline;" v-text="this.mobile"></p>
                 <br>
-                <p style="display: inline;"><b>地址: </b></p><p style="display: inline;" v-text="this.address"></p>
-                <br>
                 <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
             </div>
             <h3 class="is-size-3">确认邮件已发送到： {{ this.email }}</h3>
@@ -53,7 +51,7 @@
 
     export default {
 
-        props:['email','name','address','mobile','gender', 'paymentRef', 'firstTime','path'],
+        props:['email','name','mobile','gender', 'paymentRef', 'firstTime','path'],
 
     }
 

@@ -23,7 +23,7 @@ class FormsTableSeeder extends Seeder
             Form::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
-                'address' => $faker->address,
+                'coupon' => env('STRIPE_CODE'),
                 'mobile' => $faker->phonenumber,
                 'path' => 'friend',
                 'gender' => ($index %2 == 0) ? 'male' : 'female',

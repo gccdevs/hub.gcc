@@ -14,6 +14,7 @@ Route::get('/form/result', 'FormController@show');
 
 Route::post('/form/purchase','FormController@purchase');
 Route::post('/form/validate','FormController@validateEmail');
+Route::post('/form/validate-coupon','FormController@validateCoupon');
 
 Route::post('/user/send-invitation','Auth\RegisterController@invite');
 
