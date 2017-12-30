@@ -24,7 +24,9 @@ export default{
         },
 
         paymentInfoRequest({commit}){
-            type:types.SET_PAYMENT_INFO
+            commit({
+                type:types.SET_PAYMENT_INFO
+            })
         }
     }
 }

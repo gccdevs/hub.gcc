@@ -48,7 +48,7 @@ let routes = [
                 name: 'summit.checkout',
                 props:true,
                 component: require('./components/summit/Checkout'),
-                meta: {requiresInfo:true,title: 'Summit 2018 Checkout - GCC'}
+                meta: {requiresInfo:true, title: 'Summit 2018 Checkout - GCC'}
             },
             {
                 path: '/summit-2018/terms-and-conditions',

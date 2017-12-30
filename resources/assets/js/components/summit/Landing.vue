@@ -7,11 +7,11 @@
                         column
                         align-center
                         justify-center>
-                    <img src="./../../../image/large-logo.png" alt="logo" height="100">
+                    <img src="./../../../image/small-logo.png" alt="logo" height="150">
                     <h1 class="white--text mb-2 display-3 text-xs-center">Limitless</h1>
-                    <div class="subheading mb-3 text-xs-center white--text">2018 Conference GCC</div>
+                    <div class="subheading mb-3 text-xs-center white--text">2018 荣耀城领袖高峰会 - 无可限量</div>
                     <v-btn class="blue lighten-2 mt-5" dark large href="/summit-2018/signup">
-                        Register Now
+                        现在报名
                     </v-btn>
                 </v-layout>
             </v-parallax>
@@ -55,7 +55,7 @@
                     <div class="headline white--text mb-3 text-xs-center">Summit 2018</div>
                     <em> Italic subtext</em>
                     <v-btn class="blue lighten-2 mt-5" dark large href="/summit-2018/signup">
-                        Register Now
+                        报名
                     </v-btn>
                 </v-layout>
             </v-parallax>
@@ -264,9 +264,9 @@
                             </v-list>
                             <!-- ** Social Media Icon added  **-->
                             <v-layout justify-space-around pt-3>
-                                <a><img :src="require('./../../../image/facebook.png')"></a>
-                                <a><img :src="require('./../../../image/instagram.png')"></a>
-                                <a><img :src="require('./../../../image/wechat.png')"></a>
+                                <a href="https://www.facebook.com/GloryCityChurch" target="_blank"><img :src="require('./../../../image/facebook.png')"></a>
+                                <a href="https://www.instagram.com/glorycitychurch_mel" target="_blank"><img :src="require('./../../../image/instagram.png')"></a>
+                                <a  href=""target="_blank"><img :src="require('./../../../image/wechat.png')"></a>
                             </v-layout>
                             <!-- ** End  **-->
                         </v-card>
@@ -278,8 +278,8 @@
         <v-footer class="blue darken-2">
             <v-layout row wrap align-center>
                 <v-flex xs12>
-                    <div class="white--text ml-3">
-                        2017 - 2018 All right reserved @Glory City Church of Melbourne. <a href="/" style="color: white;text-decoration:none;"><b>Central Hub</b></a>
+                    <div class="white--text ml-3 text-center">
+                        2017 - 2018 All right reserved @Glory City Church of Melbourne. <a href="/" style="color: white;text-decoration:none; float:right !important;"><b>Central Hub</b></a>
                     </div>
                 </v-flex>
             </v-layout>
