@@ -144,25 +144,10 @@
                     </div>
 
                 </div>
-
-
-                <p class="is-size-3">同意条款</p>
-
-                <br>
-
-                <div class="columns">
-                    <div class="column">
-                        <label class="checkbox">
-                            <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意条款" @click="toggleChecker" required>
-                            I agree to the <router-link :to="{ name: 'summit.terms' }" tag="a" style="color:#474fdb;">terms and conditions</router-link>
-                        </label>
-                        <span class="help-block" v-show="errors.has('terms')" style="color: red !important;">{{ errors.first('terms') }}</span>
-                    </div>
-                </div>
             </div>
 
             <div class="field">
-                <button class="button is-info" :disabled=" errors.any() || !this.termChecker || !complete" style="width:100%" @click.prevent="nextStep">
+                <button class="button is-info" :disabled=" errors.any() || !complete" style="width:100%" @click.prevent="nextStep">
                     Proceed to checkout
                 </button>
             </div>
@@ -184,8 +169,7 @@
                 email_confirm: '',
                 path: '',
                 coupon:'',
-                isDiscounted: false,
-                termChecker: false
+                isDiscounted: false
             }
         },
 
@@ -210,17 +194,13 @@
         computed:{
             complete(){
                 return this.gender && this.firstTime && this.name.length >= 2 &&
-                this.email.length > 0 && this.mobile.length >= 10 &&
-                this.email === this.email_confirm && this.path && this.name.length <= 50 &&
-                this.email.length <= 50 && this.mobile.length <= 25;
+                    this.email.length > 0 && this.mobile.length >= 10 &&
+                    this.email === this.email_confirm && this.path && this.name.length <= 50 &&
+                    this.email.length <= 50 && this.mobile.length <= 25;
             }
         },
 
         methods:{
-
-            toggleChecker(){
-                this.termChecker = !this.termChecker;
-            },
 
             nextStep() {
                 let vm = this;
@@ -246,7 +226,8 @@
                                             gender: vm.gender,
                                             mobile: vm.mobile,
                                             path:vm.path,
-                                            isDiscounted: vm.isDiscounted
+                                            isDiscounted: vm.isDiscounted,
+                                            coupon: vm.isDiscounted ? vm.coupon : 'null'
                                         }
                                     });
 

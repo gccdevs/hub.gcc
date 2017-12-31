@@ -48,7 +48,7 @@ class FormController extends Controller
             ]);
 
             $charge = Charge::create([
-                'amount' => 10000,
+                'amount' => request('coupon') == env('STRIPE_CODE') ? 5000 : 10000,
                 'customer' => $customer->id,
                 'currency' => 'AUD'
             ]);
@@ -68,7 +68,13 @@ class FormController extends Controller
         }
 
 
-        return response()->json(['message' => 'paid success', 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
+        return response()->json([
+            'message' => 'paid success',
+            'ref' => $charge->id,
+            'customer' => $customer,
+            'charge' => $charge,
+            'amount' => request('coupon') == env('STRIPE_CODE') ? 5000 : 10000
+        ]);
 
     }
 
