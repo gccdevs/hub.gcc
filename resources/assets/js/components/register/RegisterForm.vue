@@ -19,20 +19,20 @@
         </div>
 
         <div class="form-group">
-            <label for="role">身份</label>
-            <select v-model="role" class="form-control" id="role" style="width:100%;" v-validate data-vv-rules="required">
+            <label for="roles">身份</label>
+            <select v-model="roles" class="form-control" id="roles" style="width:100%;" v-validate data-vv-rules="required">
                 <option disabled value="">Please select one</option>
                 <option v-show="role === 1">Admin</option>
                 <option>User</option>
             </select>
-            <span class="help-block" v-show="errors.has('role')" style="color: red">{{errors.first('role')}}</span>
+            <span class="help-block" v-show="errors.has('roles')" style="color: red">{{errors.first('roles')}}</span>
         </div>
 
         <br>
 
         <div class="form-group">
             <div class="form-group">
-                <button type="submit" class="btn btn-outline-info" style="width:100% ;">
+                <button type="submit" class="btn btn-outline-info" style="width:100% ;" :disabled="this.roles == ''">
                     邀请
                 </button>
             </div>
@@ -47,17 +47,17 @@
             return {
                 name : '',
                 email : '',
-                role: ''
+                roles: ''
             }
         },
 
-        props:['id','role'],
+        props:['user_id','role'],
 
         methods:{
 
             processInvite() {
 
-//                console.log(this.id);
+                console.log(this.id);
 
                 if (this.validatesInputLength){
                     this.invite();
@@ -66,7 +66,7 @@
 
 
             validatesInputLength(){
-                return this.name.length <= 20 && this.email.length <= 20 && this.role && this.email.length > 2 && this.name.length > 0;
+                return this.name.length <= 20 && this.email.length <= 20 && this.roles && this.email.length > 2 && this.name.length > 0;
             },
 
             invite() {
@@ -76,9 +76,9 @@
                 let formData = {
                     name: vm.name,
                     email: vm.email + '@glorycitychurch.com',
-                    invitedId: vm.id,
+                    invitedId: this.user_id,
                     password: Math.random().toString(16),
-                    role: vm.role
+                    role: vm.roles
                 };
 
                 axios.post('/api/user/send-invitation', formData).then(response => {
@@ -91,7 +91,7 @@
                             vm.$router.push({name: 'user.create.success', params:{
                                 name: vm.name,
                                 email: vm.email + '@glorycitychurch.com',
-                                role: vm.role
+                                role: vm.roles
                             }});
                         });
 

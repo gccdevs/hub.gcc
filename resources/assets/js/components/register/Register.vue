@@ -6,7 +6,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <register-form :id="this.id" :role="this.role"></register-form>
+                    <register-form :user_id="this.id" :role="this.role"></register-form>
                 </div>
             </div>
         </div>
