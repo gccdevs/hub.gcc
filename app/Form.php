@@ -15,4 +15,10 @@ class Form extends Model
         $this->payment_ref = $payRef;
     }
 
+    public function saveAmount($amount, $coupon)
+    {
+        $this->amount = $amount;
+        $this->coupon = $coupon;
+    }
+
 }

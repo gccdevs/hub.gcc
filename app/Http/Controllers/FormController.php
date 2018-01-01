@@ -47,11 +47,17 @@ class FormController extends Controller
                 'source' => request('stripeToken'),
             ]);
 
+
+            $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
+
             $charge = Charge::create([
-                'amount' => request('coupon') == env('STRIPE_CODE') ? 5000 : 10000,
+                'amount' => $price,
                 'customer' => $customer->id,
                 'currency' => 'AUD'
             ]);
+
+            $form->saveAmount($price, request('coupon'));
+
         }
         catch (\Exception $e) { // if failed to charge
             return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
