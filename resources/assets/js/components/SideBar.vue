@@ -40,7 +40,7 @@
             </li>
         </ul>
 
-        <hr>
+        <hr v-show="this.role === 1 || this.role === 2">
 
         <ul class="nav nav-pills flex-column">
             <li>
@@ -50,16 +50,16 @@
             </li>
         </ul>
 
-        <hr v-show="this.role === 1 || this.role === 2">
+        <hr>
 
-        <ul class="menu-text nav nav-pills flex-column">
+        <ul class="menu-text nav nav-pills flex-column" v-show="this.role === 1">
             <li>
-                <router-link :to="{ name: 'user.list' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'user.list' }" class="menu-text nav-link" tag="a">
                     <span class="icon"><i class="fa fa-home"></i></span> User List
                 </router-link>
 
             </li>
-            <li class="nav-item" v-show="this.role === 1 || this.role === 2">
+            <li class="nav-item">
 
                 <ul class="menu-text nav nav-pills flex-column">
                     <router-link :to="{name: 'user.create'}" class="menu-text nav-link ml-3 my-1">
@@ -69,7 +69,15 @@
             </li>
         </ul>
 
-        <hr v-show="this.role === 1 || this.role === 2">
+        <ul class="menu-text nav nav-pills flex-column" v-show="this.role == 2 || this.role === 3">
+            <li>
+                <router-link :to="{name: 'user.create'}" class="menu-text nav-link">
+                    <span class="icon is-small"><i class="fa fa-plus"></i></span> Invite Users
+                </router-link>
+            </li>
+        </ul>
+
+        <hr>
 
         <a href="/logout" class="menu-text nav-link">
             <span class="icon is-small"><i class="fa fa-sign-out"></i></span> Log out

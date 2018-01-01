@@ -11,7 +11,7 @@
             }
         </script>
 
-        <title>404 -- Central Hub GCC</title>
+        <title>Not Found -- Central Hub GCC</title>
         <link rel="icon" href="{!! asset('images/logo_black.png') !!}"/>
 
         <!-- Fonts -->

@@ -46,4 +46,9 @@ class User extends Authenticatable
         $this->confirm_token = 'confirmed' . $token;
     }
 
+    public function getUserRole()
+    {
+        return $this->role;
+    }
+
 }

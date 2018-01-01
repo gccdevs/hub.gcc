@@ -22,7 +22,7 @@
             <label for="role">身份</label>
             <select v-model="role" class="form-control" id="role" style="width:100%;" v-validate data-vv-rules="required">
                 <option disabled value="">Please select one</option>
-                <option>Admin</option>
+                <option v-show="role === 1">Admin</option>
                 <option>User</option>
             </select>
             <span class="help-block" v-show="errors.has('role')" style="color: red">{{errors.first('role')}}</span>
@@ -51,7 +51,7 @@
             }
         },
 
-        props:['id'],
+        props:['id','role'],
 
         methods:{
 
