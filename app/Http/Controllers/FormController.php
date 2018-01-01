@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use PhpParser\Node\Expr\Cast\Object_;
 use Stripe\{Charge, Customer};
 
 
@@ -19,6 +18,13 @@ class FormController extends Controller
         return view('forms.register');
     }
 
+
+    public function validateCoupon()
+    {
+        return response()->json(['message' => request('coupon')  == env('STRIPE_CODE') ? true : false ]);
+    }
+    
+    
     public function purchase(Request $request)
     {
         $this->validator($request->all())->validate(); // validate requested inputs
@@ -31,7 +37,6 @@ class FormController extends Controller
                 'email' => request('email'),
                 'gender' => request('gender'),
                 'mobile' => request('mobile'),
-                'address' => request('address'),
                 'path' => request('path'),
             ]); // create an entry
 
@@ -42,11 +47,17 @@ class FormController extends Controller
                 'source' => request('stripeToken'),
             ]);
 
+
+            $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
+
             $charge = Charge::create([
-                'amount' => 10000,
+                'amount' => $price,
                 'customer' => $customer->id,
                 'currency' => 'AUD'
             ]);
+
+            $form->saveAmount($price, request('coupon'));
+
         }
         catch (\Exception $e) { // if failed to charge
             return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
@@ -63,7 +74,13 @@ class FormController extends Controller
         }
 
 
-        return response()->json(['message' => 'paid success', 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
+        return response()->json([
+            'message' => 'paid success',
+            'ref' => $charge->id,
+            'customer' => $customer,
+            'charge' => $charge,
+            'amount' => request('coupon') == env('STRIPE_CODE') ? 5000 : 10000
+        ]);
 
     }
 
@@ -75,7 +92,6 @@ class FormController extends Controller
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255|unique:forms',
             'stripeToken' => 'required',
-            'address' => 'required|string|max:255',
             'mobile' => 'required|min:8',
             'gender' => 'required|in:male,female',
             'first_time' => 'required|in:yes,no',
@@ -99,8 +115,8 @@ class FormController extends Controller
             $object->gender = $form->gender;
             $object->mobile = $form->mobile;
             $object->email = $form->email;
-            $object->address = $form->address;
             $object->ref = $form->payment_ref;
+            $object->coupon = $form->coupon == env('STRIPE_CODE') ? true : false;
             $object->time = date('Y/m/d h:i:s',strtotime($form->updated_at));
             $object->firstTime = $form->first_time;
             $object->path = $form->path;
@@ -128,7 +144,7 @@ class FormController extends Controller
 
         $cellData = [];
 
-        array_push($cellData, ['name', 'gender', 'mobile','email','address','is_paid','payment_ref','time','first_time','where to know']);
+        array_push($cellData, ['name', 'gender', 'mobile','email','is_paid','payment_ref','time','first_time','where to know']);
 
         foreach ($data as $form){
 
@@ -137,9 +153,9 @@ class FormController extends Controller
                 $gender = $form->gender,
                 $mobile = $form->mobile,
                 $email = $form->email,
-                $address = $form->address,
                 $is_paid = $form->is_paid,
                 $ref = $form->payment_ref,
+                $coupon = $form->coupon == env('STRIPE_CODE') ? true : false,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
                 $firstTime = $form->first_time,
                 $path = $form->path

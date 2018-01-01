@@ -4,8 +4,23 @@
         <h1 class="text-center">Central Hub</h1>
         <br><br><br>
         <div class="container">
-            <div class="row">
 
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<img class="col-md-5 card-img-top tinted-image" style="display: inline-block;padding-left:0px;padding-right:0px;" src="./../../../image/giving.png" alt="">-->
+                    <!--<div class="col-md-6 card text-white" style="display: inline-block;margin-bottom:0px;">-->
+                        <!--<div class="card-body">-->
+                            <!--<h4 class="card-title">Giving</h4>-->
+                            <!--<p class="card-text">-->
+                                <!--设置你的recurring giving now !-->
+                            <!--</p>-->
+                            <!--<v-btn class="btn btn-info" style="margin-bottom:17px;" v-b-modal.formRego>Giving</v-btn>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="row">
                 <div class="col-sm-6 col-md-4 col-xs-12">
                     <img class="card-img-top tinted-image" src="./../../../image/limitless-wallpapers.jpg" alt="Card image cap">
                     <div class="card text-white">
@@ -82,10 +97,10 @@
                     <div class="card text-white">
                         <div class="card-body">
                             <h4 class="card-title">People</h4>
-                                <p class="card-text">
-                                    还没有central hub的帐号吗?<br>
-                                    快去问你的小组长吧!<br>
-                                </p>
+                            <p class="card-text">
+                                还没有central hub的帐号吗?<br>
+                                快去问你的小组长吧!<br>
+                            </p>
                             <v-btn href="/login" class="btn btn-info" style="margin-bottom:17px;">进入Hub</v-btn>
                         </div>
                     </div>

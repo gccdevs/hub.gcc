@@ -24,7 +24,7 @@
 
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-                <router-link :to="{ name: 'booking' }" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'booking' }" class="menu-text nav-link" tag="a" @click="togglePage">
                     <span class="icon"><i class="fa fa-clipboard"></i></span> Booking
                 </router-link>
             </li>
@@ -34,7 +34,7 @@
 
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-                <router-link :to="{ name: 'message' }" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'message' }" class="menu-text nav-link" tag="a" @click="togglePage">
                     <span class="icon"><i class="fa fa-comment"></i></span> Message
                 </router-link>
             </li>
@@ -98,6 +98,12 @@
                     active: this.isActive && !this.error,
                     'text-danger': this.error && this.error.type === 'fatal'
                 }
+            }
+        },
+
+        methods: {
+            togglePage(){
+                console.log('toggling');
             }
         }
 

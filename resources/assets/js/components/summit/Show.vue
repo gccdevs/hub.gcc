@@ -37,9 +37,9 @@
                     {key:'mobile', label:'电话',sortable:true},
                     {key:'email', label:'邮箱',sortable:true},
                     {key:'gender', label:'性别', sortable:true},
-                    {key:'address', label:'地址',sortable:true},
                     {key:'firstTime', label:'first?', sortable:true},
                     {key:'ref', label:'支付凭证',sortable:true},
+                    {key:'coupon', label:'使用支付卷',sortable:true},
                     {key:'time', label:'支付时间', sortable:true},
                     {key:'path', label:'了解途径',sortable:true}
                 ],
