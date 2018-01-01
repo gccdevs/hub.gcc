@@ -51,6 +51,7 @@ class FormController extends Controller
             $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
 
             $charge = Charge::create([
+                'description' =>  request('coupon') == env('STRIPE_CODE') ? 'SUMMIT2018_EARLYBIRD' : 'SUMMIT2018',
                 'amount' => $price,
                 'customer' => $customer->id,
                 'currency' => 'AUD'

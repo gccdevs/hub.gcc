@@ -12,7 +12,7 @@ You have successfully purchased the 2018 Glory City Church Summit ticket!
 @component('mail::table')
 |  | |
 | ------------- |:--------------------------------------------------:|
-|  Paid Amount | {{ $form->amount == 10000 ? 'A$ 100.00' : 'A$ 50.00'}} |
+|  Paid Amount | **{{ $form->amount == 10000 ? 'A$ 100.00' : 'A$ 50.00'}}** |
 | Receipt   | **{{ $form->payment_ref }}**   |
 | Name  |**{{ $form->name }}** |
 | Gender|  **{{ $form->gender }}**   |
