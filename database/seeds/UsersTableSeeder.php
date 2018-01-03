@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'	 => 'Customer Service',
             'email'	 => 'customerservice@glorycitychurch.com',
-            'role' => 1,
+            'role' => 'Super Admin',
             'invited_by' => 1,
             'mobile' => 11111111,
             'confirm_token' => 'used',
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'	 => 'Example',
             'email'	 => 'example@example.com',
-            'role' => 1,
+            'role' => 'User',
             'invited_by' => 1,
             'mobile' => 11111111,
             'confirm_token' => str_random(99),

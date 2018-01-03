@@ -99,7 +99,6 @@ class RegisterController extends Controller
         try{
 
             $this->validateCreation($request->all())->validate(); // validate requested inputs
-            $roleId = Role::where('role_title',request('role'))->first()->id; // role id get by role selected by user
 
         } catch( \Exception $e){
             return response()->json(['message' => 'Email format is wrong or has already been invited', 'reason' => $e->getMessage()]);
@@ -111,7 +110,7 @@ class RegisterController extends Controller
             'email' => request('email'),
             'invited_by' => request('invitedId'),
             'password' => bcrypt(request('password')),
-            'role' => $roleId,
+            'role' => request('role'),
             'is_active' => false
         ]);
 

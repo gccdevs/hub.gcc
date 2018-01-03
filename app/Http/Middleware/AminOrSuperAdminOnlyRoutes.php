@@ -19,7 +19,7 @@ class AminOrSuperAdminOnlyRoutes
         if (Auth::check()) {
             $user = Auth::user();
             // 1 is super admin and 2 is admin
-            return $user->role == 1 || $user->role == 2 ? $next($request) : redirect('/404');
+            return $user->role == 'Super Admin' || $user->role == 'Admin' ? $next($request) : redirect('/404');
         }
         return redirect('/login');
     }

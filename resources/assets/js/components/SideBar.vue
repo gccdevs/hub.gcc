@@ -40,11 +40,11 @@
             </li>
         </ul>
 
-        <hr v-show="this.role === 1 || this.role === 2">
+        <hr v-show="this.role === 'Super Admin' || this.role === 'Admin'">
 
         <ul class="nav nav-pills flex-column">
             <li>
-                <router-link :to="{ name: 'form.show' }" v-show="this.role === 1 || this.role === 2" class="menu-text nav-link" tag="a">
+                <router-link :to="{ name: 'form.show' }" v-show="this.role === 'Super Admin' || this.role === 'Admin'" class="menu-text nav-link" tag="a">
                     <span class="icon"><i class="fa fa-table"></i></span> Tables
                 </router-link>
             </li>
@@ -52,7 +52,7 @@
 
         <hr>
 
-        <ul class="menu-text nav nav-pills flex-column" v-if="this.role === 1">
+        <ul class="menu-text nav nav-pills flex-column" v-if="this.role === 'Super Admin'">
             <li>
                 <router-link :to="{ name: 'user.list' }" class="menu-text nav-link" tag="a">
                     <span class="icon"><i class="fa fa-home"></i></span> User List
@@ -69,7 +69,7 @@
             </li>
         </ul>
 
-        <ul class="menu-text nav nav-pills flex-column" v-if="this.role == 2 || this.role === 3">
+        <ul class="menu-text nav nav-pills flex-column" v-if="this.role == 'Admin' || this.role === 'User'">
             <li>
                 <router-link :to="{name: 'user.create'}" class="menu-text nav-link">
                     <span class="icon"><i class="fa fa-plus"></i></span> Invite Users

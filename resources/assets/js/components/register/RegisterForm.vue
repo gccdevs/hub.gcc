@@ -22,7 +22,7 @@
             <label for="roles">身份</label>
             <select v-model="roles" class="form-control" id="roles" style="width:100%;" v-validate data-vv-rules="required">
                 <option disabled value="">Please select one</option>
-                <option v-show="role === 1">Admin</option>
+                <option v-show="this.role === 'Super Admin'">Admin</option>
                 <option>User</option>
             </select>
             <span class="help-block" v-show="errors.has('roles')" style="color: red">{{errors.first('roles')}}</span>

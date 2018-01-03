@@ -32,7 +32,7 @@
 
     @if (Route::has('login'))
         @auth
-            <app :id="{{ auth()->user()->id }}" :role="{{ auth()->user()->role }}"></app>
+            <app :id="{{ auth()->user()->id }}" :role="'{{ auth()->user()->role }}'"></app>
             @else
                 <app id="-1" role="-1"></app>
                 @endauth

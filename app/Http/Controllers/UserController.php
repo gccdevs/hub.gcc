@@ -30,7 +30,7 @@ class UserController extends Controller
             $object->name = $user->name;
             $object->mobile = $user->mobile;
             $object->email = $user->email;
-            $object->role =  Role::find($user->role)->role_title;
+            $object->role =  $user->role;
             $object->createdBy = User::find($user->invited_by)->name;
             $object->time = date('Y/m/d h:i:s',strtotime($user->created_at));
             $object->status = $user->is_active;

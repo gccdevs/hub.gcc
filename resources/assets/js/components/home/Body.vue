@@ -82,7 +82,7 @@
                     <img class="card-img-top" src="./../../../image/daily-devotion.png" alt="Card image cap">
                     <div class="card text-white">
                         <div class="card-body">
-                            <h4 class="card-title">每日晨耕</h4>
+                            <h4 class="card-title">每日晨更</h4>
                             <p class="card-text">
                                 从每天的开始，就领受神的话语，更新你的生命 <br>
                                 <b>时间：每天早上6：30-7：00</b><br>
