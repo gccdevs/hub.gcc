@@ -176,10 +176,8 @@
         watch: {
             coupon(val){
                 let vm = this;
-                console.log(val);
                 axios.post('/api/form/validate-coupon', {coupon:val}).then(response => {
                     if (response.data.message === true){
-                        console.log(response.data.message);
                         vm.isDiscounted = true;
                         console.log(vm.isDiscounted);
                     }else {
@@ -209,36 +207,27 @@
 
                     this.$validator.validateAll().then(result => {
 
-                        axios.post('/api/form/validate', {email: this.email}).then(response => {
-//                                console.log('alert: ', response.data.status);
-                            if (response.data.status) {
+                        vm.$store.dispatch('paymentInfoRequest').then(response => {
 
-                                alert("此邮箱已被成功注册. 请使用其他邮箱.");
-                            } else {
+                            vm.$router.push({
+                                name: 'summit.checkout', params: {
+                                    name: vm.name,
+                                    email: vm.email,
+                                    firstTime: vm.firstTime,
+                                    gender: vm.gender,
+                                    mobile: vm.mobile,
+                                    path: vm.path,
+                                    isDiscounted: vm.isDiscounted,
+                                    coupon: vm.isDiscounted ? vm.coupon : 'null'
+                                }
+                            });
 
-                                vm.$store.dispatch('paymentInfoRequest').then(response => {
+                        }).catch(error => {
+                        });
 
-                                    vm.$router.push({
-                                        name: 'summit.checkout', params: {
-                                            name: vm.name,
-                                            email: vm.email,
-                                            firstTime: vm.firstTime,
-                                            gender: vm.gender,
-                                            mobile: vm.mobile,
-                                            path:vm.path,
-                                            isDiscounted: vm.isDiscounted,
-                                            coupon: vm.isDiscounted ? vm.coupon : 'null'
-                                        }
-                                    });
-
-                                }).catch(error => {
-                                });
-
-                            }
-                        })
-                    })
-                } else{
-                    alert('请检查所填写信息是否有误或未填写!');
+                    }).catch(err => {});
+                }else {
+                    console.log("Doesn't pass input check");
                 }
             },
 

@@ -91,7 +91,7 @@ class FormController extends Controller
         return Validator::make($data, [
             'isAgreed' => 'required|boolean:true',
             'name' => 'required|string|max:255|min:2',
-            'email' => 'required|string|email|max:255|unique:forms',
+            'email' => 'required|string|email|max:255',
             'stripeToken' => 'required',
             'mobile' => 'required|min:8',
             'gender' => 'required|in:male,female',
@@ -126,12 +126,6 @@ class FormController extends Controller
         }
 
         return array_reverse($response);
-    }
-
-    public function validateEmail()
-    {
-        $response = Form::where('email',request('email'))->first() ? true : false;
-        return response()->json(['status' => $response]);
     }
 
     public function termsAndConditions(){

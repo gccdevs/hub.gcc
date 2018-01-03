@@ -199,7 +199,6 @@
                 termChecker: false,
                 style:{
                     base: {
-                        color: '#1598af',
                         fontSize: '16px',
                         color: "#32325d",
                         fontSmoothing: 'antialiased',
