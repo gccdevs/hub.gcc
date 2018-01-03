@@ -277,6 +277,8 @@
 
                     axios.post('/api/form/purchase', formData).then(response => {
 
+                        console.log(response.data);
+
                         if (response.data.message === 'paid success') {
 
                             let ref = response.data.ref;
@@ -304,6 +306,10 @@
                         }
                         else if(response.data.message === 'failed to charge the card'){
                             alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
+                            vm.dismissLoader();
+                        }
+                        else if (response.data.message === 'failed to create Entity'){
+                            alert('!! 支付失败, reason: ' + response.data.reason + '请联系我们的同工 customerservice@glorycitychurch.com');
                             vm.dismissLoader();
                         }
                         else if (response.data.message === 'input cannot pass validation'){

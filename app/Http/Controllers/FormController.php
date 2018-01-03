@@ -29,8 +29,28 @@ class FormController extends Controller
     {
         $this->validator($request->all())->validate(); // validate requested inputs
 
+        $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
+
         try { // process payment
 
+            $customer = Customer::create([
+                'email' =>request('email'),
+                'source' => request('stripeToken'),
+            ]);
+
+            $charge = Charge::create([
+                'description' =>  request('coupon') == env('STRIPE_CODE') ? 'SUMMIT2018_EARLYBIRD' : 'SUMMIT2018',
+                'amount' => $price,
+                'customer' => $customer->id,
+                'currency' => 'AUD'
+            ]);
+
+        }
+        catch (\Exception $e) { // if failed to charge
+            return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
+        }
+
+        try{
             $form = new Form([
                 'name' => request('name'),
                 'first_time' => request('first_time'),
@@ -42,34 +62,17 @@ class FormController extends Controller
 
             $form->is_agreed = true;
 
-            $customer = Customer::create([
-                'email' =>request('email'),
-                'source' => request('stripeToken'),
-            ]);
-
-
-            $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
-
-            $charge = Charge::create([
-                'description' =>  request('coupon') == env('STRIPE_CODE') ? 'SUMMIT2018_EARLYBIRD' : 'SUMMIT2018',
-                'amount' => $price,
-                'customer' => $customer->id,
-                'currency' => 'AUD'
-            ]);
-
             $form->saveAmount($price, request('coupon'));
 
-        }
-        catch (\Exception $e) { // if failed to charge
-            return response()->json(['message' => 'failed to charge the card', 'reason' => $e->getMessage()]);
+            $form->confirmPayment($charge->id);
+
+            $form->save();
+        } catch(\Exception $e) {
+            return response()->json(['message' => 'failed to create Entity', 'reason' => $e->getMessage()]);
         }
 
-        $form->confirmPayment($charge->id);
-
-        $form->save();
         try{
             Mail::to($form)->queue(new PurchaseConfirmation($form)); // send confirmation email
-
         } catch(\Exception $e) {
             return response()->json(['message' => 'failed to send email', 'reason' => $e->getMessage(), 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
         }
