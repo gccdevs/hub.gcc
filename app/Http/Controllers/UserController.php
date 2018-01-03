@@ -34,7 +34,6 @@ class UserController extends Controller
             $object->createdBy = User::find($user->invited_by)->name;
             $object->time = date('Y/m/d h:i:s',strtotime($user->created_at));
             $object->status = $user->is_active;
-            $object->id = $user->id;
 
             array_push($response, $object);
         }
@@ -53,14 +52,17 @@ class UserController extends Controller
 
     public function delete()
     {
-        if (request('authId') == request('userId')){
+
+        $currentUser = User::where('id',request('authId'))->first();
+
+        $targetUser = User::where('email',request('email'))->first();
+
+        if ($currentUser->id == $targetUser->id){
             return response()->json(['message' => 'cannot delete own account']);
         }
 
-        $user = User::find(request('userId'));
-
-        if(!is_null($user)) {
-            $user->delete();
+        if(!is_null($targetUser)) {
+            $targetUser->delete();
             return response()->json(['message' => 'deleted']);
         }
 

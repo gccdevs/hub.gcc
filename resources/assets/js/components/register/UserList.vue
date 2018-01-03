@@ -26,7 +26,7 @@
             </template>
 
             <template slot="action" slot-scope="data">
-                <button class="btn btn-outline-danger" @click="deleteUser(data.item.id)"><em class="fa fa-trash"> 删除</em></button>
+                <button class="btn btn-outline-danger" @click="deleteUser(data.item.email)"><em class="fa fa-trash"> 删除</em></button>
             </template>
 
         </b-table>
@@ -40,7 +40,6 @@
         data(){
             return {
                 fields:[
-                    {key:'id', label:'ID', sortable:true },
                     {key:'name', label:'姓名', sortable:true },
                     {key:'status', label:'账户状态',sortable:true},
                     {key:'email', label:'邮箱',sortable:true},
@@ -82,14 +81,14 @@
                 })
             },
 
-            deleteUser(user_id){
-                console.log(user_id);
+            deleteUser(email){
+                console.log(email);
 
                 let vm = this;
 
                 let formData = {
                     authId: vm.id,
-                    userId: user_id
+                    email: email
                 };
 
                 return axios.post('/api/user/delete', formData).then(response => {

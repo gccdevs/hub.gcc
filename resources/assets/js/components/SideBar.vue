@@ -1,12 +1,12 @@
 <template>
     <nav class="sidebar">
         <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
+            <li class="nav-item" @click="toggleProfile">
                 <router-link :to="{ name:'profile' }" class="menu-text nav-link" tag="a">
-                    <span class="icon"><i class="fa fa-user-md"></i></span> Profile
+                    <span class="icon"><i class="fa fa-user-md"></i></span> Profile  <em v-show="!this.showProfile" class="fa fa-arrow-down"></em> <em v-show="this.showProfile" class="fa fa-arrow-up"></em>
                 </router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-show="this.showProfile">
 
                 <ul class="menu-text nav nav-pills flex-column">
                     <router-link :to="{name: 'profile.edit'}" class="menu-text nav-link ml-3 my-1">
@@ -42,24 +42,38 @@
 
         <hr v-show="this.role === 'Super Admin' || this.role === 'Admin'">
 
-        <ul class="nav nav-pills flex-column">
+        <ul class="nav nav-pills flex-column" v-show="this.role === 'Super Admin' || this.role === 'Admin'">
             <li>
-                <router-link :to="{ name: 'form.show' }" v-show="this.role === 'Super Admin' || this.role === 'Admin'" class="menu-text nav-link" tag="a">
-                    <span class="icon"><i class="fa fa-table"></i></span> Tables
-                </router-link>
+                <a @click.prevent="toggleRego" class="menu-text nav-link">
+                    <span class="icon"><i class="fa fa-table"></i></span> Registrations <em v-show="!this.showRego" class="fa fa-arrow-down"></em> <em v-show="this.showRego" class="fa fa-arrow-up"></em>
+                </a>
+            </li>
+            <li class="nav-item" v-show="this.showRego">
+
+                <ul class="menu-text nav nav-pills flex-column">
+                    <router-link :to="{ name: 'form.show' }" class="menu-text nav-link ml-3 my-1">
+                        <span class="icon is-small"><i class="fa fa-object-group"></i></span> Summit
+                    </router-link>
+                    <a class="menu-text nav-link ml-3 my-1">
+                        <span class="icon is-small"><i class="fa fa-registered"></i></span> Cell Group
+                    </a>
+                    <a class="menu-text nav-link ml-3 my-1">
+                        <span class="icon is-small"><i class="fa fa-fire"></i></span>  Baptism
+                    </a>
+                </ul>
             </li>
         </ul>
 
         <hr>
 
         <ul class="menu-text nav nav-pills flex-column" v-if="this.role === 'Super Admin'">
-            <li>
+            <li @click="toggleUsers">
                 <router-link :to="{ name: 'user.list' }" class="menu-text nav-link" tag="a">
-                    <span class="icon"><i class="fa fa-home"></i></span> User List
+                    <span class="icon"><i class="fa fa-home"></i></span> User List <em v-show="!this.showUsers" class="fa fa-arrow-down"></em> <em v-show="this.showUsers" class="fa fa-arrow-up"></em>
                 </router-link>
 
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-show="showUsers">
 
                 <ul class="menu-text nav nav-pills flex-column">
                     <router-link :to="{name: 'user.create'}" class="menu-text nav-link ml-3 my-1">
@@ -94,7 +108,10 @@
         data() {
             return{
                 isActive: true,
-                error: null
+                error: null,
+                showRego: false,
+                showProfile: false,
+                showUsers: false
             }
         },
 
@@ -112,6 +129,18 @@
         methods: {
             togglePage(){
                 console.log('toggling');
+            },
+
+            toggleRego(){
+                this.showRego = !this.showRego;
+            },
+
+            toggleProfile(){
+                this.showProfile = !this.showProfile;
+            },
+            toggleUsers(){
+                this.showUsers = !this.showUsers;
+
             }
         }
 

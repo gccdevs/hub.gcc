@@ -32,7 +32,6 @@
         data () {
             return {
                 fields:[
-                    {key:'id', label:'ID', sortable:true },
                     {key:'name', label:'姓名', sortable:true },
                     {key:'mobile', label:'电话',sortable:true},
                     {key:'email', label:'邮箱',sortable:true},
