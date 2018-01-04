@@ -1,8 +1,8 @@
 <template>
     <div class="footer">
         <div class="pages-container">
-            <ul class="links contact-nav text-white text-center" style="padding-left:0px;margin-bottom: 0px;">
-                <p class="connect text-white text-center" style="font-size: 24px;padding-top:80px;padding-bottom:20px;">Connect with us</p>
+            <ul class="links contact-nav text-center" style="padding-left:0px;margin-bottom: 0px;">
+                <p class="connect text-center" style="font-size: 24px;padding-top:20px;padding-bottom:20px;">Let's talk</p>
 
                 <li class="social text-center">
                     <a href="https://www.facebook.com/GloryCityChurch" target="_blank"><i class="fa-color fa fa-facebook fa-3x"></i></a>
@@ -20,7 +20,7 @@
                     <a href="https://www.centralhub.glorycitychurch.com/login" target="_blank"><i class="fa-color fa fa-sign-in fa-3x"></i></a>
                 </li>
 
-                <p class="connect text-white text-center" style="font-size: 24px;padding-top:40px;padding-bottom:100px;margin-bottom:0px;">Central Hub - GCC</p>
+                <p class="connect text-center" style="font-size: 24px;padding-top:40px;padding-bottom:20px;margin-bottom:0px;">Central Hub - GCC</p>
             </ul>
 
 
@@ -34,15 +34,13 @@
 
 <style>
     html, body {
-        background-color: #fff;
-        color: #636b6f;
-        font-weight: 100;
+        font-weight: 400;
         height: 100vh;
         margin: 0;
     }
 
     .links > li {
-        color: #636b6f;
+        color: #fff;
         padding: 0 25px;
         font-size: 12px;
         font-weight: 600;
@@ -52,7 +50,8 @@
     }
 
     .footer {
-        background-color:#343a40;
+        color:#34363A;
+        background-color:#D9DFE5;
     }
 
     .footer h1 {
@@ -68,11 +67,11 @@
     }
 
     .fa-color {
-        color:white;
+        color:#34363A;
     }
 
     .fa-color:hover {
-        color:gray;
+        color:#fff;
     }
 
 </style>
