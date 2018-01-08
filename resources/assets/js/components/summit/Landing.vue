@@ -24,25 +24,25 @@
                     <v-carousel style="height:100vh" :cycle='false'>
                         <v-carousel-item src="">
                             <v-container id="videoContainer">
-                                <iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/JsJWuUkNxx8" frameborder="0" allowfullscreen></iframe>
                             </v-container>
                         </v-carousel-item>
 
-                        <v-carousel-item src="">
-                            <v-container id="videoContainer">
-                                <iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>
-                            </v-container>
-                        </v-carousel-item>
-                        <v-carousel-item src="">
-                            <v-container id="videoContainer">
-                                <iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>
-                            </v-container>
-                        </v-carousel-item>
-                        <v-carousel-item src="">
-                            <v-container id="videoContainer">
-                                <iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>
-                            </v-container>
-                        </v-carousel-item>
+                        <!--<v-carousel-item src="">-->
+                            <!--<v-container id="videoContainer">-->
+                                <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
+                            <!--</v-container>-->
+                        <!--</v-carousel-item>-->
+                        <!--<v-carousel-item src="">-->
+                            <!--<v-container id="videoContainer">-->
+                                <!--<iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>-->
+                            <!--</v-container>-->
+                        <!--</v-carousel-item>-->
+                        <!--<v-carousel-item src="">-->
+                            <!--<v-container id="videoContainer">-->
+                                <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
+                            <!--</v-container>-->
+                        <!--</v-carousel-item>-->
                     </v-carousel>
                 </v-flex>
             </v-layout>

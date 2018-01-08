@@ -21,7 +21,8 @@ class FormsTableSeeder extends Seeder
 
         foreach(range(1, 5) as $index) {
             Form::create([
-                'name' => $faker->name,
+                'first_name' => $faker->first_name,
+                'last_name' => $faker->last_name,
                 'email' => $faker->email,
                 'coupon' => env('STRIPE_CODE'),
                 'mobile' => $faker->phonenumber,

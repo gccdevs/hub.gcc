@@ -20,7 +20,8 @@
             <table class="table is-hidden-touch is-size-4" style="background-color: transparent !important;">
                 <thead>
                 <tr>
-                    <th>姓名</th>
+                    <th>姓</th>
+                    <th>名</th>
                     <th>电邮</th>
                     <th>电话</th>
                     <th>性别</th>
@@ -30,7 +31,8 @@
 
                 </thead>
                 <tr>
-                    <td>{{ this.name }}</td>
+                    <td>{{ this.last_name }}</td>
+                    <td>{{ this.first_name }}</td>
                     <td>{{ this.email }}</td>
                     <td>{{ this.mobile }}</td>
                     <td>{{ this.gender }}</td>
@@ -55,8 +57,12 @@
                     <!--</thead>-->
                     <tbody>
                     <tr>
-                        <td><b>姓名</b></td>
-                        <td>{{ this.name }}</td>
+                        <td><b>姓</b></td>
+                        <td>{{ this.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>名</b></td>
+                        <td>{{ this.first_name }}</td>
                     </tr>
                     <tr>
                         <td><b>电邮</b></td>
@@ -143,19 +149,60 @@
                 <em class="fa fa-compress" @click="toggleModal"></em>
                 <div class="container" style="background-color:lightgray !important;width:100% !important;">
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        <br><br>
-                        Why do we use it?
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                        <br><br>
-                        Where does it come from?
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                        <br><br>
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                        <br><br>
-                        Where can I get some?
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                    </p>
+                    <p class="is-size-1">Terms And Conditions</p> <br>
+
+                    Glory City Church of Melbourne Inc. (hereinafter known as ‘Glory City Church’).
+
+                    <br><br>
+                    <b class="is-size-4">DISCLAIMER</b>
+                    <br>
+                    I acknowledge that if I have completed this form on behalf of a person under the age of 18 years of age, I have done so with the permission and consent of the child’s parent/guardian and have been given the responsibility to care for the child at all times during the event. If I am a parent/guardian of a child attending the event, I confirm and acknowledge the child attends at their own risk and I allow this with full knowledge of the risks associated and confirm the child is not the responsibility of Glory City Church, its staff, volunteers and/or agents.
+                    Glory City Church reserves the right to change any of the published event details without notice and have the final say on any matter relating to the event.
+
+                    <br><br>
+                    <b class="is-size-4">REGISTRATION ALLOCATIONS</b>
+                    <br>
+                    I understand that when I purchase a number of tickets for this event that I must allocate each of these tickets to named individuals. I understand that if I do not so allocate any of the tickets that they will not be able to be used and will be forfeited and that no refund will be available for any unused tickets.
+                    <br><br>
+                    <b class="is-size-4">GST/RECEIPTS</b>
+                    <br>
+                    The registration price does not include GST as the event is considered a ‘Religious Service’. Should you require a tax invoice for your records, please photocopy this registration form prior to returning it to us.
+                    <br><br>
+                    <b class="is-size-4">
+                        REFUNDS/TRANSFERS
+                    </b>
+                    <br>
+                    Refunds on tickets are available up until 14 days prior to the date of the event. After this, we will not refund the tickets due to administrative purposes. Individual tickets may be transferred to another individual by placing the request in an email to customerservice@glorycitychurch.com.
+                    <br><br>
+                    <b class="is-size-4">
+                        INDEMNITY
+                    </b>
+                    <br>
+                    I hereby agree to indemnify, release and hold harmless Glory City Church, its staff, volunteers and/or authorized agents against any and all claims arising from, or in connection with, any injury, accident, misfortune, damage or loss that may occur to myself/my child/ward and/or my/their property, equipment or personal effects while present at the event and within the event premises, including any injury that my child/ward may cause to another person.
+                    <br><br>
+                    <b class="is-size-4">
+                        MEDICAL TREATMENT CONSENT
+                    </b>
+                    <br>
+                    I give permission for Glory City Church authorised staff and/or volunteers to obtain emergency medical, hospital or ambulance assistance at any time they consider necessary. I understand that every reasonable effort will be made for the registrant to be notified before instituting such procedures. I acknowledge that I will be liable for any and all medical/hospital/ambulance costs and expenses incurred in the registrant’s or my child/ward’s treatment.
+                    <br><br>
+                    <b class="is-size-4">
+                        INVOLVEMENT CONSENT
+                    </b>
+                    <br>
+                    I hereby give my consent for the registrant to participate in activities they may choose while attending the event. I agree and understand that Glory City Church reserves the right to exercise its discretion to refuse to register any person upon medical and/or other grounds, without providing a detailed reason for doing so.
+                    <br><br>
+                    <b class="is-size-4">
+                        PRIVACY DECLARATION
+                    </b>
+                    <br>
+                    I understand and accept that Glory City Church may collect and use information about me for the purpose of providing and offering promotional material and may provide the information to any third party who helps Glory City Church provide these services to you. I consent to my personal details being used for the promotion of future Glory City Church events and products. Please contact customerservice@glorycitychurch.com if you have any queries regarding our privacy policy.
+                    <br><br>
+                    <b class="is-size-4">
+                        MEDIA WAIVER
+                    </b>
+                    <br>
+                    The event will be captured in photographs, video and audio. Glory City Church reserves the right to use this material for promotional purposes. I understand it is a condition of all registrant’s entry into the event that all claims are waived in relation to inclusion of their likeness in such films or recordings. If I am a parent/guardian, I give my consent for my child to be captured on photographic, video and audio media.
                 </div>
                 <em class="fa fa-compress" @click="toggleModal"></em>
                 <br>
@@ -216,7 +263,7 @@
             }
         },
 
-        props:['name','mobile','gender','firstTime','isDiscounted','path','email','coupon'],
+        props:['first_name','last_name','mobile','gender','firstTime','isDiscounted','path','email','coupon'],
 
         components: { CardNumber, CardExpiry, CardCvc, Loader },
 
@@ -264,7 +311,8 @@
                 createToken().then(data => {
 
                     let formData = {
-                        name: vm.name,
+                        first_name: vm.first_name,
+                       last_name: vm.last_name,
                         first_time: vm.firstTime,
                         isAgreed: vm.termChecker,
                         gender: vm.gender,
@@ -287,7 +335,8 @@
 
                                 vm.$router.push({
                                     name: 'summit.success', params: {
-                                        name: vm.name,
+                                        first_name: vm.first_name,
+                                        last_name: vm.last_name,
                                         email: vm.email,
                                         firstTime: vm.firstTime,
                                         gender: vm.gender,

@@ -50,7 +50,7 @@ Route::get('/message', 'HomeController@index')->name('message')->middleware('aut
 //Route::get('/mail-purchase', function () {
 //    return new App\Mail\PurchaseConfirmation(App\Form::first());
 //});
-//
+
 //Route::get('/user-invitation', function () {
 //    return new App\Mail\UserInvitation(App\User::first(), str_random(16));
 //});

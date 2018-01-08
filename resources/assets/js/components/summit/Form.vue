@@ -20,14 +20,25 @@
 
                 <div class="columns">
                     <!-- name -->
-                    <div class="column" :class="{'has-error' : errors.has('name') }">
-                        <label class="label" for="name">姓名 *</label>
+                    <div class="column" :class="{'has-error' : errors.has('first_name') }">
+                        <label class="label" for="first_name">名 *</label>
                         <div>
-                            <input style="width:80%" class="is-size-6" v-model="name"
-                                   v-validate data-vv-rules="required|min:2|max:50" data-vv-as="姓名"
-                                   id="name" placeholder="Name, eg: Tony Gao" type="text" name="name" required>
+                            <input style="width:80%" class="is-size-6" v-model="first_name"
+                                   v-validate data-vv-rules="required|min:1|max:50" data-vv-as="名"
+                                   id="first_name" placeholder="First Name" type="text" name="first_name" required>
                             <br>
-                            <span class="help-block" v-show="errors.has('name')" style="color: red !important;">{{errors.first('name')}}</span>
+                            <span class="help-block" v-show="errors.has('first_name')" style="color: red !important;">{{errors.first('first_name')}}</span>
+                        </div>
+                    </div>
+
+                    <div class="column" :class="{'has-error' : errors.has('last_name') }">
+                        <label class="label" for="last_name">姓 *</label>
+                        <div>
+                            <input style="width:80%" class="is-size-6" v-model="last_name"
+                                   v-validate data-vv-rules="required|min:2|max:50" data-vv-as="姓"
+                                   id="last_name" placeholder="Last Name" type="text" name="last_name" required>
+                            <br>
+                            <span class="help-block" v-show="errors.has('last_name')" style="color: red !important;">{{errors.first('last_name')}}</span>
                         </div>
                     </div>
                     <!-- gender -->
@@ -161,7 +172,8 @@
 
         data(){
             return {
-                name: '',
+                first_name: '',
+                last_name: '',
                 mobile: '',
                 firstTime: '',
                 gender: '',
@@ -191,9 +203,9 @@
 
         computed:{
             complete(){
-                return this.gender && this.firstTime && this.name.length >= 2 &&
+                return this.gender && this.firstTime &&
                     this.email.length > 0 && this.mobile.length >= 10 &&
-                    this.email === this.email_confirm && this.path && this.name.length <= 50 &&
+                    this.email === this.email_confirm && this.path && this.first_name.length <= 50 && this.last_name.length <= 50 &&
                     this.email.length <= 50 && this.mobile.length <= 25;
             }
         },
@@ -211,7 +223,8 @@
 
                             vm.$router.push({
                                 name: 'summit.checkout', params: {
-                                    name: vm.name,
+                                    first_name: vm.first_name,
+                                    last_name: vm.last_name,
                                     email: vm.email,
                                     firstTime: vm.firstTime,
                                     gender: vm.gender,
@@ -232,9 +245,9 @@
             },
 
             validatesInputLength(){
-                return this.gender && this.firstTime && this.name.length >= 2 &&
+                return this.gender && this.firstTime &&
                     this.email.length > 0 && this.mobile.length >= 10 &&
-                    this.email === this.email_confirm && this.path && this.name.length <= 50 &&
+                    this.email === this.email_confirm && this.path && this.first_name.length <= 50 && this.last_name.length <= 50 &&
                     this.email.length <= 50 && this.mobile.length <= 25;
             }
         }

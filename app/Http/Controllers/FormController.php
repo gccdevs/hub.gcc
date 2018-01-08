@@ -52,7 +52,8 @@ class FormController extends Controller
 
         try{
             $form = new Form([
-                'name' => request('name'),
+                'first_name' => request('first_name'),
+                'last_name' => request('last_name'),
                 'first_time' => request('first_time'),
                 'email' => request('email'),
                 'gender' => request('gender'),
@@ -93,7 +94,8 @@ class FormController extends Controller
 
         return Validator::make($data, [
             'isAgreed' => 'required|boolean:true',
-            'name' => 'required|string|max:255|min:2',
+            'first_name' => 'required|string|max:255|min:1',
+            'last_name' => 'required|string|max:255|min:1',
             'email' => 'required|string|email|max:255',
             'stripeToken' => 'required',
             'mobile' => 'required|min:8',
@@ -114,7 +116,8 @@ class FormController extends Controller
         foreach ($data as $form){
 
             $object = (object) [];
-            $object->name = $form->name;
+            $object->first_name = $form->first_name;
+            $object->last_name = $form->last_name;
             $object->gender = $form->gender;
             $object->mobile = $form->mobile;
             $object->email = $form->email;
@@ -141,12 +144,13 @@ class FormController extends Controller
 
         $cellData = [];
 
-        array_push($cellData, ['name', 'gender', 'mobile','email','is_paid','payment_ref','time','first_time','where to know']);
+        array_push($cellData, ['First name','Last name', 'gender', 'mobile','email','is_paid','payment_ref','time','first_time','where to know']);
 
         foreach ($data as $form){
 
             array_push($cellData, [
-                $name = $form->name,
+                $first_name = $form->first_name,
+                $last_name = $form->last_name,
                 $gender = $form->gender,
                 $mobile = $form->mobile,
                 $email = $form->email,

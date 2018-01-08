@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-xs-12">
                     <div class="shadow">
-                        <img class="card-img-top tinted-image" src="./../../../image/limitless-wallpapers.jpg" alt="Card image cap">
+                        <img class="card-img-top tinted-image" src="./../../../image/summit.png" alt="Card image cap">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">活动报名</h4>
@@ -77,7 +77,7 @@
                                     这里有各式各样的读经计划 <br>
                                     一起参与我们的40周读经计划，或者全年读经计划吧！<br>
                                 </p>
-                                <v-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.comming-soon>今日经文</v-btn>
+                                <!--<v-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.comming-soon>今日经文</v-btn>-->
                                 <a href="https://bible-study.glorycitychurch.com" class="btn btn-dark" style="margin-bottom:17px;">打卡</a>
                             </div>
                         </div>

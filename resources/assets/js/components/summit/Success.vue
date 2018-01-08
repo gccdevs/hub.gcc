@@ -19,7 +19,7 @@
                 <h1 class="is-size-1" style="color:#1e87e8;"><em class="fa  fa-check-circle fa-3x"></em></h1>
                 <br>
                 <div class="box">
-                    <p style="display: inline;"><b>姓名: </b></p><p style="display: inline;" v-text="this.name"></p>
+                    <p style="display: inline;"><b>姓名: </b></p><p style="display: inline;" v-text="this.first_name + ' ' + this.last_name "></p>
                     <br>
                     <p style="display: inline;"><b>付款凭证: </b></p><p style="display: inline;" v-text="this.paymentRef"></p>
                     <br>
@@ -52,7 +52,7 @@
 
     export default {
 
-        props:['email','name','mobile','gender', 'paymentRef', 'firstTime','path'],
+        props:['email','first_name','last_name','mobile','gender', 'paymentRef', 'firstTime','path'],
 
     }
 
