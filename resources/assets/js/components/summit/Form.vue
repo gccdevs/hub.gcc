@@ -24,7 +24,7 @@
                         <label class="label" for="first_name">名 *</label>
                         <div>
                             <input style="width:80%" class="is-size-6" v-model="first_name"
-                                   v-validate data-vv-rules="required|min:1|max:50" data-vv-as="名"
+                                   v-validate data-vv-rules="required|min:1|max:20" data-vv-as="名"
                                    id="first_name" placeholder="First Name" type="text" name="first_name" required>
                             <br>
                             <span class="help-block" v-show="errors.has('first_name')" style="color: red !important;">{{errors.first('first_name')}}</span>
@@ -35,7 +35,7 @@
                         <label class="label" for="last_name">姓 *</label>
                         <div>
                             <input style="width:80%" class="is-size-6" v-model="last_name"
-                                   v-validate data-vv-rules="required|min:2|max:50" data-vv-as="姓"
+                                   v-validate data-vv-rules="required|min:1|max:20" data-vv-as="姓"
                                    id="last_name" placeholder="Last Name" type="text" name="last_name" required>
                             <br>
                             <span class="help-block" v-show="errors.has('last_name')" style="color: red !important;">{{errors.first('last_name')}}</span>
@@ -205,7 +205,7 @@
             complete(){
                 return this.gender && this.firstTime &&
                     this.email.length > 0 && this.mobile.length >= 10 &&
-                    this.email === this.email_confirm && this.path && this.first_name.length <= 50 && this.last_name.length <= 50 &&
+                    this.email === this.email_confirm && this.path && this.first_name.length <= 20 && this.last_name.length <= 20 &&
                     this.email.length <= 50 && this.mobile.length <= 25;
             }
         },

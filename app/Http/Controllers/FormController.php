@@ -94,9 +94,9 @@ class FormController extends Controller
 
         return Validator::make($data, [
             'isAgreed' => 'required|boolean:true',
-            'first_name' => 'required|string|max:255|min:1',
-            'last_name' => 'required|string|max:255|min:1',
-            'email' => 'required|string|email|max:255',
+            'first_name' => 'required|string|max:20|min:1',
+            'last_name' => 'required|string|max:20|min:1',
+            'email' => 'required|string|email|max:50',
             'stripeToken' => 'required',
             'mobile' => 'required|min:8',
             'gender' => 'required|in:male,female',

@@ -33,9 +33,9 @@
                     <br>
                     <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
                 </div>
-                <h3 class="is-size-3">确认邮件已发送到： {{ this.email }}</h3>
+                <h4 class="is-size-3">确认邮件已发送到：</h4> <br><b> {{ this.email }}</b>
                 <br>
-                <h6 class="is-size-6">如未收到，请联系 <a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
+                <h6 class="is-size-6">如未收到，请联系 <br><a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
                 <br>
                 <div class="columns" id="links">
                     <a class="column is-outline-info" style="text-decoration: none" href="https://www.facebook.com/GloryCityChurch/"><em class="fa fa-facebook"></em> Facebook</a>&nbsp;
