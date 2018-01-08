@@ -38,7 +38,7 @@
 
                 <div class="col-sm-6 col-md-4 col-xs-12">
                     <div class="shadow">
-                        <img class="card-img-top" src="./../../../image/daily-devotion.png" alt="Card image cap">
+                        <img class="card-img-top" src="./../../../image/devotion.jpg" alt="Card image cap">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">每日晨更</h4>
@@ -86,7 +86,7 @@
 
                 <div class="col-sm-6 col-md-4 col-xs-12">
                     <div class="shadow">
-                        <img class="card-img-top" src="./../../../image/people.png" alt="Card image cap">
+                        <img class="card-img-top" src="./../../../image/connecting.jpg" alt="Card image cap">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">People</h4>

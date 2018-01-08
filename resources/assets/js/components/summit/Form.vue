@@ -5,10 +5,10 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        无可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
-                        墨尔本荣耀城高峰会
+                        2018 墨尔本荣耀城领袖高峰会
                     </h2>
                 </div>
             </div>
@@ -61,10 +61,10 @@
                 <div class="columns">
                     <!--mobile-->
                     <div class="column" :class="{'has-error' : errors.has('mobile') }">
-                        <label class="label" for="mobile">电话 *</label>
+                        <label class="label" for="mobile">电话号码 *</label>
                         <div>
                             <input style="width:80%" class="is-size-6" v-model="mobile"
-                                   v-validate data-vv-rules="required|numeric|min:10|max:25" data-vv-as="电话"
+                                   v-validate data-vv-rules="required|numeric|min:10|max:25" data-vv-as="电话号码"
                                    id="mobile" placeholder="Mobile, eg: 0400000000" type="text" name="mobile" required>
                             <br>
                             <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
@@ -90,14 +90,14 @@
                 </div>
 
                 <!-- emails -->
-                <p class="is-size-7" style="display:inline;color:red">请填写正确Email地址，支付凭证将会发到所填写的Email地址</p>
+                <p class="is-size-7" style="display:inline;color:#219ADB">备注:支付凭证将会发到您所填写的邮箱</p>
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('email') }">
                         <label class="label" for="email">邮箱 * </label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email"
                                    v-validate data-vv-rules="required|email|max:50" data-vv-as="邮箱"
-                                   id="email" placeholder="Email" type="email" name="email" required>
+                                   id="email" placeholder="Email Address" type="email" name="email" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
                         </div>
@@ -106,7 +106,7 @@
                         <label class="label" for="email-confirm">确认邮箱 *</label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email_confirm"
-                                   id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email|max:50" data-vv-as="确认邮箱"
+                                   id="email-confirm" placeholder="Confirm Email Address" v-validate data-vv-rules="required|email|confirmed:email|max:50" data-vv-as="确认邮箱"
                                    type="email" name="email-confirm" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
@@ -144,9 +144,9 @@
                     </div>
                     <!-- coupon -->
                     <div class="column" :class="{'has-error' : errors.has('coupon') }">
-                        <label class="label" for="coupon">折扣券 (if you have)</label>
+                        <label class="label" for="coupon">折扣券</label>
                         <div>
-                            <input style="width:80%" class="is-size-6" v-model="coupon" id="coupon" placeholder="Coupon" type="text" name="coupon" required>
+                            <input style="width:80%" class="is-size-6" v-model="coupon" id="coupon" placeholder="Enter your discount voucher here" type="text" name="coupon" required>
                             <span v-if="this.isDiscounted"><em class="fa fa-check fa-2x" style="color:cornflowerblue;"></em></span>
                             <span v-cloak v-show="!this.isDiscounted && this.coupon"><em class="fa fa-times fa-2x" style="color:red;"></em></span>
                             <br>

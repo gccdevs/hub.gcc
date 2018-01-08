@@ -5,7 +5,7 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        无可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
                         Checkout
@@ -36,8 +36,8 @@
                     <td>{{ this.email }}</td>
                     <td>{{ this.mobile }}</td>
                     <td>{{ this.gender }}</td>
-                    <td v-if="this.isDiscounted">已使用 <em class="fa fa-check" style="color:green"></em></td>
-                    <td v-else>未使用 <em class="fa fa-minus" style="color:gray"></em></td>
+                    <td v-if="this.isDiscounted"><em class="fa fa-check" style="color:green"></em></td>
+                    <td v-else><em class="fa fa-minus" style="color:gray"></em></td>
                     <td v-show="this.isDiscounted">A$50.00 <s style="color:lightgray">A$100.00</s></td>
                     <td v-show="!this.isDiscounted">A$100.00</td>
                 </tr>

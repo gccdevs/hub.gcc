@@ -59,7 +59,7 @@
         data () {
             return {
 
-                appTitle: 'Limitless',
+                appTitle: 'GCC Leadership Summit',
 
                 sidebar: false,
 

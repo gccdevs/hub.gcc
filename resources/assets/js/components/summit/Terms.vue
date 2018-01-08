@@ -8,7 +8,7 @@
                         Terms and Conditions
                     </h1>
                     <h2 class="subtitle has-text-left">
-                        Limitless - Glory City Church of Melbourne Summit 2018
+                        Limitless - Glory City Church of Melbourne Leadership Summit 2018
                     </h2>
                 </div>
             </div>
