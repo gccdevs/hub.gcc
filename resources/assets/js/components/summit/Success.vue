@@ -5,10 +5,10 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        无可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
-                        墨尔本荣耀城高峰会 -- 报名成功！
+                        2018墨尔本荣耀城领袖高峰会 -- 报名成功！
                     </h2>
                 </div>
             </div>
