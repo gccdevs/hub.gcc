@@ -10,9 +10,9 @@
         </div>
 
         <div class="form-group" :class="{'has-error' : errors.has('email') }">
-            <label for="email">邮箱</label><br>
+            <label for="email">郵箱</label><br>
             <input v-model="email"
-                   v-validate="'required|alpha_dash|max:20|min:2'" data-vv-as="邮箱" style="width:30%;display: inline-block"
+                   v-validate="'required|alpha_dash|max:20|min:2'" data-vv-as="郵箱" style="width:30%;display: inline-block"
                    id="email" type="text" name="email" class="form-control" required>
             <h2 class="is-size-4" style="display:inline">@glorycitychurch.com</h2><br>
             <span class="help-block" v-show="errors.has('email')" style="color: red">{{errors.first('email')}}</span>

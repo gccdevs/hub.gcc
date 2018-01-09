@@ -9,22 +9,22 @@
         </div>
 
         <div class="form-group" :class="{'has-error' : errors.has('mobile') }">
-            <label for="mobile">电话</label>
+            <label for="mobile">電話號碼</label>
             <input v-model="mobile"
-                   v-validate="'numeric|min:10|max:20'" data-vv-as="电话"
+                   v-validate="'numeric|min:10|max:20'" data-vv-as="電話號碼"
                    id="mobile" class="form-control" name="mobile">
             <span class="help-block" style="color:red" v-show="errors.has('mobile')">{{errors.first('mobile')}}</span>
         </div>
 
         <div class="form-group">
-            <label>邮箱</label>
+            <label>郵箱</label>
             <input v-model="email" class="form-control" required disabled>
         </div>
 
         <div class="form-group">
             <div class="control">
                 <button type="submit" class="btn btn-outline-info" style="width:100%" @click="updateProfile">
-                    更新用户资料
+                    更新用戶資料
                 </button>
             </div>
         </div>

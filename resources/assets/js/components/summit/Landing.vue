@@ -2,16 +2,16 @@
     <v-content>
         <section>
             <!-- ** New background image added ; height changed to 700 **-->
-            <v-parallax v-bind:src="require('./../../../image/background1.jpg')" height="700">
+            <v-parallax v-bind:src="require('./../../../image/landingpage-1.png')" height="700" width="100%">
                 <v-layout
                         column
                         align-center
                         justify-center>
-                    <img src="./../../../image/small-logo.png" alt="logo" height="150">
-                    <h1 class="white--text mb-2 display-3 text-xs-center">Limitless</h1>
-                    <div class="subheading mb-3 text-xs-center white--text">2018 荣耀城领袖高峰会 - 无可限量</div>
+                    <img src="./../../../image/landing-page.png" alt="logo" height="500" width="650">
+                    <div class="subheading mb-3 text-xs-center white--text">「 我靠著那加給我力量的，凡事都能做。 」- 腓立比書 4:13 </div>
+
                     <v-btn class="blue lighten-2 mt-5" dark large href="/summit-2018/signup">
-                        现在报名
+                        現在報名
                     </v-btn>
                 </v-layout>
             </v-parallax>
@@ -50,12 +50,12 @@
 
         <!-- ** New background image added **-->
         <section>
-            <v-parallax v-bind:src="require('./../../../image/background1.jpg')" height="600">
+            <v-parallax v-bind:src="require('./../../../image/landingpage-2.png')" height="600"  width="100%">
                 <v-layout column align-center justify-center>
                     <div class="headline white--text mb-3 text-xs-center">Summit 2018</div>
                     <em> Italic subtext</em>
                     <v-btn class="blue lighten-2 mt-5" dark large href="/summit-2018/signup">
-                        报名
+                        報名
                     </v-btn>
                 </v-layout>
             </v-parallax>
@@ -150,7 +150,7 @@
 
         <section>
             <!-- ** New background image added  **-->
-            <v-parallax v-bind:src="require('./../../../image/background1.jpg')" height="600">
+            <v-parallax v-bind:src="require('./../../../image/landingpage-3.png')" height="600" width="100%">
                 <v-layout column justify-center class="my-5" align-center>
                     <v-flex xs12 sm4 class="my-3">
                         <div class="text-xs-center">
@@ -264,9 +264,10 @@
                             </v-list>
                             <!-- ** Social Media Icon added  **-->
                             <v-layout justify-space-around pt-3>
-                                <a href="https://www.facebook.com/GloryCityChurch" target="_blank"><img :src="require('./../../../image/facebook.png')"></a>
-                                <a href="https://www.instagram.com/glorycitychurch_mel" target="_blank"><img :src="require('./../../../image/instagram.png')"></a>
-                                <a  href=""target="_blank"><img :src="require('./../../../image/wechat.png')"></a>
+                                <a href="https://www.facebook.com/GloryCityChurch" target="_blank"><img :src="require('./../../../image/facebook.png')" height="51"></a>
+                                <a href="https://www.instagram.com/glorycitychurch_mel" target="_blank"><img :src="require('./../../../image/instagram.png')" height="50"></a>
+                                <a  href=""target="_blank"><img :src="require('./../../../image/wechat.png')" height="48"></a>
+                                <a href="https://www.youtube.com/channel/UC3L_IfT0GlbgEfkP3Rk5Aiw" target="_blank"><img :src="require('./../../../image/youtube.png')" height="48"></a>
                             </v-layout>
                             <!-- ** End  **-->
                         </v-card>
@@ -279,7 +280,7 @@
             <v-layout row wrap align-center>
                 <v-flex xs12>
                     <div class="white--text ml-3 text-center">
-                        2017 - 2018 All right reserved @Glory City Church of Melbourne. <a href="/" style="color: white;text-decoration:none; float:right !important;"><b>Central Hub</b></a>
+                        2018 All right reserved @Glory City Church of Melbourne.
                     </div>
                 </v-flex>
             </v-layout>
