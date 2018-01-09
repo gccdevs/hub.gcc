@@ -29,19 +29,19 @@
                         </v-carousel-item>
 
                         <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
+                        <!--<v-container id="videoContainer">-->
+                        <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
+                        <!--</v-container>-->
                         <!--</v-carousel-item>-->
                         <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
+                        <!--<v-container id="videoContainer">-->
+                        <!--<iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>-->
+                        <!--</v-container>-->
                         <!--</v-carousel-item>-->
                         <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
+                        <!--<v-container id="videoContainer">-->
+                        <!--<iframe src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
+                        <!--</v-container>-->
                         <!--</v-carousel-item>-->
                     </v-carousel>
                 </v-flex>
@@ -221,12 +221,9 @@
         <section>
             <v-container grid-list-xl>
                 <v-layout row wrap justify-center class="my-5">
-                    <v-flex xs12 sm4>
-                    <v-flex xs12 sm4>
-                        <img src="./../../../image/gcclogoH1140.png" alt="" height="100">
-                        <br><br>
+                    <v-flex xs12 sm4 style="top:50%;">
+                        <img src="./../../../image/gcclogoH1140.png" alt="" height="100" style="margin-right:40px;">
                         <img src="./../../../image/large-logo.png" alt="" height="100">
-                    </v-flex>
                     </v-flex>
                     <v-flex xs12 sm4 offset-sm1>
                         <v-card class="elevation-0 transparent">
@@ -265,9 +262,9 @@
                             <!-- ** Social Media Icon added  **-->
                             <v-layout justify-space-around pt-3>
                                 <a href="https://www.facebook.com/GloryCityChurch" target="_blank"><img :src="require('./../../../image/facebook.png')" height="51"></a>
-                                <a href="https://www.instagram.com/glorycitychurch_mel" target="_blank"><img :src="require('./../../../image/instagram.png')" height="50"></a>
                                 <a  href=""target="_blank"><img :src="require('./../../../image/wechat.png')" height="48"></a>
                                 <a href="https://www.youtube.com/channel/UC3L_IfT0GlbgEfkP3Rk5Aiw" target="_blank"><img :src="require('./../../../image/youtube.png')" height="48"></a>
+                                <a href="https://www.instagram.com/glorycitychurch_mel" target="_blank"><img :src="require('./../../../image/instagram.png')" height="50"></a>
                             </v-layout>
                             <!-- ** End  **-->
                         </v-card>
