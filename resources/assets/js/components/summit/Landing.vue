@@ -12,7 +12,6 @@
                 >
                     <!-- ** New stuff/Changes **-->
                     <img src="./../../../image/landing-page.png" alt="logo" height="200">
-                    <img src="./../../../image/summitlogo.png" alt="logo" height="100">
                     <!-- ** New stuff/Changes **-->
                     <em>「我靠著那加給我力量的，凡事都能做。」- 腓立比書 4:13</em>
 
@@ -488,7 +487,7 @@
                                         <v-icon class="blue--text text--lighten-2">email</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>customerserivce@glorycitychurch.com</v-list-tile-title>
+                                        <v-list-tile-title>customerservice@glorycitychurch.com</v-list-tile-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                             </v-list>
