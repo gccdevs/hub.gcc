@@ -40,7 +40,7 @@
                 <div class="columns" id="links">
                     <a class="column is-outline-info" style="text-decoration: none" href="https://www.facebook.com/GloryCityChurch/"><em class="fa fa-facebook"></em> Facebook</a>&nbsp;
                     <a class="column is-outline-info" style="text-decoration: none" href="https://www.instagram.com/glorycitychurch_mel/"><em class="fa fa-instagram"></em> Instagram</a>&nbsp;
-                    <a class="column is-outline-info" style="text-decoration: none" href="https://centralhub.glorycitychurch.com/summit-2018"><em class="fa fa-info"></em> Central Hub</a>&nbsp;
+                    <a class="column is-outline-info" style="text-decoration: none" href="https://centralhub.glorycitychurch.com/summit-2018"><em class="fa fa-info"></em> Summit 2018</a>&nbsp;
                 </div>
             </div>
         </div>

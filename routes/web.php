@@ -47,13 +47,13 @@ Route::get('/booking', 'HomeController@index')->name('booking')->middleware('aut
 Route::get('/calendar', 'HomeController@index')->name('calendar')->middleware('auth');
 Route::get('/message', 'HomeController@index')->name('message')->middleware('auth');
 
-Route::get('/mail-contact', function () {
-    return new App\Mail\ContactMail(App\Contact::first());
-});
-
-Route::get('/mail-cccontact', function () {
-    return new App\Mail\contactMailCCAdmin(App\Contact::first(), App\User::first());
-});
+//Route::get('/mail-contact', function () {
+//    return new App\Mail\ContactMail(App\Contact::first());
+//});
+//
+//Route::get('/mail-cccontact', function () {
+//    return new App\Mail\contactMailCCAdmin(App\Contact::first(), App\User::first());
+//});
 
 //Route::get('/mail-purchase', function () {
 //    return new App\Mail\PurchaseConfirmation(App\Form::first());

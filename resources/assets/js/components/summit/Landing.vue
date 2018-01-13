@@ -495,7 +495,7 @@
                             <!-- ** Social Media Icon added  **-->
                             <v-layout justify-space-around pt-3>
                                 <a><img :src="require('./../../../image/facebook.png')"></a>
-                                <a><img :src="require('./../../../image/instagram.png')"></a>
+                                <a><img :src="require('./../../../image/Instagram.png')"></a>
                                 <a><img :src="require('./../../../image/wechat.png')"></a>
                             </v-layout>
                             <!-- ** End  **-->

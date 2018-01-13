@@ -109,7 +109,7 @@
         <b-modal id="formRego" title="GCC Central Hub">
             <a style="text-decoration: none !important;" href="/summit-2018" target="_blank">Summit 2018</a>
             <br>
-            <a style="text-decoration: none !important;" href="/registration/cell-group" target="_blank">Cell groups sign up</a>
+            <a style="text-decoration: none !important;" href="/registration/cell-group" target="_blank">Cell group sign up</a>
             <br>
             <a style="text-decoration: none !important;" href="/registration/baptism" target="_blank">Baptism Sign up</a>
         </b-modal>
