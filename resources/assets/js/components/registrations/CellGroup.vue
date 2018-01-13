@@ -28,20 +28,14 @@
                 </div>
             </div>
         </section>
-        <home-footer id="channels" style="background-color:#343a40;padding-bottom: 0px;padding-top:0px;"></home-footer>
-
     </div>
 </template>
 
 
 <script>
 
-    import HomeFooter from './../home/Footer'
-
     export default {
-        components:{
-            HomeFooter
-        }
+
     }
 
 </script>

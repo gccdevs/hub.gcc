@@ -47,7 +47,7 @@
                                      <br>
                                     <b>時間：每天早上6：30-7：00</b><br>
                                 </p>
-                                <b-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.comming-soon>c參與每日晨更</b-btn>
+                                <b-btn href="https://www.facebook.com/GloryCityChurch/" class="btn btn-dark" style="margin-bottom:17px;">參與每日晨更</b-btn>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                     有什麼話，或者建議想要告訴我們牧者嗎？
                                     <br>
                                 </p>
-                                <v-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.comming-soon>我有話説</v-btn>
+                                <v-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.story>我有話説</v-btn>
                             </div>
                         </div>
                     </div>
@@ -117,13 +117,78 @@
         <b-modal id="comming-soon" title="GCC Central Hub">
             <p class="my-4">Coming soon !</p>
         </b-modal>
+
+        <b-modal id="story" title="GCC Central Hub">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="name" v-model="name" class="form-control" placeholder="姓名">
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="email" v-model="phone" class="form-control" placeholder="電話">
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" v-model="email" class="form-control" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label>Content* </label>
+                <textarea v-model="story" type="email" class="form-control" placeholder="寫下你想說的....."></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark" @click="submitStory">提交</button>
+
+        </b-modal>
+
     </div>
 </template>
 
 
 <script>
     export default{
+        data (){
+            return {
+                name: '',
+                phone: '',
+                email: '',
+                story: '',
+            }
+        },
 
+        methods: {
+            submitStory (){
+
+                if (!this.story) {
+                    alert('內容不能為空！');
+                    return;
+                }
+
+                let formData = {
+                    name: this.name,
+                    phone: this.phone,
+                    email: this.email,
+                    story: this.story
+                };
+
+                axios.post('/api/send-contact',formData).then(response => {
+                    if (response.data.message === 'success') {
+                        alert('Post successfully!');
+                        this.cleanInput();
+                    }else {
+                        alert('Server error! Please try later' + response.data.message);
+                    }
+                }).catch(error => {
+                    alert('網路故障！請聯繫我們的同工, 或發信息到: contact@glorycitychurch.com');
+                    this.cleanInput();
+                });
+            },
+
+            cleanInput() {
+                this.name = '';
+                this.email = '';
+                this.phone = '';
+                this.story = '';
+            }
+        }
     }
 </script>
 

@@ -29,7 +29,7 @@ class FormController extends Controller
     {
         $this->validator($request->all())->validate(); // validate requested inputs
 
-        $price = request('coupon') == env('STRIPE_CODE') ? 5000 : 10000;
+        $price = request('coupon') == env('STRIPE_CODE') ? env('SUMMIT_DISCOUNT_PRICE') : env('SUMMIT_FULL_PRICE');
 
         try { // process payment
 
@@ -84,7 +84,7 @@ class FormController extends Controller
             'ref' => $charge->id,
             'customer' => $customer,
             'charge' => $charge,
-            'amount' => request('coupon') == env('STRIPE_CODE') ? 5000 : 10000
+            'amount' => request('coupon') == env('STRIPE_CODE') ? env('SUMMIT_DISCOUNT_PRICE') : env('SUMMIT_FULL_PRICE')
         ]);
 
     }

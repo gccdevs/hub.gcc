@@ -33,8 +33,8 @@
                     <br>
                     <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
                 </div>
-                <h4 class="is-size-3">確認郵件已發送到：</h4> <br><b> {{ this.email }}</b>
-                <br>
+                <h4>確認郵件已發送到：</h4> <br><b class="is-size-3"> {{ this.email }}</b>
+                <br><br>
                 <h6 class="is-size-6">如未收到，請聯繫 <br><a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
                 <br>
                 <div class="columns" id="links">
