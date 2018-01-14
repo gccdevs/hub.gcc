@@ -30,10 +30,10 @@
 
         <!-- ** v-carousel height changed to 100vh ; added v-container and iframe **-->
         <section>
-            <v-layout row wrap>
+            <v-layout wrap>
                 <v-flex xs12>
-                    <v-carousel style="height:100vh" :cycle='false'>
-                        <v-carousel-item src="">
+                    <v-carousel style="height:90vh" :cycle='false' >
+                        <v-carousel-item src="" class="youtubeBanner">
                             <v-container id="videoContainer">
                                 <iframe width="560" height="215" src="https://www.youtube.com/embed/lIcBO2wrd6A" frameborder="0" allowfullscreen></iframe>
                             </v-container>
@@ -64,8 +64,10 @@
             <v-parallax v-bind:src="require('./../../../image/landingpage2.png')" height="600">
                 <!-- ** New stuff/Changes **-->
                 <v-layout column align-center justify-center>
-                    <div class="headline white--text mb-3 text-xs-center">Summit 2018</div>
-                    <em>" 這將會準備你成為一個卓越的領袖, 時代的門徒, 因為我相像神給我們每一個人的是無可限量的生命 "</em>
+                    <em>發掘出個人的潛力</em>
+                    <em>啟發個人的夢想與異象</em>
+                    <em>提升個人軟實力</em>
+                    <em>看見機會成為神國的使者，福音的勇士</em>
                     <v-btn
                             class="blue lighten-2 mt-5"
                             dark
@@ -273,6 +275,7 @@
                 >
                     <v-flex xs12>
                         <v-container grid-list-xl>
+                            <div class="headline white--text mb-3 text-xs-center">活動流程</div>
                             <v-layout row wrap align-top>
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
@@ -447,7 +450,7 @@
 
         <!-- ** New Section added just for Google Map **-->
         <section mx-0>
-            <v-layout row wrap py-4>
+            <v-layout wrap py-4>
                 <v-flex xs12>
                     <div id="myMap" ></div>
                 </v-flex>
@@ -464,9 +467,6 @@
                             <v-card-title primary-title class="layout justify-center">
                                 <div class="headline">Contact us</div>
                             </v-card-title>
-                            <v-card-text>
-                                聯繫我們
-                            </v-card-text>
                             <v-list class="transparent ">
                                 <!--<v-list-tile>-->
                                     <!--<v-list-tile-action>-->
@@ -495,9 +495,9 @@
                             </v-list>
                             <!-- ** Social Media Icon added  **-->
                             <v-layout justify-space-around pt-3>
-                                <a><img :src="require('./../../../image/facebook.png')"></a>
-                                <a><img :src="require('./../../../image/Instagram.png')"></a>
-                                <a><img :src="require('./../../../image/wechat.png')"></a>
+                                <a href="https://www.facebook.com/GloryCityChurch/"><img :src="require('./../../../image/facebook.png')"></a>
+                                <a href="https://www.instagram.com/glorycitychurch_mel/"><img :src="require('./../../../image/Instagram.png')"></a>
+                                <a href=""><img :src="require('./../../../image/wechat.png')"></a>
                             </v-layout>
                             <!-- ** End  **-->
                         </v-card>
@@ -568,5 +568,9 @@
         left: 0;
         width: 100%;
         height: 100%;
+    }
+    .youtubeBanner {
+        background-image: url("./../../../image/youtubeBK.png") !important;
+        width:inherit !important;
     }
 </style>
