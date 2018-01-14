@@ -88,7 +88,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
-                                <v-avatar slot="activator" style="cursor: pointer;" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;" width="100%">
                                     <img style="width:150px; height:150px;" src="./../../../image/GC_Pastor.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -118,7 +118,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal1" max-width="350">
-                                <v-avatar slot="activator" style="cursor: pointer" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
                                     <img style="width:150px; height:150px;" src="./../../../image/GC_Pastor2.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -147,7 +147,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal2" max-width="350" >
-                                <v-avatar slot="activator" style="cursor: pointer" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
                                     <img style="width:150px; height:150px;" src="./../../../image/Joseph.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -176,7 +176,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal3" max-width="350" >
-                                <v-avatar slot="activator" style="cursor: pointer" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
                                     <img style="width:150px; height:150px;" src="./../../../image/Phillip_Gai.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -204,7 +204,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal4" max-width="350" >
-                                <v-avatar slot="activator" style="cursor: pointer" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
                                     <img style="width:150px; height:150px;" src="./../../../image/Shelly_Boon.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -233,7 +233,7 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal5" max-width="350" >
-                                <v-avatar slot="activator" style="cursor: pointer" width="100%">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="150px" height="150px">
                                     <img style="width:150px; height:150px;" src="./../../../image/Torch_Speaker2.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
@@ -260,7 +260,6 @@
                         </v-card>
                     </v-flex>
                 </v-layout>
-            </v-container>
         </section>
         <!-- ** End ** -->
 
@@ -497,7 +496,7 @@
                             <v-layout justify-space-around pt-3>
                                 <a href="https://www.facebook.com/GloryCityChurch/"><img :src="require('./../../../image/facebook.png')"></a>
                                 <a href="https://www.instagram.com/glorycitychurch_mel/"><img :src="require('./../../../image/Instagram.png')"></a>
-                                <a href=""><img :src="require('./../../../image/wechat.png')"></a>
+                                <a href="https://glorycitychurch.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E7%9C%BE%E8%99%9F/"><img :src="require('./../../../image/wechat.png')"></a>
                             </v-layout>
                             <!-- ** End  **-->
                         </v-card>
