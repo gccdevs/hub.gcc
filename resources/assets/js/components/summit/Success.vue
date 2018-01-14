@@ -5,10 +5,10 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        無可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
-                        墨尔本荣耀城高峰会 -- 报名成功！
+                        2018 榮耀城領袖高峰會 -- 報名成功！
                     </h2>
                 </div>
             </div>
@@ -21,26 +21,26 @@
                 <div class="box">
                     <p style="display: inline;"><b>姓名: </b></p><p style="display: inline;" v-text="this.first_name + ' ' + this.last_name "></p>
                     <br>
-                    <p style="display: inline;"><b>付款凭证: </b></p><p style="display: inline;" v-text="this.paymentRef"></p>
+                    <p style="display: inline;"><b>付款憑證: </b></p><p style="display: inline;" v-text="this.paymentRef"></p>
                     <br>
-                    <p style="display: inline;"><b>Email: </b></p><p style="display: inline;" v-text="this.email"></p>
+                    <p style="display: inline;"><b>郵箱: </b></p><p style="display: inline;" v-text="this.email"></p>
                     <br>
                     <p style="display: inline;"><b>性别: </b></p><p style="display: inline;" v-text="this.gender === 'male' ? '男性' : '女性'"></p>
                     <br>
-                    <p style="display: inline;"><b>第一次参加: </b></p><p style="display: inline;" v-text="this.firstTime"></p>
+                    <p style="display: inline;"><b>第一次參加: </b></p><p style="display: inline;" v-text="this.firstTime"></p>
                     <br>
-                    <p style="display: inline;"><b>电话: </b></p><p style="display: inline;" v-text="this.mobile"></p>
+                    <p style="display: inline;"><b>电话號碼: </b></p><p style="display: inline;" v-text="this.mobile"></p>
                     <br>
                     <!--<p style="display: inline;"><b>从何知道: </b></p><p style="display: inline;" v-text="this.path"></p>-->
                 </div>
-                <h4 class="is-size-3">确认邮件已发送到：</h4> <br><b> {{ this.email }}</b>
-                <br>
-                <h6 class="is-size-6">如未收到，请联系 <br><a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
+                <h4>確認郵件已發送到：</h4> <br><b class="is-size-3"> {{ this.email }}</b>
+                <br><br>
+                <h6 class="is-size-6">如未收到，請聯繫 <br><a href="mailto:customerservice@glorycitychurch.com">customerservice@glorycitychurch.com</a> </h6>
                 <br>
                 <div class="columns" id="links">
                     <a class="column is-outline-info" style="text-decoration: none" href="https://www.facebook.com/GloryCityChurch/"><em class="fa fa-facebook"></em> Facebook</a>&nbsp;
                     <a class="column is-outline-info" style="text-decoration: none" href="https://www.instagram.com/glorycitychurch_mel/"><em class="fa fa-instagram"></em> Instagram</a>&nbsp;
-                    <a class="column is-outline-info" style="text-decoration: none" href="https://centralhub.glorycitychurch.com/summit-2018"><em class="fa fa-info"></em> Central Hub</a>&nbsp;
+                    <a class="column is-outline-info" style="text-decoration: none" href="https://centralhub.glorycitychurch.com/summit-2018"><em class="fa fa-info"></em> Summit 2018</a>&nbsp;
                 </div>
             </div>
         </div>

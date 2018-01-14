@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex-center position-ref full-height" style="background-color:#D9DFE5; padding-bottom:200px; margin-bottom:-150px;">
-            <div class="content">
+            <div class="content" v-cloak>
                 <img class="logo" src="./../../../image/gcclogoH1140.png" style="width:20%;height:10%;" />
             </div>
         </div>

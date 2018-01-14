@@ -11,7 +11,7 @@
                         </div>
                         <div class="column is-6 is-offset-1">
                             <h1 class="title is-2">
-                                Comming Soon
+                                Coming Soon
                             </h1>
                             <h2 class="subtitle is-4"><br><br>
                                 Please contact your friend who has invited you to GCC <br><br>
@@ -28,20 +28,14 @@
                 </div>
             </div>
         </section>
-        <home-footer id="channels" style="background-color:#343a40;padding-bottom: 0px;padding-top:0px;"></home-footer>
-
     </div>
 </template>
 
 
 <script>
 
-    import HomeFooter from './../home/Footer'
-
     export default {
-        components:{
-            HomeFooter
-        }
+
     }
 
 </script>

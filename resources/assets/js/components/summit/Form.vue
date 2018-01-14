@@ -5,17 +5,17 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        無可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
-                        墨尔本荣耀城高峰会
+                        2018 榮耀城領袖高峰會
                     </h2>
                 </div>
             </div>
         </section>
         <div class="container">
             <div class="box">
-                <p class="is-size-3">基本信息</p>
+                <p class="is-size-3">基本資料</p>
                 <br>
 
                 <div class="columns">
@@ -43,7 +43,7 @@
                     </div>
                     <!-- gender -->
                     <div class="column"  :class="{ 'has-error': errors.has('gender') }">
-                        <label class="label">性别 *</label>
+                        <label class="label">性別 *</label>
                         <div class="field">
                             <label style="margin-right:20px;">
                                 <input class="is-size-5" v-model="gender" v-validate="'required|in:male,female'" data-vv-as="性别"
@@ -61,21 +61,21 @@
                 <div class="columns">
                     <!--mobile-->
                     <div class="column" :class="{'has-error' : errors.has('mobile') }">
-                        <label class="label" for="mobile">电话 *</label>
+                        <label class="label" for="mobile">電話號碼 *</label>
                         <div>
                             <input style="width:80%" class="is-size-6" v-model="mobile"
-                                   v-validate data-vv-rules="required|numeric|min:10|max:25" data-vv-as="电话"
-                                   id="mobile" placeholder="Mobile, eg: 0400000000" type="text" name="mobile" required>
+                                   v-validate data-vv-rules="required|numeric|min:10|max:25" data-vv-as="電話號碼"
+                                   id="mobile" placeholder="Mobile Number, eg: 0400000000" type="text" name="mobile" required>
                             <br>
                             <span class="help-block" v-show="errors.has('mobile')" style="color: red !important;">{{errors.first('mobile')}}</span>
                         </div>
                     </div>
                     <!--first time?-->
                     <div class="column"  :class="{ 'has-error': errors.has('firstTime') }">
-                        <label class="label">第一次参加 *</label>
+                        <label class="label">第一次參加 *</label>
                         <div class="field">
                             <label style="margin-right:20px;">
-                                <input class="is-size-5" v-model="firstTime" v-validate="'required|in:yes,no'" data-vv-as="是否第一次参加"
+                                <input class="is-size-5" v-model="firstTime" v-validate="'required|in:yes,no'" data-vv-as="是否第一次參加"
                                        name="firstTime" value="yes" id="firstTime" type="radio"> 是 <em class="fa fa-check" style="color: cornflowerblue"></em>
                             </label>
                             <label class="radio">
@@ -90,23 +90,23 @@
                 </div>
 
                 <!-- emails -->
-                <p class="is-size-7" style="display:inline;color:red">请填写正确Email地址，支付凭证将会发到所填写的Email地址</p>
+                <p class="is-size-7" style="display:inline;color:#219ADB">備註:支付憑證將會發到您所填寫的郵箱</p>
                 <div class="columns">
                     <div class="column" :class="{'has-error' : errors.has('email') }">
-                        <label class="label" for="email">邮箱 * </label>
+                        <label class="label" for="email">郵箱 * </label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email"
-                                   v-validate data-vv-rules="required|email|max:50" data-vv-as="邮箱"
-                                   id="email" placeholder="Email" type="email" name="email" required>
+                                   v-validate data-vv-rules="required|email|max:50" data-vv-as="郵箱"
+                                   id="email" placeholder="Email Address" type="email" name="email" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email')" style="color: red !important;">{{errors.first('email')}}</span>
                         </div>
                     </div>
                     <div class="column" :class="{'has-error' : errors.has('email-confirm') }">
-                        <label class="label" for="email-confirm">确认邮箱 *</label>
+                        <label class="label" for="email-confirm">確認郵箱 *</label>
                         <div class="field">
                             <input style="width:80%" class="is-size-6" v-model="email_confirm"
-                                   id="email-confirm" placeholder="Email again" v-validate data-vv-rules="required|email|confirmed:email|max:50" data-vv-as="确认邮箱"
+                                   id="email-confirm" placeholder="Confirm Email Address" v-validate data-vv-rules="required|email|confirmed:email|max:50" data-vv-as="確認郵箱"
                                    type="email" name="email-confirm" required>
                             <br>
                             <span class="help-block" v-show="errors.has('email-confirm')" style="color: red !important;">{{errors.first('email-confirm')}}</span>
@@ -117,20 +117,20 @@
                 <div class="columns">
                     <!--where know us-->
                     <div class="column" :class="{ 'has-error': errors.has('path') }">
-                        <label class="label">从什么途径了解到我们 *</label>
+                        <label class="label">從什麼途徑了解到我們 *</label>
                         <div class="control">
                             <label class="radio">
                                 <input class="is-size-5" v-model="path" v-validate="{ rules: 'required|in:friend,classmate,colleague,web,social,family,other', args: 'path' }" data-vv-as="途径"
                                        name="path" value="friend" id="path" type="radio"> 朋友
                             </label>
                             <label class="radio">
-                                <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同学
+                                <input class="is-size-5" v-model="path" name="path" value="classmate" type="radio"> 同學
                             </label>
                             <label class="radio">
                                 <input class="is-size-5" v-model="path" name="path" value="colleague" type="radio"> 同事
                             </label>
                             <label class="radio">
-                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 网络平台
+                                <input class="is-size-5" v-model="path" name="path" value="social" type="radio"> 網路平台
                             </label>
                             <label class="radio">
                                 <input class="is-size-5" v-model="path" name="path" value="family" type="radio"> 家人
@@ -144,9 +144,9 @@
                     </div>
                     <!-- coupon -->
                     <div class="column" :class="{'has-error' : errors.has('coupon') }">
-                        <label class="label" for="coupon">折扣券 (if you have)</label>
+                        <label class="label" for="coupon">折扣券</label>
                         <div>
-                            <input style="width:80%" class="is-size-6" v-model="coupon" id="coupon" placeholder="Coupon" type="text" name="coupon" required>
+                            <input style="width:80%" class="is-size-6" v-model="coupon" id="coupon" placeholder="Enter your Discount Code here" type="text" name="coupon" required>
                             <span v-if="this.isDiscounted"><em class="fa fa-check fa-2x" style="color:cornflowerblue;"></em></span>
                             <span v-cloak v-show="!this.isDiscounted && this.coupon"><em class="fa fa-times fa-2x" style="color:red;"></em></span>
                             <br>

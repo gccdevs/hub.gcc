@@ -5,7 +5,7 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title has-text-left" >
-                        无可限量 Limitless 2018
+                        無可限量 | Limitless
                     </h1>
                     <h2 class="subtitle has-text-left">
                         Checkout
@@ -15,18 +15,18 @@
         </section>
         <div class="container">
 
-            <p class="is-size-3" style="display:inline">确认信息</p><br>
+            <p class="is-size-3" style="display:inline">確認信息</p><br>
 
             <table class="table is-hidden-touch is-size-4" style="background-color: transparent !important;">
                 <thead>
                 <tr>
                     <th>姓</th>
                     <th>名</th>
-                    <th>电邮</th>
-                    <th>电话</th>
-                    <th>性别</th>
+                    <th>郵箱</th>
+                    <th>電話號碼</th>
+                    <th>性別</th>
                     <th>折扣券</th>
-                    <th>价格</th>
+                    <th>價格</th>
                 </tr>
 
                 </thead>
@@ -36,10 +36,10 @@
                     <td>{{ this.email }}</td>
                     <td>{{ this.mobile }}</td>
                     <td>{{ this.gender }}</td>
-                    <td v-if="this.isDiscounted">已使用 <em class="fa fa-check" style="color:green"></em></td>
-                    <td v-else>未使用 <em class="fa fa-minus" style="color:gray"></em></td>
-                    <td v-show="this.isDiscounted">A$50.00 <s style="color:lightgray">A$100.00</s></td>
-                    <td v-show="!this.isDiscounted">A$100.00</td>
+                    <td v-if="this.isDiscounted"><em class="fa fa-check" style="color:green"></em></td>
+                    <td v-else><em class="fa fa-minus" style="color:gray"></em></td>
+                    <td v-show="this.isDiscounted">A$69.00 <s style="color:lightgray">A$99.00</s></td>
+                    <td v-show="!this.isDiscounted">A$99.00</td>
                 </tr>
                 <tbody>
 
@@ -65,11 +65,11 @@
                         <td>{{ this.first_name }}</td>
                     </tr>
                     <tr>
-                        <td><b>电邮</b></td>
+                        <td><b>郵箱</b></td>
                         <td>{{ this.email }}</td>
                     </tr>
                     <tr>
-                        <td><b>电话</b></td>
+                        <td><b>電話號碼</b></td>
                         <td>{{ this.mobile }}</td>
                     </tr>
                     <tr>
@@ -78,12 +78,12 @@
                     </tr>
                     <tr>
                         <td><b>折扣券</b></td>
-                        <td v-if="this.isDiscounted">已使用 <em class="fa fa-check" style="color:green"></em></td>
-                        <td v-else>未使用 <em class="fa fa-minus" style="color:gray"></em></td>
+                        <td v-if="this.isDiscounted"><em class="fa fa-check" style="color:green"></em></td>
+                        <td v-else><em class="fa fa-minus" style="color:gray"></em></td>
                     </tr>
 
                     <tr>
-                        <td><b>价格</b></td>
+                        <td><b>價格</b></td>
                         <td v-show="this.isDiscounted">A$50.00 <s style="color:lightgray">A$100.00</s></td>
                         <td v-show="!this.isDiscounted">A$100.00</td>
                     </tr>
@@ -92,7 +92,7 @@
                 </table>
             </div>
 
-            <p class="is-size-6"><em class="fa fa-bell" style="color:#1e87e8;"></em> 如信息无误, 请进行支付, <router-link :to="{name:'summit.signup'}" tag="a" style="text-decoration: none;">或者重新填写</router-link></p>
+            <p class="is-size-6"><em class="fa fa-bell" style="color:#1e87e8;"></em> 如信息無誤, 請進行到支付頁面, <router-link :to="{name:'summit.signup'}" tag="a" style="text-decoration: none;">或者重新填写</router-link></p>
 
             <hr>
 
@@ -102,7 +102,7 @@
             <br><br>
             <div class="columns">
                 <div class="column">
-                    <label class="control-label" style="margin-right:20px;">卡号 *</label>
+                    <label class="control-label" style="margin-right:20px;">卡號 *</label>
                     <card-number class='stripe-element card-number'
                                  ref='cardNumber'
                                  :stripe='key'
@@ -112,7 +112,7 @@
                 </div>
                 <br>
                 <div class="column">
-                    <label class="control-label" style="margin-right: 20px;">有效期 *</label>
+                    <label class="control-label" style="margin-right: 20px;">有效日期 *</label>
                     <card-expiry class='stripe-element card-expiry'
                                  ref='cardExpiry'
                                  :stripe='key'
@@ -121,7 +121,7 @@
                 </div>
                 <br>
                 <div class="column">
-                    <label class="control-label" style="margin-right: 20px;">安全码 *</label>
+                    <label class="control-label" style="margin-right: 20px;">安全碼 *</label>
                     <card-cvc class='stripe-element card-cvc'
                               ref='cardCvc'
                               :stripe='key'
@@ -131,14 +131,14 @@
                 </div>
             </div>
 
-            <p class="is-size-3">同意条款</p>
+            <p class="is-size-3">同意條款</p>
 
             <br>
 
             <div class="columns">
                 <div class="column">
                     <label class="checkbox">
-                        <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意条款" @click="toggleChecker" required>
+                        <input type="checkbox" name="terms" id="terms" v-validate="'required'" data-vv-as="同意條款" @click="toggleChecker" required>
                         I agree to the <a style="color:blue" @click="toggleModal">terms and conditions</a>
                     </label>
                     <span class="help-block" v-show="errors.has('terms')" style="color: red !important;">{{ errors.first('terms') }}</span>
@@ -350,19 +350,19 @@
                             });
                         }
                         else if(response.data.message === 'failed to send email'){
-                            alert('!! 支付成功，但是发送邮件收据失败。请联系我们的同工 customerservice@glorycitychurch.com' + '\n' +'Failed reason: ' + response.data.reason);
+                            alert('!! 支付成功，但是發送郵件收據失敗。請聯繫我們的同工 customerservice@glorycitychurch.com' + '\n' +'Failed reason: ' + response.data.reason);
                             vm.dismissLoader();
                         }
                         else if(response.data.message === 'failed to charge the card'){
-                            alert('!! 支付失败, reason: ' + response.data.reason + '此账户没有金额扣除，请尝试使用其他支付卡号!');
+                            alert('!! 支付失敗, reason: ' + response.data.reason + '此賬戶沒有金額扣除，請嘗試使用其他支付卡號!');
                             vm.dismissLoader();
                         }
                         else if (response.data.message === 'failed to create Entity'){
-                            alert('!! 支付失败, reason: ' + response.data.reason + '请联系我们的同工 customerservice@glorycitychurch.com');
+                            alert('!! 支付失敗, reason: ' + response.data.reason + '請聯繫我們的同工 customerservice@glorycitychurch.com');
                             vm.dismissLoader();
                         }
                         else if (response.data.message === 'input cannot pass validation'){
-                            alert('所填写的信息有误，请检查修改。');
+                            alert('您所填寫的信息有誤，請檢查修改。');
                             vm.dismissLoader();
                         }
                         else{
@@ -374,7 +374,7 @@
                         vm.dismissLoader();
                     })
                 }).catch(err => {
-                    alert('网络中断！请检查是否收到成功支付邮件,或联系我们的同工 customerservice@glorycitychurch.com');
+                    alert('網絡中斷！請檢查是否收到成功支付郵件,或聯繫我們的同工 customerservice@glorycitychurch.com');
                     vm.dismissLoader();
                 })
             },

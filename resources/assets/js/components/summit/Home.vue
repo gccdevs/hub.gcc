@@ -26,7 +26,7 @@
                     <v-avatar :tile='true'>
                         <img src="./../../../image/small-logo.png">
                     </v-avatar>
-                    {{ appTitle }}
+                    &nbsp{{ appTitle }}
                 </a>
             </v-toolbar-title>
             <v-spacer></v-spacer>
@@ -59,7 +59,7 @@
         data () {
             return {
 
-                appTitle: 'Limitless',
+                appTitle: '榮耀城領袖高峰會',
 
                 sidebar: false,
 
@@ -67,7 +67,7 @@
 //                    { title: 'Home', path: '/summit-2018' },
 //                    { title: 'Home', path: '/summit-2018', icon: 'home' },
 //                    { title: 'Register Now', path: '/summit-2018/signup' },
-                    { title: '报名', path: '/summit-2018/signup', icon: 'mode_edit' },
+                    { title: '報名', path: '/summit-2018/signup', icon: 'mode_edit' },
                 ]
             }
         }

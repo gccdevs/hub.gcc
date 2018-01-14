@@ -2,11 +2,11 @@
     <div class="container">
         <div class="card border-info">
             <!--<br>-->
-            <h3 class="card-header bg-transparent border-info">个人信息</h3>
+            <h3 class="card-header bg-transparent border-info">個人信息</h3>
             <div class="card-body">
                 姓名:<h4 class="label" v-text="this.person.name"></h4> <br>
-                电话: <h4 class="label" v-text="this.person.mobile"></h4> <br>
-                邮箱:<h4 class="label" v-text="this.person.email"></h4> <br>
+                電話號碼: <h4 class="label" v-text="this.person.mobile"></h4> <br>
+                郵箱:<h4 class="label" v-text="this.person.email"></h4> <br>
             </div>
         </div>
     </div>

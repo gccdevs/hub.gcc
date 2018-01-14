@@ -28,9 +28,18 @@ class UsersTableSeeder extends Seeder
             'mobile' => 11111111,
             'confirm_token' => 'used',
             'is_active' => true,
-            'password' => bcrypt('123123')
+            'password' => bcrypt('cityonahill1102')
         ]);
-
+        User::create([
+            'name'	 => 'Contact',
+            'email'	 => 'contact@glorycitychurch.com',
+            'role' => 'Super Admin',
+            'invited_by' => 1,
+            'mobile' => 11111111,
+            'confirm_token' => 'used',
+            'is_active' => true,
+            'password' => bcrypt('cityonahill1102')
+        ]);
         User::create([
             'name'	 => 'Example',
             'email'	 => 'example@example.com',
@@ -39,7 +48,7 @@ class UsersTableSeeder extends Seeder
             'mobile' => 11111111,
             'confirm_token' => str_random(99),
             'is_active' => false,
-            'password' => bcrypt('123123')
+            'password' => bcrypt('cityonahill1102')
         ]);
     }
 }

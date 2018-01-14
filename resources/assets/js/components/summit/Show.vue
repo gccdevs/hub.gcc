@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>高峰会报名表单<a class="btn btn-link" href="/form/download-users" style="color:#1a92a9;"><em class="fa fa-link"> ......</em></a></h2>
+        <h2>高峰會報名表單<a class="btn btn-link" href="/form/download-users" style="color:#1a92a9;"><em class="fa fa-link"> ......</em></a></h2>
         <br>
         <a class="btn btn-outline-info" href="javascript:window.location.reload();"><em class="fa fa-refresh"> </em> 刷新</a>
         <button class="btn btn-outline-info" style="color:#1a92a9;" disabled><em class="fa fa-money"></em> Refund</button>
@@ -34,14 +34,14 @@
                 fields:[
                     {key:'last_name', label:'姓', sortable:true },
                     {key:'first_name', label:'名', sortable:true },
-                    {key:'mobile', label:'电话',sortable:true},
-                    {key:'email', label:'邮箱',sortable:true},
+                    {key:'mobile', label:'电话號碼',sortable:true},
+                    {key:'email', label:'郵箱',sortable:true},
                     {key:'gender', label:'性别', sortable:true},
                     {key:'firstTime', label:'first?', sortable:true},
-                    {key:'ref', label:'支付凭证',sortable:true},
-                    {key:'coupon', label:'使用支付卷',sortable:true},
+                    {key:'ref', label:'支付憑證',sortable:true},
+                    {key:'coupon', label:'使用支付券',sortable:true},
                     {key:'time', label:'支付时间', sortable:true},
-                    {key:'path', label:'了解途径',sortable:true}
+                    {key:'path', label:'了解途徑',sortable:true}
                 ],
                 items:false,
                 currentPage: 1,
