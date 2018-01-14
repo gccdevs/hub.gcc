@@ -11,7 +11,7 @@
                         justify-center
                 >
                     <!-- ** New stuff/Changes **-->
-                    <img src="./../../../image/landing-page.png" alt="logo" height="200">
+                    <img src="./../../../image/landing-page.png" alt="logo" height="400">
                     <!-- ** New stuff/Changes **-->
                     <em>「我靠著那加給我力量的，凡事都能做。」- 腓立比書 4:13</em>
 
@@ -79,9 +79,9 @@
 
         <!-- ** Whole Section Changed ; Need to replace placeholder avatar to Speaker head-image **-->
         <section>
-            <v-container grid-list-xl fluid offset-xs1 px-5 my-5>
-                <v-layout row wrap>
-                    <v-flex xs12 sm4 md4>
+            <v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>
+                <v-layout row wrap mx-3>
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
                                 <v-avatar slot="activator" style="cursor: pointer;" width="100%">
@@ -111,7 +111,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4>
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal1" max-width="350">
                                 <v-avatar slot="activator" style="cursor: pointer" width="100%">
@@ -140,7 +140,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 >
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal2" max-width="350" >
                                 <v-avatar slot="activator" style="cursor: pointer" width="100%">
@@ -169,7 +169,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 >
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal3" max-width="350" >
                                 <v-avatar slot="activator" style="cursor: pointer" width="100%">
@@ -197,7 +197,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4>
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal4" max-width="350" >
                                 <v-avatar slot="activator" style="cursor: pointer" width="100%">
@@ -226,7 +226,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 >
+                    <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal5" max-width="350" >
                                 <v-avatar slot="activator" style="cursor: pointer" width="100%">
@@ -262,7 +262,7 @@
 
         <section>
             <!-- ** New background image added  **-->
-            <v-parallax v-bind:src="require('./../../../image/landingpage3.png')" height="700">
+            <v-parallax v-bind:src="require('./../../../image/landingpage3.png')" height="1000">
                 <v-layout
                         row
                         justify-center
@@ -272,7 +272,7 @@
                     <v-flex xs12>
                         <v-container grid-list-xl>
                             <v-layout row wrap align-top>
-                                <v-flex xs3>
+                                <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
                                             <div class="headline text-xs-center white--text">Day 1</div>
@@ -313,7 +313,7 @@
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
-                                <v-flex xs3>
+                                <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
                                             <div class="headline text-xs-center white--text">Day 2</div>
@@ -349,7 +349,7 @@
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
-                                <v-flex xs3>
+                                <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
                                             <div class="headline text-xs-center white--text">Day 3</div>
@@ -390,7 +390,7 @@
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
-                                <v-flex xs3>
+                                <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
                                             <div class="headline text-xs-center white--text">Day 3 Continue</div>
@@ -484,10 +484,10 @@
                                 </v-list-tile>
                                 <v-list-tile>
                                     <v-list-tile-action>
-                                        <v-icon class="blue--text text--lighten-2">email</v-icon>
+                                        <a href="mailto:customerservice@glorycitychurch.com"><v-icon class="blue--text text--lighten-2">email</v-icon></a>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>customerservice@glorycitychurch.com</v-list-tile-title>
+                                        <a href="mailto:customerservice@glorycitychurch.com"><v-list-tile-title>Customer Service</v-list-tile-title></a>
                                     </v-list-tile-content>
                                 </v-list-tile>
                             </v-list>
@@ -501,8 +501,8 @@
                         </v-card>
                     </v-flex>
                     <v-flex xs12 md6 sm6 class="layout justify-space-around">
-                        <img src="./../../../image/gcclogoH1140.png" height="180">
-                        <img src="./../../../image/summitlogo.png" height="180">
+                        <img class="px-2" src="./../../../image/gcclogoH1140.png" height="130">
+                        <img src="./../../../image/summitlogo.png" height="130">
                     </v-flex>
                 </v-layout>
             </v-container>
