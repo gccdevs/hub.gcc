@@ -88,8 +88,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;" width="100%">
-                                    <img style="width:150px; height:150px;" src="./../../../image/GC_Pastor.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/GC_Pastor.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/GC_Pastor.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -118,8 +118,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal1" max-width="350">
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
-                                    <img style="width:150px; height:150px;" src="./../../../image/GC_Pastor2.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/GC_Pastor2.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/GC_Pastor2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -147,8 +147,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal2" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
-                                    <img style="width:150px; height:150px;" src="./../../../image/Joseph.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Joseph.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Joseph.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -176,8 +176,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal3" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
-                                    <img style="width:150px; height:150px;" src="./../../../image/Phillip_Gai.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Phillip_Gai.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Phillip_Gai.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -204,8 +204,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal4" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="100%">
-                                    <img style="width:150px; height:150px;" src="./../../../image/Shelly_Boon.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Shelly_Boon.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Shelly_Boon.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -233,8 +233,8 @@
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal5" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer" width="150px" height="150px">
-                                    <img style="width:150px; height:150px;" src="./../../../image/Torch_Speaker2.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
+                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Torch_Speaker2.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Torch_Speaker2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
