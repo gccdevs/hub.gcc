@@ -21,8 +21,9 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        Register Now
+                        早鳥價 $69
                     </v-btn>
+                    <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
             </v-parallax>
         </section>
@@ -71,16 +72,17 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        Register Now
+                        早鳥價 $69
                     </v-btn>
+                    <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
             </v-parallax>
         </section>
 
         <!-- ** Whole Section Changed ; Need to replace placeholder avatar to Speaker head-image **-->
         <section>
-            <v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>
-                <v-layout row wrap mx-3>
+            <!--<v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>-->
+                <v-layout row wrap mx-5 px-5 my-5 ml-5 fluid>
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
