@@ -84,7 +84,7 @@
         <!-- ** Whole Section Changed ; Need to replace placeholder avatar to Speaker head-image **-->
         <section>
             <!--<v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>-->
-                <v-layout row wrap mx-5 px-5 my-5 ml-5 fluid>
+                <v-layout wrap px-5 my-5 fluid>
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
@@ -106,7 +106,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">黃福國 牧師</h3>
                                     <div>
                                         榮耀城靈糧堂
@@ -135,7 +135,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">王翠如 牧師</h3>
                                     <div>
                                         榮耀城靈糧堂
@@ -164,7 +164,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">陳敬恩 牧師</h3>
                                     <div>
                                         Glory City Church 榮耀城教會
@@ -192,7 +192,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">Philip Gai</h3>
                                     <div>
                                         Compassion Australia
@@ -201,7 +201,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
+                    <v-flex xs12 sm4 md4>
                         <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal4" max-width="350" >
                                 <v-avatar slot="activator" v-cloak style="cursor: pointer;">
@@ -221,7 +221,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">Shirley Boon</h3>
                                     <div>
                                         社會創新啟發家
@@ -250,7 +250,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">吳永成 牧師</h3>
                                     <div>
                                         火把教會
@@ -502,8 +502,8 @@
                         </v-card>
                     </v-flex>
                     <v-flex xs12 md6 sm6 class="layout justify-space-around">
-                        <img class="px-2" src="./../../../image/gcclogoH1140.png" height="130">
-                        <img src="./../../../image/summitlogo.png" height="130">
+                        <img class="px-2" src="./../../../image/gcclogoH1140.png" height="100">
+                        <img src="./../../../image/summitlogo.png" height="100">
                     </v-flex>
                 </v-layout>
             </v-container>
