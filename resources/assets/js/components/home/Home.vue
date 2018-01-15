@@ -18,6 +18,10 @@
             <br><br>
         </div>
 
+        <b-modal id="giving" title="GCC Central Hub">
+            <stripe></stripe>
+        </b-modal>
+
         <home-body></home-body>
         <home-footer></home-footer>
     </div>
