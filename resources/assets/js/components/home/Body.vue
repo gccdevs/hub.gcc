@@ -80,7 +80,7 @@
                                     一起參與我們的40週讀經計劃，或者全年讀經計劃吧！<br>
                                 </p>
                                 <!--<v-btn class="btn btn-dark" style="margin-bottom:17px;" v-b-modal.comming-soon>今日經文</v-btn>-->
-                                <a href="https://bible-study.glorycitychurch.com" class="btn btn-dark" style="margin-bottom:17px;">打卡</a>
+                                <v-btn v-b-modal.comming-soon class="btn btn-dark" style="margin-bottom:17px;">打卡</v-btn>
                             </div>
                         </div>
                     </div>
