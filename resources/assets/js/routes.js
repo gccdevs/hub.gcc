@@ -143,6 +143,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 
+    window.scrollTo(0, 0);
+
     if (to.meta.title) {
         document.title = to.meta.title;
     }
