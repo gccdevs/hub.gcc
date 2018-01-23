@@ -67,7 +67,7 @@
 //                    { title: 'Home', path: '/summit-2018' },
 //                    { title: 'Home', path: '/summit-2018', icon: 'home' },
 //                    { title: 'Register Now', path: '/summit-2018/signup' },
-                    { title: '報名', path: '/summit-2018/signup', icon: 'mode_edit' },
+                    { title: '線上報名', path: '/summit-2018/signup', icon: 'mode_edit' },
                 ]
             }
         }

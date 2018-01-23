@@ -21,7 +21,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
@@ -74,7 +74,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
