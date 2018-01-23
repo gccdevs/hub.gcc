@@ -265,7 +265,7 @@
 
         <section>
             <!-- ** New background image added  **-->
-            <v-parallax v-bind:src="require('./../../../image/landingpage3.png')" height="1000">
+            <v-parallax v-bind:src="require('./../../../image/landingpage2.png')" height="1000">
                 <v-layout
                         row
                         justify-center
