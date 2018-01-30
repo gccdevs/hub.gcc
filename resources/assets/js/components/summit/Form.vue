@@ -191,7 +191,6 @@
                 axios.post('/api/form/validate-coupon', {coupon:val}).then(response => {
                     if (response.data.message === true){
                         vm.isDiscounted = true;
-                        console.log(vm.isDiscounted);
                     }else {
                         vm.isDiscounted = false;
                     }
@@ -240,7 +239,6 @@
 
                     }).catch(err => {});
                 }else {
-                    console.log("Doesn't pass input check");
                 }
             },
 

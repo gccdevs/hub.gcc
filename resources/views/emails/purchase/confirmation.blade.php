@@ -14,7 +14,7 @@ You have successfully purchased the 2018 Glory City Church Summit ticket!
 @component('mail::table')
 |  | |
 | ------------- |:--------------------------------------------------:|
-|  Paid Amount | **{{ $form->amount == 10000 ? 'A$ 99.00' : 'A$ 69.00'}}** |
+|  Paid Amount | **{{ $form->coupon == env('STRIPE_CODE') ? 'A$ 69.00' : 'A$ 99.00'}}** |
 | Receipt   | **{{ $form->payment_ref }}**   |
 | Name  |**{{ $form->first_name }} {{ $form->last_name }}** |
 | Gender|  **{{ $form->gender }}**   |

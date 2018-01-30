@@ -21,7 +21,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
@@ -74,7 +74,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
@@ -480,7 +480,7 @@
                                         <v-icon class="blue--text text--lighten-2">place</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>To be confirmed</v-list-tile-title>
+                                        <v-list-tile-title>Ground floor | 150 Collins Street, 3000 Melbourne, Victoria</v-list-tile-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile>
@@ -537,12 +537,12 @@
         mounted: function (){
 //            console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('myMap'), {
-                center: {lng: 144.9633171, lat: -37.8061211},
+                center: {lng: 144.96796215782874, lat: -37.814024845644354},
                 scrollwheel: false,
                 zoom:18
             });
             var marker = new google.maps.Marker({
-                position: {lng: 144.9633171, lat:-37.8061211}
+                position: {lng: 144.96796215782874, lat: -37.814024845644354}
             });
             marker.setMap(this.map)
         }
