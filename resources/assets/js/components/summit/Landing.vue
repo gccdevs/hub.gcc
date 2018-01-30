@@ -537,12 +537,12 @@
         mounted: function (){
 //            console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('myMap'), {
-                center: {lng: 144.9633171, lat: -37.8061211},
+                center: {lng: 144.96796215782874, lat: -37.814024845644354},
                 scrollwheel: false,
                 zoom:18
             });
             var marker = new google.maps.Marker({
-                position: {lng: 144.9633171, lat:-37.8061211}
+                position: {lng: 144.96796215782874, lat: -37.814024845644354}
             });
             marker.setMap(this.map)
         }
