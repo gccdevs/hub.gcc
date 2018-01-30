@@ -85,6 +85,64 @@
         <section>
             <!--<v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>-->
                 <v-layout wrap px-5 my-5 fluid>
+                <v-flex xs12 sm4 md4 pl-3>
+                    <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
+                        <v-dialog v-model="modal2" max-width="350" >
+                            <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                <img src="./../../../image/Joseph.png">
+                            </v-avatar>
+                            <v-card class="pt-3">
+                                <img src="./../../../image/Joseph.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
+                                <v-card-title class="headline justify-center">陳敬恩 牧師</v-card-title>
+                                <v-card-text class="layout justify-center">Glory City Church 榮耀城教會 創辦人 & 主任牧師<br>
+                                    Lion Heart Coaching 獅子心領導力 創始人 & 總經理
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-card>
+                    <v-card class="layout justify-center elevation-0 transparent">
+                        <v-card-title primary-title>
+                            <div class="ml-3">
+                                <h3 class="headline mb-1">陳敬恩 牧師</h3>
+                                <div>
+                                    Glory City Church 榮耀城教會
+                                </div>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </v-flex>
+                <v-flex xs12 sm4 md4 pl-3>
+                    <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
+                        <v-dialog v-model="modal5" max-width="350" >
+                            <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                <img src="./../../../image/Torch_Speaker2.png">
+                            </v-avatar>
+                            <v-card class="pt-3">
+                                <img src="./../../../image/Torch_Speaker2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
+                                <v-card-title class="headline justify-center">吳永成 牧師</v-card-title>
+                                <v-card-text class="layout justify-center">現為火把行道會牧師及區牧，主要負責職場服事<br>
+                                    畢業於臺灣大學電機研究所碩士、恩惠神學院。
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-card>
+                    <v-card class="layout justify-center elevation-0 transparent">
+                        <v-card-title primary-title>
+                            <div class="ml-3">
+                                <h3 class="headline mb-1">吳永成 牧師</h3>
+                                <div>
+                                    火把教會
+                                </div>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </v-flex>
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
@@ -144,35 +202,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
-                            <v-dialog v-model="modal2" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
-                                    <img src="./../../../image/Joseph.png">
-                                </v-avatar>
-                                <v-card class="pt-3">
-                                    <img src="./../../../image/Joseph.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
-                                    <v-card-title class="headline justify-center">陳敬恩 牧師</v-card-title>
-                                    <v-card-text class="layout justify-center">Glory City Church 榮耀城教會 創辦人 & 主任牧師<br>
-                                        Lion Heart Coaching 獅子心領導力 創始人 & 總經理
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-card>
-                        <v-card class="layout justify-center elevation-0 transparent">
-                            <v-card-title primary-title>
-                                <div class="ml-3">
-                                    <h3 class="headline mb-1">陳敬恩 牧師</h3>
-                                    <div>
-                                        Glory City Church 榮耀城教會
-                                    </div>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-flex>
+
                     <v-flex xs12 sm4 md4 pl-3>
                         <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal3" max-width="350" >
@@ -230,35 +260,7 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
-                            <v-dialog v-model="modal5" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
-                                    <img src="./../../../image/Torch_Speaker2.png">
-                                </v-avatar>
-                                <v-card class="pt-3">
-                                    <img src="./../../../image/Torch_Speaker2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
-                                    <v-card-title class="headline justify-center">吳永成 牧師</v-card-title>
-                                    <v-card-text class="layout justify-center">現為火把行道會牧師及區牧，主要負責職場服事<br>
-                                        畢業於臺灣大學電機研究所碩士、恩惠神學院。
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-card>
-                        <v-card class="layout justify-center elevation-0 transparent">
-                            <v-card-title primary-title>
-                                <div class="ml-3">
-                                    <h3 class="headline mb-1">吳永成 牧師</h3>
-                                    <div>
-                                        火把教會
-                                    </div>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-flex>
+
                 </v-layout>
         </section>
         <!-- ** End ** -->
@@ -464,7 +466,7 @@
                     <v-flex xs12 md6 sm6>
                         <v-card class="elevation-0 transparent">
                             <v-card-title primary-title class="layout justify-center">
-                                <div class="headline">Contact us</div>
+                                <div class="headline">聯絡我們</div>
                             </v-card-title>
                             <v-list class="transparent ">
                                 <!--<v-list-tile>-->
@@ -480,7 +482,7 @@
                                         <v-icon class="blue--text text--lighten-2">place</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>Ground floor | 150 Collins Street, 3000 Melbourne, Victoria</v-list-tile-title>
+                                        <v-list-tile-title>Ground floor | 150 Collins St, 3000 Melbourne</v-list-tile-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile>
