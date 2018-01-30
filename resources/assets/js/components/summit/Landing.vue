@@ -480,7 +480,7 @@
                                         <v-icon class="blue--text text--lighten-2">place</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>To be confirmed</v-list-tile-title>
+                                        <v-list-tile-title>Ground floor | 150 Collins Street, 3000 Melbourne, Victoria</v-list-tile-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile>
