@@ -281,7 +281,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 1</div>
+                                            <div class="headline text-xs-center white--text">08 March, Thursday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -322,7 +322,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 2</div>
+                                            <div class="headline text-xs-center white--text">09 March, Friday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -358,7 +358,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 3</div>
+                                            <div class="headline text-xs-center white--text">10 March, Saturday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -399,7 +399,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 3 Continue</div>
+                                            <div class="headline text-xs-center white--text">Saturday Continue</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
