@@ -8,6 +8,7 @@
 
         <div class="card-block text-center col-md-6 offset-md-3 z-depth-5 cards shadow">
             <div>
+                <q-input v-model="name" float-label="Name"></q-input>
                 <h1 class="card-title text-white">奉献</h1>
                 <h6 class="card-text text-white">「奉獻」是我們在神面前的一個敬虔的操練！ 神不需要我們的錢，但是透過我們如此的表態，我們向神表達三個很重要的意義:</h6>
                 <br>
@@ -18,10 +19,6 @@
             <br><br>
         </div>
 
-        <b-modal id="giving" title="GCC Central Hub">
-            <stripe></stripe>
-        </b-modal>
-
         <home-body></home-body>
         <home-footer></home-footer>
     </div>
@@ -31,10 +28,17 @@
 
     import HomeBody from './Body'
     import HomeFooter from './Footer'
+    import { QInput } from 'quasar-framework'
 
     export default{
 
+        data () {
+            return {
+                name: null
+            }
+        },
         components:{
+            QInput,
             HomeBody,
             HomeFooter
         }
