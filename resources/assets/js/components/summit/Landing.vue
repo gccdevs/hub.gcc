@@ -48,11 +48,11 @@
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/eY89hJRu18o" frameborder="0" allowfullscreen></iframe>-->
                             </v-container>
                         </v-carousel-item>
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/l_mr1dlyqfE" frameborder="0" allowfullscreen></iframe>
+                            </v-container>
+                        </v-carousel-item>
                     </v-carousel>
                 </v-flex>
             </v-layout>
@@ -577,7 +577,7 @@
         height: 100%;
     }
     .youtubeBanner {
-        background-image: url("./../../../image/youtubeBK.png") !important;
-        width:inherit !important;
+        background-image: url("./../../../image/youtubeBK.png");
+        background-size: cover;
     }
 </style>
