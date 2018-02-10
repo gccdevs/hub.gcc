@@ -32,22 +32,22 @@
         <section>
             <v-layout wrap>
                 <v-flex xs12>
-                    <v-carousel style="height:90vh" :cycle='false' >
-                        <v-carousel-item src="" class="youtubeBanner">
+                    <v-carousel style="height:90vh" :cycle='false' class="youtubeBanner">
+                        <v-carousel-item src="">
                             <v-container id="videoContainer">
                                 <iframe width="560" height="215" src="https://www.youtube.com/embed/lIcBO2wrd6A" frameborder="0" allowfullscreen></iframe>
                             </v-container>
                         </v-carousel-item>
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Zu-xXe1W7QI" frameborder="0" allowfullscreen></iframe>-->
+                            </v-container>
+                        </v-carousel-item>
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/eY89hJRu18o" frameborder="0" allowfullscreen></iframe>-->
+                            </v-container>
+                        </v-carousel-item>
                         <!--<v-carousel-item src="">-->
                             <!--<v-container id="videoContainer">-->
                                 <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
@@ -469,20 +469,22 @@
                                 <div class="headline">聯絡我們</div>
                             </v-card-title>
                             <v-list class="transparent ">
-                                <!--<v-list-tile>-->
-                                    <!--<v-list-tile-action>-->
-                                        <!--<v-icon class="blue&#45;&#45;text text&#45;&#45;lighten-2">phone</v-icon>-->
-                                    <!--</v-list-tile-action>-->
-                                    <!--<v-list-tile-content>-->
-                                        <!--<v-list-tile-title>xxx-xxxx-xxxx</v-list-tile-title>-->
-                                    <!--</v-list-tile-content>-->
-                                <!--</v-list-tile>-->
+                                <v-list-tile>
+                                  <v-list-tile-action>
+                                    <v-icon class="blue--text text--lighten-2">access_time</v-icon>
+                                  </v-list-tile-action>
+                                  <v-list-tile-content>
+                                    <v-list-tile-title>08 - 10 March 2018</v-list-tile-title>
+                                    <v-list-tile-sub-title>Thu - Sat</v-list-tile-sub-title>
+                                  </v-list-tile-content>
+                                </v-list-tile>
                                 <v-list-tile>
                                     <v-list-tile-action>
                                         <v-icon class="blue--text text--lighten-2">place</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>Ground floor | 150 Collins St, 3000 Melbourne</v-list-tile-title>
+                                        <v-list-tile-title>150 Collins St, 3000 Melbourne</v-list-tile-title>
+                                        <v-list-tile-sub-title>Ground Floor</v-list-tile-sub-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile>
