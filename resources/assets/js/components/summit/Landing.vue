@@ -21,7 +21,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
@@ -32,27 +32,27 @@
         <section>
             <v-layout wrap>
                 <v-flex xs12>
-                    <v-carousel style="height:90vh" :cycle='false' >
-                        <v-carousel-item src="" class="youtubeBanner">
+                    <v-carousel style="height:90vh" :cycle='false' class="youtubeBanner">
+                        <v-carousel-item src="">
                             <v-container id="videoContainer">
                                 <iframe width="560" height="215" src="https://www.youtube.com/embed/lIcBO2wrd6A" frameborder="0" allowfullscreen></iframe>
                             </v-container>
                         </v-carousel-item>
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
-                        <!--<v-carousel-item src="">-->
-                            <!--<v-container id="videoContainer">-->
-                                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY" frameborder="0" allowfullscreen></iframe>-->
-                            <!--</v-container>-->
-                        <!--</v-carousel-item>-->
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Zu-xXe1W7QI" frameborder="0" allowfullscreen></iframe>-->
+                            </v-container>
+                        </v-carousel-item>
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/eY89hJRu18o" frameborder="0" allowfullscreen></iframe>-->
+                            </v-container>
+                        </v-carousel-item>
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/l_mr1dlyqfE" frameborder="0" allowfullscreen></iframe>
+                            </v-container>
+                        </v-carousel-item>
                     </v-carousel>
                 </v-flex>
             </v-layout>
@@ -74,7 +74,7 @@
                             large
                             href="/summit-2018/signup"
                     >
-                        早鳥價 $69
+                        線上報名
                     </v-btn>
                     <em>早鳥價截止日期： 2018年2月18號</em>
                 </v-layout>
@@ -84,12 +84,70 @@
         <!-- ** Whole Section Changed ; Need to replace placeholder avatar to Speaker head-image **-->
         <section>
             <!--<v-container grid-list-xl fluid offset-xs1 ml-5 px-5 mx-5 my-5 v-cloak>-->
-                <v-layout row wrap mx-5 px-5 my-5 ml-5 fluid>
+                <v-layout wrap px-5 my-5 fluid>
+                <v-flex xs12 sm4 md4 pl-3>
+                    <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
+                        <v-dialog v-model="modal2" max-width="350" >
+                            <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                <img src="./../../../image/Joseph.png">
+                            </v-avatar>
+                            <v-card class="pt-3">
+                                <img src="./../../../image/Joseph.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
+                                <v-card-title class="headline justify-center">陳敬恩 牧師</v-card-title>
+                                <v-card-text class="layout justify-center">Glory City Church 榮耀城教會 創辦人 & 主任牧師<br>
+                                    Lion Heart Coaching 獅子心領導力 創始人 & 總經理
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-card>
+                    <v-card class="layout justify-center elevation-0 transparent">
+                        <v-card-title primary-title>
+                            <div class="ml-3">
+                                <h3 class="headline mb-1">陳敬恩 牧師</h3>
+                                <div>
+                                    Glory City Church 榮耀城教會
+                                </div>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </v-flex>
+                <v-flex xs12 sm4 md4 pl-3>
+                    <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
+                        <v-dialog v-model="modal5" max-width="350" >
+                            <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                <img src="./../../../image/Torch_Speaker2.png">
+                            </v-avatar>
+                            <v-card class="pt-3">
+                                <img src="./../../../image/Torch_Speaker2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
+                                <v-card-title class="headline justify-center">吳永成 牧師</v-card-title>
+                                <v-card-text class="layout justify-center">現為火把行道會牧師及區牧，主要負責職場服事<br>
+                                    畢業於臺灣大學電機研究所碩士、恩惠神學院。
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-card>
+                    <v-card class="layout justify-center elevation-0 transparent">
+                        <v-card-title primary-title>
+                            <div class="ml-3">
+                                <h3 class="headline mb-1">吳永成 牧師</h3>
+                                <div>
+                                    火把教會
+                                </div>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </v-flex>
                     <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
+                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal" max-width="350">
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/GC_Pastor.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                    <img src="./../../../image/GC_Pastor.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/GC_Pastor.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -106,7 +164,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">黃福國 牧師</h3>
                                     <div>
                                         榮耀城靈糧堂
@@ -116,10 +174,10 @@
                         </v-card>
                     </v-flex>
                     <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
+                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal1" max-width="350">
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/GC_Pastor2.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                    <img src="./../../../image/GC_Pastor2.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/GC_Pastor2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -135,7 +193,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">王翠如 牧師</h3>
                                     <div>
                                         榮耀城靈糧堂
@@ -144,40 +202,12 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
+
                     <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
-                            <v-dialog v-model="modal2" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Joseph.png">
-                                </v-avatar>
-                                <v-card class="pt-3">
-                                    <img src="./../../../image/Joseph.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
-                                    <v-card-title class="headline justify-center">陳敬恩 牧師</v-card-title>
-                                    <v-card-text class="layout justify-center">Glory City Church 榮耀城教會 創辦人 & 主任牧師<br>
-                                        Lion Heart Coaching 獅子心領導力 創始人 & 總經理
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-card>
-                        <v-card class="layout justify-center elevation-0 transparent">
-                            <v-card-title primary-title>
-                                <div>
-                                    <h3 class="headline mb-1">陳敬恩 牧師</h3>
-                                    <div>
-                                        Glory City Church 榮耀城教會
-                                    </div>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
+                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal3" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Phillip_Gai.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                    <img src="./../../../image/Phillip_Gai.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Phillip_Gai.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -192,7 +222,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">Philip Gai</h3>
                                     <div>
                                         Compassion Australia
@@ -201,11 +231,11 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
+                    <v-flex xs12 sm4 md4>
+                        <v-card class="elevation-0 transparent layout justify-center pt-5 px-5">
                             <v-dialog v-model="modal4" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Shelly_Boon.png">
+                                <v-avatar slot="activator" v-cloak style="cursor: pointer;">
+                                    <img src="./../../../image/Shelly_Boon.png">
                                 </v-avatar>
                                 <v-card class="pt-3">
                                     <img src="./../../../image/Shelly_Boon.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
@@ -221,7 +251,7 @@
                         </v-card>
                         <v-card class="layout justify-center elevation-0 transparent">
                             <v-card-title primary-title>
-                                <div>
+                                <div class="ml-3">
                                     <h3 class="headline mb-1">Shirley Boon</h3>
                                     <div>
                                         社會創新啟發家
@@ -230,42 +260,14 @@
                             </v-card-title>
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 pl-3>
-                        <v-card class="elevation-0 transparent layout justify-center py-5 px-5">
-                            <v-dialog v-model="modal5" max-width="350" >
-                                <v-avatar slot="activator" v-cloak style="cursor: pointer;width:150px !important;height:150px !important;">
-                                    <img style="width:150px !important; height:150px !important;" src="./../../../image/Torch_Speaker2.png">
-                                </v-avatar>
-                                <v-card class="pt-3">
-                                    <img src="./../../../image/Torch_Speaker2.png" style="max-width:150px; max-height:150px; position:relative; left:28%;">
-                                    <v-card-title class="headline justify-center">吳永成 牧師</v-card-title>
-                                    <v-card-text class="layout justify-center">現為火把行道會牧師及區牧，主要負責職場服事<br>
-                                        畢業於臺灣大學電機研究所碩士、恩惠神學院。
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-card>
-                        <v-card class="layout justify-center elevation-0 transparent">
-                            <v-card-title primary-title>
-                                <div>
-                                    <h3 class="headline mb-1">吳永成 牧師</h3>
-                                    <div>
-                                        火把教會
-                                    </div>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-flex>
+
                 </v-layout>
         </section>
         <!-- ** End ** -->
 
         <section>
             <!-- ** New background image added  **-->
-            <v-parallax v-bind:src="require('./../../../image/landingpage3.png')" height="1000">
+            <v-parallax v-bind:src="require('./../../../image/landingpage2.png')" height="1000">
                 <v-layout
                         row
                         justify-center
@@ -279,7 +281,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 1</div>
+                                            <div class="headline text-xs-center white--text">08 March, Thursday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -320,7 +322,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 2</div>
+                                            <div class="headline text-xs-center white--text">09 March, Friday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -356,7 +358,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 3</div>
+                                            <div class="headline text-xs-center white--text">10 March, Saturday</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -397,7 +399,7 @@
                                 <v-flex xs6 md3>
                                     <v-card class="elevation-0 transparent">
                                         <v-card-title primary-title class="layout justify-center">
-                                            <div class="headline text-xs-center white--text">Day 3 Continue</div>
+                                            <div class="headline text-xs-center white--text">Saturday Continue</div>
                                         </v-card-title>
                                         <v-card-text >
                                             <v-list class="transparent">
@@ -464,23 +466,25 @@
                     <v-flex xs12 md6 sm6>
                         <v-card class="elevation-0 transparent">
                             <v-card-title primary-title class="layout justify-center">
-                                <div class="headline">Contact us</div>
+                                <div class="headline">聯絡我們</div>
                             </v-card-title>
                             <v-list class="transparent ">
-                                <!--<v-list-tile>-->
-                                    <!--<v-list-tile-action>-->
-                                        <!--<v-icon class="blue&#45;&#45;text text&#45;&#45;lighten-2">phone</v-icon>-->
-                                    <!--</v-list-tile-action>-->
-                                    <!--<v-list-tile-content>-->
-                                        <!--<v-list-tile-title>xxx-xxxx-xxxx</v-list-tile-title>-->
-                                    <!--</v-list-tile-content>-->
-                                <!--</v-list-tile>-->
+                                <v-list-tile>
+                                  <v-list-tile-action>
+                                    <v-icon class="blue--text text--lighten-2">access_time</v-icon>
+                                  </v-list-tile-action>
+                                  <v-list-tile-content>
+                                    <v-list-tile-title>08 - 10 March 2018</v-list-tile-title>
+                                    <v-list-tile-sub-title>Thu - Sat</v-list-tile-sub-title>
+                                  </v-list-tile-content>
+                                </v-list-tile>
                                 <v-list-tile>
                                     <v-list-tile-action>
                                         <v-icon class="blue--text text--lighten-2">place</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>To be confirmed</v-list-tile-title>
+                                        <v-list-tile-title>150 Collins St, 3000 Melbourne</v-list-tile-title>
+                                        <v-list-tile-sub-title>Ground Floor</v-list-tile-sub-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile>
@@ -502,8 +506,8 @@
                         </v-card>
                     </v-flex>
                     <v-flex xs12 md6 sm6 class="layout justify-space-around">
-                        <img class="px-2" src="./../../../image/gcclogoH1140.png" height="130">
-                        <img src="./../../../image/summitlogo.png" height="130">
+                        <img class="px-2" src="./../../../image/gcclogoH1140.png" height="100">
+                        <img src="./../../../image/summitlogo.png" height="100">
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -537,12 +541,12 @@
         mounted: function (){
 //            console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('myMap'), {
-                center: {lng: 144.9633171, lat: -37.8061211},
+                center: {lng: 144.96796215782874, lat: -37.814024845644354},
                 scrollwheel: false,
                 zoom:18
             });
             var marker = new google.maps.Marker({
-                position: {lng: 144.9633171, lat:-37.8061211}
+                position: {lng: 144.96796215782874, lat: -37.814024845644354}
             });
             marker.setMap(this.map)
         }
@@ -551,6 +555,10 @@
 
 <!-- ** New Style added for video **-->
 <style scoped>
+    .avatar{
+        width:150px!important;
+        height:150px!important;
+    }
     #myMap {
         height:300px;
         width:100%;
@@ -569,7 +577,7 @@
         height: 100%;
     }
     .youtubeBanner {
-        background-image: url("./../../../image/youtubeBK.png") !important;
-        width:inherit !important;
+        background-image: url("./../../../image/youtubeBK.png");
+        background-size: cover;
     }
 </style>

@@ -84,8 +84,8 @@
 
                     <tr>
                         <td><b>價格</b></td>
-                        <td v-show="this.isDiscounted">A$50.00 <s style="color:lightgray">A$100.00</s></td>
-                        <td v-show="!this.isDiscounted">A$100.00</td>
+                        <td v-show="this.isDiscounted">A$69.00 <s style="color:lightgray">A$99.00</s></td>
+                        <td v-show="!this.isDiscounted">A$99.00</td>
                     </tr>
 
                     </tbody>
@@ -228,10 +228,6 @@
 
     export default {
 
-        created(){
-            console.log(this.name, this.mobile);
-        },
-
         data(){
             return {
                 showModal: false,
@@ -324,8 +320,6 @@
                     };
 
                     axios.post('/api/form/purchase', formData).then(response => {
-
-                        console.log(response.data);
 
                         if (response.data.message === 'paid success') {
 
