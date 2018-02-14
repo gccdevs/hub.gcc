@@ -467,7 +467,7 @@
               justify-center>
                 <v-flex xs12 class="layout justify-space-around">
                     <div>
-                      <h1 class="mb-2 display-1 text-xs-center">主要贊助商</h1>
+                      <h1 class="mb-2 display-1 text-xs-center">钻石贊助商</h1>
                         <div class="layout justify-center wrap">
                           <div>
                             <img src="./../../../image/compassion.png" height="180">
