@@ -23,7 +23,8 @@
                     >
                         線上報名
                     </v-btn>
-                    <em>早鳥價截止日期： 2018年2月18號</em>
+                    <div class="subheading mb-3  mt-3 text-xs-center">08 - 10 March 2018</div>
+                    <div class="subheading mb-3 text-xs-center">Ground Floor | 150 Collins St, 3000 Melbourne</div>
                 </v-layout>
             </v-parallax>
         </section>
@@ -33,6 +34,11 @@
             <v-layout wrap>
                 <v-flex xs12>
                     <v-carousel style="height:90vh" :cycle='false' class="youtubeBanner">
+                        <v-carousel-item src="">
+                            <v-container id="videoContainer">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/cjTOoV2E8dU" frameborder="0" allowfullscreen></iframe>
+                            </v-container>
+                        </v-carousel-item>
                         <v-carousel-item src="">
                             <v-container id="videoContainer">
                                 <iframe width="560" height="215" src="https://www.youtube.com/embed/lIcBO2wrd6A" frameborder="0" allowfullscreen></iframe>
@@ -46,11 +52,6 @@
                         <v-carousel-item src="">
                             <v-container id="videoContainer">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/eY89hJRu18o" frameborder="0" allowfullscreen></iframe>-->
-                            </v-container>
-                        </v-carousel-item>
-                        <v-carousel-item src="">
-                            <v-container id="videoContainer">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/l_mr1dlyqfE" frameborder="0" allowfullscreen></iframe>
                             </v-container>
                         </v-carousel-item>
                     </v-carousel>
@@ -461,8 +462,29 @@
 
 
         <section>
+            <v-layout column
+              align-center
+              justify-center>
+                <v-flex xs12 class="layout justify-space-around">
+                    <div>
+                      <h1 class="mb-2 display-1 text-xs-center">主要贊助商</h1>
+                        <div class="layout justify-center wrap">
+                          <div>
+                            <img src="./../../../image/compassion.png" height="180">
+                          </div>
+                          <div class="mt-5">
+                            <img src="./../../../image/Ironfish_Logo.png" height="100">
+                          </div>
+                      </div>
+                    </div>
+                </v-flex>
+            </v-layout>
+        </section>
+
+
+        <section>
             <v-container grid-list-xl>
-                <v-layout row wrap justify-center class="my-5">
+                <v-layout row wrap justify-center class="mb-5">
                     <v-flex xs12 md6 sm6>
                         <v-card class="elevation-0 transparent">
                             <v-card-title primary-title class="layout justify-center">
