@@ -467,7 +467,7 @@
               justify-center>
                 <v-flex xs12 class="layout justify-space-around">
                     <div>
-                      <h1 class="mb-2 display-1 text-xs-center">钻石贊助商</h1>
+                      <h1 class="mb-2 display-1 text-xs-center">鑽石贊助商</h1>
                         <div class="layout justify-center wrap">
                           <div>
                             <img src="./../../../image/compassion.png" height="180">
@@ -527,7 +527,7 @@
                             <!-- ** End  **-->
                         </v-card>
                     </v-flex>
-                    <v-flex xs12 md6 sm6 class="layout justify-space-around">
+                    <v-flex xs12 md6 sm6 class="layout justify-space-around" id="footer-links">
                         <img class="px-2" src="./../../../image/gcclogoH1140.png" height="100">
                         <img src="./../../../image/summitlogo.png" height="100">
                     </v-flex>
@@ -601,5 +601,13 @@
     .youtubeBanner {
         background-image: url("./../../../image/youtubeBK.png");
         background-size: cover;
+    }
+    @media (min-width: 320px) and (max-width: 414px) {
+        #footer-links {
+            padding-top: 60px;
+        }
+        img {
+            max-width: 100%;
+        }
     }
 </style>
