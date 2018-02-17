@@ -144,7 +144,7 @@ class FormController extends Controller
 
         $cellData = [];
 
-        array_push($cellData, ['First name','Last name', 'gender', 'mobile','email','is_paid','payment_ref','time','first_time','where to know']);
+        array_push($cellData, ['First name','Last name', 'gender', 'mobile','email','payment_ref','time', 'coupon', 'first_time','where to know']);
 
         foreach ($data as $form){
 
@@ -154,10 +154,9 @@ class FormController extends Controller
                 $gender = $form->gender,
                 $mobile = $form->mobile,
                 $email = $form->email,
-                $is_paid = $form->is_paid,
                 $ref = $form->payment_ref,
-                $coupon = $form->coupon == env('STRIPE_CODE') ? true : false,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
+                $coupon = $form->coupon == env('STRIPE_CODE') ? true : false,
                 $firstTime = $form->first_time,
                 $path = $form->path
             ]);
