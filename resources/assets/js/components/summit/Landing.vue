@@ -23,7 +23,7 @@
                     >
                         線上報名
                     </v-btn>
-                    <div class="subheading mb-3  mt-3 text-xs-center">08 - 10 March 2018</div>
+                    <div class="subheading mb-1 mt-3 text-xs-center">08 - 10 March 2018</div>
                     <div class="subheading mb-3 text-xs-center">Ground Floor | 150 Collins St, 3000 Melbourne</div>
                 </v-layout>
             </v-parallax>
@@ -467,13 +467,13 @@
               justify-center>
                 <v-flex xs12 class="layout justify-space-around">
                     <div>
-                      <h1 class="mb-2 display-1 text-xs-center">鑽石贊助商</h1>
+                      <div class="mb-2 display-1 text-xs-center headline">鑽石贊助商</div>
                         <div class="layout justify-center wrap">
                           <div>
                             <img src="./../../../image/compassion.png" height="180">
                           </div>
-                          <div class="mt-5">
-                            <img src="./../../../image/Ironfish_Logo.png" height="100">
+                          <div class="mt-3 pt-5" id="mobile-padding">
+                            <img src="./../../../image/Ironfish_Logo.png" height="75">
                           </div>
                       </div>
                     </div>
@@ -609,5 +609,9 @@
         img {
             max-width: 100%;
         }
+        #mobile-padding {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
+          }
     }
 </style>
