@@ -39,7 +39,7 @@
                     {key:'gender', label:'性别', sortable:true},
                     {key:'firstTime', label:'first?', sortable:true},
                     {key:'ref', label:'支付憑證',sortable:true},
-                    {key:'coupon', label:'使用支付券',sortable:true},
+                    {key:'coupon', label:'支付券',sortable:true},
                     {key:'time', label:'支付时间', sortable:true},
                     {key:'path', label:'了解途徑',sortable:true}
                 ],

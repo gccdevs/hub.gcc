@@ -38,7 +38,7 @@
                     <td>{{ this.gender }}</td>
                     <td v-if="this.isDiscounted"><em class="fa fa-check" style="color:green"></em></td>
                     <td v-else><em class="fa fa-minus" style="color:gray"></em></td>
-                    <td v-show="this.isDiscounted">A$69.00 <s style="color:lightgray">A$99.00</s></td>
+                    <td v-show="this.isDiscounted">A${{ price }} <s style="color:lightgray">A$99.00</s></td>
                     <td v-show="!this.isDiscounted">A$99.00</td>
                 </tr>
                 <tbody>
@@ -84,7 +84,7 @@
 
                     <tr>
                         <td><b>價格</b></td>
-                        <td v-show="this.isDiscounted">A$69.00 <s style="color:lightgray">A$99.00</s></td>
+                        <td v-show="this.isDiscounted">A${{ price }} <s style="color:lightgray">A$99.00</s></td>
                         <td v-show="!this.isDiscounted">A$99.00</td>
                     </tr>
 
@@ -259,7 +259,7 @@
             }
         },
 
-        props:['first_name','last_name','mobile','gender','firstTime','isDiscounted','path','email','coupon'],
+        props:['price', 'first_name','last_name','mobile','gender','firstTime','isDiscounted','path','email','coupon'],
 
         components: { CardNumber, CardExpiry, CardCvc, Loader },
 
@@ -315,6 +315,7 @@
                         mobile: vm.mobile,
                         email: vm.email,
                         path: vm.path,
+                        price: vm.price,
                         stripeToken: data.token.id,
                         coupon: vm.coupon
                     };
@@ -335,6 +336,7 @@
                                         firstTime: vm.firstTime,
                                         gender: vm.gender,
                                         mobile: vm.mobile,
+                                        price: vm.price,
                                         path:vm.path,
                                         paymentRef: ref
                                     }

@@ -52,7 +52,7 @@
 
     export default {
 
-        props:['email','first_name','last_name','mobile','gender', 'paymentRef', 'firstTime','path'],
+        props:['email','first_name','last_name','mobile','gender', 'paymentRef', 'firstTime','path', 'price'],
 
     }
 
