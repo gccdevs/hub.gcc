@@ -177,6 +177,7 @@
                 mobile: '',
                 firstTime: '',
                 gender: '',
+                price: 99.00,
                 email: '',
                 email_confirm: '',
                 path: '',
@@ -188,12 +189,9 @@
         watch: {
             coupon(val){
                 let vm = this;
-                axios.post('/api/form/validate-coupon', {coupon:val}).then(response => {
-                    if (response.data.message === true){
-                        vm.isDiscounted = true;
-                    }else {
-                        vm.isDiscounted = false;
-                    }
+                axios.post('/api/form/validate-coupon', {coupon:val, email: this.email}).then(response => {
+                    vm.isDiscounted = response.data.message;
+                    vm.price = response.data.price;
                 }).catch(err =>{});
 
             }
@@ -230,6 +228,7 @@
                                     mobile: vm.mobile,
                                     path: vm.path,
                                     isDiscounted: vm.isDiscounted,
+                                    price: vm.price,
                                     coupon: vm.isDiscounted ? vm.coupon : 'null'
                                 }
                             });

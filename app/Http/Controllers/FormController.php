@@ -21,7 +21,49 @@ class FormController extends Controller
 
     public function validateCoupon()
     {
-        return response()->json(['message' => request('coupon')  == env('STRIPE_CODE') ? true : false ]);
+        $coupon = request('coupon');
+
+        if ($coupon == env('STRIPE_CODE')) {
+            return response()->json([
+                'message' => true,
+                'type' => 'early-bird',
+                'price' => env('SUMMIT_DISCOUNT_PRICE')
+            ]);
+        } else if ($coupon == env('ASONE_CODE')) {
+            return response()->json([
+                'message' => true,
+                'type' => 'outside-church',
+                'price' => env('ASONE_PRICE')
+
+            ]);
+        } else if ($coupon == env('DOUBLE_PORTION')) {
+            // email existed in db
+            $forms = Form::where('email', request('email'))->get();
+            $discount = false;
+            foreach ($forms as $form) {
+                if ($form->can_apply_double_portion) {
+                    $discount = true;
+                }
+            }
+            if ($discount) {
+                return response()->json([
+                    'message' => true,
+                    'type' => 'giving-bless',
+                    'price' => env('BLESSING_PRICE')
+                ]);
+            }
+        } else {
+            return response()->json([
+                'message' => false,
+                'type' => null,
+                'price' => env('SUMMIT_FULL_PRICE')
+            ]);
+        }
+        return response()->json([
+            'message' => false,
+            'type' => 'wrong',
+            'price' => env('SUMMIT_FULL_PRICE')
+        ]);
     }
     
     
@@ -29,7 +71,18 @@ class FormController extends Controller
     {
         $this->validator($request->all())->validate(); // validate requested inputs
 
-        $price = request('coupon') == env('STRIPE_CODE') ? env('SUMMIT_DISCOUNT_PRICE') : env('SUMMIT_FULL_PRICE');
+        $coupon = request('coupon');
+
+        if ($coupon == env('DOUBLE_PORTION')) {
+            $forms = Form::where('email', request('email'))->get();
+            $discount = false;
+            foreach ($forms as $form) {
+                if ($form->can_apply_double_portion) {
+                    $discount = true;
+                }
+            }
+            if (!$discount) return response()->json(['message' => 'Failed to use this code', 'reason' =>'only once']);
+        }
 
         try { // process payment
 
@@ -38,8 +91,27 @@ class FormController extends Controller
                 'source' => request('stripeToken'),
             ]);
 
+            if ($coupon == env('STRIPE_CODE')) {
+                $price = 6900;
+            } else if ($coupon == env('ASONE_CODE')) {
+                $price = 3500;
+            } else if ($coupon == env('DOUBLE_PORTION')) {
+                $price = 3500;
+            } else {
+                $price = 9900;
+            }
+
+            if ($coupon == env('STRIPE_CODE')) {
+                $description = 'SUMMIT2018_EARLYBIRD';
+            } else if ($coupon == env('ASONE_CODE')) {
+                $description = 'SUMMIT2018_AS_ONE';
+            } else if ($coupon == env('DOUBLE_PORTION')) {
+                $description = 'SUMMIT2018_DOUBLE_PORTION';
+            } else {
+                $description = 'SUMMIT2018';
+            }
             $charge = Charge::create([
-                'description' =>  request('coupon') == env('STRIPE_CODE') ? 'SUMMIT2018_EARLYBIRD' : 'SUMMIT2018',
+                'description' => $description,
                 'amount' => $price,
                 'customer' => $customer->id,
                 'currency' => 'AUD'
@@ -63,7 +135,17 @@ class FormController extends Controller
 
             $form->is_agreed = true;
 
-            $form->saveAmount($price, request('coupon'));
+            $form->saveAmount($price, $coupon);
+
+            if ($coupon == env('DOUBLE_PORTION') || $coupon == env('ASONE_CODE')) {
+                $form->can_apply_double_portion = false;
+            } else {
+                $form->can_apply_double_portion = true;
+            }
+
+            if ($coupon == env('DOUBLE_PORTION') || $coupon == env('ASONE_CODE')) {
+                $this->deActiveOldCode(request('email'));
+            }
 
             $form->confirmPayment($charge->id);
 
@@ -73,7 +155,7 @@ class FormController extends Controller
         }
 
         try{
-            Mail::to($form)->queue(new PurchaseConfirmation($form)); // send confirmation email
+            Mail::to($form)->queue(new PurchaseConfirmation($form, request('price'))); // send confirmation email
         } catch(\Exception $e) {
             return response()->json(['message' => 'failed to send email', 'reason' => $e->getMessage(), 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
         }
@@ -84,9 +166,20 @@ class FormController extends Controller
             'ref' => $charge->id,
             'customer' => $customer,
             'charge' => $charge,
-            'amount' => request('coupon') == env('STRIPE_CODE') ? env('SUMMIT_DISCOUNT_PRICE') : env('SUMMIT_FULL_PRICE')
+            'amount' => $price
         ]);
+    }
 
+    protected function deActiveOldCode($email)
+    {
+        $forms = Form::where('email', $email)->get();
+
+        foreach ($forms as $form) {
+            if ($form->can_apply_double_portion) {
+                $form->can_apply_double_portion = false;
+                $form->save();
+            }
+        }
     }
 
     private function validator(array $data)
@@ -122,7 +215,7 @@ class FormController extends Controller
             $object->mobile = $form->mobile;
             $object->email = $form->email;
             $object->ref = $form->payment_ref;
-            $object->coupon = $form->coupon == env('STRIPE_CODE') ? true : false;
+            $object->coupon = $form->coupon;
             $object->time = date('Y/m/d h:i:s',strtotime($form->updated_at));
             $object->firstTime = $form->first_time;
             $object->path = $form->path;
@@ -156,7 +249,7 @@ class FormController extends Controller
                 $email = $form->email,
                 $ref = $form->payment_ref,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
-                $coupon = $form->coupon == env('STRIPE_CODE') ? true : false,
+                $coupon = $form->coupon,
                 $firstTime = $form->first_time,
                 $path = $form->path
             ]);

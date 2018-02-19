@@ -13,10 +13,12 @@ class PurchaseConfirmation extends Mailable
     use Queueable, SerializesModels;
 
     public $form;
+    public $price;
 
-    public function __construct(Form $form)
+    public function __construct(Form $form, $price)
     {
         $this->form = $form;
+        $this->price = $price;
     }
 
     public function build()

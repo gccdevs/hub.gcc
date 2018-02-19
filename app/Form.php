@@ -6,7 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
-    protected $fillable = ['first_name','last_name','email','coupon', 'mobile','gender','first_time','path', 'is_agreed'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'coupon',
+        'mobile',
+        'gender',
+        'first_time',
+        'path',
+        'is_agreed',
+        'can_apply_double_portion'
+    ];
 
     protected $table ='forms';
 
