@@ -166,8 +166,8 @@ class FormController extends Controller
                 Mail::to($form)
                     ->queue(new PurchaseConfirmation($form, request('price'), request('inviterEmail'), $coupon));
 
-                Mail::to(request('inviterEmail'))
-                ->queue(new InviterPurchaseConfirmation(request('inviterEmail'), $form));
+//                Mail::to(request('inviterEmail'))
+//                ->queue(new InviterPurchaseConfirmation(request('inviterEmail'), $form));
             }else {
                 Mail::to($form)->
                 queue(new PurchaseConfirmation($form, request('price')));
