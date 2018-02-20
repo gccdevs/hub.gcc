@@ -14,11 +14,15 @@ class PurchaseConfirmation extends Mailable
 
     public $form;
     public $price;
+    public $coupon;
+    public $inviterEmail;
 
-    public function __construct(Form $form, $price)
+    public function __construct(Form $form, $price, $inviterEmail = null, $coupon = null)
     {
         $this->form = $form;
         $this->price = $price;
+        $this->inviterEmail = $inviterEmail;
+        $this->coupon = $coupon;
     }
 
     public function build()

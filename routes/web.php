@@ -55,9 +55,9 @@ Route::get('/message', 'HomeController@index')->name('message')->middleware('aut
 //    return new App\Mail\contactMailCCAdmin(App\Contact::first(), App\User::first());
 //});
 
-Route::get('/mail-purchase', function () {
-    return new App\Mail\PurchaseConfirmation(App\Form::first(), 35.00);
-});
+// Route::get('/mail-purchase', function () {
+//     return new App\Mail\PurchaseConfirmation(App\Form::first(), 3500);
+// });
 
 //Route::get('/user-invitation', function () {
 //    return new App\Mail\UserInvitation(App\User::first(), str_random(16));

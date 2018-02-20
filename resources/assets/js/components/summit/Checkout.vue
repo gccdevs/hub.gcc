@@ -95,11 +95,26 @@
             <p class="is-size-6"><em class="fa fa-bell" style="color:#1e87e8;"></em> 如信息無誤, 請進行到支付頁面, <router-link :to="{name:'summit.signup'}" tag="a" style="text-decoration: none;">或者重新填写</router-link></p>
 
             <hr>
-
+            <!-- emails -->
+            <p class="is-size-3" style="display:inline" v-if="coupon === 'DOUBLEPORTION'">为谁购买</p>
+            <div class="columns" v-if="coupon === 'DOUBLEPORTION'">
+            <div class="column" :class="{'has-error' : errors.has('inviterEmail') }">
+                <label class="label" for="inviterEmail">请输入您朋友的郵箱 * </label>
+                <div class="field">
+                    <input style="width:80%" class="is-size-6" v-model="inviterEmail"
+                           v-validate data-vv-rules="required|email|max:50" data-vv-as="郵箱"
+                           id="inviterEmail" placeholder="Email Address" type="email" name="inviterEmail" required>
+                    <br>
+                    <span class="help-block" v-show="errors.has('inviterEmail')" style="color: red !important;">{{errors.first('inviterEmail')}}</span>
+                    <span v-if="inviterEmail === email" style="color: red;">两邮箱地址不可相同</span>
+                </div>
+            </div>
+            </div>
             <p class="is-size-3" style="display:inline">支付</p>
             <br>
             <p class="is-size-5" style="display:inline">Pay with <em style="color:#474fdb;" class="fa fa-cc-stripe"></em> <em class="fa fa-cc-visa"></em> <em style="color:#c50000;" class="fa fa-cc-mastercard"></em> <em style="color:#4785d9;" class="fa fa-cc-amex"></em></p>
             <br><br>
+
             <div class="columns">
                 <div class="column">
                     <label class="control-label" style="margin-right:20px;">卡號 *</label>
@@ -209,7 +224,10 @@
             </div>
 
             <div class="field">
-                <button :class="(isLoading ? 'button is-info is-loading' : 'button is-info')" style="width:100%" @click.prevent="pay" :disabled=" errors.any() || isLoading || !complete || ! this.termChecker">
+                <button :class="(isLoading ? 'button is-info is-loading' : 'button is-info')" style="width:100%" @click.prevent="pay" :disabled=" errors.any() || 
+                isLoading || 
+                !complete || 
+                !this.termChecker">
                     Pay Now !
                 </button>
             </div>
@@ -232,6 +250,7 @@
             return {
                 showModal: false,
                 show: false,
+                inviterEmail: '',
                 label: 'Processing, please wait...',
                 key: GCC.stripeKey,
                 complete: false,
@@ -300,6 +319,13 @@
 
             pay () {
 
+                if (this.coupon === 'DOUBLEPORTION') {
+                    if (this.email === this.inviterEmail || this.inviterEmail === '') {
+                        alert('邮箱有误');
+                        return;
+                    }
+                }
+
                 let vm = this;
 
                 vm.show = true;
@@ -313,6 +339,7 @@
                         isAgreed: vm.termChecker,
                         gender: vm.gender,
                         mobile: vm.mobile,
+                        inviterEmail: vm.inviterEmail,
                         email: vm.email,
                         path: vm.path,
                         price: vm.price,
@@ -332,6 +359,7 @@
                                     name: 'summit.success', params: {
                                         first_name: vm.first_name,
                                         last_name: vm.last_name,
+                                        inviterEmail: vm.inviterEmail,
                                         email: vm.email,
                                         firstTime: vm.firstTime,
                                         gender: vm.gender,

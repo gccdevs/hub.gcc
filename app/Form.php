@@ -14,6 +14,7 @@ class Form extends Model
         'mobile',
         'gender',
         'first_time',
+        'inviter_email',
         'path',
         'is_agreed',
         'can_apply_double_portion'

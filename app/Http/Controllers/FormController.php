@@ -6,6 +6,7 @@ use App\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\PurchaseConfirmation;
+use App\Mail\InviterPurchaseConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Stripe\{Charge, Customer};
@@ -72,8 +73,10 @@ class FormController extends Controller
         $this->validator($request->all())->validate(); // validate requested inputs
 
         $coupon = request('coupon');
+        $inviterEmail = null;
 
         if ($coupon == env('DOUBLE_PORTION')) {
+            $inviterEmail = request('inviterEmail');
             $forms = Form::where('email', request('email'))->get();
             $discount = false;
             foreach ($forms as $form) {
@@ -147,6 +150,10 @@ class FormController extends Controller
                 $this->deActiveOldCode(request('email'));
             }
 
+            if ($coupon == env('DOUBLE_PORTION')) {
+                $form->inviter_email = request('inviterEmail');
+            }
+
             $form->confirmPayment($charge->id);
 
             $form->save();
@@ -155,7 +162,16 @@ class FormController extends Controller
         }
 
         try{
-            Mail::to($form)->queue(new PurchaseConfirmation($form, request('price'))); // send confirmation email
+            if($coupon == env('DOUBLE_PORTION')) {
+                Mail::to($form)
+                    ->queue(new PurchaseConfirmation($form, request('price'), request('inviterEmail'), $coupon));
+
+                Mail::to(request('inviterEmail'))
+                ->queue(new InviterPurchaseConfirmation(request('inviterEmail'), $form));
+            }else {
+                Mail::to($form)->
+                queue(new PurchaseConfirmation($form, request('price')));
+            }
         } catch(\Exception $e) {
             return response()->json(['message' => 'failed to send email', 'reason' => $e->getMessage(), 'ref' => $charge->id, 'customer' => $customer, 'charge' => $charge]);
         }
@@ -193,6 +209,7 @@ class FormController extends Controller
             'stripeToken' => 'required',
             'mobile' => 'required|min:8',
             'gender' => 'required|in:male,female',
+            'inviterEmail' => 'nullable|email',
             'first_time' => 'required|in:yes,no',
             'path' => 'required|in:friend,classmate,colleague,web,social,family,other'
         ]);

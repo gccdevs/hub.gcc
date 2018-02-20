@@ -4,8 +4,15 @@
 <a href="{{env('APP_URL') . '/summit-2018'}}" rel="text">![]({{asset('/images/large-logo.png')}})
 <br><br>
 # Congratulations!
+@if(env('DOUBLE_PORTION') === $coupon)
+
+Hi {{ $form->first_name }}, you have just purchased a Summit 2018 ticket for your friend **{{ $inviterEmail }}**
+
+@else
 
 You have successfully purchased the 2018 Glory City Church Summit ticket!
+
+@endif
 
 ## Your purchase Detail:
 
@@ -16,7 +23,7 @@ You have successfully purchased the 2018 Glory City Church Summit ticket!
 | ------------- |:--------------------------------------------------:|
 |  Paid Amount | **A${{ $price }}** |
 | Receipt   | **{{ $form->payment_ref }}**   |
-| Name  |**{{ $form->first_name }} {{ $form->last_name }}** |
+| Recipient  |**{{ $form->first_name }} {{ $form->last_name }}** |
 | Gender|  **{{ $form->gender }}**   |
 | First Time |  **{{ $form->first_time }}**   |
 | Mobile|  **{{ $form->mobile }}**   |
