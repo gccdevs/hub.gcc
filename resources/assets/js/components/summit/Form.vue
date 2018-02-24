@@ -186,14 +186,13 @@
             }
         },
 
-        watch: {
-            coupon(val){
+        updated() {
+            if (this.coupon && this.email) {
                 let vm = this;
-                axios.post('/api/form/validate-coupon', {coupon:val, email: this.email}).then(response => {
+                axios.post('/api/form/validate-coupon', {coupon:this.coupon, email: this.email}).then(response => {
                     vm.isDiscounted = response.data.message;
                     vm.price = response.data.price;
                 }).catch(err =>{});
-
             }
         },
 

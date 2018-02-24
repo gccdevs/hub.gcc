@@ -20,6 +20,9 @@ class FormController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function validateCoupon()
     {
         $coupon = request('coupon');
@@ -39,18 +42,18 @@ class FormController extends Controller
             ]);
         } else if ($coupon == env('DOUBLE_PORTION')) {
             // email existed in db
-            $forms = Form::where('email', request('email'))->get();
-            $discount = false;
-            foreach ($forms as $form) {
-                if ($form->can_apply_double_portion) {
-                    $discount = true;
-                }
-            }
-            if ($discount) {
+            try {
+                Form::where('email', request('email'))->firstOrFail();
                 return response()->json([
                     'message' => true,
                     'type' => 'giving-bless',
                     'price' => env('BLESSING_PRICE')
+                ]);
+            } catch (\Exception $e) {
+                return response()->json([
+                    'message' => false,
+                    'type' => null,
+                    'price' => env('SUMMIT_FULL_PRICE')
                 ]);
             }
         } else {
@@ -60,11 +63,6 @@ class FormController extends Controller
                 'price' => env('SUMMIT_FULL_PRICE')
             ]);
         }
-        return response()->json([
-            'message' => false,
-            'type' => 'wrong',
-            'price' => env('SUMMIT_FULL_PRICE')
-        ]);
     }
     
     
@@ -73,19 +71,6 @@ class FormController extends Controller
         $this->validator($request->all())->validate(); // validate requested inputs
 
         $coupon = request('coupon');
-        $inviterEmail = null;
-
-        if ($coupon == env('DOUBLE_PORTION')) {
-            $inviterEmail = request('inviterEmail');
-            $forms = Form::where('email', request('email'))->get();
-            $discount = false;
-            foreach ($forms as $form) {
-                if ($form->can_apply_double_portion) {
-                    $discount = true;
-                }
-            }
-            if (!$discount) return response()->json(['message' => 'Failed to use this code', 'reason' =>'only once']);
-        }
 
         try { // process payment
 
@@ -140,16 +125,6 @@ class FormController extends Controller
 
             $form->saveAmount($price, $coupon);
 
-            if ($coupon == env('DOUBLE_PORTION') || $coupon == env('ASONE_CODE')) {
-                $form->can_apply_double_portion = false;
-            } else {
-                $form->can_apply_double_portion = true;
-            }
-
-            if ($coupon == env('DOUBLE_PORTION') || $coupon == env('ASONE_CODE')) {
-                $this->deActiveOldCode(request('email'));
-            }
-
             if ($coupon == env('DOUBLE_PORTION')) {
                 $form->inviter_email = request('inviterEmail');
             }
@@ -165,9 +140,6 @@ class FormController extends Controller
             if($coupon == env('DOUBLE_PORTION')) {
                 Mail::to($form)
                     ->queue(new PurchaseConfirmation($form, request('price'), request('inviterEmail'), $coupon));
-
-//                Mail::to(request('inviterEmail'))
-//                ->queue(new InviterPurchaseConfirmation(request('inviterEmail'), $form));
             }else {
                 Mail::to($form)->
                 queue(new PurchaseConfirmation($form, request('price')));
@@ -184,18 +156,6 @@ class FormController extends Controller
             'charge' => $charge,
             'amount' => $price
         ]);
-    }
-
-    protected function deActiveOldCode($email)
-    {
-        $forms = Form::where('email', $email)->get();
-
-        foreach ($forms as $form) {
-            if ($form->can_apply_double_portion) {
-                $form->can_apply_double_portion = false;
-                $form->save();
-            }
-        }
     }
 
     private function validator(array $data)

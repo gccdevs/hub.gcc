@@ -13,7 +13,8 @@
                 <br>
                 <h4 style="color:white !important;" class="card-subtitle mb-2 text-muted">感恩,尊榮,信心</h4>
                 <br>
-                <v-btn class="btn btn-light" v-b-modal.comming-soon>Giving</v-btn>
+                <!--<v-btn class="btn btn-light" v-b-modal.comming-soon>Giving</v-btn>-->
+                <a href="https://glorycitychurch.com/giving#online_giving" class="btn btn-light" >Giving</a>
             </div>
             <br><br>
         </div>
