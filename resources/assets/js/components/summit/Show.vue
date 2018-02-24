@@ -36,6 +36,7 @@
                     {key:'first_name', label:'名', sortable:true },
                     {key:'mobile', label:'电话號碼',sortable:true},
                     {key:'email', label:'郵箱',sortable:true},
+                    {key:'invitedEmail', label:'被邀请者郵箱',sortable:true},
                     {key:'gender', label:'性别', sortable:true},
                     {key:'firstTime', label:'first?', sortable:true},
                     {key:'ref', label:'支付憑證',sortable:true},

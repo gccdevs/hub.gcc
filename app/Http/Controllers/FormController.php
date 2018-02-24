@@ -191,6 +191,7 @@ class FormController extends Controller
             $object->gender = $form->gender;
             $object->mobile = $form->mobile;
             $object->email = $form->email;
+            $object->invitedEmail = $form->inviter_email;
             $object->ref = $form->payment_ref;
             $object->coupon = $form->coupon;
             $object->time = date('Y/m/d h:i:s',strtotime($form->updated_at));
@@ -214,7 +215,7 @@ class FormController extends Controller
 
         $cellData = [];
 
-        array_push($cellData, ['First name','Last name', 'gender', 'mobile','email','payment_ref','time', 'coupon', 'first_time','where to know']);
+        array_push($cellData, ['First name','Last name', 'gender', 'mobile','email', 'invitedEmail', 'payment_ref','time', 'coupon', 'first_time','where to know']);
 
         foreach ($data as $form){
 
@@ -224,6 +225,7 @@ class FormController extends Controller
                 $gender = $form->gender,
                 $mobile = $form->mobile,
                 $email = $form->email,
+                $invitedEmail = $form->inviter_email,
                 $ref = $form->payment_ref,
                 $time = date('Y/m/d h:i:s',strtotime($form->updated_at)),
                 $coupon = $form->coupon,
